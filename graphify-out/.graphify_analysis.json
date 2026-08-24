@@ -1,0 +1,226 @@
+{
+  "communities": {
+    "0": [
+      "script",
+      "script_closemobile",
+      "script_draw",
+      "script_fadeels",
+      "script_hamburger",
+      "script_mobilemenu",
+      "script_nav",
+      "script_observer",
+      "script_resize",
+      "script_spawnsniper",
+      "script_wavey"
+    ],
+    "1": [
+      "claude_md",
+      "claude_md_image_based_pattern",
+      "ftue_html",
+      "index_html",
+      "index_html_ieee_vr_2021_publication",
+      "index_html_interactive_surface_2022_publication",
+      "infurnia_html",
+      "lumigo_html",
+      "mes_html",
+      "motion_restriction_vr_html"
+    ],
+    "2": [
+      "ftue_coded_flow_security_central",
+      "index_html_idc_iit_bombay",
+      "index_html_infurnia_company",
+      "index_html_instabase",
+      "index_html_lokesh_kumar",
+      "index_html_lti",
+      "index_html_nutanix",
+      "mes_coded_material_tailwind_design_system",
+      "mes_coded_mes_product",
+      "mes_coded_wcag_2_1_aa"
+    ],
+    "3": [
+      "lumigo_coded_anirudha_joshi",
+      "lumigo_coded_design_thinking_process",
+      "lumigo_coded_flow_state_theory",
+      "lumigo_coded_html",
+      "lumigo_coded_iteration_process",
+      "lumigo_coded_lumi_go_game",
+      "lumigo_coded_usability_evaluation_study",
+      "mes_coded_iteration_process",
+      "mes_coded_sus_evaluation"
+    ],
+    "4": [
+      "mes_coded_competitor_adris",
+      "mes_coded_competitor_naadi",
+      "mes_coded_html",
+      "mes_coded_nps_evaluation",
+      "mes_coded_persona_ajay_operator",
+      "mes_coded_persona_ramesh_production_manager",
+      "mes_coded_persona_sanjay_production_designer"
+    ],
+    "5": [
+      "claude_md_coded_rebuild_pattern",
+      "claude_md_shared_css_primitives",
+      "ftue_coded_html",
+      "ftue_coded_ideal_ftue_framework",
+      "ftue_coded_persona_alex",
+      "ftue_coded_persona_sanjay"
+    ],
+    "6": [
+      "package",
+      "package_name",
+      "package_scripts",
+      "package_scripts_start",
+      "package_version"
+    ],
+    "7": [
+      "ftue_coded_progressive_disclosure",
+      "mes_coded_progressive_disclosure"
+    ],
+    "8": [
+      "ftue_coded_value_analysis_framework",
+      "mes_coded_need_classification_stair"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2,
+    "1": 0.4,
+    "2": 0.2,
+    "3": 0.25,
+    "4": 0.2857142857142857,
+    "5": 0.4,
+    "6": 0.4,
+    "7": 1.0,
+    "8": 1.0
+  },
+  "gods": [
+    {
+      "id": "mes_coded_html",
+      "label": "mes-coded.html — Coded Case Study",
+      "degree": 16
+    },
+    {
+      "id": "ftue_coded_html",
+      "label": "ftue-coded.html — Coded Case Study",
+      "degree": 11
+    },
+    {
+      "id": "lumigo_coded_html",
+      "label": "lumigo-coded.html — Coded Case Study",
+      "degree": 10
+    },
+    {
+      "id": "claude_md",
+      "label": "CLAUDE.md — Project Guide",
+      "degree": 9
+    },
+    {
+      "id": "index_html",
+      "label": "index.html — Landing Page",
+      "degree": 9
+    },
+    {
+      "id": "motion_restriction_vr_html",
+      "label": "Motion-restriction-VR.html — Image-based Case Study",
+      "degree": 5
+    },
+    {
+      "id": "index_html_lokesh_kumar",
+      "label": "Lokesh Kumar (\"Loky\")",
+      "degree": 5
+    },
+    {
+      "id": "claude_md_image_based_pattern",
+      "label": "Image-based case study pattern",
+      "degree": 5
+    },
+    {
+      "id": "lumigo_html",
+      "label": "lumigo.html — Image-based Case Study",
+      "degree": 4
+    },
+    {
+      "id": "mes_html",
+      "label": "mes.html — Image-based Case Study",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Value Analysis Framework (ease/effort/frequency ranking of features)",
+      "target": "User Need Classification stair (Core/Basic/Expected/Augmented/Transformational)",
+      "source_files": [
+        "ftue-coded.html",
+        "mes-coded.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Progressive Disclosure principle (FTUE)",
+      "target": "Progressive Disclosure principle (MES)",
+      "source_files": [
+        "ftue-coded.html",
+        "mes-coded.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Lumi Go Usability Evaluation Study (IDC, IIT Bombay)",
+      "target": "System Usability Scale (SUS) evaluation",
+      "source_files": [
+        "lumigo-coded.html",
+        "mes-coded.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Iterative UI redesign process (3 iterations with user testing)",
+      "target": "Iterative wireframe/prototype process with user feedback (MES)",
+      "source_files": [
+        "lumigo-coded.html",
+        "mes-coded.html"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "CLAUDE.md — Project Guide",
+      "target": "ftue-coded.html — Coded Case Study",
+      "source_files": [
+        "CLAUDE.md",
+        "ftue-coded.html"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `mes-coded.html — Coded Case Study` connect `Community 4` to `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 7`, `Community 8`?",
+      "why": "High betweenness centrality (0.252) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `ftue-coded.html — Coded Case Study` connect `Community 5` to `Community 8`, `Community 1`, `Community 2`, `Community 7`?",
+      "why": "High betweenness centrality (0.137) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `lumigo-coded.html — Coded Case Study` connect `Community 3` to `Community 1`, `Community 5`?",
+      "why": "High betweenness centrality (0.113) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `name`, `version`, `start` to the rest of the system?",
+      "why": "21 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

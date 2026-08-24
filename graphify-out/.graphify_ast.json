@@ -1,0 +1,292 @@
+{
+  "nodes": [
+    {
+      "id": "package",
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_name",
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_start",
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "script",
+      "label": "script.js",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_nav",
+      "label": "nav",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_hamburger",
+      "label": "hamburger",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_mobilemenu",
+      "label": "mobileMenu",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_closemobile",
+      "label": "closeMobile()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "script_fadeels",
+      "label": "fadeEls",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L23",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_observer",
+      "label": "observer",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L24",
+      "_origin": "ast"
+    },
+    {
+      "id": "script_resize",
+      "label": "resize()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L65",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "script_wavey",
+      "label": "waveY()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L76",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "script_draw",
+      "label": "draw()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L85",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "script_spawnsniper",
+      "label": "spawnSniper()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L141",
+      "_callable": true,
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "package",
+      "target": "package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_start",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_nav",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_hamburger",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_mobilemenu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_closemobile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_fadeels",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_observer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_resize",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_wavey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_draw",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script",
+      "target": "script_spawnsniper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "script_draw",
+      "target": "script_wavey",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

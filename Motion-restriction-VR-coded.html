@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Low-Cost Arm-Based Motion Restriction Device for VR — Case Study | Loky</title>
+  <link rel="stylesheet" href="Motion-restriction-VR-coded.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Loky</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="vr-side-nav" aria-label="Section navigation">
+    <a href="#quick-context" class="vr-side-nav-link" data-target="quick-context"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Quick context</span></a>
+    <a href="#product-brief" class="vr-side-nav-link" data-target="product-brief"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Product Brief</span></a>
+    <a href="#process" class="vr-side-nav-link" data-target="process"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">My process</span></a>
+    <a href="#problem" class="vr-side-nav-link" data-target="problem"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Problem brief</span></a>
+    <a href="#state-of-art" class="vr-side-nav-link" data-target="state-of-art"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">State of art</span></a>
+    <a href="#design-goals" class="vr-side-nav-link" data-target="design-goals"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Design goals</span></a>
+    <a href="#human-factors" class="vr-side-nav-link" data-target="human-factors"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Human factors</span></a>
+    <a href="#implementation" class="vr-side-nav-link" data-target="implementation"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Design &amp; implementation</span></a>
+    <a href="#materials" class="vr-side-nav-link" data-target="materials"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Materials</span></a>
+    <a href="#prototype" class="vr-side-nav-link" data-target="prototype"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Complete prototype</span></a>
+    <a href="#working-principle" class="vr-side-nav-link" data-target="working-principle"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Working principle</span></a>
+    <a href="#mechanism" class="vr-side-nav-link" data-target="mechanism"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Interior mechanism</span></a>
+    <a href="#demo" class="vr-side-nav-link" data-target="demo"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">With vs without</span></a>
+    <a href="#evaluation" class="vr-side-nav-link" data-target="evaluation"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Interactions &amp; evaluation</span></a>
+    <a href="#future-scope" class="vr-side-nav-link" data-target="future-scope"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Future scope</span></a>
+    <a href="#touch-explore" class="vr-side-nav-link" data-target="touch-explore"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Touch &amp; Explore</span></a>
+    <a href="#game-design" class="vr-side-nav-link" data-target="game-design"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Game design</span></a>
+    <a href="#game-inputs" class="vr-side-nav-link" data-target="game-inputs"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Inputs &amp; development</span></a>
+    <a href="#gameplay" class="vr-side-nav-link" data-target="gameplay"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Game play</span></a>
+    <a href="#game-future" class="vr-side-nav-link" data-target="game-future"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Limitations</span></a>
+    <a href="#reflections" class="vr-side-nav-link" data-target="reflections"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Reflections</span></a>
+    <a href="#thanks" class="vr-side-nav-link" data-target="thanks"><span class="vr-side-nav-bar"></span><span class="vr-side-nav-label">Thank you</span></a>
+  </nav>
+
+  <!-- ============ 1. HERO / COVER (dark) ============ -->
+  <section class="sec dark hero-cover">
+    <div class="wrap">
+      <div class="brand-logo">HAPTICS · VR</div>
+      <h1 class="cover-title">A Low-cost Arm Based Motion Restriction Haptics for Virtual Reality</h1>
+      <p class="cover-sub">A wearable flexible exoskeleton that makes virtual objects feel solid.</p>
+
+      <div class="meta-grid">
+        <div class="meta-chip"><span class="meta-label">🥽 Product:</span><span class="meta-val">Haptic hardware + VR game, from scratch</span></div>
+        <div class="meta-chip"><span class="meta-label">👤 Team:</span><span class="meta-val">Individual work, personal project</span></div>
+        <div class="meta-chip"><span class="meta-label">💼 Role:</span><span class="meta-val">Research, industrial design, prototyping, testing</span></div>
+        <div class="meta-chip"><span class="meta-label">⏱️ Time:</span><span class="meta-val">One winter vacation</span></div>
+      </div>
+
+      <a class="vr-paper-link" href="https://ieeexplore.ieee.org/document/9419246" target="_blank" rel="noopener">Paper published in IEEE-VR 2021, Lisbon <span>&#8594;</span></a>
+
+      <img class="ph vr-cover-device" src="Motion-restriction-VR-coded/01.webp" alt="Hero shot: device worn on right arm, front view, arm raised" loading="lazy" decoding="async" />
+
+      <div class="vr-cover-cards" style="grid-template-columns:1fr; max-width:640px; margin:26px auto 0;">
+        <div class="vr-cover-card">
+          <h3>What is unique about this product?</h3>
+          
+          <div class="vr-cost-row">
+            <div class="vr-cost-card"><div class="vr-cost-label">💰 Total build cost:</div><div class="vr-cost-val"><strong>₹900</strong> / $12</div></div>
+            <div class="vr-cost-card"><div class="vr-cost-label">⚖️ Total weight:</div><div class="vr-cost-val"><strong>&lt;200 g</strong></div></div>
+            <div class="vr-cost-card"><div class="vr-cost-label">🛠 Design:</div><div class="vr-cost-val"><strong>DIY</strong></div></div>
+          </div>
+          <p class="dark-fine" style="margin-top:12px;">Cost is excluding the VR headset. Product can be built with off the shelf parts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUICK CONTEXT (light) ============ -->
+  <section id="quick-context" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Quick context</h2>
+      <div class="grid-2" style="grid-template-columns:repeat(4,1fr);">
+        <div class="ctx-card"><h3>❓ Why</h3><ul><li>Virtual objects <strong>feel like nothing</strong> when you hit them</li><li>Rich haptics stay <strong>locked inside labs</strong></li></ul></div>
+        <div class="ctx-card"><h3>🔍 What</h3><ul><li>Arm-based <strong>flexible exoskeleton</strong> built from cable ties</li><li>Provides <strong>motion restriction</strong> on VR contact</li></ul></div>
+        <div class="ctx-card"><h3>👥 Whom</h3><ul><li>VR players &amp; enthusiasts</li><li>Haptics researchers</li><li>DIY / maker community</li></ul></div>
+        <div class="ctx-card"><h3>🛠 How</h3><ul><li>Cable ties that <strong>lock one way</strong>, actuated by servos</li><li><strong>Off-the-shelf parts</strong>, 3D-printed casing</li><li>Driven live by the game engine</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. PRODUCT BRIEF (dark) ============ -->
+  <section id="product-brief" class="sec dark">
+    <div class="wrap">
+      <div class="brief-text" style="text-align:center; max-width:760px; margin:0 auto;">
+        <h2 class="sec-h2">Product Brief</h2>
+        <p style="margin:0 auto;">This is a low-cost device I designed that provides motion restriction haptics, built under 900 INR (12 US Dollar).</p>
+        <p style="margin:18px auto 0;">Virtual reality requires high-level haptics to achieve a feeling of realism. The device is a wearable, arm-based flexible exoskeleton made using cable ties, which provides the required motion restriction based on VR interaction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. PROCESS (light) ============ -->
+  <section id="process" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">My process</h2>
+      <div class="vr-process">
+        <div class="vr-process-step odd">Identified problems</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step even">State of art analysis</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step odd">Ideate solutions</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step even">Design and prototype</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step odd">Interactions testing</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step even">Creating use cases</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. PROBLEM BRIEF (light) ============ -->
+  <section id="problem" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Problem Brief</h2>
+      <div class="grid-2" style="grid-template-columns:repeat(3,1fr);">
+        <div class="why-card"><h3><span class="emoji-lead">✋</span>1. Nothing stops your hand</h3><p>When a player hits an object in VR it's hard to feel the object restricting their motion, since <strong>no obstacle exists in the real world</strong> in that exact space. This kills the realism.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">📦</span>2. No sense of presence</h3><p>There is <strong>no motion restriction</strong> to convey the presence of virtual objects or obstacles — essential, because interactions in VR are rich and direct.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">🔬</span>3. Good haptics stay in labs</h3><p>Rich and sophisticated haptic devices are primarily associated with labs and are <strong>not easily commercialised.</strong></p></div>
+      </div>
+
+      <div class="vr-diagram-stack">
+        <p class="vr-diagram-note">When interacting with rigid objects in a virtual reality environment, the hand passes straight through — the body gets no signal that contact happened.</p>
+        <img class="ph ph-diagram" style="border-radius:0;" src="Motion-restriction-VR-coded/04.webp" alt="Diagram: hand stopping at a surface, in-game vs real life" loading="lazy" decoding="async" />
+      </div>
+
+      <img class="ph ph-diagram" style="border-radius:0;" src="Motion-restriction-VR-coded/05.webp" alt="Diagram: punching bag obstacle, in-game vs real life" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 6. STATE OF ART (light) ============ -->
+  <section id="state-of-art" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">State of Art</h2>
+      <p class="acc-intro">Four existing approaches to arm haptics in VR, and where each one falls short.</p>
+      <div class="vr-soa-grid">
+        <div class="vr-soa-card">
+          <h3>A new force-feedback arm exoskeleton for haptic interaction in VR</h3>
+          <img class="ph" src="Motion-restriction-VR-coded/06.webp" alt="Force-feedback exoskeleton photo" loading="lazy" decoding="async" />
+          <div class="vr-soa-pain-label">Pain points</div>
+          <ul class="vr-soa-pain">
+            <li>Heavy machinery</li>
+            <li>Only available in labs</li>
+            <li>Cannot be commercialised</li>
+          </ul>
+        </div>
+        <div class="vr-soa-card">
+          <h3>Wireality: complex tangible geometries in VR with worn multi-string haptics</h3>
+          <img class="ph" src="Motion-restriction-VR-coded/07.webp" alt="Wireality multi-string haptic device photo" loading="lazy" decoding="async" />
+          <div class="vr-soa-pain-label">Pain points</div>
+          <ul class="vr-soa-pain">
+            <li>Only restrictive to the wrist</li>
+            <li>Doesn't provide arm restriction</li>
+            <li>Hindrance in movements</li>
+          </ul>
+        </div>
+        <div class="vr-soa-card">
+          <h3>Frozen Suit: toward a changeable stiffness suit and its application for haptic games</h3>
+          <img class="ph" src="Motion-restriction-VR-coded/08.webp" alt="Frozen Suit gameplay + real-world photo" loading="lazy" decoding="async" />
+          <div class="vr-soa-pain-label">Pain points</div>
+          <ul class="vr-soa-pain">
+            <li>Motion is very restrictive and painful</li>
+            <li>Doesn't provide enough strength</li>
+            <li>Doesn't support large systems</li>
+            <li>Very hard to set up</li>
+          </ul>
+        </div>
+        <div class="vr-soa-card">
+          <h3>Elastic-Arm: human-scale passive haptic feedback for virtual environments</h3>
+          <img class="ph" src="Motion-restriction-VR-coded/09.webp" alt="Elastic-Arm device photo" loading="lazy" decoding="async" />
+          <div class="vr-soa-pain-label">Pain points</div>
+          <ul class="vr-soa-pain">
+            <li>Suits larger physical spaces like CAVE systems</li>
+            <li>Unidirectional — always toward the shoulder</li>
+            <li>Feedback limited to the elastic cable's stiffness</li>
+            <li>Very little control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. DESIGN GOALS (blue) ============ -->
+  <section id="design-goals" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2 white center">Design goals</h2>
+      <p style="text-align:center; max-width:720px; margin:0 auto; font-size:17px;">Pulling the state-of-art gaps together with the problem statement gave six goals to design against.</p>
+      <ul class="vr-goal-checklist">
+        <li>Motion restriction</li>
+        <li>Light weight</li>
+        <li>Easy assembly</li>
+        <li>Comfort</li>
+        <li>DIY model</li>
+        <li>Modular</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 8. IDEATION (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Ideation</h2>
+      <p class="acc-intro">Mapping the problem space across three angles before committing to a mechanism.</p>
+      <div class="vr-mindmap-wrap">
+        <svg class="vr-mindmap-svg" viewBox="0 0 760 848" xmlns="http://www.w3.org/2000/svg">
+          <!-- root -> category connectors -->
+          <path d="M30,401 C120,401 120,122 226,122" fill="none" stroke="#4a97ee" stroke-width="2" opacity="0.55"/>
+          <path d="M30,401 C120,401 120,390 226,390" fill="none" stroke="#1e9e50" stroke-width="2" opacity="0.55"/>
+          <path d="M30,401 C120,401 120,692 226,692" fill="none" stroke="#c9820a" stroke-width="2" opacity="0.55"/>
+
+          <!-- Senses branch -->
+          <g stroke="#4a97ee" fill="none" stroke-width="1.5" opacity="0.45">
+            <path d="M234,122 C330,122 330,37 458,37"/>
+            <path d="M234,122 C330,122 330,71 458,71"/>
+            <path d="M234,122 C330,122 330,105 458,105"/>
+            <path d="M234,122 C330,122 330,139 458,139"/>
+            <path d="M234,122 C330,122 330,173 458,173"/>
+            <path d="M234,122 C330,122 330,207 458,207"/>
+          </g>
+
+          <!-- Implementation branch -->
+          <g stroke="#1e9e50" fill="none" stroke-width="1.5" opacity="0.45">
+            <path d="M234,390 C330,390 330,271 458,271"/>
+            <path d="M234,390 C330,390 330,305 458,305"/>
+            <path d="M234,390 C330,390 330,339 458,339"/>
+            <path d="M234,390 C330,390 330,373 458,373"/>
+            <path d="M234,390 C330,390 330,407 458,407"/>
+            <path d="M234,390 C330,390 330,441 458,441"/>
+            <path d="M234,390 C330,390 330,475 458,475"/>
+            <path d="M234,390 C330,390 330,509 458,509"/>
+          </g>
+
+          <!-- Body parameters branch -->
+          <g stroke="#c9820a" fill="none" stroke-width="1.5" opacity="0.45">
+            <path d="M234,692 C330,692 330,573 458,573"/>
+            <path d="M234,692 C330,692 330,607 458,607"/>
+            <path d="M234,692 C330,692 330,641 458,641"/>
+            <path d="M234,692 C330,692 330,675 458,675"/>
+            <path d="M234,692 C330,692 330,709 458,709"/>
+            <path d="M234,692 C330,692 330,743 458,743"/>
+            <path d="M234,692 C330,692 330,777 458,777"/>
+            <path d="M234,692 C330,692 330,811 458,811"/>
+          </g>
+
+          <!-- root node -->
+          <circle cx="30" cy="401" r="9" fill="#17181c"/>
+          <text x="0" y="380" class="vr-mm-root">Ideation</text>
+
+          <!-- category nodes -->
+          <circle cx="230" cy="122" r="6" fill="#4a97ee"/>
+          <text x="240" y="118" class="vr-mm-cat" fill="#4a97ee">Senses</text>
+          <circle cx="230" cy="390" r="6" fill="#1e9e50"/>
+          <text x="240" y="386" class="vr-mm-cat" fill="#1e9e50">Implementation</text>
+          <circle cx="230" cy="692" r="6" fill="#c9820a"/>
+          <text x="240" y="688" class="vr-mm-cat" fill="#c9820a">Body parameters</text>
+
+          <!-- Senses leaves -->
+          <circle cx="460" cy="37" r="3.5" fill="#4a97ee"/><text x="470" y="41" class="vr-mm-leaf">Pressure</text>
+          <circle cx="460" cy="71" r="3.5" fill="#4a97ee"/><text x="470" y="75" class="vr-mm-leaf">Feeling of hit</text>
+          <circle cx="460" cy="105" r="3.5" fill="#4a97ee"/><text x="470" y="109" class="vr-mm-leaf">Proprioception</text>
+          <circle cx="460" cy="139" r="3.5" fill="#4a97ee"/><text x="470" y="143" class="vr-mm-leaf">Vibrations</text>
+          <circle cx="460" cy="173" r="3.5" fill="#4a97ee"/><text x="470" y="177" class="vr-mm-leaf">Air drag</text>
+          <circle cx="460" cy="207" r="3.5" fill="#4a97ee"/><text x="470" y="211" class="vr-mm-leaf">Feedbacks</text>
+
+          <!-- Implementation leaves -->
+          <circle cx="460" cy="271" r="3.5" fill="#1e9e50"/><text x="470" y="275" class="vr-mm-leaf">Comfort</text>
+          <circle cx="460" cy="305" r="3.5" fill="#1e9e50"/><text x="470" y="309" class="vr-mm-leaf">Torsion spring</text>
+          <circle cx="460" cy="339" r="3.5" fill="#1e9e50"/><text x="470" y="343" class="vr-mm-leaf">Fluid pressure lock</text>
+          <circle cx="460" cy="373" r="3.5" fill="#1e9e50"/><text x="470" y="377" class="vr-mm-leaf">Solenoids</text>
+          <circle cx="460" cy="407" r="3.5" fill="#1e9e50"/><text x="470" y="411" class="vr-mm-leaf">Slotted cables</text>
+          <circle cx="460" cy="441" r="3.5" fill="#1e9e50"/><text x="470" y="445" class="vr-mm-leaf">Assembly</text>
+          <circle cx="460" cy="475" r="3.5" fill="#1e9e50"/><text x="470" y="479" class="vr-mm-leaf">Ratchet lock</text>
+          <circle cx="460" cy="509" r="3.5" fill="#1e9e50"/><text x="470" y="513" class="vr-mm-leaf">String based</text>
+
+          <!-- Body parameters leaves -->
+          <circle cx="460" cy="573" r="3.5" fill="#c9820a"/><text x="470" y="577" class="vr-mm-leaf">Weight</text>
+          <circle cx="460" cy="607" r="3.5" fill="#c9820a"/><text x="470" y="611" class="vr-mm-leaf">Studying arms</text>
+          <circle cx="460" cy="641" r="3.5" fill="#c9820a"/><text x="470" y="645" class="vr-mm-leaf">Studying joints</text>
+          <circle cx="460" cy="675" r="3.5" fill="#c9820a"/><text x="470" y="679" class="vr-mm-leaf">Inertia</text>
+          <circle cx="460" cy="709" r="3.5" fill="#c9820a"/><text x="470" y="713" class="vr-mm-leaf">Motion constraints</text>
+          <circle cx="460" cy="743" r="3.5" fill="#c9820a"/><text x="470" y="747" class="vr-mm-leaf">Tensegrity</text>
+          <circle cx="460" cy="777" r="3.5" fill="#c9820a"/><text x="470" y="781" class="vr-mm-leaf">Stretching directions</text>
+          <circle cx="460" cy="811" r="3.5" fill="#c9820a"/><text x="470" y="815" class="vr-mm-leaf">Recoil force while stopping</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. HUMAN FACTORS (light) ============ -->
+  <section id="human-factors" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Considering human factors</h2>
+      <p class="acc-intro">Analysing how far each joint actually travels, so the exoskeleton restricts without fighting the body.</p>
+
+      <h3 class="flow-sub">Possible shoulder movements</h3>
+      <div class="vr-move-card">
+        <img class="ph ph-diagram" src="Motion-restriction-VR-coded/10.webp" alt="Side view: shoulder movement range" loading="lazy" decoding="async" />
+      </div>
+
+      <h3 class="flow-sub">Forearm &amp; wrist</h3>
+      <div class="vr-move-grid two">
+        <div class="vr-move-card">
+          <img class="ph" src="Motion-restriction-VR-coded/13.webp" alt="Forearm movement range" loading="lazy" decoding="async" />
+          <p>Possible forearm movement</p>
+        </div>
+        <div class="vr-move-card">
+          <img class="ph" src="Motion-restriction-VR-coded/14.webp" alt="Wrist movement, top &amp; side view" loading="lazy" decoding="async" />
+          <p>Possible wrist movements</p>
+        </div>
+      </div>
+      <p class="vr-move-note">*Grey area indicates the movement space</p>
+
+      <h3 class="flow-sub">Two mechanisms considered</h3>
+      <div class="vr-ideate-cols">
+        <div class="vr-ideate-card">
+          <h4>Ideation using cable ties</h4>
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/15.webp" alt="Cable tie locking mechanism, unlocked / locked" loading="lazy" decoding="async" />
+          <p>Using cable ties which lock in only one direction and move freely in the other. Making the head controllable creates the opportunity to lock and unlock by program.</p>
+        </div>
+        <div class="vr-ideate-card">
+          <h4>Ideation using torsion spring</h4>
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/16.webp" alt="Torsion spring auto-retreat mechanism" loading="lazy" decoding="async" />
+          <p>The problem in the previous idea — the free-hanging cable — can be hidden inside the slot itself using a torsion spring, which facilitates auto-retreat of the overhanging cable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. DESIGN & IMPLEMENTATION (light) ============ -->
+  <section id="implementation" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Design &amp; Implementation</h2>
+      <p class="acc-intro">After studying human arm motion and constraints, only the elbow and shoulder joints — which control the whole limb — are considered. The arm is connected with several links, each made of cable ties. One end is fixed on the hinge joint, the other attached with rubber bands for a smooth retreat. The cable moves freely through a slot in the casing, which houses the servo motors. An inverse-kinematics rig with the controller as target achieves synchronous arm motion in VR.</p>
+
+      <div class="vr-impl-card vr-impl-card-solo">
+        <img class="ph ph-diagram" src="Motion-restriction-VR-coded/17.webp" alt="Wrist link arrangement, two hand poses" loading="lazy" decoding="async" />
+        <p>Arrangement for restriction of wrist movement</p>
+      </div>
+      <div class="vr-impl-card vr-impl-card-solo">
+        <img class="ph ph-diagram" src="Motion-restriction-VR-coded/19.webp" alt="Shoulder link arrangement, front" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="vr-impl-full">
+        <h4>Complete arrangement</h4>
+        <img class="ph ph-diagram" src="Motion-restriction-VR-coded/21.webp" alt="Full exoskeleton arrangement, torso + arm" loading="lazy" decoding="async" />
+      </div>
+
+      <img class="ph ph-diagram" src="Motion-restriction-VR-coded/22.webp" alt="Device worn, front, holding controller" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 11. MATERIALS (light) ============ -->
+  <section id="materials" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Materials</h2>
+      <p class="acc-intro">Selecting materials so they are low cost and easily available — which also makes the DIY model possible.</p>
+      <div class="vr-material-grid">
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/25.webp" alt="Nylon cable tie" loading="lazy" decoding="async" />
+          <h4>Nylon cable ties</h4>
+          <span class="vr-price">12 in, 5 pc · ₹10 ($0.14)</span>
+          <p class="vr-desc">Restraining arm motion requires a large amount of tensile strength, so cable ties were preferred — they lock in only one direction.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/26.webp" alt="Steel cable tie" loading="lazy" decoding="async" />
+          <h4>Steel cable ties</h4>
+          <span class="vr-price">12 in, 5 pc · ₹20 ($0.28)</span>
+          <p class="vr-desc">Nylon cable ties are too flexible for operation, so stainless steel cable ties were adhered to them to make them rigid enough.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/27.webp" alt="Velcro band" loading="lazy" decoding="async" />
+          <h4>Velcro bands</h4>
+          <span class="vr-price">1 metre · ₹30 ($0.41)</span>
+          <p class="vr-desc">Velcro forms the bands the locking unit sits on, and holds the device firmly on the user's arm.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/28.webp" alt="Rubber band" loading="lazy" decoding="async" />
+          <h4>Rubber bands</h4>
+          <span class="vr-price">₹5 ($0.069)</span>
+          <p class="vr-desc">Connected to the rear end of the cable to provide a smooth retreat of the cable back inside the slot.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/29.webp" alt="Micro servo SG90" loading="lazy" decoding="async" />
+          <h4>Micro servos SG90</h4>
+          <span class="vr-price">₹90 each · 5 units ₹450 ($6.21)</span>
+          <p class="vr-desc">Actuates the cable ties. Under 20 g (9 g motor + 8 g cable ties), 0.1s/60° speed, and only 15° of travel — so latency is negligible.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/30.webp" alt="Arduino Uno WiFi board" loading="lazy" decoding="async" />
+          <h4>Arduino Uno WiFi</h4>
+          <span class="vr-price">₹350 ($4.83)</span>
+          <p class="vr-desc">Programs the servo motors to fire based on the signals coming from the game engine.</p>
+        </div>
+        <div class="vr-material-card">
+          <img class="ph ph-thumb" src="Motion-restriction-VR-coded/31.webp" alt="Casing CAD render" loading="lazy" decoding="async" />
+          <h4>Casing <span style="font-weight:400;">(3D printed)</span></h4>
+          <span class="vr-price">₹100 ($1.38)</span>
+          <p class="vr-desc">Designed in SolidWorks and 3D printed. Holds the motor, the arm, the cable-tie head and the cable ties in the slot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12. COMPLETE PROTOTYPE (dark) ============ -->
+  <section id="prototype" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Complete prototype</h2>
+      <div class="vr-split-row media-left" style="margin-top:30px;">
+        <img class="ph ph-diagram" src="Motion-restriction-VR-coded/32.webp" alt="Full shoulder-to-wrist harness, unworn, laid flat" loading="lazy" decoding="async" />
+        <div>
+          <p>This is how the wearable device looks. You just strap the Velcro around your arm and you're ready to go.</p>
+          <p>It consists of 5 units of cable mechanism — 3 for the shoulder and 2 for the elbow joint. The wrist was not included in this prototype.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. WORKING PRINCIPLE (light) ============ -->
+  <section id="working-principle" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Working principle</h2>
+      <div class="vr-usecase-grid">
+        <div class="vr-usecase">
+          <div>
+            <h4>Use case 1</h4>
+            <p>When bringing the forearm down and being stopped by an obstacle in VR space.</p>
+          </div>
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/33.webp" alt="Forearm stopped by obstacle, locking mechanism callouts" loading="lazy" decoding="async" />
+        </div>
+        <div class="vr-usecase">
+          <div>
+            <h4>Use case 2</h4>
+            <p>Forearm moving toward the shoulder and being stopped by an obstacle in VR space.</p>
+          </div>
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/34.webp" alt="Forearm raised toward shoulder, stopped by string tension" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14. INTERIOR MECHANISM (light) ============ -->
+  <section id="mechanism" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Interior working mechanism</h2>
+      <div class="vr-mech-grid">
+        <div class="vr-mech-card">
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/35.webp" alt="Servo unlocked, top view + cross section" loading="lazy" decoding="async" />
+          <h4>Unlock state</h4>
+          <p>The cable-tie head has not been engaged, so the cable ties can move freely in both directions.</p>
+        </div>
+        <div class="vr-mech-card">
+          <img class="ph ph-diagram" src="Motion-restriction-VR-coded/36.webp" alt="Servo locked, top view + cross section" loading="lazy" decoding="async" />
+          <h4>Lock state</h4>
+          <p>The motor detects the signal and exerts a small force on the cable-tie head to engage it on the rack, which completely restricts motion in one direction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 15. WITH VS WITHOUT (light) ============ -->
+  <section id="demo" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Working mechanism</h2>
+      <p class="acc-intro">The same drumming action, with and without the device on.</p>
+      <div class="vr-compare-grid">
+        <div class="vr-compare-card">
+          <img class="ph" src="Motion-restriction-VR-coded/37.webp" alt="Drumming without device (video / gif)" loading="lazy" decoding="async" />
+          <h4>Without device</h4>
+          <p>The arm stretches fully with no constraints, even after the stick hits the drum.</p>
+        </div>
+        <div class="vr-compare-card highlight">
+          <img class="ph" src="Motion-restriction-VR-coded/38.webp" alt="Drumming with device (video / gif)" loading="lazy" decoding="async" />
+          <h4>With device</h4>
+          <p>The cable-tie link on the biceps locks, so arm motion is restricted the moment the stick hits the drum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 16. INTERACTIONS & EVALUATION (light) ============ -->
+  <section id="evaluation" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Interactions &amp; Evaluation</h2>
+      <p class="acc-intro">To test the device, 5 types of interaction were built around motion-restriction haptics — the common patterns you find in VR games: holding an object, and interacting directly with the hand.</p>
+
+      <img class="ph ph-diagram" style="margin-bottom:40px;" src="Motion-restriction-VR-coded/39a.webp" alt="Drumming" loading="lazy" decoding="async" />
+
+      <div class="vr-eval-table">
+        <div class="vr-eval-head label">Interactions</div>
+        <div class="vr-eval-head with">With the prototype</div>
+        <div class="vr-eval-head without">Without the prototype</div>
+
+        <div class="vr-eval-row-label">
+          <span class="vr-eval-letter">A · Hitting objects</span>
+          <h4>Drumming action</h4>
+          <p>Demonstrates collisions with a tool. Uses forearm and elbow movement.</p>
+        </div>
+        <div class="vr-eval-cell with"><img class="ph" src="Motion-restriction-VR-coded/40.webp" alt="Drumming, with prototype" loading="lazy" decoding="async" /></div>
+        <div class="vr-eval-cell without"><img class="ph" src="Motion-restriction-VR-coded/41.webp" alt="Drumming, without prototype" loading="lazy" decoding="async" /></div>
+
+        <div class="vr-eval-row-label">
+          <span class="vr-eval-letter">B · Lifting objects</span>
+          <h4>Lifting a sword</h4>
+          <p>Demonstrates the sense of inertia and gravity of the object.</p>
+        </div>
+        <div class="vr-eval-cell with"><img class="ph" src="Motion-restriction-VR-coded/42.webp" alt="Lifting sword, with prototype" loading="lazy" decoding="async" /></div>
+        <div class="vr-eval-cell without"><img class="ph" src="Motion-restriction-VR-coded/43.webp" alt="Lifting sword, without prototype" loading="lazy" decoding="async" /></div>
+
+        <div class="vr-eval-row-label">
+          <span class="vr-eval-letter">C · Motion of held objects</span>
+          <h4>Short duel with the sword</h4>
+          <p>The player defeats an enemy wielding sword and shield — demonstrates shoulder movement.</p>
+        </div>
+        <div class="vr-eval-cell with"><img class="ph" src="Motion-restriction-VR-coded/44.webp" alt="Sword duel, with prototype" loading="lazy" decoding="async" /></div>
+        <div class="vr-eval-cell without"><img class="ph" src="Motion-restriction-VR-coded/45.webp" alt="Sword duel, without prototype" loading="lazy" decoding="async" /></div>
+
+        <div class="vr-eval-row-label">
+          <span class="vr-eval-letter">D · Hand-based interaction</span>
+          <h4>Pressing a button inside a box</h4>
+          <p>The box has obstacles on four sides — demonstrates touch and lateral motion restriction.</p>
+        </div>
+        <div class="vr-eval-cell with"><img class="ph" src="Motion-restriction-VR-coded/46.webp" alt="Button in box, with prototype" loading="lazy" decoding="async" /></div>
+        <div class="vr-eval-cell without"><img class="ph" src="Motion-restriction-VR-coded/47.webp" alt="Button in box, without prototype" loading="lazy" decoding="async" /></div>
+
+        <div class="vr-eval-row-label">
+          <span class="vr-eval-letter">E · Inertial recoil</span>
+          <h4>Punching a bag</h4>
+          <p>Demonstrates sudden recoil haptic feedback.</p>
+        </div>
+        <div class="vr-eval-cell with"><img class="ph" src="Motion-restriction-VR-coded/48.webp" alt="Punching bag, with prototype" loading="lazy" decoding="async" /></div>
+        <div class="vr-eval-cell without"><img class="ph" src="Motion-restriction-VR-coded/49.webp" alt="Punching bag, without prototype" loading="lazy" decoding="async" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT DOES (dark) ============ -->
+  <section id="what-it-does" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Product stats</h2>
+      <div class="vr-cover-cards" style="grid-template-columns:1fr 1fr; margin-top:26px;">
+        <div class="vr-cover-card">
+          <p class="vr-cover-card-sub">*This prototype is for single arm use case, Idea can be extened to whole body use case</p>
+          <ul class="vr-spec-list">
+            <li><span>Cable-tie links actuated by micro servos</span><strong>5 units</strong></li>
+            <li><span>Joints covered — shoulder &amp; elbow</span><strong>3 + 2</strong></li>
+            <li><span>Servo travel to engage the lock</span><strong>15°</strong></li>
+            <li><span>Actuation latency at 0.1s/60°</span><strong>Negligible</strong></li>
+            <li><span>Interactions built &amp; tested in VR</span><strong>5 types</strong></li>
+          </ul>
+        </div>
+        <div class="vr-cover-card">
+          <p class="vr-cover-card-sub">Designed for DIY, Every part is off-the-shelf, so anyone can build one</p>
+          <ul class="vr-spec-list">
+            <li><span>Casing designed in SolidWorks</span><strong>3D printed</strong></li>
+            <li><span>No soldering — Arduino + servo wiring only</span><strong>Beginner-friendly</strong></li>
+            <li><span>Total unique parts to source</span><strong>7</strong></li>
+            <li><span>Assembly time per unit</span><strong>~15 min</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 17. FUTURE SCOPE / CONCLUSION (dark) ============ -->
+  <section id="future-scope" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Future scope &amp; conclusion</h2>
+      <div class="vr-twocol" style="margin-top:30px;">
+        <div class="vr-text-card">
+          <h3>Future scope</h3>
+          <p>The prototype does not include any finger-based motion restriction — it predominantly focuses on forearm and shoulder movement.</p>
+          <p>The concept and prototype were tested on a limited set of users so far. More tests are planned with people of different physiques and proportions.</p>
+        </div>
+        <div class="vr-text-card">
+          <h3>Conclusion</h3>
+          <p>The prototype's whole build is very cheap — made under 900 INR (12 US Dollar).</p>
+          <p>Given the build and cost, it can easily become a commercialised product, or a DIY model once the 3D print files are shared.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 18. TOUCH & EXPLORE — SECOND ACT (dark) ============ -->
+  <section id="touch-explore" class="sec dark">
+    <div class="wrap hero-cover" style="padding-top:0;">
+      <h1 class="cover-title" style="font-size:44px;">Touch and Explore: a VR game built on haptic-driven gameplay</h1>
+      <p class="cover-sub">Experience a world without light, and navigate using touch, motion restriction and proprioception.</p>
+      <a class="vr-paper-link" href="https://dl.acm.org/doi/10.1145/3447932.3490522" target="_blank" rel="noopener">Paper published in ACM Interactive Surfaces and Spaces 2022, Poland <span>&#8594;</span></a>
+      <img class="ph vr-cover-device" style="min-height:400px; margin-bottom:40px;" src="Motion-restriction-VR-coded/50.webp" alt="Dark VR scene, silhouette with light-wave touch cues" loading="lazy" decoding="async" />
+      <div class="meta-grid">
+        <div class="meta-chip"><span class="meta-label">🔗 Context:</span><span class="meta-val">Use case of VR-Haptics project</span></div>
+        <div class="meta-chip"><span class="meta-label">🎮 Type:</span><span class="meta-val">Game design + haptic interaction</span></div>
+        <div class="meta-chip"><span class="meta-label">🛠 Built in:</span><span class="meta-val">Unity + XR kit, Oculus Rift</span></div>
+        <div class="meta-chip"><span class="meta-label">💡 Idea:</span><span class="meta-val">Zero visuals, pure haptic navigation</span></div>
+        <div class="meta-chip"><span class="meta-label">👤 Team:</span><span class="meta-val">Individual work, personal project</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 19. GAME PROCESS (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">My process</h2>
+      <div class="vr-process creative">
+        <div class="vr-process-step odd">Game ideation</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step even">Refining game mechanics</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step odd">Prototype</div>
+        <span class="vr-process-arrow">&#8596;</span>
+        <div class="vr-process-step even">Testing gameplay in small loop</div>
+        <span class="vr-process-arrow">&#8594;</span>
+        <div class="vr-process-step odd">Final design</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 20. GAME DESIGN (light) ============ -->
+  <section id="game-design" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Touch &amp; Explore game design</h2>
+      <p class="acc-intro">Touch and Explore is a VR game driven by haptic navigation — the sense of touch, motion restriction, and proprioception.</p>
+
+      <h3 class="flow-sub">Core game loop</h3>
+      <div class="vr-loop-wrap">
+        <svg class="vr-loop-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Core game loop, cycling through 4 steps: player enters dark space, touches the environment, gains visual cues, completes the objective, then repeats">
+          <defs>
+            <marker id="vr-loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#4a97ee" />
+            </marker>
+          </defs>
+
+          <path d="M 410,110 A 240,240 0 0,1 590,330" fill="none" stroke="#4a97ee" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#vr-loop-arrow)" />
+          <path d="M 590,370 A 240,240 0 0,1 370,590" fill="none" stroke="#4a97ee" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#vr-loop-arrow)" />
+          <path d="M 330,590 A 240,240 0 0,1 110,370" fill="none" stroke="#4a97ee" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#vr-loop-arrow)" />
+          <path d="M 110,330 A 240,240 0 0,1 330,110" fill="none" stroke="#4a97ee" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#vr-loop-arrow)" />
+
+          <g font-family="DM Sans, sans-serif" text-anchor="middle">
+            <g>
+              <circle cx="350" cy="90" r="88" fill="#eef4fd" stroke="#4a97ee" stroke-width="1.5" />
+              <text x="350" y="70" font-size="20" font-weight="700" fill="#2563c7" font-family="Rajdhani, sans-serif">01</text>
+              <text x="350" y="96" font-size="13.5" fill="#3d3f45"><tspan x="350" dy="0">Player enters</tspan><tspan x="350" dy="16">dark space,</tspan><tspan x="350" dy="16">with no light</tspan></text>
+            </g>
+            <g>
+              <circle cx="610" cy="350" r="88" fill="#eef4fd" stroke="#4a97ee" stroke-width="1.5" />
+              <text x="610" y="322" font-size="20" font-weight="700" fill="#2563c7" font-family="Rajdhani, sans-serif">02</text>
+              <text x="610" y="348" font-size="13.5" fill="#3d3f45"><tspan x="610" dy="0">Touches the</tspan><tspan x="610" dy="16">environment to</tspan><tspan x="610" dy="16">explore the</tspan><tspan x="610" dy="16">topology</tspan></text>
+            </g>
+            <g>
+              <circle cx="350" cy="610" r="88" fill="#eef4fd" stroke="#4a97ee" stroke-width="1.5" />
+              <text x="350" y="590" font-size="20" font-weight="700" fill="#2563c7" font-family="Rajdhani, sans-serif">03</text>
+              <text x="350" y="616" font-size="13.5" fill="#3d3f45"><tspan x="350" dy="0">Gains visual</tspan><tspan x="350" dy="16">cues of the</tspan><tspan x="350" dy="16">environment</tspan></text>
+            </g>
+            <g>
+              <circle cx="90" cy="350" r="88" fill="#eef4fd" stroke="#4a97ee" stroke-width="1.5" />
+              <text x="90" y="322" font-size="20" font-weight="700" fill="#2563c7" font-family="Rajdhani, sans-serif">04</text>
+              <text x="90" y="348" font-size="13.5" fill="#3d3f45"><tspan x="90" dy="0">Completes the</tspan><tspan x="90" dy="16">objective for</tspan><tspan x="90" dy="16">that level</tspan></text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="vr-diagram-row" style="margin-top:40px;">
+        <div class="vr-info-card" style="margin-top:0;">
+          <h3>The logic behind it</h3>
+          <ul>
+            <li>At the start the player is in a dark environment and can see only their hands and the instructions.</li>
+            <li>Explore the game world only through touch and motion restriction, using the revealed topology to navigate.</li>
+            <li>Visuals are reduced to almost nothing, so immersion comes purely from haptics — the whole game takes place in dark space.</li>
+            <li>The player never knows what is coming, so every second is a curiosity trigger — an important factor in gameplay experience.</li>
+          </ul>
+        </div>
+        <div>
+          <img class="ph" style="min-height:280px;" src="Motion-restriction-VR-coded/51.webp" alt="Dark scene, glowing hand touching a surface" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="vr-split-row media-left" style="margin-top:44px;">
+        <img class="ph" style="min-height:300px;" src="Motion-restriction-VR-coded/52.webp" alt="Player standing inside Touchscape, second camera view" loading="lazy" decoding="async" />
+        <div>
+          <p>A player standing inside the Touchscape VR game, captured from a second camera. The light waves indicate recorded touches.</p>
+          <p style="font-weight:600; color:var(--ink);">Note: the game is completely dark — ambient light has been added here purely to make the environment readable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 21. INPUTS / DEVELOPMENT / SOUND (light) ============ -->
+  <section id="game-inputs" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Inputs, development &amp; sound</h2>
+
+      <div class="vr-diagram-row">
+        <div class="vr-info-card" style="margin-top:0;">
+          <h3>Inputs</h3>
+          <ul>
+            <li>Since the whole game is haptic driven, the player's interaction radius is reduced to their arm length in the game world.</li>
+            <li>Only when the player discovers what's in their immediate vicinity can they move further and increase the interaction space.</li>
+            <li>Once an obstacle is found, its position has to be memorised — visualised as touch-points, in the form of light waves emerging from the point of contact.</li>
+            <li>Standard VR teleport control becomes available once a space is discovered through touch, plus a click button for options.</li>
+          </ul>
+        </div>
+        <div>
+          <img class="ph" style="min-height:280px;" src="Motion-restriction-VR-coded/53.webp" alt="Hand touching surface with ripple cue" loading="lazy" decoding="async" />
+          <p class="vr-diagram-note" style="margin-top:12px; font-size:14px;">Touching a surface starts to reveal the object's presence through visual cues.</p>
+        </div>
+      </div>
+
+      <div class="vr-hw-card">
+        <div>
+          <h4>Input hardware</h4>
+          <div class="vr-hw-pills">
+            <div class="vr-hw-pill">HMD gear</div>
+            <div class="vr-hw-pill">VR controller</div>
+            <div class="vr-hw-pill">Haptic prototype</div>
+          </div>
+        </div>
+        <img class="ph" src="Motion-restriction-VR-coded/54.webp" alt="Device worn, headset + controller ready to play" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="grid-2">
+        <div class="vr-info-card" style="margin-top:0;">
+          <h3>Development</h3>
+          <ul>
+            <li>Designed in the Unity game engine with the XR kit. Oculus Rift used for the VR gear.</li>
+            <li>Every joint in the motion-restriction gear is mapped to the player's joints using an inverse-kinematics rig, so the avatar's arm follows the real arm.</li>
+            <li>If the player collides with or touches any object, the game engine triggers the respective link to lock — restricting motion.</li>
+          </ul>
+        </div>
+        <div class="vr-info-card" style="margin-top:0;">
+          <h3>Sound design</h3>
+          <ul>
+            <li>With visual elements reduced, audio carries the sense of presence in VR.</li>
+            <li>Engaging ambient sound keeps the player entertained in dark space — the way a person enjoys music more with their eyes closed.</li>
+            <li>Touch and texture map to different sounds: hitting a concrete wall gives a hard, high-pitched sound; touching cardboard gives a low, soft one.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 22. GAME PLAY (light) ============ -->
+  <section id="gameplay" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Game play</h2>
+      <img class="ph vr-gallery-single" src="Motion-restriction-VR-coded/55.webp" alt="Gameplay frame 1" loading="lazy" decoding="async" />
+      <p class="vr-gallery-caption">Gameplay screenshots, showing how the player interacts with space to navigate and find their way.</p>
+
+      <div class="vr-info-card">
+        <h3>How a session plays out</h3>
+        <ul>
+          <li>The player enters a completely dark environment without any light, shutting off their sense of sight.</li>
+          <li>In-game instructions are the only visible cues at the start.</li>
+          <li>The player can move their arms freely — they see a blue transparent hand, giving a sense of proprioception in the Touchscape.</li>
+          <li>As they move, they touch invisible obstacles to reveal the topology, felt through motion restriction.</li>
+          <li>Each obstacle hit is recorded in memory and visualised as light waves — visual cues from contact alone.</li>
+          <li>Players then move around and explore using touch and motion restriction to finish the mission, such as escaping the room.</li>
+          <li>As the game proceeds, new elements are introduced — weapons, enemies, and so on.</li>
+        </ul>
+      </div>
+
+      <div class="vr-future-levels">
+        <h4>Level designs planned for the future</h4>
+        <ul class="acc-checklist">
+          <li>Levels with limited visual memory</li>
+          <li>Limiting the visual cue of touch</li>
+          <li>Levels with a time duration on the visual cue</li>
+          <li>Maze-like levels</li>
+          <li>Escape-room levels</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 23. LIMITATIONS / FUTURE SCOPE (dark) ============ -->
+  <section id="game-future" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Limitations &amp; future scope</h2>
+      <div class="vr-twocol" style="margin-top:30px;">
+        <div class="vr-text-card">
+          <h3>Limitations</h3>
+          <p>Players initially felt disturbed starting a game in a dark environment without any light — they slowly adapted to it.</p>
+          <p>Visual cues are quite intense right now; the intensity can be programmed down.</p>
+          <p>Exposing players to a completely lightless environment for a long time might have drawbacks. Prolonged research is planned to identify any problems.</p>
+          <p>Currently the game deals only with arm-driven haptics. Exploring the concept with full-body haptics is planned.</p>
+          <p>The concept and prototype were tested on two players, so more tests are planned.</p>
+        </div>
+        <div class="vr-text-card">
+          <h3>Future scope</h3>
+          <p>This is a novel game concept rather than a full-fledged game — it deals with haptic-driven gameplay in a VR setting.</p>
+          <p>The game is highly interactive with the space around the player, and playable only with motion-restriction haptics — a prototype made specially for it, at a time when similar haptic inventions are blooming.</p>
+          <p>It could create an opportunity to empathise with visually challenged people, since the gameplay is somewhat similar to what they experience.</p>
+          <p>Touch and Explore can be a stepping stone for exploring immersion in games using only haptic senses, without visuals.</p>
+          <p>Combining the concept with spatial audio and echolocation could create even deeper immersion — arguably a new genre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 24. REFLECTIONS (dark) ============ -->
+  <section id="reflections" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Reflections &amp; learnings</h2>
+      <div class="grid-2 reflect-grid">
+        <div class="reflect-card"><h3>🧰 Cheap parts can carry a real idea</h3><p>Cable ties, rubber bands and ₹90 servos delivered genuine motion restriction. Constraining the budget forced clarity about which mechanism actually mattered.</p></div>
+        <div class="reflect-card"><h3>📐 Studying the body first saved iterations</h3><p>Mapping shoulder, forearm and wrist ranges before designing links meant the exoskeleton restricted motion without fighting natural movement.</p></div>
+        <div class="reflect-card"><h3>🎯 Building a use case proved the hardware</h3><p>A haptic device is hard to argue for in the abstract. Designing Touch and Explore around it turned a prototype into a demonstrable experience.</p></div>
+        <div class="reflect-card"><h3>🔄 Testing across interaction types exposed gaps</h3><p>Five distinct interactions — hitting, lifting, wielding, pressing, recoiling — surfaced limits a single demo would have hidden entirely.</p></div>
+        <div class="reflect-card wide"><h3>🤝 Hardware and software have to be designed together</h3><p>The inverse-kinematics rig, the servo travel and the game's collision events all had to agree. Treating them as one system, rather than a device plus a game, is what made the restriction feel instant.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 25. THANK YOU (light) ============ -->
+  <section id="thanks" class="sec light thanks">
+    <div class="wrap">
+      <div class="thanks-row" style="justify-content:center;">
+        <h2 class="thanks-title">Thankyou</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Loky. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function initVrSideNav() {
+      var links = Array.prototype.slice.call(document.querySelectorAll(".vr-side-nav-link"));
+      var sections = links.map(function (link) {
+        return document.getElementById(link.dataset.target);
+      });
+      var ticking = false;
+
+      function updateActive() {
+        var refY = window.innerHeight * 0.35;
+        var activeIndex = -1;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i] && sections[i].getBoundingClientRect().top <= refY) activeIndex = i;
+        }
+        links.forEach(function (link, i) {
+          link.classList.toggle("active", i === activeIndex);
+        });
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(updateActive);
+          ticking = true;
+        }
+      }
+
+      updateActive();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", updateActive);
+    })();
+  </script>
+
+  <script type="module">
+    import { initPixelCursor } from './pixel-cursor.js';
+    initPixelCursor({
+      trailColor: '#FFFFFF',
+      pixelSize: 10,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumi Go — Case Study | Loky</title>
+  <link rel="stylesheet" href="lumigo-coded.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Loky</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ 01. HERO (black) ============ -->
+  <section class="lg-sec black lg-hero">
+    <div class="lg-wrap">
+      <div class="lg-store">
+        <div class="lg-store-top">
+          <div class="lg-store-left">
+            <img class="lg-store-banner" src="lumigo-coded/lumigo%20banner%20image.webp" alt="Lumi Go banner — glowing blue ring reflected in water with shooting stars" />
+            <div class="lg-store-info">
+              <h2 class="lg-store-title">LUMI GO</h2>
+              <p class="lg-store-dev">LokyGames</p>
+              <p class="lg-store-sub">Contains ads &middot; In-app purchases</p>
+              <div class="lg-store-meta-row">
+                <img class="lg-store-icon" src="lumigo-coded/lumigo%20icon.webp" alt="Lumi Go app icon" />
+                <span class="lg-store-divider"></span>
+                <div class="lg-store-rating">
+                  <div class="lg-store-rating-summary">
+                    <div class="lg-store-rating-num">4.9</div>
+                    <div class="lg-store-stars">&#9733;&#9733;&#9733;&#9733;&#9733;<br />106</div>
+                  </div>
+                  <div class="lg-store-bars">
+                    <div class="bar-row"><span>5</span><div class="bar"><i style="width:88%"></i></div></div>
+                    <div class="bar-row"><span>4</span><div class="bar"><i style="width:8%"></i></div></div>
+                    <div class="bar-row"><span>3</span><div class="bar"><i style="width:2%"></i></div></div>
+                    <div class="bar-row"><span>2</span><div class="bar"><i style="width:1%"></i></div></div>
+                    <div class="bar-row"><span>1</span><div class="bar"><i style="width:1%"></i></div></div>
+                  </div>
+                </div>
+                <span class="lg-store-divider"></span>
+                <div class="lg-store-downloads"><strong>1K+</strong><span>Downloads</span></div>
+                <span class="lg-store-divider"></span>
+                <a href="https://play.google.com/store/apps/details?id=com.loky.test" target="_blank" rel="noopener"><img class="lg-playstore-badge" src="lumigo-coded/get-it-on-playstore.webp" alt="Get it on Google Play" /></a>
+              </div>
+              <p class="lg-hero-desc" style="text-align:left; margin-left:0;">A project which highlights <strong>Visual design</strong> through a <strong>Published game</strong> also shows Implementation of <strong>UX skills</strong> in <strong>Game design.</strong> Individually designed &amp; developed as a part of <strong>LokyGames.</strong></p>
+              <div class="lg-tag-row" style="justify-content:flex-start;">
+                <span class="lg-tag">Game Design</span>
+                <span class="lg-tag">Visual Design</span>
+                <span class="lg-tag">UI / UX</span>
+                <span class="lg-tag">Inde Dev</span>
+                <span class="lg-tag">Before AI</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg-store-video">
+            <video autoplay muted playsinline loop preload="auto" src="lumigo-coded/Lumigo-video.mp4" title="Lumi Go gameplay trailer"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02. ABOUT (black, #1) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">1</span><h2>About</h2><span class="num-line"></span></div>
+
+      <div class="lg-shot-overlay-wrap" style="margin-top:20px;">
+        <img class="lg-shot" src="lumigo-coded/02.webp" alt="Grid of ~20 in-game level screenshots showing enemy/level variety" loading="lazy" decoding="async" />
+        <div class="lg-shot-overlay">
+          <h3 style="font-size:22px;margin-bottom:16px;">Game Description</h3>
+          <p class="lg-body-text">It is all about your Agility, Reflex and Speed Control! Control Lumi-go by sliding your finger to dodge the advancing mini devils. You complete simple level objectives to explore the new levels!</p>
+          <p class="lg-body-text" style="margin-top:14px;">More than 75+ levels all with challenging enemies, each level is different and demands unique play-style to beat the level and unfold new challenges.</p>
+        </div>
+      </div>
+
+      <div class="lg-madeusing">
+        <h4>Designed &amp; developed manually before AI era using</h4>
+        <div class="lg-tools-row">
+          <div class="lg-tool"><img class="lg-tool-logo" src="lumigo-coded/unity-logo.png" alt="Unity logo" loading="lazy" decoding="async" /><h5>UNITY</h5><p>Game Engine to create game</p></div>
+          <div class="lg-tool"><img class="lg-tool-logo" src="lumigo-coded/Csharp_Logo.png" alt="C# logo" loading="lazy" decoding="async" /><h5>CSharp</h5><p>For Scripting functionalities</p></div>
+          <div class="lg-tool"><img class="lg-tool-logo" src="lumigo-coded/Illustrator-Logo.png" alt="Adobe Illustrator logo" loading="lazy" decoding="async" /><h5>Illustrator</h5><p>For creating 2d assets and UI elements</p></div>
+          <div class="lg-tool"><img class="lg-tool-logo" src="lumigo-coded/Audacity_Logo.svg.webp" alt="Audacity logo" loading="lazy" decoding="async" /><h5>Audacity</h5><p>for Sound editing</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03. DESIGN PROCESS (black, #2) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">2</span><h2>Design Process</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text" style="margin-top:-30px;font-weight:600;color:#fff;">How I derived this User interface using extensive user feedback and improvising in each iteration</p>
+
+      <div class="lg-stage-row">
+        <div class="lg-stage-card empathize"><h4>EMPATHIZE</h4><ul><li>Provide engaging game play</li><li>Colorful & pleasing to eye</li><li>Survey form various source</li><li>Empathy mapping</li></ul></div>
+        <div class="lg-stage-card define"><h4>DEFINE</h4><ul><li>To create engaging Interface</li><li>Creating flow state</li><li>Finding engaging sounds</li><li>Easily Accessible UI</li><li>Simple core game loop</li></ul></div>
+        <div class="lg-stage-card ideate"><h4>IDEATE</h4><ul><li>Varying tempo of music based on level speed</li><li>Neon style icons and buttons</li><li>Water ripple and trail effects</li><li>80 different enemy behaviors</li></ul></div>
+        <div class="lg-stage-card prototype"><h4>PROTOTYPE</h4><ul><li>Sketching new assets in Adobe illustrator</li><li>Coding and implementing</li><li>Optimization for each device</li><li>Finding and editing new sound tracks</li></ul></div>
+        <div class="lg-stage-card test"><h4>TEST</h4><ul><li>Testing each Iteration</li><li>Bugs finding</li><li>Identify hikes in difficulty of game play</li><li>Noticing Duration of each level</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04. SCREEN FLOW (#3) + WIREFRAMES (#4) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">3</span><h2>Screen Flow</h2><span class="num-line"></span></div>
+      <div class="lg-flow-wrap">
+        <svg class="lg-flow-svg" viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Screen flow chart: Pause Menu, Level Select, Game Over, Game Screen, Level Done, Level Info, Store, Home, Setting, Credits, 2-Player">
+          <defs>
+            <marker id="lg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c7ccd1" />
+            </marker>
+          </defs>
+
+          <!-- outer nested loops -->
+          <path d="M380,70 L60,70 L60,480 L100,480" fill="none" stroke="#5a5f66" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <path d="M820,70 L940,70 L940,350 L540,350" fill="none" stroke="#5a5f66" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <path d="M820,210 L890,210 L890,350 L540,350" fill="none" stroke="#5a5f66" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" />
+
+          <!-- direct connections -->
+          <line x1="540" y1="70" x2="660" y2="70" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="460" y1="97" x2="460" y2="183" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="260" y1="210" x2="380" y2="210" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="540" y1="210" x2="660" y2="210" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="460" y1="237" x2="460" y2="323" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="460" y1="377" x2="460" y2="453" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="180" y1="237" x2="180" y2="453" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="260" y1="480" x2="380" y2="480" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="540" y1="480" x2="660" y2="480" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+          <line x1="460" y1="507" x2="460" y2="563" stroke="#c7ccd1" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#lg-arrow)" marker-start="url(#lg-arrow)" />
+
+          <!-- nodes -->
+          <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#e8ecef" text-anchor="middle">
+            <g><rect x="380" y="43" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="460" y="75">PAUSE MENU</text></g>
+            <g><rect x="660" y="43" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="740" y="75">LEVEL SELECT</text></g>
+            <g><rect x="100" y="183" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="180" y="215">GAME OVER</text></g>
+            <g><rect x="380" y="183" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="460" y="215">GAME SCREEN</text></g>
+            <g><rect x="660" y="183" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="740" y="215">LEVEL DONE</text></g>
+            <g><rect x="380" y="323" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="460" y="355">LEVEL INFO</text></g>
+            <g><rect x="100" y="453" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="180" y="485">STORE</text></g>
+            <g><rect x="380" y="453" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="460" y="485">HOME</text></g>
+            <g><rect x="660" y="453" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="740" y="485">SETTING</text></g>
+            <g><rect x="100" y="563" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="180" y="595">CREDITS</text></g>
+            <g><rect x="380" y="563" width="160" height="54" rx="6" fill="#1c2128" stroke="#5a5f66" /><text x="460" y="595">2-PLAYER</text></g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="lg-numhead" style="margin-top:70px;"><span class="num-circle">4</span><h2>Wireframes</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">Ideating and wire-framing each screens</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/04b.webp" alt="Hand-drawn paper wireframe sketches (Main menu, level select, Pause, Description, Store, Game over)" loading="lazy" decoding="async" />
+      <h3 style="text-align:center;font-size:20px;margin:40px 0 20px;font-weight:500;">Low Fidelity Wireframes</h3>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/04c.webp" alt="Low-fidelity digital wireframe grid (Home, Store, Settings, Level Select, Level Info, Game, Pause Menu, Level Done, Game Over, Rate Us)" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 05. GAMEPLAY & LEVEL DESIGN (#5) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">5</span><h2>Gameplay &amp; Level Design</h2><span class="num-line"></span></div>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/05a.webp" alt="Core mechanics illustration: Player (touch and drag to move), Points (glowing orb), Enemy (chasing trail creature)" loading="lazy" decoding="async" />
+      
+      <p class="lg-body-text" style="margin:30px auto 0;text-align:center;max-width:760px;">The core game loop is all about surviving the enemy in each round, It was hard to create entertaining levels with such a small game concept, I had to do lot of brain storming to create various levels for this games.</p>
+      <p class="lg-body-text" style="margin:20px auto 0;text-align:center;max-width:760px;">Made up to 80 levels, grouped them in pairs of 8 which deserves specific game play style.</p>
+
+      <h3 style="margin-top:60px;font-size:20px;">Level Design Document</h3>
+      <p style="color:#8a929b;font-size:14px;margin:8px 0 16px;">Legend: S = speed (speed1, speed2, speed3, varying speed) &middot; P = points type &middot; F = frequency (1=normal, 2=switch, 3=move, 4=push to score) &middot; T = trigger Range (dist1, dist2, dist3)</p>
+      <img class="lg-shot lg-ph-table" src="lumigo-coded/05b.webp" alt="Level Design Document table: 80 rows across 10 categories" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 06. FLOW STATE (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <p class="lg-intro-text">After several play-testing session, I adjusted the difficulty of the level according to the given graph below. by following <strong style="color:#fff;">Csikzentmihalyi's flow state principle.</strong></p>
+      <p class="lg-intro-text" style="margin-top:-20px;">When person's ability to execute a task balances the difficulty of the task, they enter into the flow state, where people enjoy the game.</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/06.webp" alt="Flow state difficulty graph: Player Skill vs Task difficulty" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 07. LEVEL SHOWCASE + SOUND DESIGN (#6) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <p class="lg-intro-text">Took several game play test to find out the optimum speed and behaviours of the enemies to keep the flow state intact. Few screenshot of diffent levels are shows below</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/07a.webp" alt="Grid of ~56 gameplay level screenshots showing level variety" loading="lazy" decoding="async" />
+
+      <p class="lg-intro-text" style="margin-top:40px;">List of levels and elements in the level selector screen</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/07b.webp" alt="Level-selector UI screens with categories and star-rating detail screen" loading="lazy" decoding="async" />
+
+      <div class="lg-numhead" style="margin-top:70px;"><span class="num-circle">6</span><h2>Sound Design</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">After play test of each level, I grouped levels based on the game-play speed to assign background music according to the tempo of the level</p>
+
+      <div class="lg-table-wrap">
+        <table class="lg-table">
+          <thead><tr><th>Music Tempo</th><th>Levels</th><th>Game-play</th></tr></thead>
+          <tbody>
+            <tr><td>Fast beats</td><td>4, 7, 10, 14, 18, 20, 24, 32, 42, 58, 64, 69, 70, 74, 75, 76, 77, 78, 79, 80</td><td>Fast</td></tr>
+            <tr><td>Medium beats</td><td>1, 3, 5, 8, 9, 11, 12, 15, 16, 19, 21, 23, 29, 34, 35, 38, 43, 50, 51, 60, 61, 62, 63, 67, 71, 72</td><td>Medium</td></tr>
+            <tr><td>Slow beats</td><td>15, 17, 22, 25, 26, 27, 28, 30, 31, 33, 36, 37, 39, 40, 41, 44, 45, 48, 57, 73</td><td>Slow</td></tr>
+            <tr><td>Calm Melodies</td><td>2, 6, 31, 46, 47, 49, 52, 54, 55, 56, 65</td><td>Very Slow</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="lg-two-col" style="margin-top:50px;">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;text-align:center;">Sound Interaction</h3>
+          <div class="lg-kv-list">
+            <div><span class="k">Button clicks</span> : bubble bounce sound</div>
+            <div><span class="k">Level complete</span> : Claps sound</div>
+            <div><span class="k">Player Movement</span> : Water ripple sound</div>
+            <div><span class="k">Purchase</span> : Falling Coins</div>
+            <div><span class="k">Player enemy Interaction</span> : Warning vibration</div>
+            <div><span class="k">Player points Interaction</span> : Capture cling sound</div>
+            <div><span class="k">Player Obstacle Interaction</span> : wooden knock sound</div>
+            <div><span class="k">Player Slime Interaction</span> : jelly sound</div>
+            <div><span class="k">Vanishing Points</span> : bubble pop sound</div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;text-align:center;">Menu Music</h3>
+          <div class="lg-kv-list">
+            <div><span class="k">Main Menu</span> : Ambient calm slow music</div>
+            <div><span class="k">Level Complete</span> : Ambient cheering music</div>
+            <div><span class="k">Level Select</span> : Ambient clam music</div>
+            <div><span class="k">Game Over</span> : Ambient sad music</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08. ITERATION 1 (#7) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">7</span><h2>Iteration 1</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">Initially I used bubble and gradient style of interface, since I was planning to invoke feelings of water and fluidness in the gameplay, I also added a lot of ripple effects.</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/08.webp" alt="8 UI mockups, light-blue/red gradient bubble style" loading="lazy" decoding="async" />
+
+      <div class="lg-iter-stats">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Insights from testing</h3>
+          <p style="font-size:13.5px;color:#8a929b;margin-bottom:14px;">Different age group, around 20 users were selected</p>
+          <div class="lg-stat-list">
+            <div class="lg-stat-row"><span>Satisfaction with game play:</span><b>17 Users</b></div>
+            <div class="lg-stat-row"><span>Satisfaction in UI design:</span><b>6 Users</b></div>
+            <div class="lg-stat-row"><span>Hard to navigate between screens:</span><b>10 Users</b></div>
+            <div class="lg-stat-row"><span>Level completing is not rewarding:</span><b>12 Users</b></div>
+            <div class="lg-stat-row"><span>Color scheme is not good:</span><b>9 Users</b></div>
+            <div class="lg-stat-row"><span>Level difficulty are not gradual:</span><b>10 Users</b></div>
+            <div class="lg-stat-row"><span>No sound:</span><b>18 Users</b></div>
+          </div>
+        </div>
+        <div class="lg-inference">
+          <h4>Inference</h4>
+          <p>Required complete re-write of UI, gather attractive sounds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09. ITERATION 2 (#8) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">8</span><h2>Iteration 2</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">From the learning of previous iteration, I decided to change the Complete UI, I made a quick prototype which invokes feeling of space and fluidness, giving it a neon touch to make it interesting.</p>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/09.webp" alt="9 UI mockups with neon-outline style" loading="lazy" decoding="async" />
+
+      <div class="lg-iter-stats">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Did a quick round of testing with same 20 users</h3>
+          <div class="lg-stat-list">
+            <div class="lg-stat-row"><span>Pleased with graphics and color:</span><b>16 Users</b></div>
+            <div class="lg-stat-row"><span>Clear readability:</span><b>15 Users</b></div>
+            <div class="lg-stat-row"><span>need ambient background music:</span><b>12 Users</b></div>
+            <div class="lg-stat-row"><span>Too shiny in some places:</span><b>15 Users</b></div>
+            <div class="lg-stat-row"><span>over all UI satisfaction:</span><b>17 Users</b></div>
+          </div>
+        </div>
+        <div class="lg-inference">
+          <h4>Inference</h4>
+          <p>people liked the new interface, so upgrade the same UI style and add interactive musics to create engagement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. ITERATION 3 (#9) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">9</span><h2>Iteration 3</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">Redefining the whole Neon UI. Created icons and character from scratch in adobe illustrator, gathered free sounds from various source. Analyzed each level and categorized into the game play speed: slow, medium, and fast. to play music with respective tempo.</p>
+
+      <div class="lg-two-col">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:8px;">Neon Icons</h3>
+          <p style="font-size:14px;color:#8a929b;margin-bottom:16px;">Drew all neon icons, blue to indicate neutral sceens, red for game over</p>
+          <img class="lg-shot" style="min-height:160px;" src="lumigo-coded/N1.webp" alt="Icon set (blue/red/yellow neon icons)" loading="lazy" decoding="async" />
+        </div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:8px;">Characters</h3>
+          <p style="font-size:14px;color:#8a929b;margin-bottom:16px;">Used simple circle for base. Horns and shapes to show variation in characters.</p>
+          <img class="lg-shot" style="min-height:160px;" src="lumigo-coded/N2.webp" alt="Character icon set (orange/green/yellow ring creatures)" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <h3 style="font-size:20px;margin:50px 0 6px;">Colours Palette</h3>
+      <div class="lg-palette-row">
+        <div class="lg-palette-group">
+          <div class="lg-swatch-row"><span class="lg-swatch" style="background:#2166c9;"></span><span class="lg-swatch" style="background:#3f83e0;"></span><span class="lg-swatch" style="background:#6ba3ea;"></span><span class="lg-swatch" style="background:#a9cbf5;"></span></div>
+          <p>Cool colors indicaiting the player and used in Neutral UI screen. like</p>
+        </div>
+        <div class="lg-palette-group">
+          <div class="lg-swatch-row"><span class="lg-swatch" style="background:#e0672a;"></span><span class="lg-swatch" style="background:#e88a4c;"></span><span class="lg-swatch" style="background:#efa877;"></span><span class="lg-swatch" style="background:#f3c2a0;"></span></div>
+          <p>Bright warm colors indicaiting the enemies and also used in Game</p>
+        </div>
+        <div class="lg-palette-group">
+          <div class="lg-swatch-row"><span class="lg-swatch" style="background:#e8b93c;"></span><span class="lg-swatch" style="background:#eecb69;"></span><span class="lg-swatch" style="background:#f2dc9a;"></span></div>
+          <p>Bright yellow is used in the rewarding screens</p>
+        </div>
+        <div class="lg-palette-group">
+          <div class="lg-swatch-row"><span class="lg-swatch" style="background:#4caf50;"></span><span class="lg-swatch" style="background:#8bc773;"></span><span class="lg-swatch" style="background:#bfe3a0;"></span></div>
+          <p>Warm green is used to indicate game obstacles</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:20px;margin:50px 0 16px;">Screenshot of screens after Iteration 3</h3>
+      <img class="lg-shot lg-ph-lg" src="lumigo-coded/10.webp" alt="10 neon-outline UI screens after Iteration 3" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 11. NAME & LOGO (#10) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">10</span><h2>Name &amp; Logo</h2><span class="num-line"></span></div>
+      <div class="lg-two-col">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Selected LOGO</h3>
+          <img class="lg-shot" style="min-height:220px;" src="lumigo-coded/11a.webp" alt="Selected glowing blue ring logo" loading="lazy" decoding="async" />
+          <p style="font-size:14px;color:#b7c0c8;margin-top:16px;">Logo which got most of the votes 42 out of 50, based on the survey.</p>
+          <p style="font-size:14px;color:#b7c0c8;margin-top:14px;">Glowing blue indicates the flow of enegy in the game and neon style. Reflection in the water explains the smoothness of the game.</p>
+        </div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Some Rough sketchs of logo ideas</h3>
+          <img class="lg-shot lg-ph-grid" src="lumigo-coded/11b.webp" alt="8 hand-drawn pencil logo concept sketches" loading="lazy" decoding="async" />
+          <h3 style="font-size:20px;margin:50px 0 16px;">Logos I considered for user survey</h3>
+          <img class="lg-shot lg-ph-lg" src="lumigo-coded/11c.webp" alt="8 logo option thumbnails" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <h3 style="text-align:center;font-size:20px;margin:60px 0 6px;letter-spacing:1px;">LIST OF NAME I CONSIDERED FOR THE GAME TITLE</h3>
+      <p class="lg-intro-text" style="margin-top:6px;">Names are taken according to the mostly used key words, and conducted a survey with 50 friends to find out the apt name.</p>
+      <table class="lg-vote-table">
+        <tr><td>Liquescape</td><td>32 votes</td></tr>
+        <tr><td>Fluidscape</td><td>29 votes</td></tr>
+        <tr><td>Lumi Rush</td><td>44 votes</td></tr>
+        <tr class="winner"><td>Lumi Go</td><td>47 votes</td></tr>
+        <tr><td>Fast Dodge</td><td>20 votes</td></tr>
+        <tr><td>Red bouncers</td><td>33 votes</td></tr>
+        <tr><td>Dodge my trail</td><td>30 votes</td></tr>
+        <tr><td>Reflescape</td><td>39 votes</td></tr>
+        <tr><td>Angry balls</td><td>42 votes</td></tr>
+        <tr><td>Flee and Flow</td><td>29 votes</td></tr>
+        <tr><td>lique dash</td><td>38 votes</td></tr>
+        <tr><td>Neon Rush</td><td>44 votes</td></tr>
+        <tr><td>Ilumos</td><td>31 votes</td></tr>
+        <tr><td>Devil's Tag</td><td>24 votes</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 12. GAME SCREENS (#11) (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-numhead"><span class="num-circle">11</span><h2>Game Screens</h2><span class="num-line"></span></div>
+      <p class="lg-intro-text">Various strategies to provide immersive and engaging interface and also to boost monitization</p>
+
+      <div class="lg-screen-row">
+        <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/12a.webp" alt="2 Options screens (with/without neon border)" loading="lazy" decoding="async" /></div>
+        <div class="lg-screen-cap"><p>50% of users in the testing seems to like the game with neon border, and other 50% seems to like the game without it.<br/><b>Solution:</b> provided a customization to toggle on</p></div>
+      </div>
+      <div class="lg-screen-pair">
+        <div class="lg-screen-row alt">
+          <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/12b.webp" alt="Objective Completed screen (golden, smiley, +100 diamonds)" loading="lazy" decoding="async" /></div>
+          <div class="lg-screen-cap"><p>golden yellow color and a smile forces you to think you are rewarded, back button is not provided so you are forced to the next level.</p></div>
+        </div>
+        <div class="lg-screen-row">
+          <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/12c.webp" alt="Store screen (Buy 500/2000/5000 diamonds, 50% off tag)" loading="lazy" decoding="async" /></div>
+          <div class="lg-screen-cap"><p>50% off tag to encourage players to buy diamonds</p></div>
+        </div>
+      </div>
+      <div class="lg-screen-row alt">
+        <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/12d.webp" alt="4 Revive screens (sad smiley, Revive with hearts, Retry/Home)" loading="lazy" decoding="async" /></div>
+        <div class="lg-screen-cap"><p>Revive option is shown first as the player enters game over screen, each button zoom-in in the sequence seamlessly, such that Retry button takes time to popup, mean while user are encouraged to use revive to spend diamonds or to watch video. Home button is in red color so that player doesn't notice it much, and store is in blue so that he notice it often.<br/>Red color and a sad smile emphasize your defeat, Store is provided in this screen to encourage micro transaction.</p></div>
+      </div>
+      <div class="lg-screen-pair">
+        <div class="lg-screen-row">
+          <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/12e.webp" alt="Heart-shaped refill + Buy diamonds screens" loading="lazy" decoding="async" /></div>
+          <div class="lg-screen-cap"><p>bright heart shaped button to triggers player to refill life at the cost of diamond.<br/>In game, buy button is provided in case if you wish to purchase diamonds and upgrade your health.</p></div>
+        </div>
+        <div class="lg-screen-row alt">
+          <div class="lg-screen-media"><img class="lg-shot" src="lumigo-coded/2f.webp" alt="The Glitch level intro + in-game tutorial screens" loading="lazy" decoding="async" /></div>
+          <div class="lg-screen-cap"><p>Level description screen states objective and also introduction of new elements.<br/>In game tutorial is shown, whenever new game element is introduced.</p></div>
+        </div>
+      </div>
+
+      <h3 style="text-align:center;font-size:22px;margin:60px 0 24px;font-weight:500;">Other Screens</h3>
+      <div class="lg-screen-media lg-screen-media-wide"><img class="lg-shot" src="lumigo-coded/12g.webp" alt="Guards level-select screen · Trap locked levels · Referral validation · Home Screen · 2-player instruction · 2-player winning screen" loading="lazy" decoding="async" /></div>
+    </div>
+  </section>
+
+  <!-- ============ 13. USABILITY EVAL TITLE (black) ============ -->
+  <section class="lg-sec black lg-eval-hero">
+    <div class="lg-wrap">
+      <p class="lg-sub">Usability evaluation of</p>
+      <h1>Lumi GO</h1>
+    </div>
+  </section>
+
+  <!-- ============ 16. WHY EVALUATION (black + card) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap lg-split-row">
+      <h2 style="font-size:32px;">Why this Product<br/>needs an evaluation?</h2>
+      <div class="lg-split-card">
+        <p>Primary elements (avatar, enemy, points) and secondary ones (lives, volume, bonus points) all carry weight in the experience.</p>
+        <p>The game feels smooth — but early discovery surfaced disconnects. Time to test if it actually plays as intended.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 17. KEY QUESTION (black) ============ -->
+  <section class="lg-sec black lg-key-question">
+    <div class="lg-wrap">
+      <span class="lg-sub">Key Question</span>
+      <h2>Can players figure it out on their own?</h2>
+      <p>Do users intuitively grasp the usage and control of every primary and secondary game element?</p>
+    </div>
+  </section>
+
+  <!-- ============ 15. USER JOURNEY + SCREENS (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-two-col">
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Functional screens</h3>
+          <img class="lg-shot lg-ph-lg" src="lumigo-coded/15b.webp" alt="8 functional screen mockups (Home, Options, Store, Game Over, Objective Completed, Survive!, Trap, Chase)" loading="lazy" decoding="async" />
+        </div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:16px;">Playable screens</h3>
+          <img class="lg-shot lg-ph-lg" src="lumigo-coded/15c.webp" alt="Grid of ~15 gameplay screenshots" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 18. FOCUS GROUP / TESTING METHOD / PILOT / REVISION (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-eval-grid">
+        <article class="lg-eval-card lg-eval-card--focus">
+          <div class="lg-eval-card-head">
+            <span class="lg-eval-icon" aria-hidden="true">👥</span>
+            <h3>Focus group</h3>
+          </div>
+          <div class="lg-eval-chips">
+            <div class="lg-eval-chip">
+              <span class="lg-eval-chip-label">Who</span>
+              <p>Frequent and occasional gamers, age 13–26</p>
+            </div>
+            <div class="lg-eval-chip">
+              <span class="lg-eval-chip-label">Why they play</span>
+              <p>A fun, easy game to kill boredom in downtime</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="lg-eval-card lg-eval-card--method">
+          <div class="lg-eval-card-head">
+            <span class="lg-eval-icon" aria-hidden="true">🎯</span>
+            <h3>Testing Method</h3>
+          </div>
+          <div class="lg-eval-methods">
+            <div class="lg-eval-method">
+              <span class="lg-eval-method-num">01</span>
+              <div>
+                <h4>Functional Testing</h4>
+                <p>Can users understand the game elements and build a working mental model of how it all fits together?</p>
+              </div>
+            </div>
+            <div class="lg-eval-method">
+              <span class="lg-eval-method-num">02</span>
+              <div>
+                <h4>Retrospective Testing</h4>
+                <p>What was the overall play experience, reflected back after completing set tasks?</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lg-eval-card lg-eval-card--pilot">
+          <div class="lg-eval-card-head">
+            <span class="lg-eval-icon" aria-hidden="true">🧪</span>
+            <h3>Pilot Testing</h3>
+          </div>
+          <ol class="lg-eval-steps">
+            <li>Ran a Functional + Retrospective pilot — observed gameplay against set goals</li>
+            <li>Probed after each goal was completed</li>
+            <li>Asked players to reflect back on the experience</li>
+          </ol>
+        </article>
+
+        <article class="lg-eval-card lg-eval-card--revision">
+          <div class="lg-eval-card-head">
+            <span class="lg-eval-icon" aria-hidden="true">✏️</span>
+            <h3>Revision of Testing protocols</h3>
+          </div>
+          <ol class="lg-eval-steps">
+            <li>Pilot mostly held up against our protocol</li>
+            <li>Caught ourselves asking closed, leading questions</li>
+            <li>Revised the questions and user brief before the real run</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 19. DEFINING TEST PROTOCOLS (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-heading-rule"><h3>Defining Test Protocols</h3><span class="rule"></span></div>
+      <div class="lg-protocol-card lg-protocol-card--func">
+        <div class="lg-protocol-card-head">
+          <span class="lg-protocol-badge">01</span>
+          <div>
+            <h4>Functionality testing</h4>
+            <p class="lg-protocol-objective"><strong>Objective:</strong> Smooth onboarding — can users find and navigate the game's elements?</p>
+          </div>
+        </div>
+        <p class="lg-checklist-label">Goals given to each user</p>
+        <ol class="lg-task-checklist">
+          <li>Find the music controls</li>
+          <li>Start the game and clear Level 1</li>
+          <li>Clear Level 2, then Level 3</li>
+          <li>Return to the Home screen</li>
+          <li>Replay an earlier level</li>
+          <li>Buy 500 diamonds</li>
+          <li>Push through to Level 6 and head back home</li>
+        </ol>
+      </div>
+      <div class="lg-protocol-card lg-protocol-card--retro">
+        <div class="lg-protocol-card-head">
+          <span class="lg-protocol-badge">02</span>
+          <div>
+            <h4>Retrospective testing</h4>
+            <p class="lg-protocol-objective"><strong>Objective:</strong> Do players intuitively read the game's elements, and how does the play experience feel overall?</p>
+          </div>
+        </div>
+        <div class="lg-goal-grid">
+          <article class="lg-goal-card">
+            <span class="lg-goal-num">Goal 1</span>
+            <h5>Clear Level 1</h5>
+            <ul class="lg-goal-questions">
+              <li>How did you clear it, and how did it feel?</li>
+              <li>Could you read the enemy's behavior?</li>
+              <li>How did you dodge it?</li>
+              <li>Did you clock what the sparkling thing was?</li>
+            </ul>
+          </article>
+          <article class="lg-goal-card">
+            <span class="lg-goal-num">Goal 2</span>
+            <h5>A few levels back to back</h5>
+            <ul class="lg-goal-questions">
+              <li>Can you read the enemy's behavior now?</li>
+              <li>What was the red thing about?</li>
+              <li>How does life work here?</li>
+              <li>How are star ratings earned?</li>
+            </ul>
+          </article>
+          <article class="lg-goal-card">
+            <span class="lg-goal-num">Goal 3</span>
+            <h5>Reading the difficulty curve</h5>
+            <ul class="lg-goal-questions">
+              <li>How does difficulty shift as levels climb?</li>
+              <li>Could you feel the music change level to level?</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 20. FINDINGS: MUSIC + MENTAL MODEL (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-finding-row">
+        <div class="lg-finding-body">
+          <div class="lg-heading-rule"><h3>Music &amp; Sound</h3><span class="rule"></span></div>
+          <ol class="lg-finding-list lg-finding-list--num">
+            <li>SFX vs. Master volume — nobody could tell them apart</li>
+            <li>Mute/unmute itself was easy to find</li>
+            <li>But the mute icon read ambiguous as a toggle</li>
+            <li>Only a few players noticed the music shift between levels</li>
+          </ol>
+        </div>
+        <div class="lg-finding-media">
+          <img class="lg-shot" src="lumigo-coded/20a.webp" alt="Options screen (Border toggle, Graphics, Sound/SFX/Background sliders, referral claim)" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="lg-finding-group">
+        <div class="lg-heading-rule"><h3>Mental Model</h3><span class="rule"></span></div>
+
+        <div class="lg-finding-row lg-finding-row-flank">
+          <div class="lg-finding-sub lg-sticky-note note-yellow">
+            <h5>Main menu</h5>
+            <ul class="lg-finding-list">
+              <li>2-player button sitting under Play read as ambiguous — mode switch, or something else?</li>
+              <li>Play's destination was unclear: level select, or straight into the game?</li>
+            </ul>
+          </div>
+          <div class="lg-finding-media">
+            <img class="lg-shot" src="lumigo-coded/20b.webp" alt="Home screen (Lumi Go) + The Orb level-intro screen" loading="lazy" decoding="async" />
+          </div>
+          <div class="lg-finding-sub lg-sticky-note note-pink">
+            <h5>Settings</h5>
+            <ul class="lg-finding-list">
+              <li>Referral claim was found by accident, if at all</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg-finding-row">
+          <div class="lg-finding-body">
+            <div class="lg-finding-sub">
+              <h5>Level description</h5>
+              <ul class="lg-finding-list">
+                <li>Most players read it fully, the rest at least skimmed it</li>
+                <li>The Back button's destination — previous level or home — stayed a mystery</li>
+              </ul>
+            </div>
+            <div class="lg-finding-sub">
+              <h5>Game screen</h5>
+              <ul class="lg-finding-list">
+                <li>Player control clicked instantly — everyone cleared Level 1</li>
+                <li>The heart read as "life," but its function stayed fuzzy until it ran out</li>
+                <li>The pause button was hard to find</li>
+                <li>Enemy behavior changes went unnoticed unless we pointed them out</li>
+              </ul>
+            </div>
+          </div>
+          <div class="lg-finding-media">
+            <img class="lg-shot" src="lumigo-coded/20c.webp" alt="The Orb level-intro screen + gameplay screenshot" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 21. FINDINGS CONT'D + RETROSPECTIVE INSIGHTS (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <div class="lg-finding-row">
+        <div class="lg-finding-body">
+          <div class="lg-finding-sub">
+            <h5>Level complete</h5>
+            <ul class="lg-finding-list">
+              <li>Stars read as a score, but how they're earned stayed unclear</li>
+              <li>The star button next to Play sparked wild guesses — leaderboard? premium? level select?</li>
+              <li>Share button: sharing the score, or the app itself?</li>
+            </ul>
+          </div>
+          <div class="lg-finding-sub">
+            <h5>Game over</h5>
+            <ul class="lg-finding-list">
+              <li>Revive and the "3 lives" concept confused most players</li>
+              <li>The life icon on Retry — does it cost a life, or grant one?</li>
+              <li>Tapping Home didn't actually go home — a broken expectation</li>
+            </ul>
+          </div>
+          <div class="lg-finding-sub">
+            <h5>Diamonds</h5>
+            <ul class="lg-finding-list">
+              <li>Mixed up with in-game points by some players</li>
+              <li>Their role on the level-complete screen wasn't clear</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lg-finding-media">
+          <img class="lg-shot" src="lumigo-coded/21a.webp" alt="Objective Completed + Revive screens" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="lg-retro-insights">
+        <div class="lg-heading-rule"><h3>Retrospective Insights</h3><span class="rule"></span></div>
+        <div class="lg-retro-grid">
+          <article class="lg-retro-card lg-retro-card--1">
+            <span class="lg-retro-num">01</span>
+            <h4>First level</h4>
+            <ul class="lg-finding-list">
+              <li>Play clicked intuitively for most; the levels felt fun and easy to read</li>
+            </ul>
+            <blockquote class="lg-retro-quote">"The instructions were short and crisp." / "Can't wait to click play."</blockquote>
+          </article>
+          <article class="lg-retro-card lg-retro-card--2">
+            <span class="lg-retro-num">02</span>
+            <h4>A few levels in</h4>
+            <ul class="lg-finding-list">
+              <li>By level 2, nobody needed the instructions anymore</li>
+              <li>"Game life" only clicked after an actual enemy encounter</li>
+            </ul>
+            <blockquote class="lg-retro-quote">"It takes just 5 sec to understand the enemy's behaviour, even if I miss the description."</blockquote>
+          </article>
+          <article class="lg-retro-card lg-retro-card--3">
+            <span class="lg-retro-num">03</span>
+            <h4>Reading the difficulty curve</h4>
+            <ul class="lg-finding-list">
+              <li>10 of 12 players correctly tracked how difficulty escalated level by level</li>
+              <li>Variety in enemy behavior landed better than a flat difficulty ramp</li>
+            </ul>
+            <blockquote class="lg-retro-quote">"Especially in Level 4 — the enemy got faster and started moving randomly instead of chasing me!"</blockquote>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 22. TAKEAWAYS + CONCLUSION (black) ============ -->
+  <section class="lg-sec black">
+    <div class="lg-wrap">
+      <h2 style="font-size:36px;font-weight:700;margin-bottom:30px;">Our Takeaways</h2>
+      <div class="lg-insight-grid">
+        <div class="lg-insight-card c2"><span class="num">01</span><p>Should've asked for reactions after the fact, not mid-play — first instinct beats an interrupted one.</p></div>
+        <div class="lg-insight-card c1"><span class="num">02</span><p>Players acted naturally until asked to explain themselves — then hesitated putting it into words.</p></div>
+      </div>
+
+      <h2 style="font-size:36px;font-weight:700;margin:60px 0 30px;">Conclusion</h2>
+      <div class="lg-insight-grid">
+        <div class="lg-insight-card c1"><span class="num">01</span><p>Some buttons didn't read intuitively — but players adapted fast after one encounter.</p></div>
+        <div class="lg-insight-card c3"><span class="num">02</span><p>Several elements only registered once we probed for them directly.</p></div>
+        <div class="lg-insight-card c4"><span class="num">03</span><p>Level Select ↔ Home navigation was the single most reported friction point.</p></div>
+        <div class="lg-insight-card c5"><span class="num">04</span><p>Metaphors (heart, diamonds, stars) were recognized — their function wasn't.</p></div>
+        <div class="lg-insight-card c2"><span class="num">05</span><p>Functional gaps and all, players still enjoyed the game — that came first for them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THANKS ============ -->
+  <section id="thanks" class="sec light thanks">
+    <div class="wrap thanks-row">
+      <h2 class="thanks-title">Thankyou</h2>
+      <div class="project-nav">
+        <a href="Motion-restriction-VR-coded.html" class="project-nav-card project-nav-next">
+          <img src="images/banners/VR banner.webp" alt="Low-cost arm-based motion restriction device for VR" />
+          <div class="project-nav-meta">
+            <span class="project-nav-label">Next project</span>
+            <span class="project-nav-title">Low-cost arm-based motion restriction device for VR</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <nav class="footer-links">
+        <a href="index.html#intro">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+      <span>Copyright © 2026 Lokeshdesign®</span>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initBottomConfetti } from './confetti.js';
+    initBottomConfetti();
+  </script>
+
+  <script type="module">
+    import { initPixelCursor } from './pixel-cursor.js';
+    initPixelCursor({
+      trailColor: '#FFFFFF',
+      pixelSize: 10,
+    });
+  </script>
+</body>
+</html>

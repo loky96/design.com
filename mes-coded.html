@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manufacturing &amp; Execution System — Case Study | Loky</title>
+  <link rel="stylesheet" href="mes-coded.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Loky</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="mes-side-nav" aria-label="Section navigation">
+    <a href="#quick-context" class="mes-side-nav-link" data-target="quick-context"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Quick context</span></a>
+    <a href="#product-brief" class="mes-side-nav-link" data-target="product-brief"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Product Brief</span></a>
+    <a href="#explore" class="mes-side-nav-link" data-target="explore"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Explore</span></a>
+    <a href="#current-flow" class="mes-side-nav-link" data-target="current-flow"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Current flow</span></a>
+    <a href="#production-designer" class="mes-side-nav-link" data-target="production-designer"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Production designer</span></a>
+    <a href="#production-manager" class="mes-side-nav-link" data-target="production-manager"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Production manager</span></a>
+    <a href="#board-operator" class="mes-side-nav-link" data-target="board-operator"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Board operator</span></a>
+    <a href="#accessibility" class="mes-side-nav-link" data-target="accessibility"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Accessibility</span></a>
+    <a href="#process" class="mes-side-nav-link" data-target="process"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">My process</span></a>
+    <a href="#user-research" class="mes-side-nav-link" data-target="user-research"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">User Research</span></a>
+    <a href="#competitor-analysis" class="mes-side-nav-link" data-target="competitor-analysis"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Competitor analysis</span></a>
+    <a href="#personas" class="mes-side-nav-link" data-target="personas"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Personas</span></a>
+    <a href="#iteration-solution" class="mes-side-nav-link" data-target="iteration-solution"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Iteration &amp; solution</span></a>
+    <a href="#visual-design" class="mes-side-nav-link" data-target="visual-design"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Visual design</span></a>
+    <a href="#usability-evaluation" class="mes-side-nav-link" data-target="usability-evaluation"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Usability Evaluation</span></a>
+    <a href="#collaboration" class="mes-side-nav-link" data-target="collaboration"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Collaboration</span></a>
+    <a href="#challenge-faced" class="mes-side-nav-link" data-target="challenge-faced"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Challenges faced</span></a>
+    <a href="#impact-results" class="mes-side-nav-link" data-target="impact-results"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Impact &amp; results</span></a>
+    <a href="#success-metrics" class="mes-side-nav-link" data-target="success-metrics"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Success metrics</span></a>
+    <a href="#adoption-retention" class="mes-side-nav-link" data-target="adoption-retention"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Adoption &amp; retention</span></a>
+    <a href="#business-impact" class="mes-side-nav-link" data-target="business-impact"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Business impact</span></a>
+    <a href="#reflections" class="mes-side-nav-link" data-target="reflections"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Reflections</span></a>
+    <a href="#thanks" class="mes-side-nav-link" data-target="thanks"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Thank you</span></a>
+  </nav>
+
+  <!-- ============ 1. HERO / COVER (dark) ============ -->
+  <section class="sec dark hero-cover">
+    <div class="wrap">
+      <img class="brand-logo" src="images/Logos/infurnia.webp" alt="Infurnia" />
+      <h1 class="cover-title">Manufacturing &amp; Execution System</h1>
+      <p class="cover-sub">For Modular Furniture Factory Workflow.</p>
+
+      <div class="meta-grid">
+        <div class="meta-chip"><span class="meta-label">🖥️ Product:</span><span class="meta-val">New product From scratch</span></div>
+        <div class="meta-chip"><span class="meta-label">👥 Team:</span><span class="meta-val">Lead Designer, PM, EM, CTO, 1 Dev</span></div>
+        <div class="meta-chip"><span class="meta-label">💼 Role:</span><span class="meta-val">(0-10) Research, design &amp; testing</span></div>
+        <div class="meta-chip"><span class="meta-label">⏱️ Time:</span><span class="meta-val">3 Months to first release</span></div>
+      </div>
+
+      <div class="cover-laptop-wrap">
+        <img class="cover-laptop" src="Mes-coded/01a.webp" alt="Infurnia MES Portal — Modular Unit list and 3D panel drawing view" loading="eager" decoding="async" />
+        <img class="cover-laptop-gif" src="Mes-coded/mes%20gif/mes%20full%20res.gif" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+
+      <div class="cover-cards">
+        <div class="cover-card">
+          <h3>Business Impact</h3>
+          <p class="cover-card-sub">Comparing data of 1st week to 6 Months</p>
+          <img class="ph-chart" src="Mes-coded/01b.webp" alt="Revenue Indicators chart — Revenue in Rs, Panel added for Manufacturing, Unit Enabled, Work Order Created" loading="lazy" decoding="async" />
+          <div class="stat-row">
+            <div class="stat-card"><div class="stat-label">💰 Revenue in (INR):</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">+2250%</div></div>
+            <div class="stat-card"><div class="stat-label">📄 Work-order created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">+833%</div></div>
+          </div>
+          <p class="dark-fine" style="margin-top:12px;">Source: from Infurnia Mix panel.com . *Revenue shown only for process fee of panels</p>
+        </div>
+        <div class="cover-card">
+          <h3>Adoption &amp; Net promoter score</h3>
+          <p class="cover-card-sub">Ratio of all panels added to all users (in 6 Months)</p>
+          <img class="ph-chart" src="Mes-coded/01c.webp" alt="All panels added / all user profile ratio chart" loading="lazy" decoding="async" />
+          <p class="nps-caption">NPS test conducted with users</p>
+          <div class="nps-block">
+            <div class="nps-head"><span class="nps-who">Production designers <span class="nps-count">60 👤</span></span><span class="nps-score">NPS Score: 61</span></div>
+            <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:65%;"></div></div>
+            <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
+          </div>
+          <div class="nps-block">
+            <div class="nps-head"><span class="nps-who">Operators / managers <span class="nps-count">55 👤</span></span><span class="nps-score">NPS Score: 58</span></div>
+            <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:63%;"></div></div>
+            <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUICK CONTEXT (light) ============ -->
+  <section id="quick-context" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Quick context</h2>
+      <div class="grid-2">
+        <div class="ctx-card"><h3>❓ Why</h3><ul><li>Bringing <strong>exact kitchen design</strong> to your house</li><li><strong>Faster and error free</strong> manufacturing</li></ul></div>
+        <div class="ctx-card"><h3>🔍 What</h3><ul><li><strong>Digital aid</strong> for furniture factory workflow</li><li>Similar to <strong>PLM products</strong> for cabinet units</li></ul></div>
+        <div class="ctx-card"><h3>👥 Whom</h3><ul><li>Cabinet production designer</li><li>Different types of Operators</li><li>Production managers / Supervisors / Owners</li></ul></div>
+        <div class="ctx-card"><h3>🛠 How</h3><ul><li>A whole <strong>new product</strong> for factories</li><li><strong>Various touch points</strong> (tracking, scheduling etc.)</li><li><strong>Paperless process</strong>, portable solutions</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. PRODUCT BRIEF (dark) ============ -->
+  <section id="product-brief" class="sec dark">
+    <div class="wrap brief-row">
+      <div class="brief-text">
+        <h2 class="sec-h2">Product Brief</h2>
+        <p>Understand the user needs of a modular furniture factory, to create a product which aids in seamless transition of designs made by Interior designers into assembled, ready furniture units.</p>
+      </div>
+      <img class="brief-illus" src="Mes-coded/03.webp" alt="Illustration: designer at computer, factory and delivery truck icons" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 4. WHY WE ARE MAKING THIS (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <p class="why-h2">You might think! Being an architect / Interior design product</p>
+      <p class="why-h2"><strong>why we are making this ?</strong></p>
+      <div class="grid-2 why-grid" style="margin-top:26px;">
+        <div class="why-card"><h3><span class="emoji-lead">🎯💰</span>1. Business Goals to make quick revenue</h3><p>Exploring new and <strong>quick revenue</strong> generation ways by with <strong>minimum expense.</strong></p></div>
+        <div class="why-card"><h3><span class="emoji-lead">🆕👥</span>2. Easy to acquire new user base</h3><p>Modular furniture factories are <strong>our client's client</strong> and <strong>easily acquirable</strong></p></div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">📋✔️</span>3. Manufacturing outputs were already built</h3>
+          <p>We <strong>provide 3 main outputs</strong> required for manufacturing units in design app currently.</p>
+          <p class="why-note">We already have design portal to design modular units.</p>
+          <img class="ph-img" src="Mes-coded/04a.webp" alt="DesignX portal screenshot — 3D cabinet view with Option used by production designer / Output needed for Factories callouts" loading="lazy" decoding="async" />
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">👨‍🎨👷</span>4. Addressing different personas</h3>
+          <p>Needs of <strong>Interior designer</strong> and <strong>production designer</strong> separately.</p>
+          <div class="persona-cols">
+            <div class="persona-col">
+              <p class="pc-title">Interior designer: focus on look &amp; feel of cabinet</p>
+              <img class="ph-sm" src="Mes-coded/04b.webp" alt="Kitchen interior render photo" loading="lazy" decoding="async" />
+              <ul><li>Interior design (appearance and size)</li><li>Cabinet uses (no of drawers, pullouts etc)</li><li>To sell cabinet design for people to buy</li><li>Don't care about how its manufactured</li></ul>
+            </div>
+            <div class="persona-col">
+              <p class="pc-title">Production designer: focus on manufacturability</p>
+              <img class="ph-sm" src="Mes-coded/04c.webp" alt="Technical cabinet construction drawing" loading="lazy" decoding="async" />
+              <ul><li>Cabinet oriented, Construction.</li><li>Deals with carpenters</li><li>Cares about hardwares drills &amp; machining</li><li>Materials procurements etc.</li></ul>
+            </div>
+          </div>
+          <p class="why-note" style="text-align:center;margin-top:14px;">Both were using the same design portal until now</p>
+        </div>
+        <div class="why-card"><h3><span class="emoji-lead">🌟📦</span>5. Completing full suite in interiors</h3><p>Easy for business to buy full suite which takes care of <strong>design to manufacturing</strong></p></div>
+        <div class="why-card"><h3><span class="emoji-lead">⚡⏱</span>6. Faster time to market</h3><p>Other vertical <strong>Architecture features take years to build</strong> compared to MES.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. EXPLORE BANNER (blue) ============ -->
+  <section id="explore" class="sec blue">
+    <div class="wrap" style="text-align:center;">
+      <h2 class="sec-h2 white center">How do you wish to explore?</h2>
+      <div class="explore-cols">
+        <div>
+          <a href="#current-flow" class="explore-pill">⌄⌄ Keep scrolling to see solution</a>
+          <ul class="explore-list">
+            <li>Context of what happens in factory</li>
+            <li>Type of users</li>
+            <li>Work flow</li>
+            <li>Production designer: pain points, needs</li>
+            <li>Solution for production designer</li>
+            <li>Production Manager: pain points, needs</li>
+            <li>Solution for production manager</li>
+            <li>Operators: pain points, needs</li>
+            <li>Solution for Operators</li>
+            <li>Accessibility</li>
+          </ul>
+        </div>
+        <div>
+          <a href="#process" class="explore-pill">🖐 Click here to &ldquo;Explore process&rdquo;</a>
+          <ul class="explore-list">
+            <li>User research</li>
+            <li>Competitor analysis</li>
+            <li>Understanding work flows</li>
+            <li>Personas, User journey maps</li>
+            <li>Need classifications</li>
+            <li>Iterative process (Wireframes, IA)</li>
+            <li>Interface Design, Prototype</li>
+            <li>Testing &amp; Usability Evaluation</li>
+            <li class="gap">Collaboration</li>
+            <li>Metrics, Impact &amp; results</li>
+            <li>Reflections</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. STRIP (dark) ============ -->
+  <section class="sec dark strip" id="current-flow">
+    <div class="wrap"><h2 class="strip-title">Lets understand what happens in factory</h2></div>
+  </section>
+
+  <!-- ============ 7. DIFFERENT TYPES OF USERS (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h3 class="sec-h2">About users</h3>
+      <div class="users-card">
+        <img src="Mes-coded/users.webp" alt="Different types of users in the factory" loading="lazy" decoding="async" class="ph-diagram" />
+        <img class="ph-diagram" src="Mes-coded/07.webp" alt="5-circle spectrum diagram: Architect designer to Interior designer to Production designers to Production Managers to Operators, with Factory and In focus range labels" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. CURRENT WORK FLOW IN FACTORY (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <div class="flow-head">
+        <h3 class="sec-h2" style="margin-bottom:0;">Current work flow in factory</h3>
+        <div class="insight-chip">🔍 Insights are from user research. for more details go to my process</div>
+      </div>
+      <h3 class="flow-sub">Over all work flow</h3>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="fs-emoji">🤝</span><p><strong>Interior designer</strong> hands over the design file to production designers</p></div>
+        <div class="flow-step"><span class="fs-emoji">📦</span><p><strong>Production designers</strong> verifies and corrects all units in file &amp; give production sign off</p></div>
+        <div class="flow-step"><span class="fs-emoji">👷</span><p>Hands over manufacturing files to <strong>supervisor.</strong> Who over sees production</p></div>
+        <div class="flow-step"><span class="fs-emoji">🏃</span><p>Different <strong>Machine Operators</strong> gets the files &amp; performs respective action</p></div>
+      </div>
+      <h3 class="flow-sub">Detailed flow</h3>
+      <img src="Mes-coded/Detailed%20flow%20in%20factory.webp" alt="Detailed flow in factory diagram" loading="lazy" decoding="async" class="ph-chart-lg" />
+    </div>
+  </section>
+
+  <!-- ============ 9. ECO SYSTEM MAP (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h3 class="sec-h2">Eco system map</h3>
+      <img class="ph-chart-lg" src="Mes-coded/09.webp" alt="Full ecosystem flow diagram: Kitchen designer to Design File to Production designer's end (Cabinet editing/list/Panel listing) to Factory operator's end (Board layout/Cutlist/Manual+Automated cutting/Edge banding/CNC machining/Inspection/Packaging/Shipment) to Production manager/owner (Inventory management/Scheduling/Progress tracking/Reporting) to Assembly at client's end" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ============ 10. PRODUCTION DESIGNER'S PART (light) ============ -->
+  <section id="production-designer" class="sec light">
+    <div class="wrap">
+      <div class="flow-head">
+        <h2 class="sec-h2" style="margin-bottom:0;">🧑‍💻 Production designer's Part</h2>
+        <div class="insight-chip">🔍 Insights are from user research. for more details Go to my process</div>
+      </div>
+      <p class="persona-meta">Name: <strong>Sanjay</strong> &nbsp;|&nbsp; Age: <strong>35</strong> &nbsp;|&nbsp; Qualification: <strong>Diploma in product design</strong></p>
+      <div class="pnq-grid">
+        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li>Units are <strong>scattered in design</strong>, hard to check 1 by 1 in design.</li><li><strong>Remembering</strong> verified units</li><li>Editing requires lot of clicks &amp; juggling in design app</li><li>Handling <strong>frequent interior design changes</strong></li></ul></div>
+        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li>Creating &amp; managing multiple work orders</li><li>Verify, edit &amp; give sign off to production</li><li><strong>Easy coordination</strong> with both manufacturing &amp; Interior designer.</li></ul></div>
+        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Keen on details</li><li>Tech savvy</li><li>Understands manufacturing constraints</li><li>Collaborative</li></ul></div>
+      </div>
+      <div class="uflow-card">
+        <h3>🔄 User flow</h3>
+        <div class="uflow-row">
+          <div class="uflow-box">Creates <strong>work order</strong> (term used for a file in factories)</div>
+          <span class="uflow-arrow">→</span>
+          <div class="uflow-box">Verifies cabinets</div>
+          <span class="uflow-arrow">↔</span>
+          <div class="uflow-box">Edits cabinet's properties</div>
+          <span class="uflow-arrow">→</span>
+          <div class="uflow-box">Verifies output files</div>
+          <span class="uflow-arrow">→</span>
+          <div class="uflow-box">Gives production sign off</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. SOLUTION: PRODUCTION DESIGNER (dark) ============ -->
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="sol-row">
+        <div><p class="sol-title">&ldquo;Work order creation flow&rdquo;</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>&ldquo;1. Converting design to factory work file&rdquo;</p><p>&ldquo;2. Creating &amp; managing active work orders&rdquo;</p></div></div>
+        <div class="video-embed">
+          <video controls preload="auto" src="Mes-coded/mes%20videos/09%20-%20work%20order%20creation%20video.mp4" title="Work order creation flow walkthrough"></video>
+        </div>
+      </div>
+      <div class="sol-row">
+        <div><p class="sol-title">Basics actions inside work order</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Flat units list hence less navigation unlike design app.</p><p>See all essential details of units upfront.</p><p>Search, filter &amp; sort units</p></div></div>
+        <div class="video-embed">
+          <video controls preload="auto" src="Mes-coded/mes%20videos/10%20-%20navigation%20in%20workorder.mp4" title="Basic actions inside work order walkthrough"></video>
+        </div>
+      </div>
+      <div class="iter-card">
+        <h4>Multiple Iterations, incorporating user feedbacks</h4>
+        <div class="iter-item"><img class="ph" src="Mes-coded/11c.webp" alt="Iteration 1 — larger 3D viewport layout where panel details and 3D cannot be viewed together" loading="lazy" decoding="async" /><p><strong>Iteration 1:</strong> layout has bigger 3d view but user can see only 3d or panel details at once</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12. SOLUTION: PRODUCTION DESIGNER cont'd (dark) ============ -->
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="sol-row"><div><p class="sol-title">Different ways of Editing the Units</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Three way of editing the units and panel</p><p>Quick edit for short edits.</p><p>Detailed edit in design interface</p><p>Bulk edits using templates</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/08%20-%20Editing%20workorder.mp4" title="Different ways of editing the units"></video></div></div>
+      <div class="sol-row"><div><p class="sol-title">Verifying and removing of units</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Delete units which are not required</p><p>Restore deleted units</p><p>Verify units 1 by 1 or in bulk</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/12%20-%20delete%20and%20verify.mp4" title="Verifying and removing of units"></video></div></div>
+      <div class="sol-row"><div><p class="sol-title">Design changes and Production sign off</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Reseting the wrong changes</p><p>import new changes made by interior designers</p><p>Giving Production sign off by publishing</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/06%20-%20Resync%20and%20publish.mp4" title="Design changes and production sign off"></video></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 13. PRODUCTION MANAGER / SUPERVISOR (light) ============ -->
+  <section id="production-manager" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">🧑‍💼 Production manager / Supervisor</h2>
+      <p class="persona-meta">Name: <strong>Ramesh</strong> &nbsp;|&nbsp; Age: <strong>40</strong> &nbsp;|&nbsp; Qualification: <strong>Business man</strong></p>
+      <div class="pnq-grid">
+        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li><strong>No big picture / real time feedback</strong> of factory operations</li><li>Giving <strong>frequent inputs</strong> to the operators</li><li>Errors going unnoticed</li></ul></div>
+        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li><strong>Track the progress</strong> of order to get the job done</li><li>Track each operator's efficiency</li><li><strong>Managing rejections</strong> &amp; breakdowns in factory</li><li>Plan and <strong>scheduling work</strong> to operators</li></ul></div>
+        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Leadership / Team player</li><li>Business oriented</li><li>Handles sheer volume</li></ul></div>
+      </div>
+      <div class="uflow-card">
+        <h3>🔄 User flow</h3>
+        <div class="uflow-row">
+          <div class="uflow-box">Published work orders</div><span class="uflow-arrow">→</span>
+          <div class="uflow-stack"><div class="uflow-box">Schedules / plans work order for execution</div><span class="uflow-arrow up">↑</span><div class="uflow-box">Creates stations / manages operators</div></div>
+          <span class="uflow-arrow">→</span><div class="uflow-box">Tracks work order execution</div>
+          <span class="uflow-arrow">→</span><div class="uflow-box">Course correction in factory</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14. SOLUTION: PRODUCTION MANAGER (dark) ============ -->
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="sol-row"><div><p class="sol-title">Tracking work order executions</p><div class="sol-persona"><span>🧑‍💼</span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>knowing the overall status of each work orders</p><p>Seeing details till each panel level.</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/05%20-%20Production%20manager%20.mp4" title="Tracking work order executions"></video></div></div>
+      <div class="sol-row"><div><p class="sol-title">Managing stations &amp; operators</p><div class="sol-persona"><span>🧑‍💼</span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Creating new stations and mapping operator to stations</p><p>Planning execution by scheduling work to the operators</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/11%20-%20Mapping%20station%20and%20scheduling.mp4" title="Managing stations and operators"></video></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 15. BOARD CUTTING OPERATOR (light) ============ -->
+  <section id="board-operator" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">✏️👷 Board cutting operator</h2>
+      <p class="persona-meta">Name: <strong>Ajay</strong> &nbsp;|&nbsp; Age: <strong>40</strong> &nbsp;|&nbsp; Qualification: <strong>Skilled Technician</strong></p>
+      <div class="pnq-grid">
+        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li>Hard to handle <strong>paper documents</strong> in factory</li><li>Time and effort to <strong>calculate Dimension &amp; order of cutting</strong></li><li><strong>Getting right label to stick</strong> after cutting the panel</li></ul></div>
+        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li>Knowing which <strong>work-order to execute</strong> for a given day</li><li>Way to <strong>understand and cut panels faster</strong></li><li>Option to <strong>customise the board</strong> settings, to their need.</li></ul></div>
+        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Not tech savvy</li><li>Years of muscle memory</li><li>Handles sheer volume</li><li>Own style of working</li></ul></div>
+      </div>
+      <div class="uflow-card">
+        <h3>🔄 User flow</h3>
+        <div class="uflow-row">
+          <div class="uflow-box">Open assigned work order of the day</div><span class="uflow-arrow">→</span>
+          <div class="uflow-stack"><div class="uflow-box">Sheet layouts files</div><div class="uflow-box">Gets Ply sheets from factory</div></div>
+          <span class="uflow-arrow">→</span><div class="uflow-box">Refer the sheets to cut or use assisted sawing to cut</div>
+          <span class="uflow-arrow">→</span><div class="uflow-box">Cut the panels</div>
+          <span class="uflow-arrow">→</span><div class="uflow-box">Prints panel label and sticks on the cut panel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 16. SOLUTION: BOARD CUTTING OPERATOR (dark) ============ -->
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="sol-row"><div><p class="sol-title">Accessing board layout for cutting</p><div class="sol-persona"><span>👷</span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Seeing boards and changing board setting if needed</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/07%20-%20Sawing%20operator.mp4" title="Accessing board layout for cutting"></video></div></div>
+      <div class="sol-row"><div><p class="sol-title">Assisted Sawing for easy cutting</p><div class="sol-persona"><span>👷</span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Assisted sawing a mode where operator can work faster</p><p>Printing labels and sticking on panels</p></div></div><div class="video-embed"><video controls preload="auto" src="Mes-coded/mes%20videos/04%20-%20Assisted%20sawing.mp4" title="Assisted sawing for easy cutting"></video></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 17. DEFINING PRODUCT SUCCESS METRICS (light) ============ -->
+  <!-- ============ 18. ACCESSIBILITY (light) ============ -->
+  <section id="accessibility" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Accessibility</h2>
+      <p class="acc-intro">Since this is a design application, Our clients dont hire designer who are blind, hence not focusing on complete accessibility for blind users, But we include accessibility to temporal &amp; situational disabilities.</p>
+      <span class="acc-badge">Adhering to WCAG 2.1 AA minimum requirements</span>
+      <div class="grid-2">
+        <div class="acc-card">
+          <h3>Screen reader compatible</h3>
+          <p class="acc-code">All SKU images name are coded in Alt text<br/>alt="&lt;Type&gt;-&lt;sku name&gt;"</p>
+          <p><em>All images in the platform are from SKU display images. so, the same is coded in the alt text.</em></p>
+          <img src="Mes-coded/18a.webp" alt="Code editor showing alt text implementation + Modular Units screen" loading="lazy" decoding="async" class="ph-generic" />
+        </div>
+        <div class="acc-card">
+          <h3>How it looks for low vision &amp; color blind users</h3>
+          <p><em>Information is not just encoded in colors, but also with icons &amp; text. Making sure the application is workable even in the grey scale without any inconvenience.</em></p>
+          <img src="Mes-coded/18b.webp" alt="Grayscale &amp; color-blind simulation screenshots of Security Central / MES screens" loading="lazy" decoding="async" class="ph-generic" />
+        </div>
+      </div>
+      <div class="acc-card acc-wide">
+        <h3>Keyboard navigations</h3>
+        <p><em>All options in the interface are accessible by keyboard, with an intuitive navigation order that addresses the important element first in each interface; focus state is clear and recognisable.</em></p>
+        <div class="ph-row"><img src="Mes-coded/18c.webp" alt="Work order list with numbered tab-focus order" loading="lazy" decoding="async" class="ph-generic" style="flex:1;" /><img src="Mes-coded/18d.webp" alt="Board optimiser panel-map with numbered tab-focus order + &quot;Focus state&quot; callout" loading="lazy" decoding="async" class="ph-generic" style="flex:1;" /></div>
+      </div>
+      <div class="grid-2">
+        <div class="acc-card">
+          <h3>Text readability &amp; contrast ratios</h3>
+          <p>Body text: <strong>14Px</strong> #202126 &nbsp; Used 95%<br/>Small text: <strong>12Px</strong> #323338 &nbsp; Used 10%</p>
+          <div class="contrast-row">
+            <div class="contrast-card"><p class="contrast-label"><em>Default text &amp; Background contrast. Used 95%</em></p><p class="contrast-val">10.31:1</p><p style="font-size:12px;">✅ AA (Normal) &nbsp;✅ AA (Large) <br/>✅ AAA (Normal) &nbsp;✅ AAA (Large)</p></div>
+            <div class="contrast-card"><p class="contrast-label"><em>Least contrast of text &amp; background in interface. Used 5%</em></p><p class="contrast-val">5.07:1</p><p style="font-size:12px;">✅ AA (Normal) &nbsp;✅ AA (Large) <br/>🔴 AAA (Normal) &nbsp;✅ AAA (Large)</p></div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <h3>Other accessibility elements</h3>
+          <ul class="acc-checklist">
+            <li>✅ Predictable &amp; consistent navigations, similar to Design App</li>
+            <li>✅ Progressive disclosure unfolds elements on selection</li>
+            <li>✅ Using plain language free from technical jargons</li>
+            <li>✅ Purpose of link are clear form link text itself</li>
+            <li>✅ Using icons along with color to communicate status in alerts</li>
+            <li>✅ Tooltips accessible (dismissible, hover-able, persistent)</li>
+            <li>✅ All Larger button, 10% of least button size is 32px</li>
+            <li>🔴 No Captions and transcription since No video elements</li>
+            <li>🔴 No voice only interface, since user base is strongly defined</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 19. STRIP "MY PROCESS" (blue) ============ -->
+  <section class="sec blue strip" id="process">
+    <div class="wrap"><h2 class="strip-title white">My process</h2></div>
+  </section>
+
+  <!-- ============ 20. USER RESEARCH (light) ============ -->
+  <section id="user-research" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">User Research</h2>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>Factory Visits / field visit</h3>
+          <ul>
+            <li>Pilot interview was done online with 4 users and basic questionnaire was made.</li>
+            <li>Visited <strong>Wake fit, factory @Hosur</strong>, &amp; 3 other local factories in Bangalore.</li>
+            <li>Conducting user interviews</li>
+            <li>Observing workflows in person</li>
+            <li>Understanding whole process and touch points</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/20a.webp" alt="MES case study research photo 20a" loading="lazy" decoding="async" class="ph-thumb" /></div>
+      </div>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>User Interviews &amp; affinity</h3>
+          <ul>
+            <li>Initial <strong>5 Interviews with Internal</strong> customer success reps, our user proxies</li>
+            <li><strong>Focus group 1:</strong> 8 participants, From different parts of the factory</li>
+            <li>Understanding the pain points and users needs in detail in each part of the flow.</li>
+            <li><strong>Focus group 2:</strong> 7 participants, From different parts of the factory</li>
+            <li>Transcription and affinity mapping were done.</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/20g.webp" alt="Interview transcript spreadsheet categorised by Breakdown/Insight/User statement/Design idea/Question/Culture" loading="lazy" decoding="async" class="ph-generic" /></div>
+      </div>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>Insights of production designer</h3>
+          <ul>
+            <li><strong>Hard to check 1 by 1</strong> since objects are scattered in design</li>
+            <li><strong>Remembering units</strong> which are verified</li>
+            <li>Editing requires a lot of clicks &amp; juggling in the design app portal</li>
+            <li>Handling <strong>frequent interior design changes</strong></li>
+            <li>Creating and Managing multiple work orders</li>
+            <li>Verify, edit and give sign off to production</li>
+            <li><strong>Coordination with both manufacturing</strong> side &amp; Interior designer.</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/20h.webp" alt="Affinity map: sticky notes clustered under production-designer insight headers" loading="lazy" decoding="async" class="ph-diagram" style="margin-top:0;" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 21. COMPETITOR ANALYSIS (light) ============ -->
+  <section id="competitor-analysis" class="sec light">
+    <div class="wrap comp-grid">
+      <div class="comp-left">
+        <h2 class="sec-h2">Competitor analysis</h2>
+        <p>To understand the advancements &amp; trends in the existing market, each screen and feature of the competitors was studied.</p>
+        <p><strong>Main competitors:</strong></p>
+        <div class="comp-mains">
+          <div><p>Naadi: (local competitor)</p><img src="Mes-coded/21a.webp" alt="MES case study research photo 21a" loading="lazy" decoding="async" class="ph-sm" /></div>
+          <div><p>Ardis: (Global player)</p><img src="Mes-coded/21b.webp" alt="MES case study research photo 21b" loading="lazy" decoding="async" class="ph-sm" /></div>
+        </div>
+        <p><strong>Other competitors:</strong> 2020Insights, Homag, 3Tec</p>
+        <img src="Mes-coded/21c.webp" alt="4 screenshots of 2020Insights / Homag / 3Tec software interfaces" loading="lazy" decoding="async" class="ph-generic" />
+      </div>
+      <div>
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead><tr><th></th><th>NADI</th><th>ADRIS</th></tr></thead>
+            <tbody>
+              <tr><th>User interface</th><td>In cloud, simpler than Ardis but still crowded — all options are thrown at once.</td><td>Legacy type UI, based on windows applications, Crowded UI, very less breathing space.</td></tr>
+              <tr><th>Scale</th><td>Only into wood working</td><td>They are into other domains like plastic work, glass works etc</td></tr>
+              <tr><th>Supporting workflows</th><td>They support from board-layout to shipment</td><td>They support from design to shipment</td></tr>
+              <tr><th>Designing capabilities</th><td>No, Naadi has no design capabilities — the flow starts with design files</td><td>Yes, its own in-house product for designing cabinets, the 'Ardis platform'</td></tr>
+              <tr><th>Quick edits in cabinets</th><td>Not possible</td><td>Can be done, but requires opening another Ardis product.</td></tr>
+              <tr><th>Portability</th><td>They support mobile and tablet for quick operations in the factory</td><td>No portability option</td></tr>
+              <tr><th>Other related hardwares</th><td>Label printers, Naadi-specific barcode and QR scanner</td><td>No hardware provided; factories procure standard hardware</td></tr>
+              <tr><th>Board layout</th><td>Cannot optimise boardlayout, can use standard file. Only viewing purpose and to print label</td><td>They provide good customisation of panel in the boards, using drag and drop, across cross board also.</td></tr>
+              <tr><th>Assisted sawing</th><td>No assisted sawing, only view the boardlayout</td><td>No assisted sawing, only view the boardlayout</td></tr>
+              <tr><th>Machine files</th><td>Cannot generate machine files</td><td>Can generate wide range of machine files like .MPR, .TCN .CIX etc.</td></tr>
+              <tr><th>Machine scheduling</th><td>No machine scheduling feature</td><td>Provides detail insight of managing runtime of machine to optimise the workflow</td></tr>
+              <tr><th>Panel label designs</th><td>Yes, they have their own fixed labels</td><td>Yes, they have their own label customiser</td></tr>
+              <tr><th>Packaging option</th><td>Yes they provide fixed box label and scan features.</td><td>label customiser for packaging</td></tr>
+              <tr><th>Shipping</th><td>Tracking of shipping status and transport docs.</td><td>Shipping tracking is not provided</td></tr>
+              <tr><th>Tracking system</th><td>We can track in each stage, and get reports on the over all progress</td><td>We can track in each stage, and get reports on the over all progress</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 22. PERSONAS + UJM (light) ============ -->
+  <section id="personas" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Personas</h2>
+      <div class="persona-photo-row">
+        <article class="persona-photo-card pp-designer">
+          <div class="pp-head">
+            <img class="pp-avatar" src="Mes-coded/prodcut%20designer%20persona%20image.webp" alt="Sanjay, Production designer" />
+            <div class="pp-identity">
+              <span class="pp-role">Production designer</span>
+              <h4>Sanjay</h4>
+              <p class="pp-meta">Age 28 · Delhi, India</p>
+            </div>
+          </div>
+          <blockquote class="pp-quote">I make sure any designed cabinet can be manufactured easily</blockquote>
+          <div class="pp-block pp-pain">
+            <h5>Pain points</h5>
+            <ul>
+              <li>Units are scattered in design, hard to check 1 by 1</li>
+              <li>Remembering verified units — editing means juggling clicks</li>
+              <li>Handling frequent interior design changes</li>
+            </ul>
+          </div>
+          <div class="pp-block pp-needs">
+            <h5>Needs</h5>
+            <ul>
+              <li>Creating &amp; managing multiple work orders</li>
+              <li>Verify, edit &amp; give sign off to production</li>
+              <li>Easy coordination with manufacturing &amp; interior designer</li>
+            </ul>
+          </div>
+          <div class="pp-tq">
+            <div>
+              <h5>Tools</h5>
+              <div class="pp-chips"><span>Cut List optimiser</span><span>Saw / CNC</span><span>Google sheets</span><span>CAAD</span></div>
+            </div>
+            <div>
+              <h5>Qualities</h5>
+              <div class="pp-chips pp-chips-soft"><span>Detail-oriented</span><span>Tech savvy</span><span>Manufacturing-aware</span><span>Collaborative</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="persona-photo-card pp-manager">
+          <div class="pp-head">
+            <img class="pp-avatar" src="Mes-coded/production%20manager%20persona%20image.webp" alt="Ramesh, Production manager" />
+            <div class="pp-identity">
+              <span class="pp-role">Production manager</span>
+              <h4>Ramesh</h4>
+              <p class="pp-meta">Age 40 · Delhi, India</p>
+            </div>
+          </div>
+          <blockquote class="pp-quote">I focus on quality and timely delivery of modular furniture to my clients</blockquote>
+          <div class="pp-block pp-pain">
+            <h5>Pain points</h5>
+            <ul>
+              <li>No big picture or real-time feedback of factory operations</li>
+              <li>Giving frequent inputs to the operators</li>
+              <li>Errors going unnoticed</li>
+            </ul>
+          </div>
+          <div class="pp-block pp-needs">
+            <h5>Needs</h5>
+            <ul>
+              <li>Track order progress end to end</li>
+              <li>Track each operator&rsquo;s efficiency</li>
+              <li>Managing rejections &amp; breakdowns</li>
+              <li>Plan and schedule work to operators</li>
+            </ul>
+          </div>
+          <div class="pp-tq">
+            <div>
+              <h5>Tools</h5>
+              <div class="pp-chips"><span>Google sheets</span><span>Accounting software</span><span>Project planners</span></div>
+            </div>
+            <div>
+              <h5>Qualities</h5>
+              <div class="pp-chips pp-chips-soft"><span>Leadership</span><span>Business oriented</span><span>Relationship-driven</span><span>Handles volume</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="persona-photo-card pp-floor">
+          <div class="pp-head">
+            <img class="pp-avatar" src="Mes-coded/floor%20worker%20persona%20image.webp" alt="Ajay, Floor worker" />
+            <div class="pp-identity">
+              <span class="pp-role">Floor workers</span>
+              <h4>Ajay</h4>
+              <p class="pp-meta">Age 38 · Delhi, India</p>
+            </div>
+          </div>
+          <blockquote class="pp-quote">I bring life to cabinets — from wooden sheets to furniture in your house</blockquote>
+          <div class="pp-block pp-pain">
+            <h5>Pain points</h5>
+            <ul>
+              <li>Hard to handle paper documents on the factory floor</li>
+              <li>Time and effort to calculate dimensions &amp; cutting order</li>
+              <li>Getting the right information at the right time</li>
+            </ul>
+          </div>
+          <div class="pp-block pp-needs">
+            <h5>Needs</h5>
+            <ul>
+              <li>A guide to <strong>speed up work</strong></li>
+              <li>Aid to <strong>prevent mishandling</strong></li>
+              <li>Streamlined process to <strong>reduce time</strong></li>
+              <li>Get <strong>recognised</strong> for good work</li>
+            </ul>
+          </div>
+          <div class="pp-tq">
+            <div>
+              <h5>Tools</h5>
+              <div class="pp-chips"><span>Factory machines</span><span>Hand tools</span><span>Drawings</span><span>Walkie-talkie</span></div>
+            </div>
+            <div>
+              <h5>Qualities</h5>
+              <div class="pp-chips pp-chips-soft"><span>Quick at tasks</span><span>Hands-on</span><span>Low-tech comfort</span><span>Handles volume</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="sec-h2">User journey</h3>
+      <img src="Mes-coded/understand%20current%20process.webp" alt="Current process flow diagram" loading="lazy" decoding="async" class="ph-chart-lg" />
+      <h3 style="font-size:26px;margin:40px 0 6px;">Detailed user journey map of product designer</h3>
+      <div class="ujm-table-wrap">
+        <table class="ujm-table">
+          <thead><tr><th>UJM of Production Designer</th><th>Getting kitchen design and converting to work order</th><th>looks for modular unit's construction and panel details</th><th>Edits modular units as per requirement</th><th>Confirms and Generate all required files</th></tr></thead>
+          <tbody>
+            <tr><th>Goals</th><td>Collaboration with kitchen designer and getting the right design after finalised</td><td>Carefully go through details of cabinet and find manufacturability based on experience</td><td>Edit cabinets to make manufacturable based on the facility available</td><td>Get the list of manufacturing panel and generate all production file for them</td></tr>
+            <tr><th>Feelings</th><td>Excited 😊</td><td>Curious 🤔 Judging 🧐</td><td>Focused 😐</td><td>Accomplished 😌</td></tr>
+            <tr><th>Pain points</th><td>Currently its done manually in most of the factories in excel sheets &middot; Time consuming &middot; Human errors are possible</td><td>Lot of back and forth from design to excel sheets &middot; very time consuming process</td><td>Manual calculations &middot; Hectic and requires more focus &middot; Needs skilled labour &middot; Need for better organising of files</td><td>User has to juggle between multiple softwares to produce all outputs &middot; Machine outputs require to buy license for huge money</td></tr>
+            <tr><th>Data points required</th><td>Design file, Delivery date, Descriptions, client info, Kitchen designer sign off</td><td>No of unit, position of units and type of units. All details of units and all the panels.</td><td>Design portal to edit the unit, lot of construction parameters.</td><td>Panel listing, Board layouts, Machine files, Cut lists, panel labels.</td></tr>
+            <tr><th>User Needs</th><td>Easily identify design to create work-order &middot; In case of small firms, kitchen designer itself will be production designer, so they will create workorders &middot; Deliver date is important to keep things in track</td><td>Understand about the unit at once glance &middot; Easily able to see full details of an unit &middot; Navigate between different panels easily &middot; Mark validated units for better management</td><td>Full screen and detailed view of cabinets &middot; Some kind of styles or template for frequent edits &middot; Option to save edits now and then.</td><td>Ease of creating all the files &middot; Reliable files &middot; One place to manage them all &middot; Easily transfer files to different station/party</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 24. USER NEED CLASSIFICATIONS (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h3 class="sec-h2">Prioritising user needs</h3>
+      <p style="color:var(--ink-2);">Since it is a huge product, the user needs had to be prioritised for implementation.</p>
+      <img src="Mes-coded/need%20clasifications.webp" alt="User need classification framework" loading="lazy" decoding="async" class="ph-chart-lg" />
+    </div>
+  </section>
+
+  <!-- ============ 25. ITERATION AND PROCESS (light) ============ -->
+  <section id="iteration-solution" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Iteration and solution</h2>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>Aligning with stakeholders</h3>
+          <ul>
+            <li>Combined brainstorming</li>
+            <li>Ideation &amp; Design iteration in my own focus time.</li>
+            <li><strong>Wireframes are frequently tested</strong> with in-house customer success for quick user feedback</li>
+            <li>Frequent design discussion with CTO and PM</li>
+            <li><strong>Card sorting</strong> to figure out Ideal Information architecture</li>
+            <li>Initial version is released in <strong>stage environment for beta user testing</strong></li>
+            <li>Feedbacks were collected and improved upon in next releases</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/25a.webp" alt="Whiteboard brainstorming session photos (4-panel collage)" loading="lazy" decoding="async" class="ph-generic" /></div>
+      </div>
+      <h3 style="font-size:24px;margin:30px 0 14px;">Wireframes and wireflows of iterations</h3>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <img src="Mes-coded/25c.webp" alt="Wireframe grid set 2" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
+        <img src="Mes-coded/25d.webp" alt="Wireframe grid set 3" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
+        <img src="Mes-coded/25f.webp" alt="Wireflow set 5 (Modifying unit enabling workflow)" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 26. INFORMATION ARCHITECTURE OF V2 (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h3 class="sec-h2">Information architecture</h3>
+      <p style="color:var(--ink-2);">Several rounds of card sorting were performed to finalise the information architecture</p>
+      <div style="display:flex;gap:12px;margin:14px 0 20px;">
+        <span class="insight-chip">👤 Users: 8</span>
+        <span class="insight-chip">Closed card sorting</span>
+      </div>
+      <img src="Mes-coded/26.webp" alt="Full IA tree: Home page &gt; Nav bar / All work orders / Tracking (+ Combined board optimiser, Inventory, Scheduling) | All Modular Units / Cutlist / Board optimiser / CNC (machining) / Packaging / Shipment / Work order progress (+ Assisted sawing, Assembly)" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
+    </div>
+  </section>
+
+  <!-- ============ 27. VISUAL DESIGN + PROTOTYPING (light) ============ -->
+  <section id="visual-design" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Visual design</h2>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>Visual Design</h3>
+          <ul>
+            <li>Existing design system is catered especially to Design portal, need for new visuals for this MES app.</li>
+            <li>MES users <strong>need clean and simple UI</strong></li>
+            <li>Rather than building a DS from scratch, used the <strong>Material Tailwind Design System.</strong></li>
+            <li>It has minimal &amp; clean interface, legible, bigger &amp; less distraction.</li>
+            <li>Free &amp; allows customisation</li>
+            <li>Ready to deploy in design &amp; development faster</li>
+            <li>Some minor tweaks were done in design system.</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/27a.webp" alt="Material Tailwind Design System showcase: Color Palette, Figma Variants, Typography, Built for Desktop and Mobile, Auto Layout" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" /></div>
+      </div>
+      <div class="research-card" style="margin-top:26px;">
+        <div class="research-text">
+          <h3>Prototyping</h3>
+          <ul>
+            <li>Prototypes were used to test the design with the Customer success reps and users</li>
+            <li>Post which initial version was released in <strong>stage environment for beta user testing</strong></li>
+            <li>Feedbacks were collected to improve it through iterative process</li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/27b.webp" alt="Figma prototype flow-connector map: Home 2, All work order, Tracking, Modular unit 2, Mobile flow starts, Mobile screens" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 28. USABILITY EVALUATION (light) ============ -->
+  <section id="usability-evaluation" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Usability Evaluation</h2>
+      <div class="research-card">
+        <div class="research-text">
+          <h3>Task success rate and path analysis:</h3>
+          <ul>
+            <li>All events were logged in Mix panel</li>
+            <li>Checking the task flow and drop of rates using Mix panel user flow analysis feature</li>
+            <li>Some defined task flow funnels are:
+              <ul><li>Work order creation flow</li><li>Publish flow</li><li>bulk edit SKU structure</li><li>Downloading CNC and board layout</li></ul>
+            </li>
+          </ul>
+        </div>
+        <div class="research-media"><img src="Mes-coded/28a.webp" alt="Mixpanel user-flow Sankey diagram: Work Order Opened, Modular Units Tab, Cutlist/Board layout/Panel view events" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" /></div>
+      </div>
+      <h3 style="font-size:24px;margin:30px 0 14px;">Think aloud &amp; Retrospective testing</h3>
+      <div class="grid-2">
+        <div>
+          <p style="color:var(--ink-2);">Users were given a set of task and observed their workflow, Frequent probing was done to understand users feedbacks.</p>
+          <p style="font-weight:700;margin:14px 0 8px;">Testing performed with:</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span class="insight-chip" style="width:fit-content;">5 👤 Customer success executives</span>
+            <span class="insight-chip" style="width:fit-content;">5 👤 Users in factory</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:700;margin-bottom:8px;">Given JTBD:</p>
+          <ul style="padding-left:18px;display:grid;gap:6px;font-size:15px;color:var(--ink-2);">
+            <li>A. Create work order from design file.</li>
+            <li>B. Make 5 units of a design ready for production (includes, editing, verifying etc)</li>
+            <li>C. Production manager checking work order progress in detail</li>
+            <li>D. Saw operator using assisted sawing to cut a boards</li>
+          </ul>
+        </div>
+      </div>
+      <h3 style="font-size:24px;margin:30px 0 14px;">Some changes done based on user feedbacks</h3>
+      <div class="flag-card" style="background:var(--light-card);border:1px solid var(--light-border);margin-bottom:20px;">
+        <p style="font-weight:700;margin-bottom:14px;">Flow: A. Create work order from design</p>
+        <div class="grid-2">
+          <div class="flag-card pain-flag"><h4>User Feedback:</h4><p>Entering design link was hard for users, requires lot of communication with interior designer</p><img src="Mes-coded/28b.webp" alt="MES case study research photo 28b" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div>
+          <div class="flag-card success-flag"><h4>Changes made:</h4><p>a new flow where interior designer publish the design which is available in the selector for product designer</p><img src="Mes-coded/28c.webp" alt="MES case study research photo 28c" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 29. FLOW B FEEDBACK (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <div class="flag-card" style="background:var(--light-card);border:1px solid var(--light-border);">
+        <p style="font-weight:700;margin-bottom:14px;">Flow: B. Make 5 units of a design ready for production, (Editing / Delete / Rest / verify units)</p>
+        <div class="grid-2"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>In first iteration users were able to see only 3d or panel info, Not able to relate the units and panel information without 3D.</p><img src="Mes-coded/29a.webp" alt="MES case study research photo 29a" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>Changed the layout to access all required information upfront, and have access to 3d view port all the time, user can access 2d panel drawing and 3d at any time, with 3d view as default option. There was a tech limitation which restricted showing panel 2d view &amp; 3d viewport at a same time, so it added in tabs.</p><img src="Mes-coded/29c.webp" alt="MES case study research photo 29c" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+        <div class="grid-2" style="margin-top:20px;"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>Home menu and work order menu looks similar and confusing, and user felt work order contents are cramped.</p><img src="Mes-coded/29d.webp" alt="MES case study research photo 29d" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>Work order layout was changed similar to design app, with tabs, providing more space for the content.</p><img src="Mes-coded/29e.webp" alt="MES case study research photo 29e" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+        <div class="grid-2" style="margin-top:20px;"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>All personas were accessing work orders at the same level — there was no access control, so unnecessary options were shown.</p><img src="Mes-coded/29f.webp" alt="MES case study research photo 29f" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>We made persona specific flows using role restrictions. with which user sees only his required contents in UI</p><img src="Mes-coded/29g.webp" alt="MES case study research photo 29g" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 30. FLOW C + D FEEDBACK (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <div class="flag-card" style="background:var(--light-card);border:1px solid var(--light-border);margin-bottom:20px;">
+        <p style="font-weight:700;margin-bottom:14px;">Flow: C. Production manager checking work order progress in detail</p>
+        <div class="grid-2"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>After identifying the rejected panel user has to see the details of the panel to take action, which was not provided.</p><img src="Mes-coded/30a.webp" alt="MES case study research photo 30a" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>Opening the full panel details in the same order progress page, so production manager can easily take action.</p><img src="Mes-coded/30b.webp" alt="MES case study research photo 30b" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+      </div>
+      <div class="flag-card" style="background:var(--light-card);border:1px solid var(--light-border);">
+        <p style="font-weight:700;margin-bottom:14px;">Flow: D. Use assisted sawing to cut a boards</p>
+        <div class="grid-2"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>The size of sheets displayed was not enough, sometimes user might want to see them in details. Also progress of cuts made and sheet preview was needed for better understanding</p><img src="Mes-coded/30c.webp" alt="MES case study research photo 30c" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>Allocated more space for the sheets in new interface and also provided zoom and pan function in the sheet canvas, Sheet progress and previews were added.</p><img src="Mes-coded/30d.webp" alt="MES case study research photo 30d" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+        <div class="grid-2" style="margin-top:20px;"><div class="flag-card pain-flag"><h4>User Feedback:</h4><p>In assisted sawing, some operators are used to their own flow — they want to select the panel they're cutting rather than have the system dictate it strictly.</p><img src="Mes-coded/30e.webp" alt="MES case study research photo 30e" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div><div class="flag-card success-flag"><h4>Changes made:</h4><p>A semi-assisted sawing mode was built, where the user can select a panel they want to cut, while the system also suggests which one to cut next if the user doesn't give any input. The progress is also shown in the interface.</p><img src="Mes-coded/30f.webp" alt="MES case study research photo 30f" loading="lazy" decoding="async" class="ph-generic" style="margin-top:14px;" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 31. SUS + NPS (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <div class="flow-head">
+        <h3 class="sec-h2" style="margin-bottom:0;">SUS evaluation</h3>
+        <span class="insight-chip">10 👤</span>
+      </div>
+      <ul style="padding-left:20px;margin:16px 0;font-size:15.5px;color:var(--ink-2);display:grid;gap:6px;">
+        <li>In-person survey conducted with each user at different stations of the factory</li>
+        <li>3 product designer 7 Operators</li>
+      </ul>
+      <div class="stat-card" style="background:var(--mint);width:fit-content;margin-bottom:20px;"><span style="font-weight:700;">Avg Sus score: <strong style="color:var(--green);font-size:22px;">75.25</strong></span></div>
+      <img src="Mes-coded/31a.webp" alt="SUS survey response table: 10 respondents x 10 questions, Raw SUS Score, Sus Final score" loading="lazy" decoding="async" class="ph-chart" style="margin-top:0;" />
+
+      <h3 style="font-size:26px;margin:36px 0 18px;">Net Promoter Score</h3>
+      <div class="grid-2">
+        <div class="uflow-card">
+          <h3>For Production Designers</h3>
+          <div class="nps-detail-row"><span class="k">👤</span><span class="v">60</span><span class="k">⏱ When:</span><span class="v">After Org's 1st renewal</span></div>
+          <p class="nps-quote">&ldquo;How likely are you to recommend MES product to a friend or colleague?&rdquo;</p>
+          <div class="nps-detail-row"><span class="k">🔄 Method:</span><span class="v" style="color:var(--ink);">Survey form</span></div>
+          <div class="nps-detail-row"><span class="k">🎯 Task:</span><span class="v" style="color:var(--ink);">Creation to publishing work order</span></div>
+          <div class="nps-breakdown"><span class="promoters">Promoters: 42 👤</span><span class="passives">Passives 13 👤</span><span class="detractors">Detractors: 5 👤</span></div>
+          <div class="nps-block" style="background:var(--light-card);"><div class="nps-head"><span class="nps-who" style="color:var(--ink);">NPS Score</span><span class="nps-score">61</span></div><div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:65%;"></div></div><div class="nps-scale" style="color:var(--ink-2);"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div></div>
+        </div>
+        <div class="uflow-card">
+          <h3>For Operators &amp; supervisors</h3>
+          <div class="nps-detail-row"><span class="k">👤</span><span class="v">55</span><span class="k">⏱ When:</span><span class="v">After Org's 1st renewal</span></div>
+          <p class="nps-quote">&ldquo;How likely are you to recommend MES tracking, pack-n-ship and outputs to a friend or colleague?&rdquo;</p>
+          <div class="nps-detail-row"><span class="k">🔄 Method:</span><span class="v" style="color:var(--ink);">Via Renewal feedback calls</span></div>
+          <div class="nps-detail-row"><span class="k">🎯 Task:</span><span class="v" style="color:var(--ink);">For sawing / tracking / packaging &amp; ship. etc.</span></div>
+          <div class="nps-breakdown"><span class="promoters">Promoters: 39 👤</span><span class="passives">Passives 12 👤</span><span class="detractors">Detractors: 4 👤</span></div>
+          <div class="nps-block" style="background:var(--light-card);"><div class="nps-head"><span class="nps-who" style="color:var(--ink);">NPS Score</span><span class="nps-score">58</span></div><div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:63%;"></div></div><div class="nps-scale" style="color:var(--ink-2);"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 32. COLLABORATION (light) ============ -->
+  <section id="collaboration" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Collaboration</h2>
+      <h3 style="font-size:22px;margin-bottom:14px;">Stakeholder Collaboration</h3>
+      <img src="Mes-coded/32a.webp" alt="Collaboration flow diagram: Presenting user needs (CTO/PM/ME-Designer/EM), Research + Actionables, Designing, Iterations &amp; user testing, Developer sign off, Dev sprint planning, Production via QA team/Design QA, Pre-prod stage; Design Reviews and Daily scrum meets side boxes" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
+      <h3 style="font-size:22px;margin:30px 0 14px;">Developer sign off</h3>
+      <div class="grid-2" style="grid-template-columns:repeat(3,1fr);">
+        <div><p style="font-weight:700;margin-bottom:10px;">Details annotations &amp; walkthrough of designs</p><img src="Mes-coded/32b.webp" alt="MES case study research photo 32b" loading="lazy" decoding="async" class="ph-chart" /></div>
+        <div><p style="font-weight:700;margin-bottom:10px;">Spacing guides</p><img src="Mes-coded/32c.webp" alt="MES case study research photo 32c" loading="lazy" decoding="async" class="ph-chart" /></div>
+        <div><p style="font-weight:700;margin-bottom:10px;">Managing files</p><img src="Mes-coded/32d.webp" alt="MES case study research photo 32d" loading="lazy" decoding="async" class="ph-chart" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 33. CHALLENGE FACED (light) ============ -->
+  <section id="challenge-faced" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Challenge Faced</h2>
+      <div class="grid-2" style="grid-template-columns:0.8fr 1.2fr;">
+        <div class="flag-card pain-flag">
+          <h4>Conflicts with Developer</h4>
+          <ul><li>After a design walkthrough and <strong>design freeze</strong>.</li><li>One of the developers had a problem while implementing the design.</li><li>He asked me to remove the 2D or 3D view port.</li><li>He mentioned it would not be feasible for a few months.</li></ul>
+        </div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:10px;">Proposed Design</h3>
+          <p style="color:var(--ink-2);margin-bottom:14px;">Users can see the cabinet in detail, along with all the required panel info at once — clear layout and sectioning for cabinet level and panel level.</p>
+          <img src="Mes-coded/33a.webp" alt="Infurnia MES Portal proposed layout: Modular Unit list, Panel properties, 3D view" loading="lazy" decoding="async" class="ph-chart" style="margin-top:0;" />
+        </div>
+      </div>
+      <h3 style="font-size:22px;margin:30px 0 14px;">How I approached this challenge</h3>
+      <div class="grid-2 why-grid">
+        <div class="why-card"><h3><span class="emoji-lead">🤔</span>1. Understanding root problem</h3><p>It needed code restructure in multiple places, Hence only one type of data in canvas can be fetched.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">💬</span>2. Explaining rationale to get on the same page</h3><p>I showed him the research insights, indicating 3d view port and 2d panel drawing is important.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">💡</span>3. Finding alternate implementation method</h3><p>Meeting with engineering manager, brainstormed a solution, of having single canvas but switching context based on input</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">🍭</span>4. Knowledge Update, for future changes.</h3><p>Updated all the existing design iteration to have one canvas per page. Updated it in the design guidelines.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">✏️</span>5. Quick Iterations and validating with user</h3><p>Iterated few layouts &amp; made detailed prototype to test them with the user</p></div>
+        <div class="why-card"><h3><span class="emoji-lead">🔄</span>6. Getting other in the loop</h3><p>Informed PM &amp; QA team regarding the changes, and delays in release cycle if any.</p></div>
+      </div>
+      <div class="flag-card success-flag" style="margin-top:26px;display:grid;grid-template-columns:0.8fr 1.2fr;gap:30px;align-items:center;">
+        <div><h4>Final redesign:</h4><ul><li>Redesigned the layout to have one canvas at once.</li><li>along with that preserving the context of 2D and 3D based on old state.</li><li>30% Bigger space for 3d and 2d ports.</li></ul></div>
+        <img src="Mes-coded/33b.webp" alt="Final redesigned Infurnia MES Portal: one canvas, bigger 2D/3D viewport" loading="lazy" decoding="async" class="ph-chart" style="margin-top:0;background:rgba(255,255,255,0.5);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 34. STRIP "IMPACT & RESULTS" (dark) ============ -->
+  <section id="impact-results" class="sec dark strip">
+    <div class="wrap"><h2 class="strip-title">Impact &amp; results</h2></div>
+  </section>
+
+  <section id="success-metrics" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Defining Product Success Metrics</h2>
+      <div class="grid-2">
+        <div class="metric-card"><img class="metric-icon" src="Mes-coded/workorder%20create.webp" alt="" /><h3>No of work orders created from Design</h3><p>Why: Proportional to adoption of the MES system</p></div>
+        <div class="metric-card"><img class="metric-icon" src="Mes-coded/cabinet.webp" alt="" /><h3>No of panels / units added to production</h3><p>Why: Proportional to revenue. We are charging per panel</p></div>
+        <div class="metric-card"><img class="metric-icon" src="Mes-coded/download%20output.webp" alt="" /><h3>No of outputs downloaded</h3><p>Why: Indicates usage of the system</p></div>
+        <div class="metric-card"><img class="metric-icon" src="Mes-coded/panel%20tracked.webp" alt="" /><h3>No of panels tracks / scanned</h3><p>Why: Indicates that operators are working on the panels</p></div>
+      </div>
+      <p class="metric-note">Data events are logged in <strong>Mix panel</strong> for tracking</p>
+    </div>
+  </section>
+
+  <!-- ============ 35. ADOPTION AND RETENTION METRICS (light) ============ -->
+  <section id="adoption-retention" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Adoption and Retention metrics <span class="h2-light" style="color:var(--ink-2);">in initial 6 months</span></h2>
+      <div class="grid-2 impact-grid">
+        <div class="adopt-block"><h3>Increase in &ldquo;panels added&rdquo; <span class="h3-sub">in past 6 months</span></h3><p><strong>476% increased from start</strong> From 42K to 240K</p><img src="Mes-coded/35a.webp" alt="MES case study metrics chart 35a" loading="lazy" decoding="async" class="ph-chart" /></div>
+        <div class="adopt-block"><h3>Ratio of &ldquo;panels added&rdquo; to total no of users.</h3><p><strong>15% increased from start</strong> 3.54 to 20.33</p><img src="Mes-coded/35b.webp" alt="MES case study metrics chart 35b" loading="lazy" decoding="async" class="ph-chart" /></div>
+        <div class="adopt-block"><h3>Data of All Output downloaded</h3><p>(Board download clicked and CNC files downloaded)</p><img src="Mes-coded/35c.webp" alt="MES case study metrics chart 35c" loading="lazy" decoding="async" class="ph-chart" /></div>
+        <div class="adopt-block"><h3>Usage of tracking feature</h3><p>(panel cutting, CNC, Edge band packaging)</p><img src="Mes-coded/35d.webp" alt="MES case study metrics chart 35d" loading="lazy" decoding="async" class="ph-chart" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 36. IMPACT ON BUSINESS (light) ============ -->
+  <section id="business-impact" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Impact on business! <span class="h2-light" style="color:var(--ink-2);">(Revenue metrics in initial 6 months)</span></h2>
+      <p style="color:var(--ink-2);">Comparing data from 1st week to 6 Months from the release date.<br/>Revenue shown below is <strong>only for processing fee of the panels</strong>, MES addon fee is not included.</p>
+      <img src="Mes-coded/36a.webp" alt="Revenue Indicators chart, Jul 22 to Dec 30 2024: Revenue in Rs, Panel added for Manufacturing, Unit Enabled, Work Order Created" loading="lazy" decoding="async" class="ph-chart-lg" />
+      <p style="font-size:12.5px;color:#8f8f8f;display:flex;justify-content:space-between;">Source: Data from Infurnia Mix panel.com <span>*Revenue shown only for process fee of panels</span></p>
+      <div class="grid-2 impact-grid">
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">💰 Revenue in Rs:</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">2250.7%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">📦 Panels added:</div><div class="stat-val">40.6K to <strong>954.4K</strong></div><div class="stat-pct">2250.7%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">📄 Workorder created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">833.18%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">🗄 Units enabled</div><div class="stat-val">5.9K to <strong>152K</strong></div><div class="stat-pct">2455.5%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 37. REFLECTIONS & LEARNINGS (dark) ============ -->
+  <section id="reflections" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Reflections &amp; learnings</h2>
+      <div class="grid-2 reflect-grid">
+        <div class="reflect-card"><h3>🎯 Pilot study helped refine research direction</h3><p>Conducting a pilot study before actual user interviews helped validate research assumptions and ensured the right questions were asked, leading to more effective insights.</p></div>
+        <div class="reflect-card"><h3>😓 Finding edge cases early minimises redesigns</h3><p>Addressing all possible user scenarios upfront before wireframing reduced the need for frequent iterations, saving both time and effort in later stages.</p></div>
+        <div class="reflect-card"><h3>❗ Readymade design systems aren't always a perfect fit</h3><p>While leveraging existing design systems speeds up the process, some customisation was necessary to correct contrast ratio in components and meet specific user and business needs.</p></div>
+        <div class="reflect-card"><h3>🚀 Knowing Implementation feasibility accelerates execution</h3><p>A strong understanding of technical feasibility is must for better collaboration with developers, leading to faster and more efficient product delivery.</p></div>
+        <div class="reflect-card wide"><h3>&lt;/&gt; Versioning designs for smooth implementation</h3><p>Since the designs were implemented in phases, maintaining clear versions of design files helped developers track changes &amp; avoid misalignment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 38. THANK YOU (light) ============ -->
+  <section id="thanks" class="sec light thanks">
+    <div class="wrap thanks-row">
+      <h2 class="thanks-title">Thankyou</h2>
+      <div class="project-nav">
+        <a href="aihub-security-coded.html" class="project-nav-card project-nav-prev">
+          <img src="images/banners/SSO banner .webp" alt="AI Hub Enterprise Security project" />
+          <div class="project-nav-meta">
+            <span class="project-nav-label">Previous project</span>
+            <span class="project-nav-title">Enterprise Authentication &amp; Identity for AI Hub</span>
+          </div>
+        </a>
+        <a href="ftue-coded.html" class="project-nav-card project-nav-next">
+          <img src="images/banners/ftue banner.webp" alt="Nutanix Security Central" />
+          <div class="project-nav-meta">
+            <span class="project-nav-label">Next project</span>
+            <span class="project-nav-title">First-Time User Experience in Security Central</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <nav class="footer-links">
+        <a href="index.html#intro">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+      <span>Copyright © 2026 Lokeshdesign®</span>
+    </div>
+  </footer>
+
+  <script>
+    (function initMesSideNav() {
+      var links = Array.prototype.slice.call(document.querySelectorAll(".mes-side-nav-link"));
+      var sections = links.map(function (link) {
+        return document.getElementById(link.dataset.target);
+      });
+      var ticking = false;
+
+      function updateActive() {
+        var refY = window.innerHeight * 0.35;
+        var activeIndex = -1;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i] && sections[i].getBoundingClientRect().top <= refY) activeIndex = i;
+        }
+        links.forEach(function (link, i) {
+          link.classList.toggle("active", i === activeIndex);
+        });
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(updateActive);
+          ticking = true;
+        }
+      }
+
+      updateActive();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", updateActive);
+    })();
+  </script>
+  <script type="module">
+    import { initBottomConfetti } from './confetti.js';
+    initBottomConfetti();
+  </script>
+
+  <script type="module">
+    import { initPixelCursor } from './pixel-cursor.js';
+    initPixelCursor({
+      trailColor: '#FFFFFF',
+      pixelSize: 10,
+    });
+  </script>
+</body>
+</html>

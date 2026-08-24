@@ -1,0 +1,1327 @@
+{
+  "nodes": [
+    {
+      "id": "claude_md",
+      "label": "CLAUDE.md — Project Guide",
+      "file_type": "document",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html",
+      "label": "index.html — Landing Page",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_html",
+      "label": "lumigo.html — Image-based Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_html",
+      "label": "lumigo-coded.html — Coded Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_html",
+      "label": "mes.html — Image-based Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_html",
+      "label": "mes-coded.html — Coded Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_html",
+      "label": "ftue.html — Image-based Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_html",
+      "label": "ftue-coded.html — Coded Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "infurnia_html",
+      "label": "infurnia.html — Image-based Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/infurnia.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "motion_restriction_vr_html",
+      "label": "Motion-restriction-VR.html — Image-based Case Study",
+      "file_type": "code",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/Motion-restriction-VR.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_lokesh_kumar",
+      "label": "Lokesh Kumar (\"Loky\")",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_instabase",
+      "label": "Instabase",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_infurnia_company",
+      "label": "Infurnia (company/product)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_nutanix",
+      "label": "Nutanix",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_lti",
+      "label": "LTI",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_idc_iit_bombay",
+      "label": "IDC, IIT Bombay (M.Des)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_ieee_vr_2021_publication",
+      "label": "IEEE Virtual Reality 2021, Lisbon (publication venue)",
+      "file_type": "paper",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html_interactive_surface_2022_publication",
+      "label": "Interactive Space & Surface 2022, Poland (publication venue)",
+      "file_type": "paper",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_flow_security_central",
+      "label": "Flow Security Central (product)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_value_analysis_framework",
+      "label": "Value Analysis Framework (ease/effort/frequency ranking of features)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_ideal_ftue_framework",
+      "label": "Ideal FTUE Framework (11-point evaluation checklist)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_persona_sanjay",
+      "label": "Sanjay — IT Security Admin persona",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_persona_alex",
+      "label": "Alex — VI/IT Security Admin persona",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ftue_coded_progressive_disclosure",
+      "label": "Progressive Disclosure principle (FTUE)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_lumi_go_game",
+      "label": "Lumi Go (game)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_design_thinking_process",
+      "label": "Design Thinking process (Empathize/Define/Ideate/Prototype/Test)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_flow_state_theory",
+      "label": "Csikszentmihalyi's Flow State theory",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_usability_evaluation_study",
+      "label": "Lumi Go Usability Evaluation Study (IDC, IIT Bombay)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_iteration_process",
+      "label": "Iterative UI redesign process (3 iterations with user testing)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lumigo_coded_anirudha_joshi",
+      "label": "Prof. Anirudha Joshi",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_mes_product",
+      "label": "Manufacturing Execution System (MES) product",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_persona_sanjay_production_designer",
+      "label": "Sanjay — Production Designer persona",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_persona_ramesh_production_manager",
+      "label": "Ramesh — Production Manager persona",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_persona_ajay_operator",
+      "label": "Ajay — Board Cutting Operator persona",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_competitor_naadi",
+      "label": "Naadi (competitor)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_competitor_adris",
+      "label": "Adris (competitor)",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_material_tailwind_design_system",
+      "label": "Material Tailwind Design System",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_wcag_2_1_aa",
+      "label": "WCAG 2.1 AA standard",
+      "file_type": "concept",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_need_classification_stair",
+      "label": "User Need Classification stair (Core/Basic/Expected/Augmented/Transformational)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_nps_evaluation",
+      "label": "Net Promoter Score evaluation method",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_sus_evaluation",
+      "label": "System Usability Scale (SUS) evaluation",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_progressive_disclosure",
+      "label": "Progressive Disclosure principle (MES)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mes_coded_iteration_process",
+      "label": "Iterative wireframe/prototype process with user feedback (MES)",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claude_md_image_based_pattern",
+      "label": "Image-based case study pattern",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claude_md_coded_rebuild_pattern",
+      "label": "Coded rebuild pattern",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claude_md_shared_css_primitives",
+      "label": "Shared CSS primitives via case-study.css",
+      "file_type": "rationale",
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "index_html",
+      "target": "mes_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html",
+      "target": "ftue_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html",
+      "target": "infurnia_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html",
+      "target": "lumigo_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html",
+      "target": "motion_restriction_vr_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "infurnia_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/infurnia.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "motion_restriction_vr_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/Motion-restriction-VR.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "mes_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "mes_coded_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "ftue_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "ftue_coded_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "lumigo_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "lumigo_coded_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "infurnia_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md",
+      "target": "motion_restriction_vr_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_html",
+      "target": "ftue_coded_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_html",
+      "target": "lumigo_coded_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_html",
+      "target": "mes_coded_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_image_based_pattern",
+      "target": "lumigo_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_image_based_pattern",
+      "target": "mes_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_image_based_pattern",
+      "target": "ftue_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_image_based_pattern",
+      "target": "infurnia_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_image_based_pattern",
+      "target": "motion_restriction_vr_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_coded_rebuild_pattern",
+      "target": "ftue_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_coded_rebuild_pattern",
+      "target": "lumigo_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_coded_rebuild_pattern",
+      "target": "mes_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_shared_css_primitives",
+      "target": "ftue_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_shared_css_primitives",
+      "target": "lumigo_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claude_md_shared_css_primitives",
+      "target": "mes_coded_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_flow_security_central",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_value_analysis_framework",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_ideal_ftue_framework",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_persona_sanjay",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_persona_alex",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_html",
+      "target": "ftue_coded_progressive_disclosure",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_persona_sanjay",
+      "target": "ftue_coded_persona_alex",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "lumigo_coded_lumi_go_game",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "lumigo_coded_design_thinking_process",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "lumigo_coded_flow_state_theory",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "lumigo_coded_usability_evaluation_study",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_html",
+      "target": "lumigo_coded_iteration_process",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_usability_evaluation_study",
+      "target": "lumigo_coded_anirudha_joshi",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_lumi_go_game",
+      "target": "lumigo_coded_flow_state_theory",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_mes_product",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_persona_sanjay_production_designer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_persona_ramesh_production_manager",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_persona_ajay_operator",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_competitor_naadi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_competitor_adris",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_mes_product",
+      "target": "mes_coded_material_tailwind_design_system",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_mes_product",
+      "target": "mes_coded_wcag_2_1_aa",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_need_classification_stair",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_nps_evaluation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_sus_evaluation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_progressive_disclosure",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_html",
+      "target": "mes_coded_iteration_process",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mes_coded_mes_product",
+      "target": "index_html_infurnia_company",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_lokesh_kumar",
+      "target": "index_html_instabase",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_lokesh_kumar",
+      "target": "index_html_infurnia_company",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_lokesh_kumar",
+      "target": "index_html_nutanix",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_lokesh_kumar",
+      "target": "index_html_lti",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_lokesh_kumar",
+      "target": "index_html_idc_iit_bombay",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_infurnia_company",
+      "target": "infurnia_html",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_html_nutanix",
+      "target": "ftue_coded_flow_security_central",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "motion_restriction_vr_html",
+      "target": "index_html_ieee_vr_2021_publication",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "motion_restriction_vr_html",
+      "target": "index_html_interactive_surface_2022_publication",
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_value_analysis_framework",
+      "target": "mes_coded_need_classification_stair",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_iteration_process",
+      "target": "mes_coded_iteration_process",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ftue_coded_progressive_disclosure",
+      "target": "mes_coded_progressive_disclosure",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/ftue-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lumigo_coded_usability_evaluation_study",
+      "target": "mes_coded_sus_evaluation",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/lumigo-coded.html",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "image_based_case_study_pages",
+      "label": "Image-based scrollytelling case study pages",
+      "nodes": [
+        "lumigo_html",
+        "mes_html",
+        "ftue_html",
+        "infurnia_html",
+        "motion_restriction_vr_html"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md"
+    },
+    {
+      "id": "coded_rebuild_case_study_pages",
+      "label": "Coded rebuild case study pages sharing case-study.css architecture",
+      "nodes": [
+        "ftue_coded_html",
+        "lumigo_coded_html",
+        "mes_coded_html"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/CLAUDE.md"
+    },
+    {
+      "id": "mes_persona_set",
+      "label": "MES case study persona group (production designer, manager, operator)",
+      "nodes": [
+        "mes_coded_persona_sanjay_production_designer",
+        "mes_coded_persona_ramesh_production_manager",
+        "mes_coded_persona_ajay_operator"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/lokeshkumar/Documents/mine/protfolio/mes-coded.html"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 180319
+}
