@@ -541,6 +541,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
+    <div class="footer-flowers" id="footerFlowers" aria-hidden="true"></div>
     <div class="footer-inner">
       <nav class="footer-links">
         <a href="#intro">Home</a>
@@ -596,16 +597,17 @@
   </script>
   <script type="module">
     import { initFlowerField } from './flower-field.js';
-    const field = document.getElementById('contactFlowers');
-    if (field && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      initFlowerField(field, {
-        count: 28,
-        maxAngle: 22,
-        radius: 220,
-        colors: ['#c9a7c4', '#a9c3b8', '#d9c08f', '#a6b7d4', '#c7a8ad'],
-        centerColor: '#ddc98f',
-      });
-    }
+    const options = {
+      count: 24,
+      maxAngle: 22,
+      radius: 220,
+      colors: ['#a8709f', '#5e9482', '#d99a38', '#4b75a6', '#ba6474'],
+      centerColor: '#ffd76a',
+    };
+    const contactField = document.getElementById('contactFlowers');
+    if (contactField) initFlowerField(contactField, options);
+    const footerField = document.getElementById('footerFlowers');
+    if (footerField) initFlowerField(footerField, options);
   </script>
   <script>
     document.querySelectorAll('.contact-copy-btn').forEach((btn) => {

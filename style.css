@@ -1060,16 +1060,17 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   margin: 0;
 }
-.contact-flowers {
+.contact-flowers,
+.footer-flowers {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 140px;
+  height: 120px;
   overflow: hidden;
   pointer-events: auto;
-  opacity: 0.55;
-  z-index: 0;
+  opacity: 0.85;
+  z-index: 1;
 }
 .contact-inner {
   max-width: calc(var(--content-max) + 2 * var(--page-gutter));
@@ -1229,6 +1230,8 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 .footer-inner {
+  position: relative;
+  z-index: 2;
   max-width: calc(var(--content-max) + 2 * var(--page-gutter));
   margin: 0 auto;
   padding: 0 var(--page-gutter);
