@@ -73,7 +73,7 @@
       <p class="cover-card-sub" style="margin-bottom:20px;">Unlocked enterprise deals that named security as a blocker</p>
       <div class="cover-cards" style="grid-template-columns:repeat(3, 1fr);">
         <div class="cover-card">
-          <div class="stat-card"><div class="stat-label">💰 ARR unblocked:</div><div class="stat-val"> xx M$ to <strong> XXX M$ </strong></div><div class="stat-pct">+40% aprox</div></div>
+          <div class="stat-card"><div class="stat-label">💰 ARR unblocked:</div><div class="stat-val"> xx M$ to <strong> XXX M$ </strong></div><div class="stat-pct">+40% approx.</div></div>
         </div>
         <div class="cover-card">
           <div class="stat-card"><div class="stat-label">🏢 Enterprise orgs won:</div><div class="stat-val"> 0 to <strong> 9 </strong></div><div class="stat-pct">New logos</div></div>
@@ -147,7 +147,7 @@
       <div class="brief-problem">
         <div class="brief-text">  
         <h2 class="sec-h2">Problem statement</h2>
-        <p>An enterprise IT admin evaluating AI Hub is trying to pass their security review, but encounters an app that still authenticates like a consumer product — email + password, Google sign-in, groups managed manuallyone click at a time, and API tokens that never expire and can't be scoped — which makes them feel like the product isn't ready to trust with their organization's data.</p>
+        <p>An enterprise IT admin evaluating AI Hub is trying to pass their security review, but encounters an app that still authenticates like a consumer product — email + password, Google sign-in, groups managed manually, one click at a time, and API tokens that never expire and can't be scoped — which makes them feel like the product isn't ready to trust with their organization's data.</p>
         </div>
       </div>
     </div>
@@ -775,23 +775,14 @@
           </div>
 </div>
 
-        <!--<div class="dec-card">
-          <h4>3. Mapping membership, not roles — and saying so</h4>
-          <div class="dec-quad q3">
-            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Admins reasonably expect that if groups come from the IdP, roles do too. They don't: group role (member vs. group manager) is still assigned inside AI Hub.</div>
-            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Make the boundary explicit in the UI and docs — membership is mapped, roles are not.</div>
-            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>An unstated boundary in an access-control feature is a security incident with a delay on it. Naming it also gave presales a crisp, honest answer to a question they were getting repeatedly.</div>
-          </div>
-</div>-->
-
         <div class="dec-card">
-          <h4>3. Handling Existing users groups in org while transistioning to new RBAC</h4>
+          <h4>3. Handling existing user groups in an org while transitioning to new RBAC</h4>
           <div class="dec-quad q3">
-            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to the existing members in HI Hub who are alreadying part of a group in AIHUB, and what happend new SAML or OIDC group mapping is added.</div>
-            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Preserve the AIhub gorup mapping, and show the memberhip source clearly. Let adming handle removal of AI-Hub group mapping if they want to remove AI hub managed group membership.</div>
-            <div class="dec-note why"><span class="dec-note-label">💡 Why</span> Old group mapping still holds value for existing users. in the orgs which are transitining to new RBAC, it allows the admin to keep the existing group membership for existing users.</div>
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to existing members in AI Hub who are already part of a group in AI Hub, and what happens when a new SAML or OIDC group mapping is added?</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Preserve existing AI Hub group mappings, and show the membership source clearly. Let admins handle removal of AI Hub-managed group membership if they wish.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Old group mappings still hold value for existing users. In orgs transitioning to new RBAC, this allows admins to preserve existing group memberships for current users.</div>
           </div>
-</div>
+        </div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:20px;">
@@ -1812,7 +1803,7 @@
   <!-- ============ THANKS ============ -->
   <section id="thanks" class="sec light thanks">
     <div class="wrap thanks-row">
-      <h2 class="thanks-title">Thankyou</h2>
+      <h2 class="thanks-title">Thank You</h2>
       <div class="project-nav">
         <a href="mes-coded.html" class="project-nav-card project-nav-next">
           <img src="images/banners/MES banner.webp" alt="MES Manufacturing project" />
