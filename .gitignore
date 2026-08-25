@@ -1,0 +1,30 @@
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor & AI tool directories/files
+.vscode/
+.idea/
+.claude/
+.rtk/
+*.log
+
+# Build & Tool Cache directories
+.vite/
+graphify-out/
+node_modules/
+dist/
+build/
+out/
+.next/
+.cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,15 @@
+---
+description: Lightweight JavaScript execution rules for portfolio interactivity
+globs: *.js, js/**/*
+alwaysApply: false
+---
+
+# JavaScript Standards
+- Write modern, clean vanilla JS (ES6+).
+- Always use `const` and `let`; never use `var`.
+- Encapsulate scripts using IIFEs or standard ES modules to avoid global scope pollution.
+- Listen for the `DOMContentLoaded` event before executing DOM operations.
+
+# Token-Saving Instructions
+- Do not write massive external animation library code (like GreenSock/Three.js) unless explicitly requested; rely on CSS transitions first.
+- Provide single-responsibility functions. If fixing a bug, only output the updated function, not the whole script file.

@@ -1,0 +1,21 @@
+@import url("case-study.css");
+
+/* Infurnia case study — image-only sections, optimised for fast first paint */
+
+.infurnia-main {
+  display: block;
+}
+
+.infurnia-shot-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.infurnia-shot {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  height: auto;
+}

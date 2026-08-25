@@ -1,0 +1,16 @@
+---
+description: Rules for HTML structure and CSS styling to prevent token bloat
+globs: *.html, *.css, css/**/*
+alwaysApply: false
+---
+
+# HTML & CSS Standards
+- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<article>`, `<footer>`).
+- Design mobile-first using CSS Flexbox and Grid.
+- Use native CSS custom properties (variables) for colors, fonts, and spacing.
+- Never write inline styles or embed `<style>` tags directly inside HTML.
+
+# Token-Saving Instructions
+- Do not rewrite the entire HTML file for minor edits; output only the specific modified block or element.
+- Keep comments minimal: write self-documenting class names (BEM style preferred if requested).
+- Do not inject external frameworks (like Tailwind or Bootstrap) unless explicitly told.

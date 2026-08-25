@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lokesh Design — V-Shaped Product Designer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="intro-loading">
+
+  <div id="introOverlay" class="intro-overlay">
+    <video id="introVideo" src="images/intro%20loop%20video.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#intro" class="nav-logo">Loky</a>
+      <nav class="nav-links">
+        <a href="#intro">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#projects">Featured Work</a>
+        <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#intro" onclick="closeMobile()">Home</a>
+      <a href="#about" onclick="closeMobile()">About Me</a>
+      <a href="#projects" onclick="closeMobile()">Featured Work</a>
+      <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener" onclick="closeMobile()">Resume</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="intro">
+    <div class="hero-dither-bg" id="heroDitherBg" aria-hidden="true"></div>
+    <div class="hero-centered">
+      <div class="hero-top">
+        <div class="hero-avatar-wrap">
+          <img src="images/shimmer.svg" alt="" class="hero-avatar-shimmer" aria-hidden="true" />
+          <img src="images/Mysketch.webp" alt="Lokesh Kumar — Product Designer" class="hero-avatar-img" />
+        </div>
+
+        <div class="hero-intro">
+          <p class="hero-greet"><span class="hero-wave-emoji">👋</span> Hi, <strong>Loky</strong> here</p>
+          <div class="hero-role-loader">
+            <p>I am a</p>
+            <div class="hero-role-words">
+              <span class="hero-role-word">Sr Product Designer</span>
+              <span class="hero-role-word">System Thinker</span>
+              <span class="hero-role-word">0&rarr;10 Builder</span>
+              <span class="hero-role-word" aria-hidden="true">Sr Product Designer</span>
+            </div>
+          </div>
+          <p class="hero-quote">Taking 0&rarr;1 &amp; 0&rarr;10 products<br />from ambiguity to scale<br />in AI &amp; enterprise SaaS</p>
+        </div>
+      </div>
+
+      <p class="hero-bio">
+        Designing Mulitplayer AI collaboration product &amp; Leading design for <span class="hero-highlight">enterprise platform products @Instabse</span>.
+        Former founding designer at Infurnia; scaled the <span class="hero-highlight">product from 2 to 500+ Clients &amp; 0 to $1M ARR in 1.8 years</span>.
+        M.Des in Interaction Design from IDC, IIT Bombay.
+      </p>
+
+      <!-- ORG LOGOS MARQUEE -->
+      <section class="org-marquee org-marquee-hero">
+        <div class="org-marquee-track">
+          <span class="org-marquee-set">
+            <img src="images/Logos/Instabase.webp" alt="Instabase" />
+            <img src="images/Logos/infurnia.webp" alt="Infurnia" />
+            <img src="images/Logos/nutanix.webp" alt="Nutanix" />
+            <img src="images/Logos/LTI.webp" alt="LTI" />
+            <img src="images/Logos/IDC.webp" alt="IDC" />
+            <img src="images/Logos/IIT bombay.webp" alt="IIT Bombay" />
+            <img src="images/Logos/Loky studio.webp" alt="Loky Studio" />
+          </span>
+          <span class="org-marquee-set" aria-hidden="true">
+            <img src="images/Logos/Instabase.webp" alt="" />
+            <img src="images/Logos/infurnia.webp" alt="" />
+            <img src="images/Logos/nutanix.webp" alt="" />
+            <img src="images/Logos/LTI.webp" alt="" />
+            <img src="images/Logos/IDC.webp" alt="" />
+            <img src="images/Logos/IIT bombay.webp" alt="" />
+            <img src="images/Logos/Loky studio.webp" alt="" />
+          </span>
+        </div>
+      </section>
+
+      <a href="#projects" class="hero-scrolldown-link" aria-label="Scroll to Featured Work">
+        <img src="images/scrolldown.gif" alt="Scroll down" class="hero-scrolldown" />
+      </a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2 class="sec-title">Featured Work</h2>
+    <div class="cards-list">
+
+      <a href="aihub-security-coded.html" class="hcard fade-up">
+        <div class="hcard-text">
+          <h3 class="hcard-title">Enabling enterprise security suite, Authentication &amp; Identity for AI Hub</h3>
+          <p class="hcard-desc">Made AI Hub enterprise-ready by designing platfrom security suite like SSO (SAML + OIDC), IdP group mapping for RBAC, & OAuth-compliant APIs from scratch.</p>
+          <div class="hcard-metrics">
+            <div class="hcard-metric">
+              <span class="hcard-metric-value">9 Logos</span>
+              <span class="hcard-metric-label">Deals unlocked</span>
+            </div>
+            <div class="hcard-metric">
+              <span class="hcard-metric-value"><small>XX to</small> XXX M$</span>
+              <span class="hcard-metric-label">40% more revenue</span>
+            </div>
+          </div>
+          <div class="hcard-meta">
+            <span>⏱ 2 Months</span>
+            <span>👤 Senior Designer</span>
+            <span>@ Instabase</span>
+          </div>
+        </div>
+        <div class="hcard-img">
+          <img src="images/banners/SSO banner .webp" alt="Enterprise Authentication & Identity for AI Hub" />
+        </div>
+      </a>
+
+      <a href="mes-coded.html" class="hcard fade-up">
+        <div class="hcard-text">
+          <h3 class="hcard-title">Building an MES from 0 &rarr; 1 for Modular Furniture Manufacturing factories</h3>
+          <p class="hcard-desc"> Led designs for factory ops, digitising manual workflows end-to-end and It drives 40% of toatl company's ARR.</p>
+          <div class="hcard-metrics">
+            <div class="hcard-metric">
+              <span class="hcard-metric-value"><small>0.162 M to</small> 3.82 M</span>
+              <span class="hcard-metric-label">of company's ARR</span>
+            </div>
+            <div class="hcard-metric">
+              <span class="hcard-metric-value"><small>633 to</small> 5650</span>
+              <span class="hcard-metric-label">Work orders created</span>
+            </div>
+          </div>
+          <div class="hcard-meta">
+            <span>⏱ 3 Months</span>
+            <span>👤 Design Lead</span>
+            <span>🕰 Before AI</span>
+          </div>
+        </div>
+        <div class="hcard-img">
+          <img src="images/banners/MES banner.webp" alt="MES Manufacturing project" />
+        </div>
+      </a>
+
+      <a href="ftue-coded.html" class="hcard fade-up">
+        <div class="hcard-text">
+          <h3 class="hcard-title">First-Time User Experience in Security Central</h3>
+          <p class="hcard-desc">Redesigning the onboarding experience for a B2B SaaS security platform. Created a scalable framework, increasing adoption &amp; Reducing support tickets</p>
+          <div class="hcard-metrics">
+            <div class="hcard-metric">
+              <span class="hcard-metric-value">30% reduced</span>
+              <span class="hcard-metric-label">Initial support tickets</span>
+            </div>
+          </div>
+          <div class="hcard-meta">
+            <span>⏱ 3 Months</span>
+            <span>👤 Intern UX</span>
+            <span>🕰 Before AI</span>
+          </div>
+        </div>
+        <div class="hcard-img">
+          <img src="images/banners/ftue banner.webp" alt="Nutanix Security Central" />
+        </div>
+      </a>
+
+      <a href="infurnia.html" class="hcard fade-up">
+        <div class="hcard-text">
+          <h3 class="hcard-title">Reimagining whole 3D Architecture &amp; Interior designing product</h3>
+          <p class="hcard-desc">Journey as a founding designer in whole UX overhaul & setting up design ops for 3d designing product in the likes of SketchUp, AutoCAD &amp; Revit.</p>
+          <div class="hcard-metrics">
+            <div class="hcard-metric">
+              <span class="hcard-metric-value"><Small> 2 to </Small>500+</span>
+              <span class="hcard-metric-label">Clients secured</span>
+            </div>
+            <div class="hcard-metric">
+              <span class="hcard-metric-value"><small>0 to</small> $1M</span>
+              <span class="hcard-metric-label">ARR within 1.8yr</span>
+            </div>
+          </div>
+          <div class="hcard-meta">
+            <span>⏱ 2 Years</span>
+            <span>👤 Founding UX designer</span>
+            <span>🕰 Before AI</span>
+          </div>
+        </div>
+        <div class="hcard-img">
+          <img src="images/banners/infurnia banner.webp" alt="Infurnia Interior Design Platform" />
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="publications" id="publications">
+    <h2 class="sec-title">My Publications</h2>
+    <div class="cards-list">
+
+      <!-- Large card -->
+      <a href="lumigo-coded.html" class="hcard pub-large fade-up">
+        <div class="hcard-text">
+          <h3 class="hcard-title">Lumi-Go Game</h3>
+          <p class="hcard-desc">An addicting fun and fast paced casual game with 75+ levels. Highlights visual design, gamification, UX in gaming, &amp; Monetization strategies.</p>
+          <div class="hcard-metrics">
+            <div class="hcard-metric">
+              <span class="hcard-metric-value">75+</span>
+              <span class="hcard-metric-label">Levels</span>
+            </div>
+            <div class="hcard-metric">
+              <span class="hcard-metric-value">4.9 ⭐</span>
+              <span class="hcard-metric-label">Store rating</span>
+            </div>
+            <div class="hcard-metric">
+              <span class="hcard-metric-value">1k+</span>
+              <span class="hcard-metric-label">Downloads</span>
+            </div>
+          </div>
+          <div class="hcard-meta">
+            <span>⏱ 5 Months</span>
+            <span>🕰 Before AI</span>
+            <span>@ Personal</span>
+          </div>
+        </div>
+        <div class="hcard-img">
+          <img src="images/banners/lumigo banner.webp" alt="Lumi-Go Game" />
+        </div>
+      </a>
+
+      <!-- Two vertical pub cards -->
+      <div class="pub-row fade-up">
+
+        <a href="Motion-restriction-VR-coded.html" class="pub-card pub-card--vr">
+          <div class="pub-card-head">
+            <span class="pub-card-icons" aria-hidden="true">
+              <svg class="pub-card-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9.5" cy="4.5" r="2.3"/>
+                <path d="M5.8 11.2c0-2.4 1.6-4.1 3.7-4.1s3.7 1.7 3.7 4.1"/>
+                <path d="M11.6 7.6c1.1.5 2 1.5 2.4 2.7"/>
+                <circle cx="15.3" cy="6.4" r="1"/>
+                <path d="M2.2 11.2h14.6"/>
+                <path d="M9.5 11.2v5.6"/>
+                <path d="M3.6 11.2l-1.6 5.6h4.2l1-3.4"/>
+                <path d="M12.4 13.4l1 3.4h4.2l-1.6-5.6"/>
+              </svg>
+            </span>
+            <span class="pub-card-venue">
+              <span>Published in IEEE-Virtual Reality,</span>
+              <span>2021 Lisbon.</span>
+            </span>
+          </div>
+          <div class="pub-card-media">
+            <img src="images/banners/VR banner.webp" alt="Low-cost arm-based motion restriction device for VR" />
+          </div>
+          <div class="pub-card-body">
+            <h3>Low-cost arm-based motion restriction device for VR Haptic interactions</h3>
+            <p>Exoskeleton that provides motion restriction haptics for interaction in MR/VR &amp; its applications</p>
+            <div class="pub-card-meta">
+              <span>@ Personal</span>
+              <span>⏱ 2 Months</span>
+              <span>👤 Product interaction design</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="Motion-restriction-VR-coded.html#touch-explore" class="pub-card pub-card--touch">
+          <div class="pub-card-head">
+            <span class="pub-card-icons" aria-hidden="true">
+              <svg class="pub-card-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9.5" cy="4.5" r="2.3"/>
+                <path d="M5.8 11.2c0-2.4 1.6-4.1 3.7-4.1s3.7 1.7 3.7 4.1"/>
+                <path d="M11.6 7.6c1.1.5 2 1.5 2.4 2.7"/>
+                <circle cx="15.3" cy="6.4" r="1"/>
+                <path d="M2.2 11.2h14.6"/>
+                <path d="M9.5 11.2v5.6"/>
+                <path d="M3.6 11.2l-1.6 5.6h4.2l1-3.4"/>
+                <path d="M12.4 13.4l1 3.4h4.2l-1.6-5.6"/>
+              </svg>
+            </span>
+            <span class="pub-card-venue">
+              <span>Published in Interactive space &amp; surface,</span>
+              <span>2022 Poland.</span>
+            </span>
+          </div>
+          <div class="pub-card-media">
+            <img src="images/banners/Touch explore banner.webp" alt="Touch-Explore POV walkthrough" />
+          </div>
+          <div class="pub-card-body">
+            <h3>Touch-Explore: Experience In a POV of visually challenged.</h3>
+            <p>VR haptics experience. A way-finder game In a POV of visually challenged person.</p>
+            <div class="pub-card-meta">
+              <span>@ Personal</span>
+              <span>⏱ 1 Month</span>
+              <span>👤 Interaction design</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-img-col">
+        <img src="images/dp.webp" alt="Lokesh Kumar" class="about-photo" />
+      </div>
+      <div class="about-text-col fade-up">
+        <h2>About Loky <span class="wink">😉</span></h2>
+        <p>
+          I'm a <strong>Sr.Product Designer</strong> who started as a UX developer at LTI before
+          discovering design. That engineering foundation is my edge — I prototype fast, think in systems,
+          and speak fluently with engineering teams.
+        </p>
+        <p>
+          Along the way, I built an indie game studio (1K+ downloads, 4.9 ⭐ on Play Store), earned an
+          <strong>M.Des in Interaction Design from IIT Bombay (IDC)</strong>, published work at international
+          conferences, and joined <strong>Infurnia</strong> as founding designer — scaling it from zero to
+          500+ clients and $1M ARR in under 2 years.
+        </p>
+        <p>
+          Today I lead design for <strong>foundational enterprise security</strong> and <strong>platform</strong>
+          products at <strong>Instabase</strong>, an AI-native company — and I'm now building
+          <strong>SuperApp</strong> as a 0→10 product, a multiplayer AI collaboration product reshaping how
+          teams work alongside AI.
+        </p>
+        <p class="about-last">
+          I design for the next era of work — where humans and AI build together, not apart.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey" id="journey">
+    <div class="journey-inner">
+      <img src="images/journey.webp" alt="Career journey timeline" class="journey-img fade-up" />
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section class="hobbies" id="hobbies" style="display:none;">
+    <div class="hobbies-inner">
+      <div class="hobbies-header">
+        <h2>Hobbies</h2>
+        <p>When I am not designing, you can find me enjoying one of these.</p>
+      </div>
+      <div class="hobbies-row fade-up" role="list">
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🏊</span>
+          <span class="hobby-label">Swimming</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/dp.webp" alt="" />
+            <img src="images/profile.webp" alt="" />
+            <img src="images/journey.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🥾</span>
+          <span class="hobby-label">Trekking</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/journey.webp" alt="" />
+            <img src="images/dp.webp" alt="" />
+            <img src="images/profile.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🏸</span>
+          <span class="hobby-label">Badminton</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/dp.webp" alt="" />
+            <img src="images/profile.webp" alt="" />
+            <img src="images/hobbies.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🎲</span>
+          <span class="hobby-label">Boardgames</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/lumigo.webp" alt="" />
+            <img src="images/intro.gif" alt="" />
+            <img src="images/mobile-screen.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">✏️</span>
+          <span class="hobby-label">Sketching</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/profile.webp" alt="" />
+            <img src="images/infurnia.webp" alt="" />
+            <img src="images/mes.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🔬</span>
+          <span class="hobby-label">Science</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/vr.webp" alt="" />
+            <img src="images/nutanix.webp" alt="" />
+            <img src="images/touch-explore.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">💪</span>
+          <span class="hobby-label">Workouts</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/dp.webp" alt="" />
+            <img src="images/profile.webp" alt="" />
+            <img src="images/journey.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🚴</span>
+          <span class="hobby-label">Cycling</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/journey.webp" alt="" />
+            <img src="images/dp.webp" alt="" />
+            <img src="images/profile.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">📚</span>
+          <span class="hobby-label">Comics</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/touch-explore.webp" alt="" />
+            <img src="images/lumigo.webp" alt="" />
+            <img src="images/intro.gif" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🧵</span>
+          <span class="hobby-label">Crafting</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/mes.webp" alt="" />
+            <img src="images/infurnia.webp" alt="" />
+            <img src="images/resolvex.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🎮</span>
+          <span class="hobby-label">Games</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/lumigo.webp" alt="" />
+            <img src="images/intro.gif" alt="" />
+            <img src="images/mobile-screen.webp" alt="" />
+          </span>
+        </button>
+
+        <button class="hobby-chip" type="button" role="listitem">
+          <span class="hobby-emoji" aria-hidden="true">🦸</span>
+          <span class="hobby-label">Cosplay</span>
+          <span class="hobby-popouts" aria-hidden="true">
+            <img src="images/intro.gif" alt="" />
+            <img src="images/profile.webp" alt="" />
+            <img src="images/vr.webp" alt="" />
+          </span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-bees" aria-hidden="true">
+      <span class="contact-bee contact-bee-1">🐝</span>
+      <span class="contact-bee contact-bee-2">🐝</span>
+      <span class="contact-bee contact-bee-3">🐝</span>
+    </div>
+    <div class="contact-inner">
+      <h2>Let's spark a conversation! <span class="contact-bolt" aria-hidden="true">⚡</span></h2>
+      <div class="contact-body">
+        <div class="contact-fields">
+          <div class="contact-row">
+            <!--<span class="contact-label">Ph no:</span>-->
+            <a href="tel:+919677192082" class="contact-val">
+              <span class="contact-icon" aria-hidden="true">📞</span>
+              +91 9677192082
+            </a>
+            <button type="button" class="contact-copy-btn" data-copy="+919677192082" aria-label="Copy phone number">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="contact-row">
+           <!--<span class="contact-label">Email:</span>-->
+            <a href="mailto:lokeshkumar1996feb@gmail.com" class="contact-val">
+              <span class="contact-icon" aria-hidden="true">📧</span>
+              lokeshkumar1996feb@gmail.com
+            </a>
+            <button type="button" class="contact-copy-btn" data-copy="lokeshkumar1996feb@gmail.com" aria-label="Copy email address">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="contact-actions">
+            <div class="contact-socials">
+              <a href="https://linkedin.com/in/lokeshkumarvm/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <img src="images/linkedin.png" alt="LinkedIn" />
+              </a>
+            </div>
+            <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener" class="resume-btn">ATS Resume</a>
+            <a href="Resume/Lokesh Kumar V M Sr Product Designer Resume.pdf" target="_blank" rel="noopener" class="resume-btn">Design Resume</a>
+            <div class="contact-socials">
+              <a href="https://wa.me/919677192082" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="images/whatsapp.png" alt="WhatsApp" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-flowers" id="contactFlowers" aria-hidden="true"></div>
+    <p class="contact-bee-notice">🐝 Don't kill bees</p>
+  </section>
+
+  <!-- HOBBY WAVE -->
+  <section class="hobby-wave">
+    <div class="hobby-wave-track" id="hobbyWave" aria-hidden="true"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <nav class="footer-links">
+        <a href="#intro">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#projects">Featured Work</a>
+        <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+      <span>Copyright © 2024 Lokeshdesign®</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="script.js"></script>
+  <script type="module">
+    import { initPixelCursor } from './pixel-cursor.js';
+    initPixelCursor({
+      trailColor: '#FFFFFF',
+      pixelSize: 10,
+    });
+  </script>
+  <script type="module">
+    import { initTextPath } from './text-path.js';
+    const hobbyWave = document.getElementById('hobbyWave');
+    if (hobbyWave) {
+      initTextPath(hobbyWave, {
+        text: '🏊 🥾 🏸 🎲 ✏️ 🔬 💪 🚴 📚 🧵 🎮 🦸',
+        separator: '•',
+        gap: 3,
+        fontSize: 40,
+        letterSpacing: 1,
+        textColor: '#0F1117',
+        speed: 14,
+        reversed: true,
+        waveFrequency: 2,
+        waveHeight: 56,
+      });
+    }
+  </script>
+  <script type="module">
+    import { initDitherBackground } from './dither-bg.js';
+    const ditherBg = document.getElementById('heroDitherBg');
+    if (ditherBg) {
+      initDitherBackground(ditherBg, {
+        background: '#FFFFFF',
+        color: '#576E81',
+        shape: 'swirl',
+        type: '4x4',
+        size: 3,
+        speed: 0.7,
+        scale: 1.3,
+      });
+    }
+  </script>
+  <script type="module">
+    import { initFlowerField } from './flower-field.js';
+    const field = document.getElementById('contactFlowers');
+    if (field && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      initFlowerField(field, {
+        count: 28,
+        maxAngle: 22,
+        radius: 220,
+        colors: ['#c9a7c4', '#a9c3b8', '#d9c08f', '#a6b7d4', '#c7a8ad'],
+        centerColor: '#ddc98f',
+      });
+    }
+  </script>
+  <script>
+    document.querySelectorAll('.contact-copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy);
+          const original = btn.innerHTML;
+          btn.innerHTML = '✅';
+          setTimeout(() => { btn.innerHTML = original; }, 1200);
+        } catch (err) {}
+      });
+    });
+  </script>
+  <script>
+    (() => {
+      const beeHive = document.querySelector('.contact-bees');
+      const flowers = document.getElementById('contactFlowers');
+      if (!beeHive || !flowers) return;
+
+      const FLY_ANIMS = ['contactBeeFly1', 'contactBeeFly2', 'contactBeeFly3'];
+      let extraBeeCount = 0;
+      const MAX_EXTRA_BEES = 8;
+      let lastSpawn = 0;
+
+      function fallBee(bee) {
+        if (bee.classList.contains('falling')) return;
+        bee.style.animation = 'none';
+        bee.classList.add('falling');
+        setTimeout(() => bee.remove(), 1200);
+      }
+
+      function spawnBee(x, y) {
+        if (extraBeeCount >= MAX_EXTRA_BEES) return;
+        extraBeeCount++;
+        const bee = document.createElement('span');
+        bee.className = 'contact-bee';
+        bee.textContent = '🐝';
+        bee.style.left = `${x}px`;
+        bee.style.top = `${y}px`;
+        const anim = FLY_ANIMS[Math.floor(Math.random() * FLY_ANIMS.length)];
+        const duration = 6 + Math.random() * 5;
+        bee.style.animation = `${anim} ${duration}s ease-in-out infinite`;
+        beeHive.appendChild(bee);
+        setTimeout(() => {
+          bee.remove();
+          extraBeeCount--;
+        }, duration * 1000 * 2);
+      }
+
+      beeHive.addEventListener('click', (e) => {
+        const bee = e.target.closest('.contact-bee');
+        if (bee) fallBee(bee);
+      });
+
+      flowers.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastSpawn < 500) return;
+        lastSpawn = now;
+        const rect = flowers.getBoundingClientRect();
+        const hiveRect = beeHive.getBoundingClientRect();
+        const x = e.clientX - hiveRect.left;
+        const y = rect.top - hiveRect.top - 10;
+        spawnBee(x, y);
+      });
+    })();
+  </script>
+  <script type="module">
+    import { initBottomConfetti } from './confetti.js';
+    initBottomConfetti();
+  </script>
+  <script>
+    (function introLoader() {
+      const overlay = document.getElementById('introOverlay');
+      const video = document.getElementById('introVideo');
+      if (!overlay || !video) return;
+
+      const MIN_DURATION = 1000;
+      const start = performance.now();
+      let pageReady = false;
+      let minTimeElapsed = false;
+
+      function reveal() {
+        if (!pageReady || !minTimeElapsed) return;
+        overlay.classList.add('intro-hidden');
+        document.body.classList.remove('intro-loading');
+        setTimeout(() => overlay.remove(), 1500);
+      }
+
+      window.addEventListener('load', () => {
+        pageReady = true;
+        reveal();
+      });
+
+      setTimeout(() => {
+        minTimeElapsed = true;
+        reveal();
+      }, MIN_DURATION);
+    })();
+  </script>
+</body>
+</html>

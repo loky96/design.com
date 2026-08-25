@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise Authentication &amp; Identity for AI Hub — Case Study | Loky</title>
+  <link rel="stylesheet" href="aihub-security-coded.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Loky</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="aih-side-nav" aria-label="Section navigation">
+    <a href="#quick-context" class="aih-side-nav-link" data-target="quick-context"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Quick context</span></a>
+    <a href="#why-building" class="aih-side-nav-link" data-target="why-building"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Why we built this</span></a>
+    <a href="#users" class="aih-side-nav-link" data-target="users"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Who I designed for</span></a>
+    <a href="#track-sso" class="aih-side-nav-link" data-target="track-sso"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Track 1 — SSO</span></a>
+    <a href="#track-groups" class="aih-side-nav-link" data-target="track-groups"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Track 2 — Group mapping</span></a>
+    <a href="#track-tokens" class="aih-side-nav-link" data-target="track-tokens"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Track 3 — OAuth tokens</span></a>
+    <a href="#my-process" class="aih-side-nav-link" data-target="my-process"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">My process</span></a>
+    <a href="#research" class="aih-side-nav-link" data-target="research"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Research approach</span></a>
+    <a href="#primary-research" class="aih-side-nav-link" data-target="primary-research"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Primary research</span></a>
+    <a href="#competitors" class="aih-side-nav-link" data-target="competitors"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Competitor analysis</span></a>
+    <a href="#frameworks" class="aih-side-nav-link" data-target="frameworks"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Frameworks &amp; checklist</span></a>
+    <a href="#principles" class="aih-side-nav-link" data-target="principles"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Design principles</span></a>
+    <a href="#ia" class="aih-side-nav-link" data-target="ia"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Information architecture</span></a>
+    <a href="#visual-design" class="aih-side-nav-link" data-target="visual-design"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Visual design</span></a>
+    <a href="#usability" class="aih-side-nav-link" data-target="usability"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Usability evaluation</span></a>
+    <a href="#ai-in-design" class="aih-side-nav-link" data-target="ai-in-design"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">How I used AI</span></a>
+    <a href="#collaboration" class="aih-side-nav-link" data-target="collaboration"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Collaboration</span></a>
+    <a href="#challenges" class="aih-side-nav-link" data-target="challenges"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Challenges faced</span></a>
+    <a href="#impact-results" class="aih-side-nav-link" data-target="impact-results"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Impact &amp; results</span></a>
+    <a href="#success-metrics" class="aih-side-nav-link" data-target="success-metrics"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Success metrics</span></a>
+    <a href="#adoption-retention" class="aih-side-nav-link" data-target="adoption-retention"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Adoption</span></a>
+    <a href="#business-impact" class="aih-side-nav-link" data-target="business-impact"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Business impact</span></a>
+    <a href="#reflections" class="aih-side-nav-link" data-target="reflections"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Reflections</span></a>
+    <a href="#thanks" class="aih-side-nav-link" data-target="thanks"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Thank you</span></a>
+  </nav>
+
+  <main>
+
+  <!-- ============ 1. COVER (dark) ============ -->
+  <section class="sec dark hero-cover">
+    <div class="wrap">
+      <img class="brand-logo" src="images/Logos/Instabase.webp" alt="Instabase" />
+      <h1 class="cover-title">Making AI Hub enterprise security-enabled</h1>
+      <p class="cover-sub">Enterprise authentication &amp; authorization: SSO, RBAC, & API access.</p>
+
+      <span class="nda-note">🔒 <strong>NDA note:</strong> customer names and numbers are generalised or removed throughout. No disclosed figures.</span>
+
+      <div class="meta-grid">
+        <div class="meta-chip"><span class="meta-label">🖥️ Product:</span><span class="meta-val">Instabase AI Hub — multi &amp; single-tenant</span></div>
+        <div class="meta-chip"><span class="meta-label">👥 Team:</span><span class="meta-val">Me (Design lead), 1 PM, 4 Dev, Docs &amp; pre-sales</span></div>
+        <div class="meta-chip"><span class="meta-label">💼 Role:</span><span class="meta-val">Senior Product Designer</span></div>
+        <div class="meta-chip"><span class="meta-label">⏱️ Time:</span><span class="meta-val">Multiple releases across ~ 4 months</span></div>
+      </div>
+
+      <div class="cover-laptop-wrap">
+        <video class="cover-laptop-img" src="aihub-security-coded/videos/AIhub%20project%20short.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <p class="dark-fine" style="text-align:center;margin-top:8px;margin-bottom:70px;"><em>*Prototype video with dummy data</em></p>
+
+      <h3 style="text-align:center;color:#fff;font-size:26px;margin-bottom:8px;">Business impact</h3>
+      <p class="cover-card-sub" style="margin-bottom:20px;">Unlocked enterprise deals that named security as a blocker</p>
+      <div class="cover-cards" style="grid-template-columns:repeat(3, 1fr);">
+        <div class="cover-card">
+          <div class="stat-card"><div class="stat-label">💰 ARR unblocked:</div><div class="stat-val"> xx M$ to <strong> XXX M$ </strong></div><div class="stat-pct">+40% aprox</div></div>
+        </div>
+        <div class="cover-card">
+          <div class="stat-card"><div class="stat-label">🏢 Enterprise orgs won:</div><div class="stat-val"> 0 to <strong> 9 </strong></div><div class="stat-pct">New logos</div></div>
+        </div>
+        <div class="cover-card">
+          <div class="stat-card"><div class="stat-label">⏱ Initial org setup time</div><div class="stat-val"> <span class="todo">4 Weeks</span> to <strong> <span class="todo">5 Days</span> </strong></div><div class="stat-pct">-87.7%</div></div>
+        </div>
+        <div class="cover-card" hidden>
+          <h3>Admin experience &amp; NPS</h3>
+          <p class="nps-caption">NPS test conducted with org admins &amp; platform engineers</p>
+          <div class="nps-block">
+            <div class="nps-head"><span class="nps-who">Org / IT admins <span class="nps-count"> 10 👤</span></span><span class="nps-score">NPS: 79</span></div>
+            <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:79%;"></div></div>
+            <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
+          </div>
+          <div class="nps-block">
+            <div class="nps-head"><span class="nps-who">Platform devs <span class="nps-count"> 10 👤</span></span><span class="nps-score">NPS: 67</span></div>
+            <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:67%;"></div></div>
+            <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="dark-fine" style="margin-top:12px;text-align:center;">Source: internal pipeline + org settings telemetry.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUICK CONTEXT (light) ============ -->
+  <section id="quick-context" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Quick context</h2>
+      <div class="grid-2" style="grid-template-columns:repeat(4,1fr);">
+        <div class="ctx-card"><h3>❓ Why</h3><ul><li>Enterprise buyers <strong>could not pass security review</strong> without SSO, IdP-driven access control and short-lived API tokens</li><li>Deals were being <strong>worked around, not won</strong></li></ul></div>
+        <div class="ctx-card"><h3>🔍 What</h3><ul><li><strong>Self-serve SSO</strong> (SAML 2.0 + OIDC) for multi- &amp; single-tenant</li><li><strong>IdP group mapping</strong> driving RBAC</li><li><strong>OAuth2 Compliant tokens</strong> for API access, with scopes</li></ul></div>
+        <div class="ctx-card"><h3>👥 Whom</h3><ul><li>Org / IT admins configuring identity</li><li>Platform engineers calling APIs</li><li>Security architects signing off</li><li>Instabase presales &amp; support</li></ul></div>
+        <div class="ctx-card"><h3>🛠 How</h3><ul><li>Three connected tracks across <strong> releases</strong></li><li>Design decisions driven by <strong>threat modelling</strong>, not just flows</li><li>AI used end-to-end for research synthesis &amp; spec drafting</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. PRODUCT BRIEF (dark) ============ -->
+  <section id="product-brief" class="sec dark">
+    <div class="wrap brief-row">
+      <div class="brief-text">
+        <h2 class="sec-h2">Project brief</h2>
+        
+        <p>My job was to design the identity and enterprise security layer that lets a global enterprise trust AI Hub — put their own identity provider behind it, control who sees what, and issue their own API tokens — prove that trust to their security team, and win the enterprise logo by considering:</p>
+        <div class="tech-groups">
+          <div class="tech-group-row">
+           
+            <span class="chip">🔐 SSO — SAML 2.0 + OIDC protocol</span>
+            <span class="chip">🎟 OAuth 2.0 / JWT</span>
+            <span class="chip">🔑 RBAC</span>
+            <span class="chip">📜 Audit logs</span>
+            <span class="tech-break"></span>
+            <span class="chip idp-chip">
+              <span class="idp-chip-label">🔗 Identity providers</span>
+              <span class="idp-icons inline">
+                <span class="idp-icon" data-name="Okta"><img src="SSO-coded/identity-provider-logos/Okta.png" alt="Okta" loading="lazy" /></span>
+                <span class="idp-icon" data-name="Microsoft Entra ID"><img src="SSO-coded/identity-provider-logos/Microsoft%20Entra.png" alt="Microsoft Entra ID" loading="lazy" /></span>
+                <span class="idp-icon" data-name="PingFederate"><img src="SSO-coded/identity-provider-logos/PingFederate.png" alt="PingFederate" loading="lazy" /></span>
+                <span class="idp-icon" data-name="Auth0"><img src="SSO-coded/identity-provider-logos/Auth0.png" alt="Auth0" loading="lazy" /></span>
+                <span class="idp-icon" data-name="JumpCloud"><img src="SSO-coded/identity-provider-logos/JumpCloud.png" alt="JumpCloud" loading="lazy" /></span>
+                <span class="idp-icon" data-name="OneLogin"><img src="SSO-coded/identity-provider-logos/One%20login.png" alt="OneLogin" loading="lazy" /></span>
+                <span class="idp-icon" data-name="AD FS"><img src="SSO-coded/identity-provider-logos/Active%20directory%20federation%20services.png" alt="AD FS" loading="lazy" /></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brief-problem">
+        <div class="brief-text">  
+        <h2 class="sec-h2">Problem statement</h2>
+        <p>An enterprise IT admin evaluating AI Hub is trying to pass their security review, but encounters an app that still authenticates like a consumer product — email + password, Google sign-in, groups managed manuallyone click at a time, and API tokens that never expire and can't be scoped — which makes them feel like the product isn't ready to trust with their organization's data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. WHY WE'RE BUILDING THIS (light) ============ -->
+  <section id="why-building" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Why we're building this</h2>
+      <p class="lead">It started as a pattern in the support and presales channels: the same five objections, from the largest accounts in the pipeline, over and over.</p>
+
+      <div class="grid-2 why-grid" style="grid-template-columns:repeat(3,1fr);align-items:stretch;">
+        <div class="why-card">
+          <h3><span class="emoji-lead">🚧</span>SSO was a tenancy accident</h3>
+          <p>SSO existed only for single-tenant customers. Multi-tenant enterprise customers had no way to connect their IdP — so commercial MT customers were being <strong>provisioned an entire single-tenant environment</strong> just to get SSO.</p>
+          <p class="why-note">"A European luxury retail group was given a single-tenant instance as a temporary workaround while waiting for multi-tenant SSO."</p>
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">📄</span>The docs promised what we didn't have</h3>
+          <p>Documentation claimed OIDC group mapping was supported. It wasn't. A top-tier enterprise customer found the gap themselves and raised it repeatedly.</p>
+          <p class="why-note">"A large financial institution called out the inaccuracy directly."</p>
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">🔑</span>Long-lived opaque tokens</h3>
+          <p>API access relied on raw, long-lived internal tokens. Banks' security policies simply forbid them — they need short-lived JWTs issued and revoked by their own IdP.</p>
+          <p class="why-note">"A global investment bank could not use our tokens at all under internal policy."</p>
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">🤖</span>No identity for machines</h3>
+          <p>In an SSO-only org, automation had nowhere to live: no service-account primitive, and a shared "faceless" account cannot complete an SSO login.</p>
+          <p class="why-note">"A global security vendor named this a go-live blocker."</p>
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">🧯</span>Everything needed a human</h3>
+          <p>Even after release, SSO required an internal engineer to flip a per-org feature flag. Customers who followed the public docs hit an error and filed a ticket.</p>
+          <p class="why-note">"A global insurer and a European media group both landed in support for exactly this."</p>
+        </div>
+        <div class="why-card">
+          <h3><span class="emoji-lead">🩸</span>Some security leaks</h3>
+          <p>The "Run app with API" sample-code panel rendered <strong>live OAuth tokens</strong> in copy-pasteable code, over <code>http://</code>. An internal reviewer had to redact a screenshot before sharing it.</p>
+          <p class="why-note">"Found internally — fixed as part of this work."</p>
+        </div>
+      </div>
+
+      <div class="mini-stats">
+        <div class="mini-stat"><div class="ms-val">22</div><div class="ms-label">distinct enterprise-reported problems catalogued across 4 Slack channels</div></div>
+        <div class="mini-stat"><div class="ms-val">9</div><div class="ms-label">named enterprise accounts blocked or worked around</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. EXPLORE (blue) ============ -->
+  <section id="explore" class="sec blue">
+    <div class="wrap">
+      <h2 class="sec-h2 white center">Three tracks, one identity story</h2>
+      <div class="explore-cols" style="grid-template-columns:1fr 1fr 1fr; gap:36px;">
+        <div>
+          <a href="#track-sso" class="explore-pill">🔐 Track 1 — SSO</a>
+          <ul class="explore-list">
+            <li>SAML 2.0 + OIDC for multi-tenant</li>
+            <li>Self-serve configuration UI</li>
+            <li>Test before you enforce</li>
+            <li>Threat-modelled domain handling</li>
+          </ul>
+        </div>
+        <div>
+          <a href="#track-groups" class="explore-pill">👥 Track 2 — Group mapping</a>
+          <ul class="explore-list">
+            <li>IdP groups → AI Hub groups</li>
+            <li>OIDC parity with SAML</li>
+            <li>Many-to-one mapping</li>
+            <li>Making sync timing honest</li>
+          </ul>
+        </div>
+        <div>
+          <a href="#track-tokens" class="explore-pill">🎟 Track 3 — OAuth tokens</a>
+          <ul class="explore-list">
+            <li>Customer-IdP-issued Tokens</li>
+            <li>Account mappings per identity</li>
+            <li>Scopes that only downscope</li>
+            <li>Deprecating raw internal tokens</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. WHO I DESIGNED FOR (light) ============ -->
+  <section id="users" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Who I designed for</h2>
+      <p class="lead">Identity features have an unusual audience: the person who configures it is rarely the person who uses the product, and the person who approves it never logs in at all.</p>
+      <div class="users-grid">
+        <div class="user-card primary">
+          <span class="u-badge">Primary focus</span>
+          <div class="u-head"><span class="u-emoji">🧑‍💼</span><span class="u-name">Org / IT admin</span></div>
+          <p class="u-role">Sets identity up — and can break it for everyone.</p>
+          <ul>
+            <li>Configures SSO inside AI Hub</li>
+            <li>Mirrors the same config in Okta / Entra / Ping</li>
+            <li>Owns group &rarr; role mapping</li>
+            <li>Decides when to enforce SSO org-wide</li>
+            <li>Tracks all audit logs</li>
+          </ul>
+        </div>
+
+        <div class="user-card primary">
+          <span class="u-badge">Primary focus</span>
+          <div class="u-head"><span class="u-emoji">👩‍💻</span><span class="u-name">Platform engineer</span></div>
+          <p class="u-role">Runs everything that talks to AI Hub without a human.</p>
+          <ul>
+            <li>Automates AI Hub through the API</li>
+            <li>Needs a non-human identity to act as</li>
+            <li>Lives inside token expiry and scope rules</li>
+            <li>Judges us on the first successful API call</li>
+          </ul>
+        </div>
+
+        <div class="user-card">
+          <span class="u-badge muted">Influences</span>
+          <div class="u-head"><span class="u-emoji">🛡️</span><span class="u-name">Security architect</span></div>
+          <p class="u-role">Approves the purchase. Never opens the product.</p>
+          <ul>
+            <li>Runs the vendor security review</li>
+            <li>Sets the policy the admin must meet</li>
+            <li>Can veto the whole deal</li>
+          </ul>
+        </div>
+
+        <div class="user-card">
+          <span class="u-badge muted">Affected</span>
+          <div class="u-head"><span class="u-emoji">🙋</span><span class="u-name">End member</span></div>
+          <p class="u-role">Feels every configuration mistake, fixes none of them.</p>
+          <ul>
+            <li>Just wants "Continue with SSO" to work</li>
+            <li>Should never see a SAML error string</li>
+            <li>Needs right group access</li>
+          </ul>
+        </div>
+
+        <div class="user-card">
+          <span class="u-badge muted">Internal</span>
+          <div class="u-head"><span class="u-emoji">🎧</span><span class="u-name">Instabase support</span></div>
+          <p class="u-role">Absorbs every gap the product leaves open.</p>
+          <ul>
+            <li>Debugs failed logins with little visibility</li>
+            <li>Enables per-org feature flags by hand</li>
+            <li>Owns the escalation the customer never wanted</li>
+          </ul>
+        </div>
+
+        <div class="user-card">
+          <span class="u-badge muted">Internal</span>
+          <div class="u-head"><span class="u-emoji">📣</span><span class="u-name">Presales & Docs</span></div>
+          <p class="u-role">Has to state our security posture, live, on a call.</p>
+          <ul>
+            <li>Answers "do you support X?" in real time</li>
+            <li>Needs a defensible security story</li>
+            <li>Pays for every capability we overstate</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="users-note"><strong>Where I focused:</strong> the two highlighted roles operate the system — everyone else shaped it as a constraint, not a screen.</p>
+      <h3 class="flow-sub" style="margin-top:44px;">The ecosystem — how these six are connected</h3>
+      <p class="lead">Identity is never one person's job — it's a chain of approval, dual configuration, and consequence. Mapping it is how I found which problems were actually design problems.</p>
+
+      <div class="eco-wrap">
+        <div class="eco-scroll">
+        <div class="eco-svg-wrap">
+        <svg class="eco-svg" viewBox="0 0 1100 575" role="img" aria-label="Ecosystem map of the six user types around AI Hub and the customer identity provider" font-family="DM Sans, sans-serif">
+          <defs>
+            <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a97ee"/></marker>
+            <marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b93a0"/></marker>
+            <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d99400"/></marker>
+          </defs>
+
+          <!-- group boxes -->
+          <rect x="14" y="10" width="470" height="520" rx="16" fill="none" stroke="#cfd6de" stroke-width="1.5" stroke-dasharray="6 5"/>
+          <text x="30" y="30" font-size="11" font-weight="700" letter-spacing="1.6" fill="#98a2ae">CUSTOMER ORGANISATION</text>
+          <rect x="540" y="10" width="535" height="520" rx="16" fill="none" stroke="#cfd6de" stroke-width="1.5" stroke-dasharray="6 5"/>
+          <text x="556" y="30" font-size="11" font-weight="700" letter-spacing="1.6" fill="#98a2ae">INSTABASE</text>
+
+          <!-- customer people -->
+          <rect x="30" y="44" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="46" y="72" font-size="18">🛡️</text>
+          <text x="72" y="73" font-size="14.5" font-weight="600" fill="#17181c">Security architect</text>
+          <text x="46" y="94" font-size="11.5" fill="#6b7280">Approves. Never logs in.</text>
+
+          <rect x="30" y="170" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="46" y="198" font-size="18">🧑‍💼</text>
+          <text x="72" y="199" font-size="14.5" font-weight="600" fill="#17181c">Org / IT admin</text>
+          <text x="46" y="220" font-size="11.5" fill="#6b7280">Configures both sides.</text>
+
+          <rect x="30" y="296" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="46" y="324" font-size="18">👩‍💻</text>
+          <text x="72" y="325" font-size="14.5" font-weight="600" fill="#17181c">Platform engineer</text>
+          <text x="46" y="346" font-size="11.5" fill="#6b7280">Automates via the API.</text>
+
+          <rect x="30" y="422" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="46" y="450" font-size="18">🙋</text>
+          <text x="72" y="451" font-size="14.5" font-weight="600" fill="#17181c">End member</text>
+          <text x="46" y="472" font-size="11.5" fill="#6b7280">Just wants to sign in.</text>
+
+          <!-- customer IdP -->
+          <rect x="310" y="190" width="150" height="240" rx="14" fill="#f4f6f8" stroke="#98a2ae" stroke-width="2"/>
+          <text x="385" y="222" font-size="15" font-weight="700" fill="#17181c" text-anchor="middle">Customer IdP</text>
+          <text x="385" y="241" font-size="11" fill="#6b7280" text-anchor="middle">Okta · Entra · Ping</text>
+          <line x1="330" y1="256" x2="440" y2="256" stroke="#d6dae0" stroke-width="1"/>
+          <text x="385" y="282" font-size="12" fill="#3d3f45" text-anchor="middle">User directory</text>
+          <text x="385" y="310" font-size="12" fill="#3d3f45" text-anchor="middle">Groups</text>
+          <text x="385" y="338" font-size="12" fill="#3d3f45" text-anchor="middle">MFA policy</text>
+          <text x="385" y="366" font-size="12" fill="#3d3f45" text-anchor="middle">Token issuance</text>
+          <text x="385" y="400" font-size="10.5" fill="#98a2ae" text-anchor="middle">the system we</text>
+          <text x="385" y="414" font-size="10.5" fill="#98a2ae" text-anchor="middle">do not control</text>
+
+          <!-- AI Hub -->
+          <rect x="560" y="130" width="215" height="370" rx="14" fill="#eef6ff" stroke="#4a97ee" stroke-width="2.5"/>
+          <text x="667" y="168" font-size="19" font-weight="700" fill="#17181c" text-anchor="middle">AI Hub</text>
+          <text x="667" y="188" font-size="11" fill="#6b7280" text-anchor="middle">what I designed</text>
+          <line x1="585" y1="204" x2="750" y2="204" stroke="#b7d6f7" stroke-width="1"/>
+          <text x="667" y="232" font-size="12.5" fill="#3d3f45" text-anchor="middle">SSO configurations</text>
+          <text x="667" y="262" font-size="12.5" fill="#3d3f45" text-anchor="middle">Group mappings → RBAC</text>
+          <text x="667" y="292" font-size="12.5" fill="#3d3f45" text-anchor="middle">OAuth providers</text>
+          <text x="667" y="322" font-size="12.5" fill="#3d3f45" text-anchor="middle">Account mappings</text>
+          <text x="667" y="352" font-size="12.5" fill="#3d3f45" text-anchor="middle">Token validation</text>
+          <text x="667" y="382" font-size="12.5" fill="#3d3f45" text-anchor="middle">Audit logs</text>
+          <line x1="585" y1="404" x2="750" y2="404" stroke="#b7d6f7" stroke-width="1"/>
+          <text x="667" y="430" font-size="11" fill="#6b7280" text-anchor="middle">Entitlement gate:</text>
+          <text x="667" y="448" font-size="11" fill="#6b7280" text-anchor="middle">Enterprise tier + per-org flag</text>
+          <text x="667" y="466" font-size="11" fill="#6b7280" text-anchor="middle">+ org-admin role</text>
+
+          <!-- instabase people -->
+          <rect x="860" y="70" width="205" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="876" y="98" font-size="18">📣</text>
+          <text x="902" y="99" font-size="14.5" font-weight="600" fill="#17181c">Presales / SE</text>
+          <text x="876" y="120" font-size="11.5" fill="#6b7280">Answers "do you support X?"</text>
+
+          <rect x="860" y="300" width="205" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5"/>
+          <text x="876" y="328" font-size="18">🎧</text>
+          <text x="902" y="329" font-size="14.5" font-weight="600" fill="#17181c">Instabase support</text>
+          <text x="876" y="350" font-size="11.5" fill="#6b7280">Only one who can see truth.</text>
+
+          <!-- connections -->
+          <path d="M230,78 C400,54 690,72 852,100" fill="none" stroke="#8b93a0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar-grey)"/>
+          <path d="M130,112 L130,163" fill="none" stroke="#8b93a0" stroke-width="1.6" marker-end="url(#ar-grey)"/>
+          <path d="M230,206 L302,229" fill="none" stroke="#4a97ee" stroke-width="1.8" marker-end="url(#ar-blue)"/>
+          <path d="M230,184 C350,146 450,146 552,192" fill="none" stroke="#4a97ee" stroke-width="1.8" marker-end="url(#ar-blue)"/>
+          <path d="M462,310 L551,310" fill="none" stroke="#4a97ee" stroke-width="3.2" marker-end="url(#ar-blue)"/>
+          <path d="M230,330 L302,330" fill="none" stroke="#4a97ee" stroke-width="1.8" marker-end="url(#ar-blue)"/>
+          <path d="M230,344 C300,452 430,458 552,412" fill="none" stroke="#4a97ee" stroke-width="1.8" marker-end="url(#ar-blue)"/>
+          <path d="M230,466 C380,500 470,502 552,486" fill="none" stroke="#4a97ee" stroke-width="1.8" marker-end="url(#ar-blue)"/>
+          <path d="M856,334 L782,334" fill="none" stroke="#d99400" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ar-amber)"/>
+          <path d="M130,494 L130,548 L962,548 L962,376" fill="none" stroke="#d99400" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ar-amber)"/>
+          <path d="M962,138 L962,294" fill="none" stroke="#8b93a0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar-grey)"/>
+
+          <!-- badges -->
+          <g font-size="12" font-weight="700" text-anchor="middle">
+            <circle cx="540" cy="66" r="13" fill="#fff" stroke="#8b93a0" stroke-width="1.5"/><text x="540" y="70" fill="#5a626c">1</text>
+            <circle cx="130" cy="141" r="13" fill="#fff" stroke="#8b93a0" stroke-width="1.5"/><text x="130" y="145" fill="#5a626c">2</text>
+            <circle cx="266" cy="218" r="13" fill="#fff" stroke="#4a97ee" stroke-width="1.5"/><text x="266" y="222" fill="#2b6cb0">3</text>
+            <circle cx="391" cy="155" r="13" fill="#fff" stroke="#4a97ee" stroke-width="1.5"/><text x="391" y="159" fill="#2b6cb0">4</text>
+            <circle cx="506" cy="310" r="14" fill="#fff" stroke="#4a97ee" stroke-width="2"/><text x="506" y="315" fill="#2b6cb0">5</text>
+            <circle cx="266" cy="330" r="13" fill="#fff" stroke="#4a97ee" stroke-width="1.5"/><text x="266" y="334" fill="#2b6cb0">6</text>
+            <circle cx="386" cy="443" r="13" fill="#fff" stroke="#4a97ee" stroke-width="1.5"/><text x="386" y="447" fill="#2b6cb0">7</text>
+            <circle cx="392" cy="496" r="13" fill="#fff" stroke="#4a97ee" stroke-width="1.5"/><text x="392" y="500" fill="#2b6cb0">8</text>
+            <circle cx="819" cy="334" r="13" fill="#fff" stroke="#d99400" stroke-width="1.5"/><text x="819" y="338" fill="#8a6100">9</text>
+            <circle cx="546" cy="548" r="13" fill="#fff" stroke="#d99400" stroke-width="1.5"/><text x="546" y="552" fill="#8a6100">10</text>
+            <circle cx="962" cy="216" r="13" fill="#fff" stroke="#8b93a0" stroke-width="1.5"/><text x="962" y="220" fill="#5a626c">11</text>
+          </g>
+        </svg>
+
+        <div class="eco-hotspots">
+          <div class="eco-hot" style="left:49.09%;top:11.48%" tabindex="0">
+            <div class="eco-tip"><strong>The security review gates the deal</strong><span>Never opens AI Hub — but their review decides if presales can close.</span></div>
+          </div>
+          <div class="eco-hot align-r" style="left:11.82%;top:24.52%" tabindex="0">
+            <div class="eco-tip"><strong>Policy flows down to the admin</strong><span>Whatever the architect mandates, the admin has to configure.</span></div>
+          </div>
+          <div class="eco-hot align-r" style="left:24.18%;top:37.91%" tabindex="0">
+            <div class="eco-tip"><strong>Admin registers AI Hub inside the IdP</strong><span>Half of "setting up SSO" happens in a product we don't own.</span></div>
+          </div>
+          <div class="eco-hot" style="left:35.55%;top:26.96%" tabindex="0">
+            <div class="eco-tip"><strong>Admin configures the AI Hub side</strong><span>Same values, different vocabulary — the mismatch is where most setup failures live.</span></div>
+          </div>
+          <div class="eco-hot" style="left:46.0%;top:53.91%" tabindex="0">
+            <div class="eco-tip"><strong>The trust handoff</strong><span>IdP signs, AI Hub validates. The exchange this whole project is built around.</span></div>
+          </div>
+          <div class="eco-hot align-r" style="left:24.18%;top:57.39%" tabindex="0">
+            <div class="eco-tip"><strong>Machines get credentials from the same IdP</strong><span>Short-lived JWT — no human, no password, no login.</span></div>
+          </div>
+          <div class="eco-hot" style="left:35.09%;top:77.04%" tabindex="0">
+            <div class="eco-tip"><strong>Automation calls the API</strong><span>Bearer token, scoped by role UUIDs, mapped to a service account.</span></div>
+          </div>
+          <div class="eco-hot" style="left:35.64%;top:86.26%" tabindex="0">
+            <div class="eco-tip"><strong>The member just signs in</strong><span>"Continue with SSO" — they're the first to hit any error underneath.</span></div>
+          </div>
+          <div class="eco-hot align-l" style="left:74.45%;top:58.09%" tabindex="0">
+            <div class="eco-tip"><strong>Support flips the flag</strong><span>Until an engineer enables the per-org flag by hand, the customer sees an empty screen.</span></div>
+          </div>
+          <div class="eco-hot" style="left:49.64%;top:95.30%" tabindex="0">
+            <div class="eco-tip"><strong>Every failure escalates back to us</strong><span>Admins and members both land here — the source of the 22-issue research log.</span></div>
+          </div>
+          <div class="eco-hot align-l" style="left:87.45%;top:37.57%" tabindex="0">
+            <div class="eco-tip"><strong>Presales hands the promise to support</strong><span>Whatever was claimed becomes support's problem if the product can't back it.</span></div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <p class="eco-hint">Hover (or tab to) the numbered markers above for the story behind each connection.</p>
+
+        <div class="eco-key">
+          <div>
+            <h4>🔀 Setup is split across two products</h4>
+            <p>③ and ④ are the same configuration in two vocabularies. Neither side can validate the other. That gap is why field labels now carry each IdP's own naming.</p>
+          </div>
+          <div>
+            <h4>👤 The approver never logs in</h4>
+            <p>① is a design surface with no interface. The capability matrix, the validation flow diagram and the honest gap list were built for someone evaluating risk, not operating a UI.</p>
+          </div>
+          <div>
+            <h4>🔁 Every gap ends at support</h4>
+            <p>⑨, ⑩ and ⑪ form the friction loop this project attacked: invisible entitlement, silent errors, and no self-serve activation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- strip -->
+  <section class="sec dark strip" id="before-state">
+    <div class="wrap"><h2 class="strip-title">Let's look at what happened before</h2></div>
+  </section>
+
+  <!-- ============ 7. THE STATE BEFORE (light) ============ -->
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Three broken paths</h2>
+      <p class="lead">I mapped the three journeys the enterprise identity story runs through today — logging in, getting access, and calling the API — and marked every point where a customer had actually reported failure.</p>
+
+      <h3 class="flow-sub">🔄 Path A — a user signs in</h3>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span><p>User enters email + password created inside AI Hub</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></span><p>Enterprise IdP, MFA policy and offboarding rules are bypassed entirely</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg></span><p>Admin manually invites and removes every member</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></span><p>Leaver keeps a working password until someone remembers to delete them</p></div>
+      </div>
+
+      <h3 class="flow-sub">🔄 Path B — a user gets the right access</h3>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></span><p>Admin creates AI Hub groups by hand</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span><p>Adds each member to each group, manually</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></span><p>Repeats forever as people join, move teams and leave</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></span><p>Access drifts out of sync with the org chart — an audit finding waiting to happen</p></div>
+      </div>
+
+      <h3 class="flow-sub">🔄 Path C — a system calls the API</h3>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><p>Engineer generates a long-lived opaque token in the UI</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><p>Pastes it into a pipeline, a notebook, a shared vault</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"/></svg></span><p>Token carries the full permissions of its human owner, forever</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><p>No expiry, no rotation, no revocation from the IdP, no scope</p></div>
+      </div>
+
+      <h3 class="flow-sub">🔄 Path D — No Adudit logs</h3>
+      <div class="flow-steps">
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="11" r="4"/><path d="M19 11h2m-1-1v2"/></svg></span><p>Accessing audit logs requires internal engineer's help</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></span><p>SOC 2 security blockers</p></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACK 1 STRIP ============ -->
+  <section class="sec blue strip" id="track-sso">
+    <div class="wrap"><h2 class="strip-title white">Track 1 — Self serve Single Sign-On for every tenant</h2></div>
+  </section>
+
+  <!-- ============ 10. PERSONAS (light) ============ -->
+  <section id="personas" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">🧑‍💼 The org / IT admin</h2>
+      <div class="pnq-grid">
+        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul>
+          <li>Configures SSO maybe twice in a career — no muscle memory for SAML</li>
+          <li>Field names in AI Hub don't match field names in their IdP</li>
+          <li>Errors appear at login time, not at configuration time</li>
+          <li>Terrified of locking their whole organisation out</li>
+        </ul></div>
+        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul>
+          <li>Setup in the language of Okta / Entra, not the language of SAML</li>
+          <li>A safe way to test before enforcing</li>
+          <li>Clear required vs optional attributes</li>
+          <li>Group membership that follows the IdP automatically</li>
+        </ul></div>
+        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul>
+          <li>Precise, cautious, audit-minded</li>
+          <li>Will read documentation — and will hold us to it</li>
+          <li>Escalates fast when blocked; measures us on time-to-resolve</li>
+        </ul></div>
+      </div>
+      <h3 style="margin-top:36px;">🔄 Target flow</h3>
+      <div class="uflow-row">
+        <div class="uflow-box">Open Settings → Security</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Add configuration (SAML or OIDC)</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Paste IdP metadata / discovery URL</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Map attributes</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Test sign-in</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Enforce SSO org-wide</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Bringing SSO to multi-tenant AI Hub</h2>
+      <p class="lead">Shipped in Release 1. Enterprise-tier organisations can now configure SAML 2.0 and/or OIDC single sign-on themselves, from Settings → Security — with multiple configurations per org, mixing protocols.</p>
+
+      <div class="research-card">
+        <div class="research-media">
+          <img src="aihub-security-coded/before sso.webp" alt="Before SSO" style="width:100%;" />
+        </div>
+        <div class="research-text">
+          <h3>Before</h3>
+          <ul>
+            <li>SSO available only to single-tenant customers</li>
+            <li>MT customers given a whole ST environment as a workaround</li>
+            <li>Configuration done by Instabase engineers via environment variables</li>
+            <li>No way to test a configuration without risking lockout</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ba-row-split">
+        <div class="ba-card after"><h4>After</h4><ul>
+          <li>Self-serve SAML + OIDC config for MT org admins</li>
+          <li>Multiple configurations per organisation, protocols mixed</li>
+          <li>Guided setup that mirrors the admin's own IdP vocabulary</li>
+          <li>Test sign-in first; enforce SSO only once it works</li>
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/SSO%20config.mp4" title="SSO config walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+      <h3 class="flow-sub" style="margin-top:44px;">Testing configuration</h3>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div>
+          <h4 style="margin-bottom:10px;">Flow without test option: user gets locked out in wrong config.</h4>
+          <img src="aihub-security-coded/No-test-mode.webp" alt="Flow without test option: user gets locked out in wrong config" style="width:100%;border-radius:12px;" />
+        </div>
+        <div>
+          <h4 style="margin-bottom:10px;">Flow with test option enabled: Admin has a secure way to correct config again</h4>
+          <img src="aihub-security-coded/Test-mode-on.webp" alt="Flow with test option enabled: Admin has a secure way to correct config again" style="width:100%;border-radius:12px;" />
+        </div>
+      </div>
+
+      <details class="idp-vocab-details">
+        <summary class="flow-sub idp-vocab-summary"><span class="idp-chevron">&#9656;</span> Speaking every IdP's own vocabulary</summary>
+        <div class="idp-vocab-body">
+      <p class="lead">Guided setup only works if every field is labelled the way the admin's own IdP labels it. Mapping AI Hub's fields to each provider's own terminology was part of the design work.</p>
+
+      
+
+      <h4 style="margin:24px 0 10px;">Step 1 &rarr; paste into IdP)</h4>
+      <div class="comp-table-wrap comp-table-wrap--compact">
+        <table class="comp-table comp-table--compact">
+          <thead><tr><th>Our field</th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Active directory federation services.png" alt="" />AD FS</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Microsoft Entra.png" alt="" />Microsoft Entra ID</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/One login.png" alt="" />OneLogin</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Auth0.png" alt="" />Auth0</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/JumpCloud.png" alt="" />JumpCloud</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Okta.png" alt="" />Okta</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/PingFederate.png" alt="" />PingFederate</span></th></tr></thead>
+          <tbody>
+            <tr><th>Application label</th><td>Display name</td><td>Name</td><td>Display Name</td><td>App name</td><td>Display Label</td><td>App label/name</td><td>Connection Name</td></tr>
+            <tr><th>Service provider entity ID</th><td>Relying party identifier</td><td>Identifier (Entity ID)</td><td>Audience (Entity ID)</td><td>Entity ID / Audience</td><td>SP Entity ID</td><td>Audience URI (SP Entity ID)</td><td>Entity ID (Partner's Entity ID)</td></tr>
+            <tr><th>Assertion consumer service URL</th><td>Assertion Consumer Service (POST) URL</td><td>Reply URL (ACS URL)</td><td>ACS (Consumer) URL</td><td>Application Callback URL</td><td>ACS URL</td><td>Single sign-on URL</td><td>ACS URL</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comp-table-wrap comp-table-wrap--compact">
+        <table class="comp-table comp-table--compact">
+          <thead><tr><th>Our field</th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Active directory federation services.png" alt="" />AD FS</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Microsoft Entra.png" alt="" />Microsoft Entra ID</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/One login.png" alt="" />OneLogin</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Auth0.png" alt="" />Auth0</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/JumpCloud.png" alt="" />JumpCloud</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Okta.png" alt="" />Okta</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/PingFederate.png" alt="" />PingFederate</span></th></tr></thead>
+          <tbody>
+            <tr><th>Redirect URI</th><td>&mdash; (no native OIDC)</td><td>Redirect URI (Reply URL)</td><td>Redirect URI</td><td>Allowed Callback URLs</td><td>Redirect URIs</td><td>Sign-in redirect URI</td><td>Redirect URIs</td></tr>
+            <tr><th>Required scopes</th><td>&mdash;</td><td>Requested/delegated permissions</td><td>Scopes</td><td>Permissions/Scopes</td><td>Scopes</td><td>Requested scopes</td><td>Requested Scopes</td></tr>
+          </tbody>
+        </table>
+      </div>
+        </div>
+
+        <h4 style="margin:24px 0 10px;">SAML (step 2 &rarr; AIhub configuration)</h4>
+      <div class="comp-table-wrap comp-table-wrap--compact" style="margin-bottom:20px;">
+        <table class="comp-table comp-table--compact">
+          <thead><tr><th>SAML field</th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Okta.png" alt="" />Okta</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Microsoft Entra.png" alt="" />Microsoft Entra ID</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/PingFederate.png" alt="" />PingFederate</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Auth0.png" alt="" />Auth0</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/JumpCloud.png" alt="" />JumpCloud</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/One login.png" alt="" />OneLogin</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Active directory federation services.png" alt="" />AD FS</span></th></tr></thead>
+          <tbody>
+            <tr><th>Sign on URL</th><td>Identity Provider Single Sign-On URL</td><td>Login URL</td><td>SSO Endpoint (Browser SSO)</td><td>Sign On URL</td><td>IDP URL</td><td>SAML 2.0 Endpoint (HTTP)</td><td>SAML 2.0/WS-Fed SSO URL</td></tr>
+            <tr><th>Identity provider entity ID</th><td>Identity Provider Issuer</td><td>Azure AD Identifier</td><td>Partner's Entity ID / Issuer</td><td>Issuer</td><td>IDP Entity ID</td><td>Issuer URL</td><td>Issuer / Entity ID (federation metadata)</td></tr>
+            <tr><th>X.509 certificate</th><td>X.509 Certificate</td><td>Certificate (Base64)</td><td>Signing Certificate</td><td>X.509 Signing Certificate</td><td>IDP Certificate</td><td>X.509 Certificate</td><td>Token-signing certificate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="comp-table-wrap comp-table-wrap--compact">
+        <table class="comp-table comp-table--compact">
+          <thead><tr><th>OIDC field</th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Okta.png" alt="" />Okta</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Microsoft Entra.png" alt="" />Microsoft Entra ID</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/PingFederate.png" alt="" />PingFederate</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Auth0.png" alt="" />Auth0</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/JumpCloud.png" alt="" />JumpCloud</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/One login.png" alt="" />OneLogin</span></th><th><span class="idp-logo-cell"><img src="aihub-security-coded/identity-provider-logos/Active directory federation services.png" alt="" />AD FS</span></th></tr></thead>
+          <tbody>
+            <tr><th>Client ID</th><td>Client ID</td><td>Application (client) ID</td><td>Client ID</td><td>Client ID</td><td>Client ID</td><td>Client ID</td><td>Client Identifier</td></tr>
+            <tr><th>Client Secret</th><td>Client Secret</td><td>Client secret (value)</td><td>Client Secret</td><td>Client Secret</td><td>Client Secret</td><td>Client Secret</td><td>Generate shared secret</td></tr>
+            <tr><th>Discovery URL</th><td><code>{domain}/.well-known/openid-configuration</code></td><td><code>login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration</code></td><td>OIDC Provider Metadata endpoint</td><td><code>{domain}/.well-known/openid-configuration</code></td><td>Discovery Document URL</td><td>Well-Known Config URL</td><td><code>/.well-known/openid-configuration</code> (fed metadata)</td></tr>
+            <tr><th>Authorization endpoint URL</th><td>Authorize URL</td><td>OAuth 2.0 authorization endpoint</td><td>Authorization Endpoint</td><td>Authorization URL</td><td>Authorization Endpoint</td><td>Authorization Endpoint</td><td>OAuth2 Authorization Endpoint</td></tr>
+            <tr><th>Token URL</th><td>Token URL</td><td>OAuth 2.0 token endpoint</td><td>Token Endpoint</td><td>Token URL</td><td>Token Endpoint</td><td>Token Endpoint</td><td>OAuth2 Token Endpoint</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </details>
+
+      <h3 class="flow-sub">Key design decisions</h3>
+      <div class="dec-grid">
+
+        <div class="dec-card win">
+          <h4>1. Removing "domain verificaation" from SSO configuration entirely</h4>
+          <div class="dec-quad">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>The first design routed users to an IdP by claiming an email domain. Nothing stopped an org admin from claiming a domain they don't own — including <code>gmail.com</code> — and silently intercepting other people's logins. A configuration screen had become a phishing vector.</div>
+            <div class="dec-note options"><span class="dec-note-label">🔀 Options</span>(a) Keep domains, add a manual security-team approval gate before activation. (b) Keep domains, add DNS-based domain verification. (c) Remove the domain concept entirely and bind SSO configs directly to the organisation.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Option (c). SSO configurations are associated with an org; membership is still gated by invitation, so there is nothing to hijack.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>The approval gate solved the security problem by adding a human bottleneck to a self-serve feature — trading the thing we were shipping for the thing we were preventing. Removing the concept removed the entire attack surface <em>and</em> deleted a field, a validation state, an error state and a support process. The best security fix was less UI, not more.</div>
+          </div>
+          <p class="dec-plain-note"><strong>⚖️ Trade-off:</strong> Multi-domain organisations (separate dev / test / prod domains, requested by one large financial-institution customer) are not served at launch. I documented this as an explicit, tracked gap rather than a silent one.</p>
+</div>
+
+        <div class="dec-card">
+          <h4>2. "Test connection" instead of a separate mode</h4>
+          <div class="dec-quad">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>An admin cannot know whether their configuration works until a real human tries to log in — and by then, if they have already enforced SSO, everyone is locked out.</div>
+            <div class="dec-note options"><span class="dec-note-label">🔀 Options</span>(a) A dedicated "test mode" state on the configuration, with its own lifecycle. (b) An inline test action that runs a real sign-in against the saved config.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Inline test, plus a hard rule in the flow: password sign-in stays on until a successful SSO login is confirmed.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>A separate test mode introduces a third state ("configured but not live") that has to be explained, surfaced in the list, and reasoned about at login-routing time. The inline test gives the same confidence with no new state — the safety net is the password fallback, not a mode.</div>
+          </div>
+        </div>
+
+        <div class="dec-card hidden-extra">
+          <h4>3. Making the destructive step feel destructive</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Turning off "Allow sign-in with email and password" is the single action in the product that can lock an entire organisation out of its own account, recoverable only through Instabase Support.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Treat it as a separate, deliberate step after successful testing — never bundled into saving a configuration — with an explicit caution about what happens if the config is wrong, and a documented recovery path.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Enforcement is a policy decision, not a configuration detail. Separating "does this work?" from "is this now mandatory?" is the difference between a confident admin and a support ticket from a locked-out CIO.</div>
+          </div>
+</div>
+
+        <div class="dec-card hidden-extra">
+          <h4>4. Attribute mapping designed around its failure mode</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>The most common real-world failure was an attribute error surfacing at login as a raw string — <code>SAML response is missing uid attribute</code> — to an end user who has no idea what a SAML attribute is, hours after the admin finished configuring.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Required vs optional attributes explicitly separated in the UI and the docs; <code>groups</code> and <code>is_admin</code> presented as optional capabilities with their consequences spelled out; advanced signing settings given clear defaults (assertion signed on, response signing optional, IdP-initiated SSO allowed).</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Three separate customer escalations traced back to attribute confusion. The fix isn't a better error message at login — it's making the requirement unmissable at configuration time.</div>
+          </div>
+</div>
+
+        <div class="dec-card hidden-extra">
+          <h4>5. Naming the danger in <code>is_admin</code></h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>If the IdP sends <code>is_admin</code>, it wins — it overrides any role change an admin makes inside AI Hub, silently, on every single login. An admin could demote someone in the UI and watch it undo itself the next morning.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Say it plainly, everywhere the attribute appears: this value overrides manual role changes and resets on every login — keep the number of admins minimal.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>You cannot design away a protocol behaviour. You can refuse to let it be a surprise.</div>
+          </div>
+</div>
+
+        <button type="button" class="dec-toggle-btn" onclick="var g=this.closest('.dec-grid'); g.classList.toggle('expanded'); this.firstChild.textContent = g.classList.contains('expanded') ? 'View fewer decisions ' : 'View more decisions ';">View more decisions <span class="dec-toggle-icon">▾</span></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TRACK 2 ============ -->
+  <section class="sec blue strip" id="track-groups">
+    <div class="wrap"><h2 class="strip-title white">Track 2 — Access that follows the org chart (RBAC)</h2></div>
+  </section>
+
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">IdP group mapping for RBAC - By Admin</h2>
+      <p class="lead">SSO answers "can this person log in?". Group mapping answers "and what should they be able to see?". SAML group mapping existed only for single tenants; OIDC group mapping was documented but did not exist — the gap a major customer found before we did.</p>
+
+      <div class="ba-row-split">
+        <div class="ba-card before"><h4>Before</h4><ul>
+          <li>OIDC customers managed every group membership by hand</li>
+          <li>Docs claimed OIDC group mapping worked — it didn't</li>
+          <li>SAML mapping was one IdP group per AI Hub group</li>
+          <li>No signal about when a membership change would take effect</li>
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/RBAC%20before.mp4" title="RBAC before walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+      <div class="ba-row-split">
+        <div class="ba-card after"><h4>After</h4><ul>
+          <li>OIDC group mapping at parity with SAML, same mental model</li>
+          <li>Many external IdP groups can map to one AI Hub group</li>
+          <li>Mapping created inline while creating the group, or added later</li>
+          <li>Sync timing stated explicitly wherever mapping is configured</li>
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/RBAC%20after.mp4" title="RBAC after walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+      <h3 class="flow-sub">Key design decisions</h3>
+      <div class="dec-grid">
+        <div class="dec-card win">
+          <h4>1. Many-to-one mapping, not one-to-one</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Real enterprises don't have one clean group per function. They have <code>eu-analysts</code>, <code>us-analysts</code> and <code>contractor-analysts</code> — all of whom need the same AI Hub workspace access.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Let an AI Hub group accept multiple IdP group names, entered as a list. This removed earlier limitation the earlier SAML implementation had carried.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>The one-to-one constraint was an implementation artefact leaking into the mental model. Modelling the mapping the way customers actually think — "these IdP groups mean this thing here" — removed a whole class of workaround groups.</div>
+          </div>
+</div>
+
+        <div class="dec-card">
+          <h4>2. Telling the truth about sync timing</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Group membership doesn't sync when the admin saves the mapping. It syncs at each member's <em>next login</em>. So an admin creates a mapping, sees an empty member list, and concludes it's broken. Worse: removing someone from a group in the IdP does not remove their access until they log in again. </div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>State it at the moment of the action, & also in empty states, not in a help article: the member list will populate as members log in, and removals apply at next login. Requires SCIM implementation. But started with JIT provisioning due to time constraints.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the honest version of a security-relevant limitation. An admin who knows about the delay can plan around it; one who doesn't will assume offboarding is instant, which is exactly the assumption an auditor punishes. It also gave the roadmap its clearest argument for SCIM.</div>
+          </div>
+</div>
+
+        <!--<div class="dec-card">
+          <h4>3. Mapping membership, not roles — and saying so</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Admins reasonably expect that if groups come from the IdP, roles do too. They don't: group role (member vs. group manager) is still assigned inside AI Hub.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Make the boundary explicit in the UI and docs — membership is mapped, roles are not.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>An unstated boundary in an access-control feature is a security incident with a delay on it. Naming it also gave presales a crisp, honest answer to a question they were getting repeatedly.</div>
+          </div>
+</div>-->
+
+        <div class="dec-card">
+          <h4>3. Handling Existing users groups in org while transistioning to new RBAC</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to the existing members in HI Hub who are alreadying part of a group in AIHUB, and what happend new SAML or OIDC group mapping is added.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Preserve the AIhub gorup mapping, and show the memberhip source clearly. Let adming handle removal of AI-Hub group mapping if they want to remove AI hub managed group membership.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span> Old group mapping still holds value for existing users. in the orgs which are transitining to new RBAC, it allows the admin to keep the existing group membership for existing users.</div>
+          </div>
+</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <h4 style="margin:24px 0 10px;">Iteration of add multiple group for many-to-one mapping</h4>
+        <p class="lead">Why: admins have a long list to map initially when they configure any org. Doing it via single addition is cumbersome. Chose the best of each iteration for the final implementation.</p>
+        <img src="aihub-security-coded/bulk-add-options.webp" alt="Bulk add options" style="width:100%;border-radius:12px;" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TRACK 3 ============ -->
+  <section class="sec blue strip" id="track-tokens">
+    <div class="wrap"><h2 class="strip-title white">Track 3 — From raw tokens to oauth compliance</h2></div>
+  </section>
+
+  <section class="sec light" style="padding-top:0;">
+    <div class="wrap">
+      <h2 class="sec-h2" style="margin-top:54px;"> <small> Persona: </small>👩‍💻 Developers / API engineer / Admins</h2>
+      <div class="pnq-grid">
+        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul>
+          <li>Automation has no identity of its own in an SSO-only org</li>
+          <li>Long-lived tokens violate their own security policy, transition to new Oauth</li>
+          <li>A token silently carries its creator's full admin rights</li>
+          <li>No API to create, rotate or delete tokens programmatically</li>
+        </ul></div>
+        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul>
+          <li>Tokens issued and revoked by their own IdP</li>
+          <li>A non-human account they can map a client to use</li>
+          <li>Explicit, inspectable scope on every token</li>
+          <li>A copy-paste path that actually works first try</li>
+        </ul></div>
+        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul>
+          <li>Reads the error body, not the error toast</li>
+          <li>Judges the product by its first successful API call</li>
+          <li>Will happily automate around us if we get in the way</li>
+        </ul></div>
+      </div>
+      <h3 style="margin-top:36px;">🔄 Target flow</h3>
+      <div class="uflow-row">
+        <div class="uflow-box">Register app in own IdP</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Add OAuth provider config in AI Hub</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Map <code>sub</code> to a service account</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Request JWT from IdP</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Call AI Hub API as Bearer</div><span class="uflow-arrow">→</span>
+        <div class="uflow-box">Disable native tokens org-wide</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">OAuth-compliant API authentication</h2>
+      <p class="lead">Delivered in two phases: <b>Release 2:</b> making existing AI-hub Oauth app to issue Oauth compliant tokens and depreciation of raw AI-Hub issued tokens. <b>Release 3:</b> let organisations bring their own OAuth provider so their IdP issues the JWTs AI Hub validates, added scopes so a token can carry <em>less</em> authority than the identity behind it.</p>
+
+      <div class="ba-row-split">
+        <div class="ba-card before"><h4>Before</h4><ul>
+          <li>Long-lived opaque tokens, generated in the UI</li>
+          <li>Token silently inherits its owner's full permissions</li>
+          <li>No expiry, no rotation, no IdP-side revocation</li>
+          
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/API%20before.mp4" title="API before walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+      <div class="ba-row-split">
+        <div class="ba-card after"><h4>Stage 1 solution</h4><ul>
+          <li>AIhub Oauth app which issues short lived tokens (15min)</li>
+          <li>Signature, issuer, audience and expiry validated on every call</li>
+          <li>Ability to set scope of the token</li>
+          <li>Depreciation and migration plan of the old AI-Hub raw rokens</li>
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/API%20stage%201.mp4" title="API stage 1 walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+      <div class="ba-row-split">
+        <div class="ba-card after"><h4>Stage 2 solution</h4><ul>
+          <li>Customer's own OAuth provider issues short-lived JWTs (15–60 min)</li>
+          <li>Signature, issuer, audience and expiry validated on every call</li>
+          <li>Scope claim downscopes the token to specific roles</li>
+        
+        </ul></div>
+        <div class="video-embed">
+          <video preload="auto" src="aihub-security-coded/videos/API%20stage%202.mp4" title="API stage 2 walkthrough"></video>
+          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+      </div>
+
+
+      <h3 class="flow-sub">Key design decisions</h3>
+      <div class="dec-grid">
+        <div class="dec-card win">
+          <h4>1. Two objects, not one: provider configuration and account mapping</h4>
+          <div class="dec-quad">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>"Set up OAuth" is really two different jobs done by two different people at two different times: an org-wide trust relationship with an identity provider, and a per-identity claim that "this external subject is that account here".</div>
+            <div class="dec-note options"><span class="dec-note-label">🔀 Options</span>(a) One combined wizard. (b) Two separate objects, each with its own lifecycle and its own home in the IA.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Two objects. The provider configuration lives under Identity &amp; access; the account mapping lives on the member or service account it belongs to. Both are required before any external token authenticates.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Configuring a provider is a one-time act; mapping accounts is continuous, and belongs where the account lives. Splitting them also made the failure states diagnosable — "no provider" and "no mapping" are genuinely different problems with different fixes.</div>
+          </div>
+        </div>
+
+        <div class="dec-card">
+          <h4>2. Terminology as a design deliverable</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Early drafts used "OAuth client" for three different things: the customer's IdP auth server, the app registered inside it, and the link between that app and an AI Hub identity. Reviews kept stalling on which one anyone meant.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Fix the vocabulary before the UI: <strong>OAuth provider configuration</strong> (the trust relationship), <strong>external OAuth client</strong> (the app in the customer's IdP), <strong>account mapping</strong> (the link to an AI Hub identity).</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>In identity work, the naming <em>is</em> the mental model. Once the three objects had distinct names, the screens, the API and the documentation fell out of it — and the review conversations stopped going in circles.</div>
+          </div>
+</div>
+
+        <div class="dec-card hidden-extra">
+          <h4>3. One client, one identity</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Should several external OAuth apps be allowed to map to a single shared service account? It's convenient — and it destroys least privilege, because every app inherits the same rights.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>One-to-one. Each external client maps to exactly one AI Hub user or service account. Each account may hold one mapping per configured provider.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>One global investment bank customer cannot configure scopes on their side at all. If a customer can't express least privilege through scope, the only remaining lever is the identity itself — so the client had to become the unit of privilege. A constraint from one customer's security policy became the safer default for everyone.</div>
+          </div>
+        </div>
+
+        <div class="dec-card hidden-extra">
+          <h4>4. Scope may only reduce, never grant</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>If a JWT's scope claim controls what the token can do, could a customer mint themselves admin rights by writing an admin role into a token?</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Scope always downscopes and never upscopes. It is expressed as immutable role UUIDs; multiple roles are additive (most permissive wins); a workspace role without an organisation role is invalid; and a workspace role still requires real membership of that workspace. If the scope claim is absent or invalid, the token falls back to the mapped account's normal roles.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the whole reason enterprise security teams accept token-based access. Using role UUIDs instead of readable strings was the less friendly choice for humans — and the right one, because a renamed role must never silently change what a live token can do.</div>
+          </div>
+        </div>
+
+        <div class="dec-card hidden-extra">
+          <h4>5. A migration path, not a flag day</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had working automation built on raw internal tokens. Deprecating them abruptly breaks production pipelines at exactly the customers we're trying to impress.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>A staged migration: (1) external IdP tokens ship alongside native tokens; (2) admins gain granular control over native token creation — all members, selected groups, or nobody; (3) an org that has moved to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a release note. Giving each organisation the switch — and a reversible one, since disabling native tokens suspends rather than destroys them — let security-forward customers move immediately without breaking anyone else.</div>
+          </div>
+        </div>
+
+        
+
+        <button type="button" class="dec-toggle-btn" onclick="var g=this.closest('.dec-grid'); g.classList.toggle('expanded'); this.firstChild.textContent = g.classList.contains('expanded') ? 'View fewer decisions ' : 'View more decisions ';">View more decisions <span class="dec-toggle-icon">▾</span></button>
+      </div>
+
+      <h3 class="flow-sub">Audit logs of everything</h3>
+      <p class="lead">Previously, audit trails were dug out of raw log files by an internal engineer — there was no UI for admins to see them at all. This was a named SOC 2 blocker for several enterprise deals; giving admins a self-serve audit log view unlocked it.</p>
+      <img src="aihub-security-coded/auditlogs.webp" alt="Audit logs" style="width:100%;border-radius:12px;" />
+      <p class="dec-plain-note" style="margin-top:8px;"><em>*All are dummy values, just a placeholder</em></p>
+
+    </div>
+  </section>
+
+
+  <!-- strip -->
+  <section class="sec dark strip" id="my-process">
+    <div class="wrap"><h2 class="strip-title">My process</h2></div>
+  </section>
+
+  <!-- ============ 8. RESEARCH (light) ============ -->
+  <section id="research" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Research — mining the evidence that already existed</h2>
+      <p class="lead">I had no budget for a formal study and no access to a bank's IT team on demand. What I did have was three years of Slack: presales questions, Zendesk escalations, engineering threads and customer call notes. Internal engineers support,I treated that as the research corpus.</p>
+
+      <div class="research-card" style="grid-template-columns:1fr;">
+        <div class="research-text">
+          <h3>Systematic Slack &amp; ticket mining</h3>
+          <p>I pulled every message from slcak channels and tickets then coded each reported problem by category, reporter, root cause and resolution status. The result was a 22 distinct issues logged in a status dashboard: 2 open, 5 workaround-only, 4 documentation gaps.</p>
+          <p style="margin-top:12px;color:green;">This is what turned a vague "we need SSO" into a prioritised, evidence-backed problem list I could defend in a roadmap review.</p>
+        </div>
+      </div>
+
+      <div class="research-card" style="grid-template-columns:1fr;">
+        <div class="research-text">
+          <h3>Customer validation calls</h3>
+          <p>I joined and read back the notes from validation calls with the accounts driving the work. One global investment bank's constraints reshaped the design more than any internal opinion did: they use the <em>client credentials</em> flow, their <code>sub</code> claim is a random string rather than an email, and their security team cannot configure per-token scopes on their side.</p>
+          <div class="quote-card">
+            <p>"We can't use long-lived opaque tokens. Our IdP issues the token, or we don't integrate."</p>
+            <span>— synthesis of the security requirement from that engagement, captured in the call notes</span>
+          </div>
+          <p style="margin-top:12px;color:green;">That single constraint is why the final model maps <strong>one external OAuth client to exactly one identity</strong> — if a customer can't scope a token, the client itself has to be the unit of least privilege.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 8b. PRIMARY RESEARCH — VERBATIMS (light) ============ -->
+  <section id="primary-research" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Primary research — in the users' own words</h2>
+      <p class="lead">Hard to get an access to the enterprise customers. Was on presales and support channel calls to get the insights. Below are the quotes from the calls. Including some interviews with internal customer engineers.</p>
+
+      <!-- THEME 1 -->
+      <div class="qt-theme">
+        <h3>🚧 Theme 1 — "We'll just give them a different environment"</h3>
+        <p class="qt-lead">The absence of multi-tenant SSO wasn't costing us features. It was costing us infrastructure, margin and credibility — because the field had invented a workaround and normalised it.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="qt-card">
+          <blockquote>"It has been agreed internally that we will provide them ST instance despite them being a MT customer as a temporary measure to bypass SSO requirement."</blockquote>
+          <div class="qt-meta"><span class="qt-who">Account team — European luxury retail group</span><span class="qt-tag workaround">Workaround</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> we were provisioning an entire dedicated environment as a substitute for one settings screen. The cost of the missing feature was being paid in infrastructure, not in the backlog.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>"Is SSO available for Commercial (MT) customers or only Enterprise? What security tools exist without SSO — IP whitelisting, password requirements?"</blockquote>
+          <div class="qt-meta"><span class="qt-who">Presales lead, APAC</span><span class="qt-tag doc">Doc gap</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> our own sellers couldn't state our security posture. Entitlement clarity is a design deliverable, not a pricing-page footnote.</div>
+        </div>
+      </div>
+
+      <!-- THEME 2 
+      <div class="qt-theme">
+        <h3>🧯 Theme 2 — The feature exists, but the customer sees nothing</h3>
+        <p class="qt-lead">The single most repeated root cause across the whole log. A capability shipped, the docs described it, and the customer opened a screen that wasn't there — because a per-org flag was off.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="qt-card">
+          <blockquote>Before self-serve activation, an admin could follow the setup docs exactly, configure everything correctly, and still hit a dead end — because MT SSO was gated by a flag they had no way to see.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>Root cause:</strong> the feature flag, not the configuration, was the actual blocker. <strong>Design response:</strong> a gated capability must never render as absence.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>The same "SSO configuration is missing" failure surfaced independently, from unrelated customers, with no shared cause visible from the outside.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> the same root cause produced separate tickets from separate customers on separate continents. That's a systemic design failure, not bad luck.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>An org admin — the one role meant to have full access — could open Settings and simply not see the "Identity and access" tab, with nothing on screen explaining why.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>Root cause:</strong> three separate conditions gated that tab — enterprise tier, a feature flag distinct from the SSO flag, and org-admin role. None of them were visible to the person being blocked.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>Even after general availability, turning SSO on for a given org still required an internal engineer to flip a flag by hand — "shipped" and "available" were two different states no customer could tell apart.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> I began treating activation as part of the feature's design surface, not an ops detail handled after launch.</div>
+        </div>
+      </div>
+    -->
+
+      <!-- THEME 3 
+      <div class="qt-theme">
+        <h3>🧩 Theme  — Attribute mapping fails silently, hours later, to the wrong person</h3>
+        <p class="qt-lead">The admin configures. Nothing appears wrong. The failure surfaces at login — as a protocol error string, to an end user who has never heard of SAML.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="qt-card">
+          <blockquote>A missing required attribute in the SAML assertion surfaced only as a raw protocol error at login — accurate, unreadable, and reaching the end user with no way to act on it, hours after the admin thought setup was done.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> the error message is the last line of defence, not the fix. <strong>Design response:</strong> make required attributes unmissable at configuration time.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>The optional-attributes field silently dropped every value after the first comma — an admin who entered the field correctly still ended up with only partial sync, with no signal anything was wrong.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> if a config typo like this takes real debugging time to trace, no customer admin is going to get it right from a bare form.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>Neither the docs nor the configuration UI ever distinguished a required attribute from an optional one — admins had no way to know which fields their setup actually depended on.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>Design response:</strong> required vs optional split explicitly in the UI <em>and</em> in the docs, with the consequence of each optional attribute stated inline.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>The OIDC discovery-URL endpoint lives in a different place in every identity provider's console, and none of it was documented per-provider — admins were left guessing where in their own IdP the value even was.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> admins don't fail on concepts, they fail on <em>where in my IdP is this value</em>. This is why the 8-provider field matrix became an in-product content requirement.</div>
+        </div>
+      </div>
+    -->
+
+      <!-- THEME 4 -->
+      <div class="qt-theme">
+        <h3>👥 Theme 2 — Nobody could explain how access actually syncs</h3>
+        <p class="qt-lead">Group mapping questions were never "how do I create one?". They were always about the invisible rules: is it required, when does it apply, what happens to people already in the group.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="qt-card">
+          <blockquote>Whether group mapping was required, whether groups auto-created themselves, and when membership actually synced were all left to guesswork — the documentation described the mechanism but never the defaults.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> three reasonable assumptions, all wrong at once. Mapping is optional, groups are not auto-created, and sync is not immediate — none of it said out loud.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>Whether SAML group mapping was even supported wasn't something the team could always confirm without checking with engineering first.</blockquote>
+          <div class="qt-meta"><span class="qt-who">Before this shipped</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> when internal teams have to ask engineering whether a shipped feature exists, the capability story is broken before it ever reaches a customer.</div>
+        </div>
+       
+        
+      </div>
+
+      <!-- THEME 5 -->
+      <div class="qt-theme">
+        <h3>🤖 Theme 3 — Machines have no identity</h3>
+        <p class="qt-lead">The most commercially expensive theme in the log. Every quote here is attached to an enterprise account with a signed contract or an active go-live date.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="qt-card">
+          <blockquote>"[The customer] cannot use long-lived opaque tokens due to internal security policy. Their IdP issues the token, or they don't integrate."</blockquote>
+          <div class="qt-meta"><span class="qt-who">Call notes — global investment bank</span><span class="qt-tag resolved">Resolved · Release 2</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> this is not a feature request, it's a policy wall. No amount of UX makes a forbidden credential acceptable. <strong>Design response:</strong> validate JWTs issued by <em>their</em> IdP — we stop being the issuer.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>"[They] would not go live without a service account feature. The workaround — create an account with a group email ID — was rejected, since their login is via SSO only."</blockquote>
+          <div class="qt-meta"><span class="qt-who">Presales — global security vendor</span><span class="qt-tag open">Open — go-live blocker</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> we kept conflating <em>login</em> with <em>API access</em>. The answer was never "let a faceless account log in" — it was a non-human identity that never logs in at all.</div>
+        </div>
+        <div class="qt-card">
+          <blockquote>"As an admin, [we need to] programmatically CREATE / UPDATE / DELETE API tokens to automate provisioning."</blockquote>
+          <div class="qt-meta"><span class="qt-who">Requirements call — European bank</span><span class="qt-tag workaround">Workaround</span></div>
+          <div class="qt-insight"><strong>What it told me:</strong> at enterprise scale, credential management is itself automated. A UI-only token screen isn't a smaller version of the feature — it's the wrong shape entirely.</div>
+        </div>
+        
+      </div>
+
+      
+    </div>
+  </section>
+
+  <!-- ============ 8c. COMPETITOR ANALYSIS (light) ============ -->
+  <section id="competitors" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Competitive analysis</h2>
+      <p class="lead">I audited how the intelligent document processing market handles enterprise identity — and then widened it, because in most deals we weren't only being compared to IDP vendors. We were being compared to the IAM model the customer already had from their cloud provider.</p>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <img src="aihub-security-coded/Config analysis.png" alt="Config analysis" style="width:60%;height:auto;object-fit:contain;border-radius:12px;" />
+        <img src="aihub-security-coded/signin analysis.png" alt="Sign-in analysis" style="width:60%;height:auto;object-fit:contain;border-radius:12px;" />
+      </div>
+
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category position</th>
+              <th>SSO (SAML / OIDC)</th>
+              <th>IdP groups → roles</th>
+              <th>Machine identity &amp; API auth</th>
+              <th>Audit logs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>UiPath<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">Document Understanding</span></th>
+              <td>RPA-led automation suite; IDP as one capability of a large platform</td>
+              <td>SAML 2.0 + OIDC, self-serve in Automation Cloud</td>
+              <td>Directory groups mapped to roles at tenant and folder level</td>
+              <td>First-class: external applications with OAuth client credentials, scoped per app</td>
+              <td>Tenant-level audit trail, exportable</td>
+            </tr>
+            <tr>
+              <th>Automation Anywhere<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">Document Automation</span></th>
+              <td>RPA incumbent; document automation bundled into Control Room</td>
+              <td>SAML 2.0 SSO, IdP-driven</td>
+              <td>Role mapping from directory groups</td>
+              <td>API keys plus OAuth-style tokens via Control Room</td>
+              <td>Detailed audit log with filtering</td>
+            </tr>
+            <tr>
+              <th>ABBYY<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">Vantage</span></th>
+              <td>OCR/IDP specialist, deep document-engineering heritage</td>
+              <td>SSO via SAML/OIDC on the cloud offering</td>
+              <td>Tenant roles, group-driven assignment</td>
+              <td>OAuth client credentials for API integrations</td>
+              <td>Transaction &amp; admin audit trail</td>
+            </tr>
+            <tr>
+              <th>Hyperscience</th>
+              <td>Enterprise-first IDP, heavily deployed in financial services &amp; government</td>
+              <td>SAML SSO standard in enterprise deployments</td>
+              <td>Group → role mapping</td>
+              <td>API tokens; deployment often self-hosted inside customer perimeter</td>
+              <td>Audit logging positioned as a compliance feature</td>
+            </tr>
+            <tr>
+              <th>Rossum</th>
+              <td>Modern cloud-native document AI, developer-friendly</td>
+              <td>SAML/OIDC SSO on enterprise tiers</td>
+              <td>Role assignment, group support</td>
+              <td>API tokens and OAuth-based access for integrations</td>
+              <td>Activity/audit history</td>
+            </tr>
+            <tr>
+              <th>Tungsten Automation<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">(formerly Kofax)</span></th>
+              <td>Long-standing capture platform, large regulated install base</td>
+              <td>SSO across the platform suite</td>
+              <td>Directory-integrated RBAC</td>
+              <td>Platform API credentials</td>
+              <td>Compliance-oriented logging</td>
+            </tr>
+            <tr>
+              <th>Google Cloud<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">Document AI</span></th>
+              <td>Hyperscaler API; identity inherited from the cloud platform</td>
+              <td>Google Cloud Identity / any IdP federated into it</td>
+              <td>IAM roles and policy bindings, inherited org-wide</td>
+              <td><strong>The bar:</strong> native service accounts, short-lived OAuth2 tokens, workload identity federation</td>
+              <td>Cloud Audit Logs — admin, data access, immutable</td>
+            </tr>
+            <tr>
+              <th>Microsoft Azure<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">AI Document Intelligence</span></th>
+              <td>Hyperscaler API, default choice inside Microsoft estates</td>
+              <td>Microsoft Entra ID, natively</td>
+              <td>Entra groups → Azure RBAC roles</td>
+              <td><strong>The bar:</strong> managed identities, no secrets to store or rotate</td>
+              <td>Azure Monitor / activity logs</td>
+            </tr>
+            <tr>
+              <th>Amazon Web Services<br /><span style="font-weight:400;font-size:12.5px;color:var(--ink-2);">Textract</span></th>
+              <td>Hyperscaler API, embedded in AWS-native pipelines</td>
+              <td>IAM Identity Center federated to the customer's IdP</td>
+              <td>IAM roles and permission sets from IdP groups</td>
+              <td><strong>The bar:</strong> IAM roles and STS short-lived credentials, no long-lived keys</td>
+              <td>CloudTrail — every API call, immutable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="todo-note">Data as of feb 2026</p>
+
+      <h3 class="flow-sub" style="margin-top:40px;">What the analysis actually changed</h3>
+      <div class="comp-takeaways">
+        <div class="comp-take">
+          <h4>🎯 Table stakes, not differentiator</h4>
+          <p>Every serious competitor had SSO and group-driven RBAC. That reframed the pitch internally: this work does not win deals on features — its absence <em>loses</em> them at security review. Which is a far stronger argument for prioritisation than "customers want SSO".</p>
+        </div>
+        <div class="comp-take">
+          <h4>☁️ The real benchmark was the hyperscalers</h4>
+          <p>Our buyers already run AWS, Azure or GCP, where machine identity is native: service accounts, short-lived credentials, no long-lived keys. Against that baseline, our long-lived opaque token wasn't behind the IDP market — it was behind the <em>infrastructure</em> customers use every day.</p>
+        </div>
+        <div class="comp-take">
+          <h4>🔑 Machine identity was the actual gap</h4>
+          <p>The clearest differentiator across the field wasn't login — it was how well non-human access was modelled. That confirmed the OAuth external tokens track deserved equal weight to SSO, rather than being treated as a follow-on.</p>
+        </div>
+        <div class="comp-take">
+          <h4>🧭 Self-serve setup was our opening</h4>
+          <p>Several IDP competitors still route enterprise identity setup through support or professional services. Making configuration genuinely self-serve — with a safe test path — was a place we could be visibly better, not merely equal.</p>
+        </div>
+        <div class="comp-take">
+          <h4>📜 Audit is a sales artefact</h4>
+          <p>The hyperscalers treat audit logging as a headline capability with its own documentation, because compliance teams read it. Ours was a preview feature on one tenancy model — a gap I raised on the roadmap rather than let sit quietly.</p>
+        </div>
+        <div class="comp-take">
+          <h4>🚪 Nobody wins on the identity screen</h4>
+          <p>No admin picks a document AI platform because of its SSO form. This shaped every interaction decision: the goal is to be finished, correct and forgettable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8d. FRAMEWORKS & STANDARDS (light) ============ -->
+  <section id="frameworks" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Frameworks &amp; knowledge I analysed</h2>
+      <p class="lead">I could not design this credibly by reading competitor screenshots. Enterprise identity is governed by published specifications and audited against named control frameworks — so I worked from the primary sources — and turned what I learned into my own working checklists for designing in this domain.</p>
+
+      <div class="ref-block">
+        <div class="ref-row">
+          <div class="ref-label">🔐 Protocol specs<span>Defined what the system must validate on every assertion and token.</span></div>
+          <div class="ref-pills">
+            <a class="ref-pill" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf" target="_blank" rel="noopener">SAML 2.0 Core</a>
+            <a class="ref-pill" href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener">OIDC Core 1.0</a>
+            <a class="ref-pill" href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="_blank" rel="noopener">OIDC Discovery</a>
+            <a class="ref-pill" href="https://datatracker.ietf.org/doc/html/rfc6749" target="_blank" rel="noopener">RFC 6749 · OAuth 2.0</a>
+            <a class="ref-pill" href="https://datatracker.ietf.org/doc/html/rfc7519" target="_blank" rel="noopener">RFC 7519 · JWT</a>
+            <a class="ref-pill" href="https://datatracker.ietf.org/doc/html/rfc9700" target="_blank" rel="noopener">RFC 9700 · OAuth Security BCP</a>
+            <a class="ref-pill" href="https://datatracker.ietf.org/doc/html/rfc7644" target="_blank" rel="noopener">SCIM 2.0</a>
+          </div>
+        </div>
+        <div class="ref-row">
+          <div class="ref-label">🛡 Security &amp; compliance<span>The language security reviewers and auditors actually use.</span></div>
+          <div class="ref-pills">
+            <a class="ref-pill" href="https://pages.nist.gov/800-63-3/sp800-63b.html" target="_blank" rel="noopener">NIST SP 800-63B</a>
+            <a class="ref-pill" href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noopener">NIST SP 800-207 · Zero Trust</a>
+            <a class="ref-pill" href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a>
+            <a class="ref-pill" href="https://owasp.org/Top10/" target="_blank" rel="noopener">OWASP Top 10 · A01, A07</a>
+            <a class="ref-pill" href="https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2" target="_blank" rel="noopener">SOC 2 · CC6</a>
+            <a class="ref-pill" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO 27001:2022</a>
+            <a class="ref-pill" href="https://gdpr-info.eu/art-32-gdpr/" target="_blank" rel="noopener">GDPR Art. 32</a>
+          </div>
+        </div>
+        <div class="ref-row">
+          <div class="ref-label">🏗 Product &amp; IdP references<span>Source of the enterprise feature ladder and the cross-IdP field naming.</span></div>
+          <div class="ref-pills">
+            <a class="ref-pill" href="https://www.enterpriseready.io/" target="_blank" rel="noopener">EnterpriseReady</a>
+            <a class="ref-pill" href="https://developer.okta.com/docs/guides/" target="_blank" rel="noopener">Okta docs</a>
+            <a class="ref-pill" href="https://learn.microsoft.com/en-us/entra/identity/" target="_blank" rel="noopener">Microsoft Entra docs</a>
+            <a class="ref-pill" href="https://auth0.com/docs" target="_blank" rel="noopener">Auth0 docs</a>
+            <a class="ref-pill" href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener">Nielsen heuristics</a>
+          </div>
+        </div>
+        <div class="ref-row">
+          <div class="ref-label">🏢 Internal corpus<span>Read end-to-end to verify what shipped against what was specified.</span></div>
+          <div class="ref-pills">
+            <span class="ref-pill plain">CE config call logs, pre salse support calls</span>
+            <span class="ref-pill plain">existing docs.instabase.com/admin</span>
+            <span class="ref-pill plain">Slack channels + Zendesk</span>
+          </div>
+        </div>
+      
+      </div>
+
+      <h3 class="flow-sub" style="margin-top:44px;">The checklist I designed against</h3>
+      <p class="lead">Specifications tell you what is possible; audits tell you what is required. Neither tells you what to check as a designer. So I reduced everything above into two working checklists of my own — one I run <em>before</em> designing anything in this domain, one I hold the finished design to before I call it done. I still use both.</p>
+
+      <div class="paper-grid">
+        <div class="paper">
+          <div class="paper-title">Pre-design check-list<br />before I draw a single screen</div>
+          <div class="paper-body">
+            <div class="chk-sub">Framing</div>
+            <div class="chk-line"><span class="cbx"></span>Who configures, approves, and is affected?</div>
+            <div class="chk-line"><span class="cbx"></span>What does the security reviewer need to see?</div>
+            <div class="chk-line"><span class="cbx"></span>Which spec defines the correct behaviour?</div>
+            <div class="chk-line"><span class="cbx"></span>What does the customer's own IdP call this?</div>
+            <div class="chk-line"><span class="cbx"></span>Which tier or flag gates this capability?</div>
+            <div class="chk-sub">Threat</div>
+            <div class="chk-line"><span class="cbx"></span>How would a bad actor abuse this screen?</div>
+            <div class="chk-line"><span class="cbx"></span>What is the worst irreversible action here?</div>
+            <div class="chk-line"><span class="cbx"></span>Can any input grant more access than it should?</div>
+            <div class="chk-line"><span class="cbx"></span>What must never be logged or displayed?</div>
+            <div class="chk-sub">Hidden state</div>
+            <div class="chk-line"><span class="cbx"></span>What is invisible to the user right now?</div>
+            <div class="chk-line"><span class="cbx"></span>When does this take effect — is that said?</div>
+            <div class="chk-line"><span class="cbx"></span>On failure, who sees it, and can they act?</div>
+          </div>
+        </div>
+
+        <div class="paper">
+          <div class="paper-title">Evaluation check-list<br />before I call the design done</div>
+          <div class="paper-body">
+            <div class="chk-sub">Clarity</div>
+            <div class="chk-line"><span class="cbx"></span>Fields named the way the admin's IdP names them</div>
+            <div class="chk-line"><span class="cbx"></span>Required vs optional is unmissable</div>
+            <div class="chk-line"><span class="cbx"></span>No protocol jargon in a user-facing error</div>
+            <div class="chk-sub">Safety</div>
+            <div class="chk-line"><span class="cbx"></span>Nothing destructive without a deliberate step</div>
+            <div class="chk-line"><span class="cbx"></span>A safe way to test before enforcing</div>
+            <div class="chk-line"><span class="cbx"></span>Every lockout has a documented way back</div>
+            <div class="chk-sub">Honesty</div>
+            <div class="chk-line"><span class="cbx"></span>A gated capability never renders as absence</div>
+            <div class="chk-line"><span class="cbx"></span>Sync delays stated at the moment of action</div>
+            <div class="chk-line"><span class="cbx"></span>Gaps named, not implied away</div>
+            <div class="chk-sub">Completeness</div>
+            <div class="chk-line"><span class="cbx"></span>Empty, loading, error and gated states designed</div>
+            <div class="chk-line"><span class="cbx"></span>Least privilege by default, never admin</div>
+            <div class="chk-line"><span class="cbx"></span>Docs verified by the engineer who built it</div>
+          </div>
+        </div>
+      </div>
+      <p class="todo-note">These two lists came out of the 22-issue log and the specifications above — most items exist because something in that log went wrong for a real customer. They travel with me to any product where identity, permissions or credentials are involved.</p>
+
+      <div class="research-card" style="margin-top:24px;">
+        <div class="research-media">
+          <img src="aihub-security-coded/idp naming matrix.png" alt="IdP naming matrix — 8 providers × field names × where to find each value" style="width:100%;border-radius:12px;" />
+        </div>
+        <div class="research-text"">
+          <h3>Building the IdP field matrix</h3>
+          <p>Every identity provider names the same three fields differently. Entra calls the ACS URL a "Reply URL"; Okta calls it "Single Sign On URL"; AD FS calls it the "Relying Party SAML 2.0 SSO service URL". Admins were transcribing values between two tabs and guessing.</p>
+          <p style="margin-top:12px;color:green;">I built the full cross-reference matrix for all 8 supported IdPs and turned it into an in-product content requirement: the configuration UI names the field <em>the way the admin's own IdP names it</em>, not the way the SAML spec does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. BENCHMARK (light) ============ -->
+  <section id="benchmark" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Benchmark — what "enterprise-ready" actually means</h2>
+      <p class="lead">Before designing screens I wrote down the standard an enterprise security review measures a SaaS product against. This became the scoring sheet the team used to decide what was in scope, what was deferred, and what we were consciously accepting as a gap.</p>
+
+      <div class="comp-table-wrap">
+        <table class="comp-table benchmark-table">
+          <thead>
+            <tr><th>Capability</th><th>What enterprises expect</th><th>AI Hub before</th><th>After this project</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>SAML 2.0 SSO</th><td>Self-serve, per-tenant, multiple configs</td><td>Single-tenant only</td><td>Multi- and single-tenant, self-serve UI</td><td>✅ Shipped R1</td></tr>
+            <tr><th>OIDC SSO</th><td>Auth code flow, discovery URL, claim mapping</td><td>Single-tenant only</td><td>Multi- and single-tenant, discovery-URL based</td><td>✅ Shipped R1</td></tr>
+            <tr><th>RBAC via IdP groups</th><td>Group claims drive product roles</td><td>SAML only; manual otherwise</td><td>SAML + OIDC group mapping, many-to-one</td><td>✅ Shipped</td></tr>
+            <tr><th>JIT provisioning</th><td>Account created on first SSO login</td><td>ST only</td><td>Account auto-created on first SSO login, MT included</td><td>✅ Shipped</td></tr>
+            <tr><th>API auth</th><td>Short-lived OAuth2 JWTs, IdP-issued</td><td>Long-lived opaque tokens</td><td>External IdP JWT validation + native token controls</td><td>✅ Shipped R2</td></tr>
+            <tr><th>Least privilege</th><td>Downscoped tokens, per-client identity</td><td>Token inherits owner's full rights</td><td>Scope claim with role UUIDs; scope can only reduce</td><td>✅ Shipped R3</td></tr>
+            <tr><th>Audit logs</th><td>Immutable, exportable, filterable</td><td>Partial</td><td>14 categories, CSV/JSON export, 2-year retention</td><td>🟡 Preview, ST only</td></tr>
+            <tr><th>MFA</th><td>Enforced by the IdP, signalled via <code>amr</code></td><td>Per-account, password logins only</td><td>Delegated to the customer's IdP under SSO</td><td>🟡 Entirely IdP managed</td></tr>
+            <tr><th>SCIM offboarding</th><td>IdP pushes deactivation in real time</td><td>None</td><td>Not built — sync happens at next login</td><td>🔴 Named gap</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="todo-note">Naming the red rows explicitly, This made the matrix usable in sales conversations. Presales could finally answer "do you support X?" without guessing.</p>
+    </div>
+  </section>
+
+  <!-- ============ 11. DESIGN PRINCIPLES (dark) ============ -->
+  <section id="principles" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Five principles I set before drawing anything</h2>
+      <p class="lead">Security UX fails in a specific way: it is usable right up until the moment it silently isn't. These principles were my filter for every decision that followed, and I put them at the top of every review deck.</p>
+      <div class="grid-2 reflect-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="reflect-card"><h3>🧭 Speak the admin's IdP, not the spec</h3><p>Every field label, helper text and error carries the name the admin sees in Okta, Entra or PingFederate. The SAML vocabulary is our problem, not theirs.</p></div>
+        <div class="reflect-card"><h3>🧪 Never let a config change be a leap of faith</h3><p>Test before enforce, always. The destructive step — turning off password sign-in — is guarded, explained and reversible for as long as possible.</p></div>
+        <div class="reflect-card"><h3>🪞 Make the invisible visible</h3><p>Sync timing, gating flags, entitlement tiers and token permissions are all invisible state. If the user can't see it, they will assume the worst and file a ticket.</p></div>
+        <div class="reflect-card"><h3>🔻 Permissions only ever go down</h3><p>No mechanism in this system may grant more access than the identity behind it already has. Scope downscopes; it never upscopes.</p></div>
+        <div class="reflect-card"><h3>🧱 Design the threat, not just the flow</h3><p>Every configuration surface got a "how would a bad actor abuse this?" pass before it got a layout. One of those passes removed a whole feature.</p></div>
+        <div class="reflect-card wide"><h3>📢 The documentation is part of the product</h3><p>Four of our 22 reported problems were pure docs failures. I treated the docs surface as a design deliverable — required/optional attribute tables, per-IdP guidance and accurate capability claims shipped as part of the feature, reviewed by the engineer who wrote the code.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IA (light) ============ -->
+  <section id="ia" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Information architecture of 3 tracks</h2>
+      <p class="lead">Three tracks landed in the same settings area over the releases. Without a deliberate structure, AI Hub would have ended up with three unrelated "security" screens built by three different period — which is exactly how enterprise settings usually rot.</p>
+      <div class="ia-stack">
+        <img class="ia-diagram-img" src="aihub-security-coded/ph-28.webp" alt="IA diagram: settings tree before vs. after, with the three tracks colour-coded" />
+        <div>
+          <h3 style="margin-bottom:14px;">The structure I set</h3>
+          <ul style="padding-left:20px; display:grid; gap:10px; font-size:16px; color:var(--ink-2);">
+            <li><strong>SSO Logins</strong> — how users get in: password sign-in policy,MFAs..</li>
+            <li><strong>Identity &amp; access</strong> — SSO configuration, test mode, OAuth provider configurationsauthorization.</li>
+            <li><strong>Organisation → Groups </strong>What people can reach: groups, group mappings, roles.</li>
+            <li><strong>Organisation → Service accounts</strong> Provider's account mappings live on the account, not in a separate registry.</li>
+            <li><strong>Organisatio → Manage → Audit logs</strong> — what happened, and what's opt-in. Detailed snapshot.</li>
+          </ul>
+          <p class="todo-note">The rule underneath it: an object lives where the user's mental model puts it, not where the API happens to expose it. Account mappings belong on the account. Group mappings belong on the group.</p>
+        </div>
+      </div>
+
+      <h2 class="sec-h2" style="margin-top:44px;">Solutions are listed in the 3 tracks in the above section</h2>
+      <div style="display:flex;gap:16px;width:100%;">
+        <a href="#track-sso" style="flex:1;text-align:center;padding:16px 20px;border-radius:var(--radius-lg);background:var(--ink);color:#fff;font-weight:700;text-decoration:none;">Track 1 — SSO</a>
+        <a href="#track-groups" style="flex:1;text-align:center;padding:16px 20px;border-radius:var(--radius-la);background:var(--ink);color:#fff;font-weight:700;text-decoration:none;">Track 2 — Group mapping</a>
+        <a href="#track-tokens" style="flex:1;text-align:center;padding:16px 20px;border-radius:var(--radius-l);background:var(--ink);color:#fff;font-weight:700;text-decoration:none;">Track 3 — OAuth tokens</a>
+      </div>
+<!---
+      <h3 class="flow-sub" style="margin-top:44px;">Entitlement &amp; gating model</h3>
+      <p class="lead">Half our support tickets were not bugs. They were entitlement invisibility: the feature shipped, but a tier check plus a per-org flag meant the customer saw an empty screen and the docs said it should be there.</p>
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead><tr><th>Capability</th><th>Tier</th><th>Tenancy</th><th>Needs support to enable?</th></tr></thead>
+          <tbody>
+            <tr><th>SAML SSO</th><td>Enterprise</td><td>Multi + single</td><td>Yes — self-service SSO enabled per org</td></tr>
+            <tr><th>OIDC SSO</th><td>Enterprise</td><td>Multi + single</td><td>Yes — same</td></tr>
+            <tr><th>SAML group mapping</th><td>Enterprise</td><td>Single-tenant</td><td>Generally available</td></tr>
+            <tr><th>OIDC group mapping</th><td>Enterprise</td><td>Single-tenant</td><td>Yes — preview feature toggle</td></tr>
+            <tr><th>OAuth provider config</th><td>Enterprise</td><td>Both</td><td>Yes — must be enabled</td></tr>
+            <tr><th>Audit logs</th><td>Enterprise</td><td>Single-tenant</td><td>Yes — private preview request</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="todo-note">My recommendation from this table: never render an empty gated surface. Either show the capability with a clear "available on Enterprise — talk to your admin" state, or don't render it and make the docs say so. Silence is the worst of the three options.</p>
+    </div>
+  -->
+  </section>
+
+  <!-- ============ VISUAL DESIGN (light) ============ -->
+  <!--
+  <section id="visual-design" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Visual design &amp; system work</h2>
+      
+        <div class="research-media"><div class="ph">🖼 ph-29 — UI kit: components used and extended for this work (config list rows, protocol badges, claim-mapping fields, destructive confirmation, empty and gated states)</div></div>
+        <div class="research-text">
+          <h3>Built on the design system, extended where identity demanded it</h3>
+          <p>Every screen uses the existing product design system. What identity work needed that the system didn't yet have: a configuration-row pattern with protocol badges and an overflow action set (disable, delete, show ACS URL, edit mapping), a claim-mapping field pattern that shows the default claim name while allowing an override, and a destructive-confirmation pattern strong enough for "this can lock your organisation out".</p>
+          <p style="margin-top:12px;">I contributed these back as reusable patterns rather than one-off screens, so the next security surface starts from them.</p>
+        </div>
+
+       <div class="research-card">
+        <div class="research-media"><div class="ph">🎥 ph-30 — Figma prototype embed / recording: the full SSO setup prototype used in testing</div></div>
+        <div class="research-text">
+          <h3>Prototyping for a flow that leaves the product</h3>
+          <p>The hardest part to prototype is the part we don't own: the admin leaves AI Hub, does work in Okta or Entra, and comes back with values. I prototyped both sides — including stub screens of the IdP — so tests measured the real task ("configure SSO"), not the artificial one ("fill in this form").</p>
+          <p style="margin-top:12px;">Design files and specs were reviewed against the technical design docs so field-level behaviour, defaults and error copy matched what the API actually did.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ============ USABILITY (light) ============ -->
+  <section id="usability" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Usability evaluation</h2>
+      <p class="lead">Tested with internal participants who mirror the real personas — solution engineers, support engineers and platform engineers who configure customer IdPs for a living — plus configuration walkthroughs with early customers.</p>
+
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead><tr><th>Task</th><th>Participants</th><th>Success rate</th><th>Median time</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><th>Configure SAML SSO end-to-end</th><td><strong>4</strong> Admin</td><td>75%</td><td>6 min</td><td><ul style="padding-left:16px;margin:0;display:grid;gap:4px;"><li>1 participant misread the ACS URL field on first try</li><li>Metadata upload was preferred over manual entry</li><li>Test-before-enforce step reduced hesitation to proceed</li></ul></td></tr>
+            <tr><th>Configure OIDC SSO end- to-end</th><td><strong>5</strong> Admin</td><td>80%</td><td>4 min</td><td><ul style="padding-left:16px;margin:0;display:grid;gap:4px;"><li>Faster than SAML — discovery URL auto-fills most fields</li><li>1 participant pasted the wrong URL type (auth vs. discovery)</li><li>No confusion once the field was auto-validated</li></ul></td></tr>
+            <tr><th>Map an IdP group to an AI Hub group</th><td><strong>6</strong> Admin</td><td>83%</td><td>3 min</td><td><ul style="padding-left:16px;margin:0;display:grid;gap:4px;"><li>Confusion only on the many-to-one mapping step</li><li>Sync-timing note prevented "is it broken?" moments</li><li>Participants expected group auto-creation — it doesn't</li><li>Quickest task once the mental model clicked</li></ul></td></tr>
+            <tr><th>Register an OAuth provider + account mapping</th><td><strong>4</strong> Engineer</td><td>50%</td><td>9 min</td><td><ul style="padding-left:16px;margin:0;display:grid;gap:4px;"><li>2 of 4 needed a hint to find account mapping under the member page</li><li>Provider config vs. account mapping split wasn't obvious upfront</li><li>Once found, mapping itself took under a minute</li><li>Lowest success rate of all five tasks</li></ul></td></tr>
+            <tr><th>Make a first successful authenticated API call</th><td><strong>4</strong> Engineer</td><td>75%</td><td>5 min</td><td><ul style="padding-left:16px;margin:0;display:grid;gap:4px;"><li>Copy-pasted sample code worked first try for 3 of 4</li><li>1 participant hit a scope error, resolved by re-reading the docs</li><li>Placeholder token in samples caused no confusion</li></ul></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="flow-sub" style="margin-top:40px;">What testing changed</h3>
+      <div class="flag-card">
+        <div class="grid-2">
+          <div><h4>🗣 Feedback</h4><p>"I don't know which of these fields my IdP calls what — I'm guessing." Participants tab-switched constantly and transcribed values by hand.</p></div>
+          <div><h4>✅ Change made</h4><p>Field labels carry per-IdP naming, and the setup surfaces the exact place in each of the 8 supported IdPs where each value is found.</p> <p>
+          "Exact IdP field names, and Import and export capablities" 
+          </p></div>
+        </div>
+        <div class="grid-2" style="margin-top:20px;">
+          <div><h4>🗣 Feedback</h4><p>"So if I save this, is SSO on now? Am I about to break login for everyone?"</p></div>
+          <div><h4>✅ Change made</h4><p>Saving a configuration and enforcing SSO became two separate, clearly labelled steps, with the password fallback explicitly held open until a successful test.</p></div>
+        </div>
+        <div class="grid-2" style="margin-top:20px;">
+          <div><h4>🗣 Feedback</h4><p>"I created the mapping but the group is empty — did it fail?"</p></div>
+          <div><h4>✅ Change made</h4><p>Sync timing stated inline at the moment of creation, so an empty list reads as expected behaviour rather than failure. </p> <p></p>
+            "Starting showing the message in confirmation modal and table empty state"
+          </p></div>
+        </div>
+        <div class="grid-2" style="margin-top:20px;">
+          <div><h4>🗣 Feedback</h4><p>"Why can't I just paste the role name into the scope? These UUIDs are unreadable."</p></div>
+          <div><h4>✅ Change made</h4><p>Kept immutable role UUIDs (renaming a role must never change a live token's power) but shipped a copyable role-to-UUID reference and worked scope examples alongside the field.</p></div>
+        </div>
+      </div>
+
+      <h3 class="flow-sub" style="margin-top:44px;">Changes based on feedback</h3>
+      <div class="flag-card">
+        <div class="grid-2">
+          <div><h4>🗣 Feedback</h4><p>When existing orgs transition from old to new RBAC, they might miss users in the group mapping. It's very hard to confirm if a user belongs to a specific group. </p> <p> "We have to open every group and check manually."</p></div>
+          <div><h4>✅ Change made</h4><p>Created a
+            "verify user" tool inside groups: search for a user and instantly see every group they belong to. It turns a manual, error-prone check into a debugging step.</p></div>
+        </div>
+      </div>
+      <img src="aihub-security-coded/Verify-user.webp" alt="Verify user" style="width:100%;border-radius:12px;margin-top:20px;" />
+
+    </div>
+  </section>
+
+  <!-- ============ AI IN DESIGN (dark) ============ -->
+  <section id="ai-in-design" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">How I used AI in this project</h2>
+      <p class="lead">This project had a research corpus no human reads end-to-end: three years of Slack across five channels, customer engineer notes and a documentation site. AI is what made that corpus tractable for one designer — and, separately, what I proposed to make SSO setup easier for the admins themselves.</p>
+
+      <h3 class="flow-sub" style="margin-top:10px;">In my own process</h3>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <h4>🔎 Corpus mining &amp; issue coding</h4>
+          <p>I used AI to sweep every message across four Slack channels and extract each distinct user-reported problem — reporter, channel, error string, root cause, status — into a structured log. Twenty-two issues, deduplicated and coded, in a day rather than a fortnight of scrolling.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>🧩 Root-cause clustering</h4>
+          <p>Rather than clustering by symptom, I had AI propose groupings by underlying cause, then argued with them. The five clusters that survived became the design principles. AI generated the candidate structure; I made the call on what was actually a design problem versus a support problem.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>📚 Protocol literacy, fast</h4>
+          <p>I am a designer, not an identity engineer. I used AI as a tutor on SAML assertions, OIDC discovery, PKCE, JWKS validation, <code>amr</code> claims, JIT vs SCIM — until I could hold my own in an engineering design review and challenge decisions on the merits.</p>
+         
+        </div>
+        <div class="ai-card">
+          <h4>🗂 Cross-IdP matrix generation</h4>
+          <p>The 8-provider × field-name × where-to-find-it matrix would have been days of documentation archaeology. AI drafted it from provider documentation; I verified every row against real IdP consoles before it became UI content.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>🧨 Adversarial design review</h4>
+          <p>I ran each configuration surface through a "how would a bad actor abuse this?" pass with AI as the adversary. The domain-claiming attack — an admin claiming a domain they don't own — is the kind of threat this pass is for, and it ended in removing a field entirely.</p>
+         
+        </div>
+        <div class="ai-card">
+          <h4>✍️ Error &amp; helper copy drafting</h4>
+          <p>Security copy has to be precise and calm at the same time. I drafted variants with AI, then cut hard for accuracy — every claim about behaviour was checked against the technical design docs before it shipped.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>📊 Competitive &amp; standards benchmarking</h4>
+          <p>The enterprise-readiness matrix — SSO, MFA, JIT, SCIM, RBAC, audit logs, retention, SOC 2 / ISO 27001 / GDPR implications — was assembled with AI, then narrowed to what a security review actually asks for.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>🧾 Spec &amp; handoff acceleration</h4>
+          <p>Field-level specs, state tables and edge-case lists drafted from my flows, then reviewed against the API specification so design and implementation described the same behaviour in the same words.</p>
+          
+        </div>
+        <div class="ai-card">
+          <h4>⚖️ What I did not delegate</h4>
+          <p>Every architectural call — removing domains, one-to-one client mapping, scope-only-downscopes, staging the token migration — was mine, argued in review with engineering and PM. AI compressed the path to being informed. It did not make the decisions, and I verified anything it produced that touched security behaviour.</p>
+          
+        </div>
+      </div>
+
+      <!-- HIDDEN — AI-assisted setup concept (re-enable by removing this comment wrapper)
+      <h3 class="flow-sub" style="margin-top:44px;">In the product — an AI-assisted setup concept</h3>
+      <p class="lead">Working through 22 real failures made the opportunity obvious: almost every SSO problem is a <em>transcription</em> problem. So I proposed an AI-assisted configuration layer as the next evolution of this work.</p>
+      <div class="ai-grid">
+        <div class="ai-card"><h4>📥 Metadata parser &amp; auto-fill</h4><p>Admin drops in metadata XML or a discovery URL; every field auto-populates. One action removes the single largest source of misconfiguration.</p></div>
+        <div class="ai-card"><h4>🩺 Plain-English validation</h4><p>Real-time checks for expired certificates, malformed ACS URLs and mismatched entity IDs — explained in sentences, not error codes.</p></div>
+        <div class="ai-card"><h4>🧠 Attribute mapping inference</h4><p>After a test login, inspect the actual assertion or token received and suggest the mapping: "this looks like the email field."</p></div>
+        <div class="ai-card"><h4>💬 Conversational setup</h4><p>"We use Okta, about 200 users" → correct protocol, correct config, steps written for that specific IdP. Admins know Okta; they don't know SAML.</p></div>
+        <div class="ai-card"><h4>🛠 Login-failure debug assistant</h4><p>Parse the failure, trace it back through the configuration, and name the exact field to fix — instead of hours spent searching SAML error codes.</p></div>
+        <div class="ai-card"><h4>📡 Proactive health monitoring</h4><p>Certificate expiring in 30 days, login success rate dropping, unusual assertion patterns — flagged to the right person before it becomes an outage.</p></div>
+      </div>
+      <div class="ph ph-diagram">🖼 ph-32 — Concept designs: AI-assisted SSO setup (metadata drop, inline validation, mapping inference, debug assistant)</div>
+      -->
+    </div>
+  </section>
+
+  <!-- ============ COLLABORATION (light) ============ -->
+  <section id="collaboration" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Collaboration</h2>
+      <h3 style="margin-top:20px;">Working with engineering (1 Eng lead, 2 frontend developers, 2 backend developer)</h3>
+      <p class="lead">The technical design documents were written alongside my flows. I reviewed the API specification, the SSO configuration schema and the token-scope permissions matrix directly, and pushed back at that level — schema decisions like removing the domain field, or using immutable role UUIDs for scope, are design decisions wearing engineering clothes. Frontend built against a mocked API surface while the backend was in flight, so I reviewed real interactive builds weeks earlier than a sequential process would have allowed.</p>
+
+      <h3 style="margin-top:28px;">Working with product &amp; presales (partial PM support & presales team)</h3>
+      <p class="lead">Presales and support were my highest-signal research channel — they hold the objection list. In return, the benchmark and entitlement tables I produced went straight into their hands, so "do you support X?" stopped being answered from memory.</p>
+
+      <h3 style="margin-top:28px;">Working with documentation: (1 Docs lead)</h3>
+      <p class="lead">I treated docs as part of the design surface: required vs optional attribute tables, per-IdP setup guidance, and the token scope matrix were all shaped as design deliverables and reviewed by the Docs team who wrote the code. The process change I pushed for: docs accuracy is verified by an implementing engineer before publication, Doc links in description line of each section of the product.</p>
+
+      <h3 style="margin-top:28px;">Design sign-off</h3>
+      <p class="lead">Every screen was walked through with the implementing engineer against the states list — empty, gated, loading, error, partial, destructive-confirm — before it was called done. For identity features the error and gated states <em>are</em> the product, so they got the same scrutiny as the happy path.</p>
+    </div>
+  </section>
+
+  <!-- ============ CHALLENGES (light) ============ -->
+   <!-- 
+  <section id="challenges" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Challenges faced</h2>
+
+      <div class="dec-grid">
+        <div class="dec-card">
+          <h4>🧯 The feature shipped, and customers still couldn't find it</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note happened"><span class="dec-note-label">📌 What happened</span>After GA, MT SSO still required an internal engineer to enable a per-org flag. Customers followed the public documentation, saw nothing, and filed tickets. The same root cause produced separate escalations from two customers and a third for the OAuth tab.</div>
+            <div class="dec-note approach"><span class="dec-note-label">🛠 How I approached it</span>I reframed it from an operations problem into a design problem: a gated capability must never render as absence. I proposed a visible entitlement state ("available on Enterprise — contact your administrator"), documented the tier matrix so presales could set expectations correctly, and pushed self-serve activation onto the roadmap as the real fix.</div>
+            <div class="dec-note outcome"><span class="dec-note-label">🎯 Outcome</span>Entitlement now documented per capability. Making invisibility visible became one of the five design principles.</div>
+          </div>
+</div>
+
+        <div class="dec-card">
+          <h4>🌐 A browser policy silently broke SSO login for Chrome</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note happened"><span class="dec-note-label">📌 What happened</span>Days before release, Chrome's content security policy blocked the redirect to the IdP after the login form was submitted. Users hit the login page, submitted, and the redirect silently failed — on the majority browser at enterprise customers.</div>
+            <div class="dec-note approach"><span class="dec-note-label">🛠 How I approached it</span>Engineering owned the fix (switching the login form from POST to GET). My contribution was insisting the failure could not be silent: a login flow that dead-ends must say something the user can act on, and the whole path needed retesting per browser rather than per environment.</div>
+            <div class="dec-note outcome"><span class="dec-note-label">🎯 Outcome</span>Fixed before GA. Cross-browser verification of the redirect path became part of the release checklist for auth changes.</div>
+          </div>
+</div>
+
+        <div class="dec-card">
+          <h4>🤖 A blocker I could not design away</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note happened"><span class="dec-note-label">📌 What happened</span>A customer's go-live depended on service accounts: in an SSO-only org, automation has no identity, because a shared account cannot complete an SSO login. The proposed workaround — a group email address — was rejected outright.</div>
+            <div class="dec-note approach"><span class="dec-note-label">🛠 How I approached it</span>I separated the two things everyone kept conflating: <em>login</em> (interactive, human, via SSO) and <em>API access</em> (non-interactive, machine, via token). Once framed that way, the answer wasn't "let a faceless account log in" — it was a first-class non-human identity that never logs in at all, which the OAuth work then mapped clients onto.</div>
+            <div class="dec-note outcome"><span class="dec-note-label">🎯 Outcome</span>Partly solved: external OAuth tokens plus account mappings give machines a real identity. Full service-account support remains an explicitly tracked gap — I chose to name it rather than let presales imply it was covered.</div>
+          </div>
+</div>
+
+        <div class="dec-card">
+          <h4>📄 Documentation that promised a feature we hadn't built</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note happened"><span class="dec-note-label">📌 What happened</span>Our docs stated OIDC group mapping was supported. It wasn't. A major customer found it and raised it more than once before it was addressed.</div>
+            <div class="dec-note approach"><span class="dec-note-label">🛠 How I approached it</span>Two moves: short-term, correct the claim and remove the premature UI option so nobody else was misled; long-term, argue for docs accuracy as a release gate rather than a docs-team problem, since the trust cost lands on the whole product.</div>
+            <div class="dec-note outcome"><span class="dec-note-label">🎯 Outcome</span>The feature shipped and the docs became true. The incident is the reason "documentation is part of the product" is a stated principle here rather than an afterthought.</div>
+          </div>
+</div>
+
+        <div class="dec-card">
+          <h4>🧑‍⚖️ Designing for a user who never opens the product</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note happened"><span class="dec-note-label">📌 What happened</span>The security architect who approves the purchase never logs in — but can veto everything. Nothing in a normal design process speaks to them.</div>
+            <div class="dec-note approach"><span class="dec-note-label">🛠 How I approached it</span>I treated the security review itself as a design surface: the capability matrix, the validation flow diagram, the scope model and the honest gap list were built to be read by someone evaluating risk, not operating a UI.</div>
+            <div class="dec-note outcome"><span class="dec-note-label">🎯 Outcome</span>Presales gained artefacts they could send into a security review directly — including the parts where we say what we don't do yet.</div>
+          </div>
+</div>
+      </div>
+    </div>
+  </section>
+-->
+
+  <!-- ============ RESULTS ============ -->
+  <section class="sec dark strip" id="impact-results">
+    <div class="wrap"><h2 class="strip-title">Impact &amp; results</h2></div>
+  </section>
+
+  <section id="success-metrics" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Defining product success metrics</h2>
+      <p class="lead">Identity features are not measured by engagement — nobody wants to spend time in an SSO settings screen. I defined success as removed friction and removed risk.</p>
+      <div class="grid-2" style="grid-template-columns:repeat(4,1fr);">
+        <div class="metric-card"><h3>🔐 SSO adoption</h3><p><strong>Why:</strong> share of eligible enterprise orgs with at least one working SSO configuration — the clearest signal the capability is real, not theoretical.</p></div>
+        <div class="metric-card"><h3>⏱ Time to first successful SSO login</h3><p><strong>Why:</strong> measures the setup experience end-to-end, across the part of the journey that happens inside the customer's own IdP.</p></div>
+        <div class="metric-card"><h3>🎧 Auth support tickets per org</h3><p><strong>Why:</strong> the 22-issue log is the baseline. If the design worked, this number falls even as more orgs onboard.</p></div>
+        <div class="metric-card"><h3>🎟 Share of API calls on OAuth tokens</h3><p><strong>Why:</strong> the migration metric — how much traffic has moved off long-lived opaque tokens.</p></div>
+        <div class="metric-card"><h3>🧑‍💼 Manual group edits per org</h3><p><strong>Why:</strong> group mapping should make manual membership management disappear. Falling edits mean access now follows the org chart.</p></div>
+        <div class="metric-card"><h3>🚪 Orgs enforcing SSO-only</h3><p><strong>Why:</strong> enforcing SSO means the customer trusts the configuration enough to remove the password fallback — the strongest confidence signal available.</p></div>
+        <div class="metric-card"><h3>🏢 Deals unblocked</h3><p><strong>Why:</strong> the reason the work existed. Count of opportunities where auth was a named blocker and is no longer.</p></div>
+        <div class="metric-card"><h3>🧯 Environments avoided</h3><p><strong>Why:</strong> MT customers no longer need a dedicated single-tenant environment purely to get SSO — direct infrastructure and margin saving.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="adoption-retention" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Adoption and retention <span class="h2-light">in the first months after each release</span></h2>
+      <div class="grid-2">
+        <div class="adopt-block adopt-card">
+          <h3>SSO configurations created <span class="h3-sub">since Release 1</span></h3>
+          <p><strong><span class="todo">9</span> orgs</strong> configured SAML or OIDC SSO, with <span class="todo"></span>% completing setup without a support ticket.</p>
+        </div>
+        <div class="adopt-block adopt-card">
+          <h3>External OAuth adoption <span class="h3-sub">since Release 3</span></h3>
+          <p><strong><span class="todo">37</span>%</strong> of enterprise API traffic now authenticates with IdP-issued JWTs instead of long-lived tokens.</p>
+        </div>
+        <div class="adopt-block adopt-card">
+          <h3>Support load <span class="h3-sub">auth-related tickets</span></h3>
+          <p><strong><span class="todo">60</span>% reduction</strong> in auth tickets per onboarded org versus the pre-release baseline of 22 catalogued issues.</p>
+        </div>
+        <div class="adopt-block adopt-card">
+          <h3>Manual group management <span class="h3-sub">after group mapping</span></h3>
+          <p><strong><span class="todo">33</span>% fewer</strong> manual membership edits in orgs using IdP group mapping.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="business-impact" class="sec light">
+    <div class="wrap">
+      <h2 class="sec-h2">Impact on business <span class="h2-light">(enterprise pipeline &amp; cost)</span></h2>
+      <div class="impact-grid grid-2x2">
+        <div class="stat-card lg"><div class="stat-label">🏢 Enterprise deals </div><div class="stat-val"><strong><span class="todo"></span></strong>Auth no long a blocker </div><div class="stat-pct">+9 deals unblocked</div></div>
+        <div class="stat-card lg"><div class="stat-label">💰 ARR influenced</div><div class="stat-val"><span class="todo"> XX M$</span> to <strong><span class="todo">XXX M$</span></strong>  </div><div class="stat-pct">+<span class="todo">40</span>%</div></div>
+        <div class="stat-card lg"><div class="stat-label">🖥 ST environments avoided</div><div class="stat-val"><strong><span class="todo">0</span></strong> workaround instances</div><div class="stat-pct">ST Infra cost saved</div></div>
+        <div class="stat-card lg"><div class="stat-label">⏱ Initial org setup time</div><div class="stat-val"><span class="todo">4 Weeks</span> to <strong><span class="todo">5 Days</span></strong> weeks</div><div class="stat-pct">-<span class="todo"></span>87.7%</div></div>
+      </div>
+      
+    </div>
+  </section>
+
+
+  <!-- ============ ROADMAP (dark) ============ -->
+  <section id="roadmap" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">What shipped when</h2>
+      <p class="lead">Below is every feature in the order it actually released, followed by what comes next. The three tracks closed the gap that was losing deals. I documented the remainder as a sequenced roadmap so the gaps stay visible to sales and security alike.</p>
+
+      <div class="release-timeline">
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Release 1</span><h4>SSO for multi- and single-tenant</h4></div>
+          <p>Self-serve SAML 2.0 and OIDC configuration for enterprise-tier orgs, gated by a per-org feature flag. The release that closed the "give them an ST instance to get SSO" workaround.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Post-Release 1</span><h4>OIDC group mapping</h4></div>
+          <p>Brought OIDC to parity with SAML group mapping, with many-to-one IdP-group support. Closed a gap a large financial-institution customer had flagged against inaccurate docs.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Post-Release 1</span><h4>Just-in-time provisioning for multi-tenant</h4></div>
+          <p>Multi-tenant still requires an invitation before a user can sign in via SSO. JIT would remove the last manual step from onboarding.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Release 2</span><h4>AI Hub-managed OAuth2 tokens</h4></div>
+          <p>Short-lived JWTs and refresh tokens issued by AI Hub itself — so customers without their own IdP get the same security posture as those who do.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Post-Release 2</span><h4>Deprecation of raw AI Hub-issued tokens</h4></div>
+          <p>Long-lived opaque tokens retired now that AI Hub-managed OAuth2 tokens cover the customers who lack their own IdP.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Release 3</span><h4>Customer-IdP-managed API tokens</h4></div>
+          <p>External OAuth provider configuration, account mappings, and JWT validation — letting a customer's own IdP issue AI Hub API credentials.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot shipped"></span>
+          <div class="rel-head"><span class="rel-tag shipped">Post-Release 3</span><h4>Token scopes</h4></div>
+          <p>Downscoping via immutable role UUIDs, so a token can carry less authority than the identity behind it. Completed the least-privilege model one global investment bank's constraints required.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot gap"></span>
+          <div class="rel-head"><span class="rel-tag gap">Named gap</span><h4>SCIM provisioning &amp; offboarding</h4></div>
+          <p>Today, deprovisioning takes effect at next login. SCIM makes removal real-time — the single largest remaining item on an enterprise security checklist.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot gap"></span>
+          <div class="rel-head"><span class="rel-tag gap">Named gap</span><h4>Self-serve activation &amp; multi-domain SSO</h4></div>
+          <p>Remove the manual per-org flag entirely, and support organisations that need separate IdP configurations per domain or environment.</p>
+        </div>
+        <div class="rel-item">
+          <span class="rel-dot next"></span>
+          <div class="rel-head"><span class="rel-tag next">Next</span><h4>AI-assisted configuration</h4></div>
+          <p>The concept from the previous section: metadata parsing, plain-English validation, attribute-mapping inference and a login-failure debug assistant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REFLECTIONS (dark) ============ -->
+  <section id="reflections" class="sec dark">
+    <div class="wrap">
+      <h2 class="sec-h2">Reflections &amp; learnings</h2>
+      <div class="reflect-grid grid-2">
+        <div class="reflect-card"><h3>🔍 The research was already written — nobody had read it</h3><p>Three years of support threads and call notes contained a fully evidenced problem list. The skill wasn't running new studies; it was recognising an existing corpus as research and having the tools to actually process it.</p></div>
+        <div class="reflect-card"><h3>🗑 The best security fix removed a field</h3><p>Domain claiming was solvable with an approval workflow, a verification step and three new states. Deleting the concept solved it completely and made the product simpler. Security UX rewards subtraction more than any other area I've worked in.</p></div>
+        <div class="reflect-card"><h3>🧠 Fluency is the price of entry</h3><p>I could not have argued for immutable role UUIDs, or against many-to-one client mapping, without understanding JWT validation properly. Designers working on infrastructure have to earn technical credibility — AI shortened that learning curve dramatically, but didn't remove the obligation.</p></div>
+        <div class="reflect-card"><h3>📣 Honest gaps sell better than vague coverage</h3><p>Writing "we do not support SCIM" made the rest of the matrix credible. Presales stopped hedging, security reviewers stopped digging, and the roadmap gained its most defensible items.</p></div>
+        <div class="reflect-card"><h3>🕰 Invisible state is the real enemy</h3><p>Nearly every failure here — hidden flags, sync delays, silent attribute errors, tokens inheriting permissions — was invisible state. Most of what I designed was making that state legible at the moment someone acts on it.</p></div>
+        <div class="reflect-card wide"><h3>🎯 What I'd do differently</h3><p>I'd design the entitlement and gating experience <em>before</em> the feature, not after the tickets. Half our post-launch support load came from a capability existing but being invisible — a problem that cost far more than the feature work itself and was entirely predictable. I would also have pushed for the docs-accuracy gate at the start of the project rather than after a customer found the discrepancy for us.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THANKS ============ -->
+  <section id="thanks" class="sec light thanks">
+    <div class="wrap thanks-row">
+      <h2 class="thanks-title">Thankyou</h2>
+      <div class="project-nav">
+        <a href="mes-coded.html" class="project-nav-card project-nav-next">
+          <img src="images/banners/MES banner.webp" alt="MES Manufacturing project" />
+          <div class="project-nav-meta">
+            <span class="project-nav-label">Next project</span>
+            <span class="project-nav-title">Building an MES from 0&rarr;1 for Modular Furniture Manufacturing</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <nav class="footer-links">
+        <a href="index.html#intro">Home</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Featured Work</a>
+        <a href="https://drive.google.com/file/d/1qiVLlJfvNqcVS-VQC_j6sPTpbuyPJsDB/view" target="_blank" rel="noopener">Resume</a>
+      </nav>
+      <span>Copyright © 2026 Lokeshdesign®</span>
+    </div>
+  </footer>
+
+  <script>
+    (function initAihSideNav() {
+      var links = Array.prototype.slice.call(document.querySelectorAll(".aih-side-nav-link"));
+      var sections = links.map(function (link) { return document.getElementById(link.dataset.target); });
+      var ticking = false;
+
+      function updateActive() {
+        var refY = window.innerHeight * 0.35;
+        var activeIndex = -1;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i] && sections[i].getBoundingClientRect().top <= refY) activeIndex = i;
+        }
+        links.forEach(function (link, i) { link.classList.toggle("active", i === activeIndex); });
+        ticking = false;
+      }
+
+      function onScroll() { if (!ticking) { requestAnimationFrame(updateActive); ticking = true; } }
+
+      updateActive();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", updateActive);
+    })();
+  </script>
+  <script>
+    (function initVideoPlayButtons() {
+      document.querySelectorAll(".video-embed").forEach(function (wrap) {
+        var video = wrap.querySelector("video");
+        var btn = wrap.querySelector(".video-play-btn");
+        if (!video || !btn) return;
+        btn.addEventListener("click", function () {
+          video.controls = true;
+          video.play();
+        });
+        video.addEventListener("play", function () {
+          wrap.classList.add("is-playing");
+        });
+        video.addEventListener("pause", function () {
+          wrap.classList.remove("is-playing");
+          video.controls = false;
+        });
+        video.addEventListener("ended", function () {
+          wrap.classList.remove("is-playing");
+          video.controls = false;
+        });
+      });
+    })();
+  </script>
+  <script type="module">
+    import { initBottomConfetti } from './confetti.js';
+    initBottomConfetti();
+  </script>
+  <script type="module">
+    import { initPixelCursor } from './pixel-cursor.js';
+    initPixelCursor({
+      trailColor: '#FFFFFF',
+      pixelSize: 10,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - AI Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- V4 top-level deprecation banner -->
+  <div class="global-deprecation-banner" id="v4-top-banner" style="display:none;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+    <div class="global-deprecation-banner-text">
+      <div class="global-deprecation-banner-title">After &lt;30&gt; all old AIHub tokens will be deprecated.</div>
+      <div class="global-deprecation-banner-desc">Go to service accounts and create new OAuth app for the existing AIHub tokens to be compliant with OAuth 2.0.</div>
+    </div>
+    <button type="button" class="global-deprecation-banner-btn" onclick="goToServiceAccountsFromBanner()">See all accounts</button>
+    <button type="button" class="global-deprecation-banner-close" onclick="dismissV4TopBanner()" aria-label="Dismiss">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6L18 18"/></svg>
+    </button>
+  </div>
+  <!-- Top Navigation -->
+  <header class="topnav">
+    <div class="topnav-left">
+      <div class="logo">
+        <span class="logo-mark" data-icon="instabase" data-size="18" data-color="#161513" aria-hidden="true"></span>
+        <span class="logo-name">Instabase</span>
+        <span data-icon="chevron-down" data-size="16" data-color="#6B7280" data-icon-class="chevron"></span>
+      </div>
+      <nav class="topnav-links">
+        <a href="#" class="nav-link">Workspaces</a>
+        <a href="#" class="nav-link">Hub</a>
+      </nav>
+    </div>
+    <div class="topnav-right">
+      <button class="icon-btn" title="Help">
+        <span data-icon="help" data-size="20" data-color="#6B7280"></span>
+      </button>
+      <div class="avatar-menu" id="avatar-menu">
+        <div class="avatar" onclick="toggleAvatarMenu()">LV</div>
+        <div class="avatar-dropdown" id="avatar-dropdown" style="display:none;">
+          <div class="avatar-dropdown-item">Change to dark mode</div>
+          <div class="avatar-dropdown-item">Switch to Advanced View</div>
+          <div class="avatar-dropdown-divider"></div>
+          <div class="avatar-dropdown-item" onclick="showLogoutPage()">Logout</div>
+          <div class="avatar-dropdown-version">V26.20.13</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Settings Layout -->
+  <div class="settings-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="#" class="back-link" onclick="event.preventDefault(); showHubPage();">
+        <span data-icon="arrow-left" data-size="20" data-color="#374151"></span>
+        Back
+      </a>
+
+      <div class="sidebar-section-label">USER</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-item active" data-page="account">
+          <span data-icon="user" data-size="20"></span>
+          Account
+        </a>
+        <a href="#" class="sidebar-item" data-page="apis">
+          <span data-icon="link" data-size="20"></span>
+          APIs
+        </a>
+      </nav>
+
+      <div class="sidebar-divider" role="separator"></div>
+
+      <div class="sidebar-section-label">ORGANIZATION</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-item" data-page="instabase">
+          <span data-icon="group" data-size="20"></span>
+          Instabase
+        </a>
+        <a href="#" class="sidebar-item" data-page="workspaces">
+          <span data-icon="subspace" data-size="20"></span>
+          Workspaces
+        </a>
+        <a href="#" class="sidebar-item" data-page="secrets">
+          <span data-icon="lock" data-size="20"></span>
+          Secrets
+        </a>
+        <a href="#" class="sidebar-item" data-page="identity">
+          <span data-icon="licenses" data-size="20"></span>
+          Identity &amp; access
+        </a>
+        <a href="#" class="sidebar-item" data-page="usage">
+          <span data-icon="performance" data-size="20"></span>
+          Usage
+        </a>
+        <a href="#" class="sidebar-item" data-page="billing">
+          <span data-icon="currency" data-size="20"></span>
+          Subscription &amp; Billing
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="settings-main">
+      <div class="settings-header">
+        <h1 class="settings-title">Settings</h1>
+      </div>
+
+      <!-- Account Page -->
+      <div class="settings-page active" id="page-account">
+
+        <!-- Basic info -->
+        <section class="settings-section">
+          <div class="section-header">
+            <h2 class="section-title">Basic info</h2>
+            <a href="#" class="link-blue">Edit</a>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Name</div>
+            <div class="info-value">Lokeshkumar V M</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Email address</div>
+            <div class="info-value">lokeshkumar.vm@instabase.com</div>
+          </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Security -->
+        <section class="settings-section">
+          <div class="section-header">
+            <h2 class="section-title">Security</h2>
+          </div>
+          <p class="section-description">Your account uses Sign in with Google. To manage your Google account's security settings and third-party connections, access your Google account.</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Preview features -->
+        <section class="settings-section">
+          <div class="section-header">
+            <h2 class="section-title">Preview features</h2>
+          </div>
+
+          <div class="preview-group">
+            <div class="preview-group-header">
+              <h3 class="preview-group-title">External preview features</h3>
+              <a href="#" class="link-blue">Manage</a>
+            </div>
+            <p class="section-description">These features are in preview for customers but enabled by default for Instabase employees. You can disable these features if needed, such as during customer demos. Your settings apply only to your account.</p>
+          </div>
+        </section>
+
+
+      </div>
+
+      <!-- APIs Page -->
+      <div class="settings-page" id="page-apis">
+        <section class="settings-section">
+          <h2 class="section-title" style="margin-bottom: 14px;">APIs</h2>
+          <p class="section-description">Instabase AI Hub supports using APIs to access and utilize AI Hub functionality. For details on supported API-based operations, see our <a href="#" class="link-blue">AI Hub API documentation</a>.</p>
+        </section>
+
+        <section class="settings-section" style="padding-top: 0;">
+          <h3 class="subsection-title">User ID</h3>
+          <p class="section-description" style="margin-bottom: 16px;">Some AI Hub API requests require your user ID, to identify the user account making the request. Use the following user ID:</p>
+          <div class="code-block">
+            <span class="code-value">lokeshkumar.vm_instabase.com</span>
+            <button class="copy-btn" title="Copy" onclick="copyText(this, 'lokeshkumar.vm_instabase.com')">
+              <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-section" style="padding-top: 0;">
+          <h3 class="subsection-title">Organization ID</h3>
+          <p class="section-description" style="margin-bottom: 16px;">As a member of an organization, some API requests require your organization ID. Use the following organization ID:</p>
+          <div class="code-block">
+            <span class="code-value">ib-internal</span>
+            <button class="copy-btn" title="Copy" onclick="copyText(this, 'ib-internal')">
+              <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-section" style="padding-top: 0; display:none;" id="apis-oauth-tokens-block">
+          <div class="section-header" style="margin-bottom: 16px;">
+            <h3 class="subsection-title" style="margin-bottom: 0;">OAuth tokens</h3>
+            <button class="btn-primary btn-sm" type="button" id="api-tokens-add-btn" style="display:none;" onclick="alert('Add token clicked')">Add token</button>
+          </div>
+          <p class="section-description" style="margin-bottom: 16px;">Create AI Hub tokens to authorize API requests. Tokens have the same permissions assigned to your account.</p>
+
+          <div id="api-tokens-content" style="display:none;">
+            <div class="data-table" id="api-tokens-table">
+              <div class="sa-tokens-header">
+                <div class="col-token-name">Name</div>
+                <div class="col-token-desc">Description</div>
+                <div class="col-token-value">Value</div>
+                <div class="col-token-expiration">Expiration</div>
+                <div class="col-token-actions-spacer"></div>
+              </div>
+              <div class="data-table-body" id="api-tokens-list"></div>
+            </div>
+          </div>
+
+          <div class="empty-state" id="api-tokens-empty">
+            <button class="empty-state-icon-btn">
+              <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+            </button>
+            <p class="empty-state-title">Create a token to call the AI Hub API.</p>
+            <button class="btn-primary" onclick="alert('Create token clicked')">Create token</button>
+          </div>
+        </section>
+
+        <section class="settings-section" style="padding-top: 0;" id="apis-oauth-mapping-section">
+          <h3 class="subsection-title">OAuth mappings</h3>
+          <p class="section-description" style="margin-bottom: 16px;">Enable external OAuth provider authorization for your account. Mappings link your account to a configured OAuth provider. <a href="#" class="link-blue">Learn more</a></p>
+
+          <div class="section-empty-state" id="apis-oauth-mapping-empty">
+            <button class="empty-state-icon-btn" type="button" onclick="openOAuthMappingModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">
+              <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+            </button>
+            <p class="section-empty-title">Link your account to an OAuth provider</p>
+            <button class="btn-primary" type="button" onclick="openOAuthMappingModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">Add mapping</button>
+          </div>
+
+          <div id="apis-oauth-mapping-content" style="display:none;">
+            <div class="table-toolbar table-toolbar--sm table-toolbar--flush" style="justify-content:flex-end;">
+              <button class="btn-primary btn-sm" type="button" onclick="openOAuthMappingModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">Add mapping</button>
+            </div>
+            <div class="data-table">
+              <div class="sa-tokens-header">
+                <div class="col-token-name">OAuth mapping</div>
+                <div class="col-token-desc">External ID</div>
+                <div class="col-token-expiration">OAuth provider</div>
+                <div class="col-token-actions-spacer"></div>
+              </div>
+              <div class="data-table-body" id="apis-oauth-mapping-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-section" style="padding-top: 0;" id="apis-oauth-app-section">
+          <h3 class="subsection-title">AI-Hub OAuth app</h3>
+          <p class="section-description" style="margin-bottom: 16px;">Create and manage AI Hub OAuth apps to generate AI Hub tokens for your account to authorize API requests. <a href="#" class="link-blue">Learn more.</a></p>
+
+          <div class="empty-state" id="apis-oauth-app-empty">
+            <button class="empty-state-icon-btn" type="button" onclick="openCreateOauthAppModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">
+              <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+            </button>
+            <p class="empty-state-title">Add an AI Hub OAuth app to use API</p>
+            <button class="btn-primary" type="button" onclick="openCreateOauthAppModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">Create new OAuth app</button>
+          </div>
+
+          <div id="apis-oauth-app-content" style="display:none;">
+            <div class="table-toolbar table-toolbar--sm table-toolbar--flush" style="justify-content:flex-end;">
+              <button class="btn-primary btn-sm" type="button" onclick="openCreateOauthAppModal(MEMBERS.find(m => m.name === 'Lokeshkumar V M'))">Create new OAuth app</button>
+            </div>
+            <div class="data-table">
+              <div class="sa-tokens-header">
+                <div class="col-token-name">App name</div>
+                <div class="col-token-desc">Description</div>
+                <div class="col-token-value">Client ID</div>
+                <div class="col-token-value">Client Secret</div>
+                <div class="col-token-expiration">Token</div>
+                <div class="col-token-actions-spacer"></div>
+              </div>
+              <div class="data-table-body" id="apis-oauth-app-list"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Instabase page -->
+      <div class="settings-page" id="page-instabase">
+        <section class="settings-section">
+          <div class="section-header" style="margin-bottom: 20px;">
+            <h2 class="section-title">Instabase</h2>
+            <div class="dropdown-wrap">
+              <button class="btn-manage" type="button" onclick="toggleDropdown('org-manage-menu')">Manage <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+              <div class="dropdown-menu" id="org-manage-menu" style="display:none;">
+                <button class="dropdown-item" type="button">Update organization settings</button>
+                <button class="dropdown-item" type="button">Manage preview features</button>
+                <button class="dropdown-item" type="button" id="view-audit-logs-item" onclick="closeAllDropdowns(); showAuditLogsPage()">View audit logs</button>
+                <button class="dropdown-item dropdown-item-destructive" type="button">Delete organization</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tab-bar">
+            <button class="tab active" data-tab="members">Members</button>
+            <button class="tab" data-tab="service-accounts">Service accounts</button>
+            <button class="tab" data-tab="groups">Groups</button>
+          </div>
+
+          <!-- Members tab -->
+          <div class="tab-panel active" id="tab-members">
+            <div id="members-list-view">
+              <div class="table-toolbar table-toolbar--sm">
+                <div class="search-wrap search-wrap--sm">
+                  <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                  <input type="text" class="search-input" id="members-search" placeholder="Search" />
+                </div>
+                <span class="member-count" id="members-count">445 members</span>
+                <button class="btn-primary btn-sm" style="margin-left: auto;" onclick="openAddMembersModal()">Add members</button>
+              </div>
+
+              <div class="data-table">
+                <div class="members-header">
+                  <div class="col-check"><input type="checkbox" class="row-checkbox" /></div>
+                  <div class="col-name">Name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-email">Email <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-role">Role <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span><span data-icon="filter" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-status">Status <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span><span data-icon="filter" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-actions"></div>
+                </div>
+                <div class="data-table-body" id="members-list"></div>
+              </div>
+            </div>
+
+            <div id="member-detail-view" style="display:none;">
+              <div class="member-detail-header">
+                <button class="member-detail-back" id="member-detail-back" title="Back">
+                  <span data-icon="arrow-left" data-size="16" data-color="#374151"></span>
+                </button>
+                <h3 class="member-detail-name" id="member-detail-name"></h3>
+              </div>
+
+              <div class="member-info-cards">
+                <div class="member-info-card">
+                  <div class="member-info-label">Role</div>
+                  <div id="member-detail-role"></div>
+                </div>
+                <div class="member-info-card">
+                  <div class="member-info-label">User ID</div>
+                  <div class="member-user-id-row">
+                    <span class="member-user-id" id="member-detail-userid"></span>
+                    <button class="copy-btn" id="member-detail-copy" title="Copy">
+                      <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="oauth-mapping-section" id="member-oauth-mapping-section">
+                <h3 class="subsection-title">OAuth account mapping</h3>
+                <p class="section-description" style="margin-bottom: 16px;">Enable external OAuth provider authorization for this member. Mappings link their account to a configured OAuth provider. <a href="#" class="link-blue">Learn more</a></p>
+
+                <div class="section-empty-state" id="member-oauth-mapping-empty">
+                  <button class="empty-state-icon-btn" type="button" onclick="openOAuthMappingModal(_activeMember)">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">Link this account to an OAuth provider</p>
+                  <button class="btn-primary" type="button" onclick="openOAuthMappingModal(_activeMember)">Add mapping</button>
+                </div>
+
+                <div id="member-oauth-mapping-content" style="display:none;">
+                  <div class="table-toolbar table-toolbar--sm table-toolbar--flush" style="justify-content:flex-end;">
+                    <button class="btn-primary btn-sm" type="button" onclick="openOAuthMappingModal(_activeMember)">Add mapping</button>
+                    <div class="dropdown-wrap">
+                      <button class="btn-manage" type="button" onclick="toggleDropdown('member-mapping-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                      <div class="dropdown-menu" id="member-mapping-more" style="display:none;">
+                        <button class="dropdown-item" type="button">Export mappings</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data-table">
+                    <div class="sa-tokens-header">
+                      <div class="col-token-name">OAuth mapping</div>
+                      <div class="col-token-desc">External ID</div>
+                      <div class="col-token-expiration">OAuth provider</div>
+                      <div class="col-token-actions-spacer"></div>
+                    </div>
+                    <div class="data-table-body" id="member-oauth-mapping-list"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="oauth-mapping-section" id="member-oauth-app-section">
+                <h3 class="subsection-title">AI-Hub OAuth app</h3>
+                <p class="section-description" style="margin-bottom: 16px;">Create and manage AI Hub OAuth apps to generate AI Hub tokens for this member to authorize API requests. <a href="#" class="link-blue">Learn more.</a></p>
+
+                <div class="section-empty-state" id="member-oauth-apps-empty">
+                  <button class="empty-state-icon-btn" type="button" onclick="openCreateOauthAppModal(_activeMember)">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">Add an AI Hub OAuth app to use API</p>
+                  <button class="btn-primary" type="button" onclick="openCreateOauthAppModal(_activeMember)">Create new OAuth app</button>
+                </div>
+
+                <div id="member-oauth-apps-content" style="display:none;">
+                  <div class="table-toolbar table-toolbar--sm table-toolbar--flush" style="justify-content:flex-end;">
+                    <button class="btn-primary btn-sm" type="button" onclick="openCreateOauthAppModal(_activeMember)">Create new OAuth app</button>
+                    <div class="dropdown-wrap">
+                      <button class="btn-manage" type="button" onclick="toggleDropdown('member-oauth-apps-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                      <div class="dropdown-menu" id="member-oauth-apps-more" style="display:none;">
+                        <button class="dropdown-item" type="button">Export apps</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data-table">
+                    <div class="sa-tokens-header">
+                      <div class="col-token-name">App name</div>
+                      <div class="col-token-desc">Description</div>
+                      <div class="col-token-value">Client ID</div>
+                      <div class="col-token-value">Client Secret</div>
+                      <div class="col-token-expiration">Token</div>
+                      <div class="col-token-actions-spacer"></div>
+                    </div>
+                    <div class="data-table-body" id="member-oauth-apps-list"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="oauth-mapping-section" id="member-tokens-section" style="display:none;">
+                <h3 class="subsection-title">AI Hub tokens</h3>
+                <p class="section-description" style="margin-bottom: 16px;">Add and manage AI Hub tokens for this member. Tokens confer the same access and permissions granted to the member.</p>
+
+                <div class="table-toolbar table-toolbar--sm table-toolbar--flush">
+                  <div class="search-wrap search-wrap--sm" style="width: 240px;">
+                    <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                    <input type="text" class="search-input" id="member-tokens-search" placeholder="Search" oninput="renderMemberTokens(_activeMember)" />
+                  </div>
+                  <div style="margin-left: auto; display: flex; gap: 8px; align-items: center;">
+                    <button class="btn-primary btn-sm">Add token</button>
+                    <div class="dropdown-wrap">
+                      <button class="btn-manage" onclick="toggleDropdown('member-tokens-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                      <div class="dropdown-menu" id="member-tokens-more" style="display:none;">
+                        <button class="dropdown-item">Export tokens</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="data-table">
+                  <div class="sa-tokens-header">
+                    <div class="col-token-name">Name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                    <div class="col-token-desc">Description <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                    <div class="col-token-value">Value <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                    <div class="col-token-expiration">Expiration <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                    <div class="col-token-actions-spacer"></div>
+                  </div>
+                  <div class="data-table-body" id="member-tokens-list"></div>
+                  <div class="table-empty-state" id="member-tokens-empty" style="display:none;">
+                    <span data-icon="file" data-size="40" data-color="#D1D5DB"></span>
+                    <p class="table-empty-title">No results</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service accounts tab -->
+          <div class="tab-panel" id="tab-service-accounts">
+            <div id="sa-list-view">
+              <div class="table-toolbar table-toolbar--sm">
+                <div class="search-wrap search-wrap--sm">
+                  <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                  <input type="text" class="search-input" id="sa-search" placeholder="Search" />
+                </div>
+                <span class="member-count" id="sa-count">25 service accounts</span>
+                <button class="btn-primary btn-sm" style="margin-left: auto;" onclick="openAddServiceAccountModal()">Add service account</button>
+              </div>
+
+              <div class="data-table">
+                <div class="members-header">
+                  <div class="col-check"><input type="checkbox" class="row-checkbox" /></div>
+                  <div class="col-sa-name">Name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-role">Role <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span><span data-icon="filter" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-status">Status <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span><span data-icon="filter" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-actions"></div>
+                </div>
+                <div class="data-table-body" id="sa-list"></div>
+              </div>
+            </div>
+
+            <div id="sa-detail-view" style="display:none;">
+              <div class="member-detail-header sa-detail-header">
+                <div class="sa-detail-header-left">
+                  <button class="member-detail-back" id="sa-detail-back" title="Back">
+                    <span data-icon="arrow-left" data-size="16" data-color="#374151"></span>
+                  </button>
+                  <h3 class="member-detail-name" id="sa-detail-name"></h3>
+                  <span class="pill pill--info"><span class="pill__text">ACTIVE</span></span>
+                </div>
+                <div class="dropdown-wrap sa-detail-more-wrap">
+                  <button class="row-action-btn sa-detail-more" type="button" title="More" style="opacity:1;" onclick="toggleDropdown('sa-detail-more-menu')">
+                    <span data-icon="overflow2" data-size="16"></span>
+                  </button>
+                  <div class="dropdown-menu" id="sa-detail-more-menu" style="display:none;">
+                    <button class="dropdown-item" type="button">Rename service account</button>
+                    <button class="dropdown-item" type="button">Update role</button>
+                    <button class="dropdown-item" type="button">Disable</button>
+                    <button class="dropdown-item dropdown-item-destructive" type="button">Delete service account</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="member-info-cards three-col">
+                <div class="member-info-card">
+                  <div class="member-info-label">Role</div>
+                  <div id="sa-detail-role"></div>
+                </div>
+                <div class="member-info-card">
+                  <div class="member-info-label">User ID</div>
+                  <div class="member-user-id-row">
+                    <span class="member-user-id sa-user-id" id="sa-detail-userid"></span>
+                    <button class="copy-btn" id="sa-detail-userid-copy" title="Copy">
+                      <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="member-info-card">
+                  <div class="member-info-label">Organization ID</div>
+                  <div class="member-user-id-row">
+                    <span class="member-user-id" id="sa-detail-orgid">ib-internal</span>
+                    <button class="copy-btn" id="sa-detail-orgid-copy" title="Copy">
+                      <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sa-detail-section" id="sa-oauth-mapping-section">
+                <div class="section-header" style="margin-bottom: 6px;">
+                  <h3 class="subsection-title" style="margin-bottom: 0;">OAuth account mappings</h3>
+                  <div id="sa-oauth-mapping-header-actions" style="display:none; gap:8px; align-items:center;">
+                    <button class="btn-primary btn-sm" type="button" onclick="openOAuthMappingModal()">Add mapping</button>
+                    <div class="dropdown-wrap">
+                      <button class="btn-manage" type="button" onclick="toggleDropdown('sa-oauth-mapping-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                      <div class="dropdown-menu" id="sa-oauth-mapping-more" style="display:none;">
+                        <button class="dropdown-item" type="button">Export mappings</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="section-description" style="margin-bottom: 16px;">Enable external OAuth provider authorization for this service account. Mappings link the account to a configured OAuth provider. <a href="#" class="link-blue">Learn more</a></p>
+                <div class="section-empty-state" id="sa-oauth-mapping-empty-none">
+                  <button class="empty-state-icon-btn" type="button">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">No OAuth providers configured</p>
+                  <p class="section-empty-desc">To add account mappings, first configure an OAuth provider under <a href="#" class="link-blue" onclick="event.preventDefault(); goToSettingsPage('identity')">Identity &amp; access</a> settings.</p>
+                </div>
+                <div class="section-empty-state" id="sa-oauth-mapping-empty-available" style="display:none;">
+                  <button class="empty-state-icon-btn" type="button">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">Link this account to an OAuth provider</p>
+                  <button class="btn-primary" type="button" onclick="openOAuthMappingModal()">Add mapping</button>
+                </div>
+                <div id="sa-oauth-mapping-content" style="display:none;">
+                  <div class="data-table">
+                    <div class="sa-tokens-header">
+                      <div class="col-token-name">OAuth mapping <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-desc">External ID <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-expiration">OAuth provider <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-actions-spacer"></div>
+                    </div>
+                    <div class="data-table-body" id="sa-oauth-mapping-list"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sa-detail-section" id="sa-oauth-app-section">
+                <h3 class="subsection-title">AI-Hub OAuth app</h3>
+                <p class="section-description" style="margin-bottom: 16px;">Create and manage AI Hub OAuth apps to generate AI Hub tokens for this service account to authorize API requests. <a href="#" class="link-blue">Learn more.</a></p>
+                <div class="section-empty-state" id="sa-oauth-apps-empty">
+                  <button class="empty-state-icon-btn" type="button" onclick="openCreateOauthAppModal()">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">Add an AI Hub OAuth app to use API</p>
+                  <button class="btn-primary" type="button" onclick="openCreateOauthAppModal()">Create new OAuth app</button>
+                </div>
+                <div id="sa-oauth-apps-content" style="display:none;">
+                  <div class="table-toolbar table-toolbar--sm table-toolbar--flush">
+                    <div class="search-wrap search-wrap--sm" style="width:240px;">
+                      <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                      <input type="text" class="search-input" id="sa-oauth-apps-search" placeholder="Search" oninput="renderSaOauthApps(_activeServiceAccount)" />
+                    </div>
+                    <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+                      <button class="btn-primary btn-sm" type="button" onclick="openCreateOauthAppModal()">Create new OAuth app</button>
+                      <div class="dropdown-wrap">
+                        <button class="btn-manage" type="button" onclick="toggleDropdown('sa-oauth-apps-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                        <div class="dropdown-menu" id="sa-oauth-apps-more" style="display:none;">
+                          <button class="dropdown-item" type="button">Export apps</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data-table">
+                    <div class="sa-tokens-header">
+                      <div class="col-token-name">App name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-desc">Description <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-value">Client ID <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-value">Client Secret <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-expiration">Token <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-actions-spacer"></div>
+                    </div>
+                    <div class="data-table-body" id="sa-oauth-apps-list"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sa-detail-section" id="sa-tokens-section">
+                <h3 class="subsection-title">AI Hub tokens</h3>
+                <p class="section-description" style="margin-bottom: 16px;">Add and manage AI Hub tokens for this service account. Tokens confer the same access and permissions granted to the service account.</p>
+                <div class="oauth-deprecation-banner" id="sa-tokens-deprecation-banner" style="display:none;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+                  <div>
+                    <div class="oauth-deprecation-banner-title">After &lt;30 days&gt; all old AIHub issued tokens will be deprecated.</div>
+                    <div class="oauth-deprecation-banner-desc">Create new OAuth app for the existing AIHub tokens to be compliant with OAuth 2.0. <a href="#" class="link-blue">Learn more</a></div>
+                  </div>
+                </div>
+                <div class="section-empty-state" id="sa-tokens-empty">
+                  <button class="empty-state-icon-btn" type="button" onclick="openCreateHubTokenModal()">
+                    <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                  </button>
+                  <p class="section-empty-title">No AI Hub tokens</p>
+                  <p class="section-empty-desc">Add an AI Hub tokens to use API</p>
+                  <button class="btn-primary" type="button" onclick="openCreateHubTokenModal()">Create tokens</button>
+                </div>
+                <div id="sa-tokens-content" style="display:none;">
+                  <div class="table-toolbar table-toolbar--sm table-toolbar--flush">
+                    <div class="search-wrap search-wrap--sm" style="width:240px;">
+                      <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                      <input type="text" class="search-input" id="sa-tokens-search" placeholder="Search" oninput="filterSaTokens()" />
+                    </div>
+                    <div style="margin-left:auto; display:flex; gap:8px; align-items:center;" id="sa-tokens-toolbar-actions">
+                      <button class="btn-primary btn-sm" type="button" onclick="openCreateHubTokenModal()">Add token</button>
+                      <div class="dropdown-wrap">
+                        <button class="btn-manage" type="button" onclick="toggleDropdown('sa-tokens-more')">More <span data-icon="chevron-down" data-size="14" data-color="#374151"></span></button>
+                        <div class="dropdown-menu" id="sa-tokens-more" style="display:none;">
+                          <button class="dropdown-item" type="button">Export tokens</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data-table">
+                    <div class="sa-tokens-header">
+                      <div class="col-token-name">Name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-desc">Description <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-value">Value <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-expiration">Expiration <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span> <span data-icon="filter" data-size="14" data-color="#9CA3AF"></span></div>
+                      <div class="col-token-actions-spacer"></div>
+                    </div>
+                    <div class="data-table-body" id="sa-tokens-list"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Groups tab -->
+          <div class="tab-panel" id="tab-groups">
+            <div id="groups-list-view">
+              <div class="table-toolbar table-toolbar--sm">
+                <div class="search-wrap search-wrap--sm">
+                  <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                  <input type="text" class="search-input" id="groups-search" placeholder="Search" />
+                </div>
+                <span class="member-count" id="groups-count">48 groups</span>
+                <div style="margin-left: auto; display: flex; gap: 8px; align-items: center;">
+                  <div class="custom-select-wrap groups-filter-select custom-select-wrap--sm" id="groups-filter-select">
+                    <button type="button" class="custom-select-trigger groups-filter-trigger" id="groups-filter-trigger" onclick="toggleGroupsFilterMenu(event)">
+                      <span id="groups-filter-value">All groups</span>
+                      <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+                    </button>
+                    <div class="custom-select-menu" id="groups-filter-menu" style="display:none;">
+                      <button type="button" class="custom-select-option active" data-value="all" onclick="selectGroupsFilter('All groups', 'all')">All groups</button>
+                      <button type="button" class="custom-select-option" data-value="member" onclick="selectGroupsFilter(&quot;Groups I'm in&quot;, 'member')">Groups I'm in</button>
+                      <button type="button" class="custom-select-option" data-value="manage" onclick="selectGroupsFilter('Groups I can manage', 'manage')">Groups I can manage</button>
+                    </div>
+                  </div>
+                  <div class="dropdown-wrap" id="add-group-dropdown-wrap">
+                    <button class="btn-primary btn-sm" type="button" onclick="handleAddGroupClick()">
+                      Add group
+                      <span id="add-group-chevron"><span data-icon="chevron-down" data-size="14" data-color="#fff"></span></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu--sm" id="add-group-dropdown" style="display:none;">
+                      <button type="button" class="dropdown-item" onclick="closeDropdown('add-group-dropdown'); openAddGroupModal()">Add group</button>
+                      <button type="button" class="dropdown-item" id="add-multiple-groups-item" onclick="closeDropdown('add-group-dropdown'); openAddMultipleGroupsModal()">Add multiple groups</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="data-table">
+                <div class="groups-header">
+                  <div class="col-group-name">Group name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-group-members">Members <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                  <div class="col-group-managers">Group managers &amp; admins</div>
+                  <div class="col-group-source">Membership source <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                </div>
+                <div class="data-table-body" id="groups-list"></div>
+              </div>
+            </div>
+
+            <div id="group-detail-view" style="display:none;">
+              <div class="member-detail-header sa-detail-header">
+                <div class="sa-detail-header-left">
+                  <button class="member-detail-back" id="group-detail-back" title="Back">
+                    <span data-icon="arrow-left" data-size="16" data-color="#374151"></span>
+                  </button>
+                  <h3 class="member-detail-name" id="group-detail-name"></h3>
+                </div>
+                <div class="dropdown-wrap sa-detail-more-wrap">
+                  <button class="row-action-btn sa-detail-more" type="button" title="More" style="opacity:1;" onclick="toggleDropdown('group-detail-more-menu')">
+                    <span data-icon="overflow2" data-size="16"></span>
+                  </button>
+                  <div class="dropdown-menu" id="group-detail-more-menu" style="display:none;">
+                    <button class="dropdown-item" type="button" onclick="closeDropdown('group-detail-more-menu'); openRenameGroupModal()">Rename group</button>
+                    <button class="dropdown-item" type="button" onclick="closeDropdown('group-detail-more-menu'); openAddIdpGroupMappingModal()">Add new mapping</button>
+                    <button class="dropdown-item dropdown-item-destructive" type="button" onclick="closeDropdown('group-detail-more-menu')">Remove group mapping</button>
+                    <button class="dropdown-item dropdown-item-destructive" type="button" onclick="closeDropdown('group-detail-more-menu'); openDeleteGroupModal()">Delete group</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="group-membership-sources" id="group-membership-sources"></div>
+              <div class="group-source-sections" id="group-source-sections"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="settings-page" id="page-workspaces">
+        <section class="settings-section">
+          <h2 class="section-title">Workspaces</h2>
+          <div class="empty-state" style="margin-top: 40px;">
+            <p class="empty-state-title">This is not a part of the project, so excluded in prototype</p>
+          </div>
+        </section>
+      </div>
+      <div class="settings-page" id="page-secrets">
+        <section class="settings-section">
+          <h2 class="section-title">Secrets</h2>
+          <div class="empty-state" style="margin-top: 40px;">
+            <p class="empty-state-title">This is not a part of the project, so excluded in prototype</p>
+          </div>
+        </section>
+      </div>
+      <div class="settings-page" id="page-identity">
+        <section class="settings-section">
+          <h2 class="section-title" style="margin-bottom: 20px;">Identity &amp; access</h2>
+
+          <!-- Tabs -->
+          <div class="tab-bar" id="identity-tab-bar">
+            <button class="tab active" data-tab="api-auth" id="api-auth-tab-btn">API authorization</button>
+            <button class="tab" data-tab="sso">Single sign-on</button>
+          </div>
+
+          <!-- API authorization tab -->
+          <div class="tab-panel active" id="tab-api-auth">
+          <div id="oauth-provider-list-view">
+          <div id="external-api-auth-block">
+            <div class="section-header" style="margin-top: 28px; margin-bottom: 6px;">
+              <h3 class="subsection-title" style="margin-bottom: 0;">Externally managed API authorization</h3>
+              <button class="btn-primary btn-sm" type="button" onclick="openModal('modal-oauth')">Add configuration</button>
+            </div>
+            <p class="section-description">Use an external OAuth provider to authorize API access. Your OAuth provider controls token lifecycle. <a href="#" class="link-blue">Learn more.</a></p>
+
+            <div class="empty-state" id="oauth-provider-empty-state" style="margin-top: 40px; display:none;">
+              <button class="empty-state-icon-btn">
+                <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+              </button>
+              <p class="empty-state-title">Configure an OAuth provider</p>
+              <button class="btn-secondary" onclick="openModal('modal-oauth')">Add configuration</button>
+            </div>
+
+            <div class="data-table" id="oauth-provider-table" style="margin-top: 16px; display:none;">
+              <div class="data-table-header">
+                <div class="col-main">
+                  OAuth providers
+                  <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span>
+                </div>
+                <div class="col-status">
+                  Status
+                  <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span>
+                </div>
+                <div class="col-oauth-mappings">
+                  Accounts using it
+                  <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span>
+                </div>
+                <div class="col-actions-spacer"></div>
+              </div>
+              <div class="data-table-body" id="oauth-provider-list"></div>
+            </div>
+          </div>
+
+            <div style="margin-top: 32px;">
+              <h3 class="subsection-title" style="margin-bottom: 6px;">AI-Hub OAuth app</h3>
+              <p class="section-description">AI Hub OAuth app is individually managed for all accounts. Members manage their own OAuth app in API settings. Service account tokens are managed on the <a href="#" class="link-blue">service accounts page</a>.</p>
+              <p class="section-description" style="margin-top:12px;">Accounts using AI Hub tokens: <a href="#" class="link-blue" id="ai-hub-oauth-app-accounts-link" style="font-weight:var(--font-weight-bold);" onclick="event.preventDefault(); openAiHubAccountsView('oauth-app')">View 2 accounts</a></p>
+            </div>
+
+            <div style="margin-top: 32px; display:none;" id="ai-hub-issued-tokens-block">
+              <h3 class="subsection-title" style="margin-bottom: 6px;">AI Hub-issued tokens</h3>
+              <div class="oauth-deprecation-banner" id="ai-hub-issued-tokens-banner" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+                <div>
+                  <div class="oauth-deprecation-banner-title">After &lt;30 days&gt; all old AIHub issued tokens will be deprecated.</div>
+                  <div class="oauth-deprecation-banner-desc">Create new OAuth app for the existing AIHub tokens to be compliant with OAuth 2.0. <a href="#" class="link-blue">Learn more</a></div>
+                </div>
+              </div>
+              <p class="section-description">AI Hub-issued tokens are individually managed for all accounts. Members manage their own tokens in API settings. Service account tokens are managed on the <a href="#" class="link-blue">service accounts page</a>.</p>
+              <p class="section-description" style="margin-top:12px;">Accounts using AI Hub tokens: <a href="#" class="link-blue" id="ai-hub-issued-tokens-accounts-link" style="font-weight:var(--font-weight-bold);" onclick="event.preventDefault(); openAiHubAccountsView('issued-tokens')">View 5 accounts</a></p>
+            </div>
+          </div>
+
+          <div id="oauth-accounts-view" style="display:none;">
+            <div class="member-detail-header" style="margin-bottom: 4px;">
+              <button class="member-detail-back" onclick="closeOauthAccountsView()">
+                <span data-icon="arrow-left" data-size="16" data-color="#374151"></span>
+              </button>
+              <h3 class="member-detail-name" style="margin:0;">Accounts using <span id="oauth-accounts-provider-name"></span></h3>
+            </div>
+            <div class="table-toolbar table-toolbar--sm">
+              <div class="search-wrap search-wrap--sm">
+                <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+                <input type="text" class="search-input" id="oauth-accounts-search" placeholder="Search" oninput="renderOauthAccounts()" />
+              </div>
+              <button class="icon-btn" title="Filter">
+                <span data-icon="filter" data-size="16" data-color="#6B7280"></span>
+              </button>
+              <span class="member-count" id="oauth-accounts-count"></span>
+            </div>
+            <div class="data-table" style="margin-top: 16px;">
+              <div class="data-table-header">
+                <div class="col-main" id="oauth-accounts-main-col">OAuth mapping <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                <div class="col-type" id="oauth-accounts-external-id-col" style="width:200px;">External ID <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                <div class="col-oauth-mappings">Account name <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span></div>
+                <div class="col-type" style="width:160px;">Account type</div>
+                <div class="col-actions-spacer"></div>
+              </div>
+              <div class="data-table-body" id="oauth-accounts-list"></div>
+            </div>
+          </div>
+          </div>
+
+          <!-- Single sign-on tab -->
+          <div class="tab-panel" id="tab-sso">
+            <div style="margin-top: 28px;">
+              <div class="section-header" style="margin-bottom: 10px;">
+                <h3 class="subsection-title">Single sign-on</h3>
+                <div class="dropdown-wrap" id="sso-dropdown-wrap">
+                  <button class="btn-primary btn-sm" onclick="toggleDropdown('sso-dropdown')">Add configuration</button>
+                  <div class="dropdown-menu" id="sso-dropdown" style="display:none;">
+                    <button class="dropdown-item" onclick="closeDropdown('sso-dropdown');openModal('modal-saml')">SAML configuration</button>
+                    <button class="dropdown-item" onclick="closeDropdown('sso-dropdown');openModal('modal-oidc')">OIDC configuration</button>
+                  </div>
+                </div>
+              </div>
+              <p class="section-description" style="margin-bottom: 16px;">Manage your organization's single sign-on configurations. <a href="#" class="link-blue">Learn more.</a></p>
+              <div class="toggle-row" style="margin-bottom: 20px;" id="sso-toggle-row">
+                <div class="toggle-wrap">
+                  <button class="toggle toggle-disabled" role="switch" aria-checked="false" id="sso-email-toggle" disabled onclick="handleSsoEmailToggleClick()"></button>
+                </div>
+                <span class="toggle-label toggle-label-disabled">Allow sign-in with email and password for testing</span>
+                <div class="tooltip-wrap">
+                  <button class="info-icon-btn">
+                    <span data-icon="info" data-size="14" data-color="#9CA3AF"></span>
+                  </button>
+                  <div class="tooltip-box">Require at least one enabled SSO configuration before restricting email and password sign-in.</div>
+                </div>
+              </div>
+
+              <!-- SSO empty state -->
+              <div class="empty-state" id="sso-empty-state" style="margin-top: 40px; display:none;">
+                <button class="empty-state-icon-btn">
+                  <span data-icon="plus" data-size="20" data-color="#9CA3AF"></span>
+                </button>
+                <p class="empty-state-title">Configure single sign-on</p>
+                <div class="dropdown-wrap" id="sso-empty-dropdown-wrap">
+                  <button class="btn-secondary" onclick="toggleDropdown('sso-empty-dropdown')">Add configuration</button>
+                  <div class="dropdown-menu" id="sso-empty-dropdown" style="display:none;">
+                    <button class="dropdown-item" onclick="closeDropdown('sso-empty-dropdown');openModal('modal-saml')">SAML configuration</button>
+                    <button class="dropdown-item" onclick="closeDropdown('sso-empty-dropdown');openModal('modal-oidc')">OIDC configuration</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SSO Table -->
+              <div class="data-table" id="sso-table">
+                <div class="data-table-header">
+                  <div class="col-main">
+                    Identity provider
+                    <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span>
+                  </div>
+                  <div class="col-status">
+                    Status
+                    <span data-icon="sort" data-size="14" data-color="#9CA3AF"></span>
+                  </div>
+                  <div class="col-type">Type</div>
+                  <div class="col-actions-spacer"></div>
+                </div>
+                <div class="data-table-body" id="sso-table-body">
+                  <!-- SSO row 1 — ENABLED -->
+                  <div class="sso-row" data-status="enabled">
+                    <div class="col-main">
+                      <img src="illustration/Okta.png" width="20" height="20" style="object-fit:contain;flex-shrink:0;" />
+                      Okta-instabase-SAML
+                    </div>
+                    <div class="col-status"><span class="pill pill--success"><span class="pill__text">ENABLED</span></span></div>
+                    <div class="col-type">SAML</div>
+                    <div class="sso-row-actions">
+                      <button class="row-action-btn" title="Edit" onclick="openSamlEdit()"><span data-icon="edit2" data-size="16"></span></button>
+                      <div class="sso-more-wrap">
+                        <button class="row-action-btn" title="More" onclick="toggleSsoMenu(this)"><span data-icon="overflow2" data-size="16"></span></button>
+                        <div class="sso-context-menu" style="display:none;">
+                          <button class="sso-menu-item" onclick="toggleSsoStatus(this)">Disable</button>
+                          <div class="sso-menu-divider"></div>
+                          <button class="sso-menu-item sso-menu-delete" onclick="deleteSsoRow(this)">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- SSO row 2 — DISABLED -->
+                  <div class="sso-row" data-status="disabled">
+                    <div class="col-main">
+                      <img src="illustration/Okta.png" width="20" height="20" style="object-fit:contain;flex-shrink:0;" />
+                      Okta-instabase-SAML-2
+                    </div>
+                    <div class="col-status"><span class="pill pill--counter"><span class="pill__text">DISABLED</span></span></div>
+                    <div class="col-type">SAML</div>
+                    <div class="sso-row-actions">
+                      <button class="row-action-btn" title="Edit" onclick="openSamlEdit()"><span data-icon="edit2" data-size="16"></span></button>
+                      <div class="sso-more-wrap">
+                        <button class="row-action-btn" title="More" onclick="toggleSsoMenu(this)"><span data-icon="overflow2" data-size="16"></span></button>
+                        <div class="sso-context-menu" style="display:none;">
+                          <button class="sso-menu-item" onclick="toggleSsoStatus(this)">Enable</button>
+                          <div class="sso-menu-divider"></div>
+                          <button class="sso-menu-item sso-menu-delete" onclick="deleteSsoRow(this)">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="settings-page" id="page-usage">
+        <section class="settings-section">
+          <h2 class="section-title">Usage</h2>
+          <div class="empty-state" style="margin-top: 40px;">
+            <p class="empty-state-title">This is not a part of the project, so excluded in prototype</p>
+          </div>
+        </section>
+      </div>
+      <div class="settings-page" id="page-billing">
+        <section class="settings-section">
+          <h2 class="section-title">Subscription &amp; Billing</h2>
+          <div class="empty-state" style="margin-top: 40px;">
+            <p class="empty-state-title">This is not a part of the project, so excluded in prototype</p>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Audit logs — standalone full page (outside Settings layout) -->
+  <div id="page-audit-logs" style="display:none;">
+    <header class="topnav">
+      <div class="topnav-left">
+        <div class="logo">
+          <span class="logo-mark" data-icon="instabase" data-size="18" data-color="#161513" aria-hidden="true"></span>
+          <span class="logo-name">Instabase</span>
+          <span data-icon="chevron-down" data-size="16" data-color="#6B7280" data-icon-class="chevron"></span>
+        </div>
+        <nav class="topnav-links">
+          <a href="#" class="nav-link">Workspaces</a>
+          <a href="#" class="nav-link">Hub</a>
+        </nav>
+      </div>
+      <div class="topnav-right">
+        <button class="icon-btn" title="Help">
+          <span data-icon="help" data-size="20" data-color="#6B7280"></span>
+        </button>
+        <div class="avatar-menu">
+          <div class="avatar">LV</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="audit-log-page-body">
+      <div class="member-detail-header" style="margin-bottom: 20px;">
+        <button class="member-detail-back" onclick="closeAuditLogsPage()">
+          <span data-icon="arrow-left" data-size="16" data-color="#374151"></span>
+        </button>
+        <h2 class="section-title" style="margin: 0;">Audit logs</h2>
+      </div>
+
+      <div class="audit-log-filters">
+        <div class="form-select-wrap">
+          <select class="form-select" id="audit-log-range">
+            <option>Last 24 hours</option>
+            <option selected>Last 7 days</option>
+            <option>Last 30 days</option>
+            <option>Last 90 days</option>
+          </select>
+          <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+        </div>
+        <div class="form-select-wrap">
+          <select class="form-select" id="audit-log-user">
+            <option selected>All User</option>
+            <option>Me</option>
+          </select>
+          <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+        </div>
+        <div class="form-select-wrap">
+          <select class="form-select" id="audit-log-type">
+            <option selected>Log: User login</option>
+            <option>Log: All events</option>
+            <option>Log: Admin actions</option>
+          </select>
+          <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+        </div>
+      </div>
+
+      <div class="audit-log-toolbar">
+        <div class="search-wrap" style="flex: 1; max-width: 480px;">
+          <span data-icon="search" data-size="14" data-color="#9CA3AF"></span>
+          <input type="text" class="search-input" id="audit-log-search" placeholder="Search" oninput="renderAuditLogs()" />
+        </div>
+        <div class="audit-log-toolbar-right">
+          <div class="form-select-wrap">
+            <span style="color:#6B7280; font-size:13px; white-space:nowrap; padding-left:8px;">No of results :</span>
+            <select class="form-select" id="audit-log-limit" style="padding-left:4px;" onchange="renderAuditLogs()">
+              <option>10</option>
+              <option selected>20</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+            <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+          </div>
+          <button class="btn-secondary" type="button">
+            <span data-icon="download" data-size="14" data-color="#292929"></span>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <div class="data-table audit-log-table">
+        <div class="audit-log-table-scroll">
+          <table class="audit-log-table-el">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Timestamp</th>
+                <th>Requestor Email</th>
+                <th>Audit Log Message</th>
+                <th>Audit Log Type</th>
+                <th>Requestor Ip</th>
+                <th>Requestor Username</th>
+                <th>Status</th>
+                <th>Target Org</th>
+                <th>Uuid</th>
+              </tr>
+            </thead>
+            <tbody id="audit-log-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add SAML configuration modal -->
+  <div class="modal-backdrop" id="modal-saml" style="display:none;" onclick="closeModal('modal-saml')">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:820px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="saml-modal-title">Add SAML configuration</h3>
+        <button class="modal-close" onclick="closeModal('modal-saml')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+
+      <!-- Step 1 -->
+      <div id="saml-step-1">
+        <div class="modal-body">
+          <div class="modal-section-heading">Identity provider configuration</div>
+          <p class="modal-section-desc" style="margin-bottom:20px;">Use the following values when creating an app registration in your IdP. <a href="javascript:void(0)" class="link-blue">Learn more.</a></p>
+
+          <div class="form-field">
+            <label class="form-label">Identity provider<span class="required">*</span></label>
+            <div class="custom-select" id="idp-select">
+              <button class="custom-select-trigger" onclick="toggleCustomSelect('idp-select')">
+                <span class="custom-select-value" id="idp-value">
+                  <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  AD FS
+                </span>
+                <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="custom-select-chevron"></span>
+              </button>
+              <div class="custom-select-dropdown" style="display:none;">
+                <div class="custom-select-option selected" onclick="selectIdp(this,'AD FS')">
+                  <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  AD FS
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'Auth0')">
+                  <img src="illustration/Auth0.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Auth0
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'JumpCloud')">
+                  <img src="illustration/JumpCloud.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  JumpCloud
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'Microsoft Entra')">
+                  <img src="illustration/microsoft-entra.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Microsoft Entra
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'Okta')">
+                  <img src="illustration/Okta.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Okta
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'One Login')">
+                  <img src="illustration/one-login.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  One Login
+                </div>
+                <div class="custom-select-option" onclick="selectIdp(this,'PingFederate')">
+                  <img src="illustration/PingFederate.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  PingFederate
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-app-label">Application label</span></label>
+            <div class="form-input-copy">
+              <span class="form-input-copy-value">Instabase AI Hub</span>
+              <button class="copy-btn" type="button" title="Copy" onclick="copyText(this,'Instabase AI Hub')">
+                <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-sp-entity-id">Service provider entity ID</span></label>
+            <div class="form-input-copy">
+              <span class="form-input-copy-value">https://aihub.instabase.com</span>
+              <button class="copy-btn" type="button" title="Copy" onclick="copyText(this,'https://aihub.instabase.com')">
+                <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-acs-url">Assertion consumer service URL</span></label>
+            <div class="form-input-copy">
+              <span class="form-input-copy-value">https://aihub.instabase.com/account/sso/saml2</span>
+              <button class="copy-btn" type="button" title="Copy" onclick="copyText(this,'https://aihub.instabase.com/account/sso/saml2')">
+                <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+              </button>
+            </div>
+          </div>
+
+          <a href="javascript:void(0)" class="download-link">
+            <span data-icon="download" data-size="16" data-color="#374151"></span>
+            Download service provider metadata XML
+          </a>
+        </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-saml')">Cancel</button>
+        <button class="modal-submit" onclick="document.getElementById('saml-step-1').style.display='none';document.getElementById('saml-step-2').style.display='flex';">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="saml-step-2" style="display:none; flex-direction:column; flex:1; overflow:hidden; min-height:0;">
+        <div class="modal-body">
+          <div class="modal-section-heading">AI Hub configuration</div>
+          <p class="modal-section-desc" style="margin-bottom:20px;">Configure your AI Hub SSO settings using data from your identity provider. <a href="javascript:void(0)" class="link-blue">Learn more.</a></p>
+
+          <div class="form-field">
+            <label class="form-label">Display name<span class="required">*</span></label>
+            <input type="text" class="form-input" id="saml-display-name" oninput="clearFieldError(this);onSamlFieldEdit()" />
+            <span class="field-error-msg" id="saml-display-name-err" style="display:none;">
+              <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+              Display name cannot be empty
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Identity provider</label>
+            <div class="custom-select">
+            <div class="custom-select-trigger" id="idp-value-locked" style="cursor:default; background:#F9FAFB; color:#6B7280;">
+              <span class="custom-select-value">
+                <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" id="idp-locked-icon" />
+                <span id="idp-locked-name">AD FS</span>
+              </span>
+              <span data-icon="lock" data-size="14" data-color="#9CA3AF"></span>
+            </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Configuration method</label>
+            <div class="custom-select" id="config-method-select">
+              <div class="custom-select-trigger" onclick="toggleCustomSelect('config-method-select')">
+                <div class="custom-select-value" id="config-method-value">Remote metadata URL</div>
+                <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="custom-select-chevron"></span>
+              </div>
+              <div class="custom-select-dropdown" style="display:none;">
+                <div class="custom-select-option selected" onclick="selectConfigMethod(this,'url','Remote metadata URL')">Remote metadata URL</div>
+                <div class="custom-select-option" onclick="selectConfigMethod(this,'xml','Metadata XML file')">Metadata XML file</div>
+                <div class="custom-select-option" onclick="selectConfigMethod(this,'xmlpaste','Metadata XML')">Metadata XML</div>
+                <div class="custom-select-option" onclick="selectConfigMethod(this,'manual','Manual entry')">Manual entry</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="saml-method-url" class="form-field">
+            <label class="form-label"><span class="fl-metadata-url">Metadata URL</span><span class="required">*</span></label>
+            <div style="position:relative;">
+              <input type="text" class="form-input" id="saml-metadata-url" style="padding-right:36px;" oninput="onSamlUrlInput(this);clearFieldError(this);onSamlFieldEdit()" placeholder="https://<IdP url>/<xx>/<xx>/<xx>" />
+              <button id="saml-url-clear" onclick="clearSamlUrl()" style="display:none; position:absolute; right:10px; top:50%; transform:translateY(-50%); background:#6B7280; border:none; border-radius:50%; width:18px; height:18px; cursor:pointer; display:none; align-items:center; justify-content:center; padding:0;" title="Clear">
+                <span data-icon="x" data-size="10" data-color="#fff"></span>
+              </button>
+            </div>
+            <span class="field-error-msg" id="saml-metadata-url-err" style="display:none;">
+              <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+              <span class="fl-metadata-url">Metadata URL</span> cannot be empty
+            </span>
+          </div>
+
+          <!-- Extracted metadata (shown after URL entered) -->
+          <div id="saml-extracted" style="display:none;">
+            <div class="saml-info-banner">
+              <span data-icon="info" data-size="16" data-color="#6B7280" data-icon-class="form-info-icon"></span>
+              <span>Following values are extracted from your metadata URL. To make changes, adjust values in your identity provider then provide the updated metadata</span>
+            </div>
+
+            <div class="extracted-field">
+              <div class="extracted-label fl-signon">Sign on URL</div>
+              <div class="extracted-value">https://&lt;some url form IdP&gt;/&lt;xx&gt;/&lt;xx&gt;/&lt;xx&gt;</div>
+            </div>
+
+            <div class="extracted-field">
+              <div class="extracted-label fl-entityid">Identity provider entity ID</div>
+              <div class="extracted-value">https://&lt;some url form IdP&gt;/&lt;xx&gt;/&lt;xx&gt;/&lt;xx&gt;</div>
+            </div>
+
+            <div class="extracted-field">
+              <div class="extracted-label fl-x509" style="color:#5a52fa;">X.509 certificate</div>
+              <div class="extracted-value cert-value">MIIDzCCAl+gAwIBAgIEbJ+q6DANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJVUzELMAkGA1UECAwCTlkxDzANBgNVBAcMBk5ldyBZb3JkMQ0wCwYDVQQKDARUZXN0MQ0wCwYDVQQLDARUZXN0MRMwEQYDVQQDDAp0ZXN0LmNvbTAeFw0yNTA1MTYwMDAwMDBaFw0zMDA1MTYwMDAwMDBaMG8xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOWTEPMA0GA1UEBwwGTmV3...</div>
+            </div>
+          </div>
+
+          <!-- Metadata XML paste option -->
+          <div id="saml-method-xmlpaste" class="form-field" style="display:none;">
+            <textarea class="form-input saml-xml-paste" placeholder="Paste Metadata XML provided by IdP" rows="5"></textarea>
+            <p class="form-help-text">Paste IdP metadata XML</p>
+          </div>
+
+          <!-- XML file upload (shown directly below config method when XML file selected) -->
+          <div id="saml-method-xml" style="display:none;">
+            <!-- Upload button (shown when no file selected) -->
+            <div id="saml-xml-upload-btn" class="form-field" style="margin-bottom:4px;">
+              <label class="xml-upload-label" onclick="document.getElementById('saml-xml-file-input').click()">
+                <span data-icon="upload" data-size="16" data-color="#374151"></span>
+                Upload .xml file
+              </label>
+              <input type="file" id="saml-xml-file-input" accept=".xml" style="display:none;" onchange="onSamlXmlUpload(this)" />
+            </div>
+            <!-- File chip (shown after file selected) -->
+            <div id="saml-xml-chip" class="form-field" style="display:none;">
+              <div class="xml-file-chip">
+                <span data-icon="file" data-size="14"></span>
+                <span id="saml-xml-filename">&lt;file name.xml&gt;</span>
+                <button class="xml-chip-remove" onclick="clearSamlXml()" title="Remove">
+                  <span data-icon="x" data-size="12"></span>
+                </button>
+              </div>
+            </div>
+            <!-- Extracted values (shown after file selected) -->
+            <div id="saml-xml-extracted" style="display:none;">
+              <div class="saml-info-banner">
+                <span data-icon="info" data-size="16" data-color="#6B7280" data-icon-class="form-info-icon"></span>
+                <span>Following values are extracted from your metadata XML file. To make changes, adjust values in your identity provider then provide the updated metadata</span>
+              </div>
+              <div class="extracted-field">
+                <div class="extracted-label fl-signon">Sign on URL</div>
+                <div class="extracted-value">https://&lt;some url form IdP&gt;/&lt;xx&gt;/&lt;xx&gt;/&lt;xx&gt;</div>
+              </div>
+              <div class="extracted-field">
+                <div class="extracted-label fl-entityid">Identity provider entity ID</div>
+                <div class="extracted-value">https://&lt;some url form IdP&gt;/&lt;xx&gt;/&lt;xx&gt;/&lt;xx&gt;</div>
+              </div>
+              <div class="extracted-field">
+                <div class="extracted-label fl-x509" style="color:#5a52fa;">X.509 certificate</div>
+                <div class="extracted-value cert-value">MIIDzCCAl+gAwIBAgIEbJ+q6DANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJVUzELMAkGA1UECAwCTlkxDzANBgNVBAcMBk5ldyBZb3JkMQ0wCwYDVQQKDARUZXN0MQ0wCwYDVQQLDARUZXN0MRMwEQYDVQQDDAp0ZXN0LmNvbTAeFw0yNTA1MTYwMDAwMDBaFw0zMDA1MTYwMDAwMDBaMG8xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOWTEPMA0GA1UEBwwGTmV3IFlvcmQxDTALBgNVBAoMBFRlc3QxDTALBgNVBAsMBFRlc3QxEzARBgNVBAMMCnRlc3QuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwSnxRQopK8Zc0vVjR7Z0xid0LI6ZrjWcJ+Kx9yT1Tt2aW1NpYeT4v+uCPs1rDxkWKy0HDYXuNdA93Vj4MS2ZBhR9WGUYeXfJ1t8ekDyNmqG7l2nY6E7bKH1XGZSljQjbk4S7YoQ6LIYvCPHYJGRMZEl0zjCBkFPwXcAjS8M6LgrzSlq5tOzB3gl8QHjOk9N5Kt2AQebhP5YxNPYI5OKPXT04OEX6K2GcGqZYprcU6KhF6HvCZuyftr9PVGmB3BZ1nZ1PdzOfJ+dEqqv0SpFJzLZ8P3I3qTDZ5H8tWZsJbD4bKpMHeMXJg8KzHCBkxXkFXE/mXpzFwCj5AKuOE1tcqQIDAQABo1AwTjAdBgNVHQ4EFgQUA37T1rYYEpQ1mjvCJddxZ5DRoD0wHwYDVR0jBBgwFoAUA37T1rYYEpQ1mjvCJddxZ5DRoD0wDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsF</div>
+              </div>
+            </div>
+            <!-- Attribute mapping checkboxes (XML mode) -->
+            <div id="saml-xml-attr" style="display:none; margin-bottom:12px;">
+              <div class="modal-section-heading">Attribute mapping</div>
+              <div style="display:flex; gap:8px; align-items:flex-start; margin: 6px 0 12px;">
+                <span data-icon="info" data-size="16" data-color="#6B7280" data-icon-class="form-info-icon"></span>
+                <p class="modal-section-desc" style="margin:0;">Optionally use attributes defined in your IdP to populate members' profiles. Mapped attributes override AI Hub-configured values. Attribute names in your IdP must match exactly.</p>
+              </div>
+              <div class="attr-checkbox-grid">
+                <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> first_name</label>
+                <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> last_name</label>
+                <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> groups <button class="info-icon-btn"><span data-icon="info" data-size="13" data-color="#5a52fa"></span></button></label>
+                <label class="attr-check-label"><input type="checkbox" class="adv-checkbox" checked> email</label>
+                <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> is_admin <button class="info-icon-btn"><span data-icon="info" data-size="13" data-color="#5a52fa"></span></button></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual entry fields (shown directly below config method when Manual entry selected) -->
+          <div id="saml-method-manual" style="display:none;">
+            <div class="form-field">
+              <label class="form-label"><span class="fl-signon">Sign on URL</span><span class="required">*</span></label>
+              <input type="text" class="form-input" id="saml-sign-on-url" oninput="clearFieldError(this);onSamlFieldEdit()" placeholder="https://<some url form IdP>/<xx>/<xx>/<xx>" />
+              <span class="field-error-msg" id="saml-sign-on-url-err" style="display:none;">
+                <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+                <span class="fl-signon">Sign on URL</span> cannot be empty
+              </span>
+              <p class="form-help-text">URL where users are redirected to authenticate with your IdP.</p>
+            </div>
+            <div class="form-field">
+              <label class="form-label"><span class="fl-entityid">Identity provider entity ID</span><span class="required">*</span></label>
+              <input type="text" class="form-input" id="saml-entity-id" oninput="clearFieldError(this);onSamlFieldEdit()" placeholder="https://<some url form IdP>/<xx>/<xx>/<xx>" />
+              <span class="field-error-msg" id="saml-entity-id-err" style="display:none;">
+                <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+                <span class="fl-entityid">Identity provider entity ID</span> cannot be empty
+              </span>
+              <p class="form-help-text">Unique identifier for your IdP.</p>
+            </div>
+            <div class="form-field">
+              <label class="form-label" style="color:#5a52fa; font-weight:var(--font-weight-semibold);"><span class="fl-x509">X.509 certificate</span><span class="required">*</span></label>
+              <textarea class="form-input saml-xml-paste" id="saml-x509" rows="8" oninput="clearFieldError(this);onSamlFieldEdit()" placeholder="Paste your X.509 certificate here"></textarea>
+              <span class="field-error-msg" id="saml-x509-err" style="display:none;">
+                <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+                <span class="fl-x509">X.509 certificate</span> cannot be empty
+              </span>
+            </div>
+          </div>
+
+          <!-- Attribute mapping (default text inputs — shown for xmlpaste and manual modes) -->
+          <div id="saml-attr-default" style="margin-bottom:12px;">
+            <div class="modal-section-heading">Attribute Mapping</div>
+            <p class="modal-section-desc" style="margin-top:6px;">Optionally map attributes from your IdP to populate member profiles. Mapped attributes override any values configured in AI Hub. Define attributes as they appear in the assertion.</p>
+          </div>
+          <div id="saml-attr-inputs">
+            <div class="attr-grid attr-grid--2col">
+              <div class="attr-field">
+                <label class="attr-label">first_name</label>
+                <input type="text" class="form-input attr-input" value="givenname" />
+              </div>
+              <div class="attr-field">
+                <label class="attr-label">last_name</label>
+                <input type="text" class="form-input attr-input" value="surname" />
+              </div>
+              <div class="attr-field">
+                <label class="attr-label">email</label>
+                <input type="text" class="form-input attr-input" value="emailaddress" />
+              </div>
+              <div class="attr-field">
+                <label class="attr-label">groups <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#5a52fa"></span></button></label>
+                <input type="text" class="form-input attr-input" value="groups" />
+              </div>
+              <div class="attr-field">
+                <label class="attr-label">is_admin <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#5a52fa"></span></button></label>
+                <input type="text" class="form-input attr-input" value="is_admin" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Attribute mapping after URL (checkboxes) -->
+          <div id="saml-attr-url" style="display:none; margin-bottom:12px;">
+            <div class="modal-section-heading">Attribute mapping</div>
+            <div style="display:flex; gap:8px; align-items:flex-start; margin: 6px 0 12px;">
+              <span data-icon="info" data-size="16" data-color="#6B7280" data-icon-class="form-info-icon"></span>
+              <p class="modal-section-desc" style="margin:0;">Optionally use attributes defined in your IdP to populate members' profiles. Mapped attributes override AI Hub-configured values. Attribute names in your IdP must match exactly.</p>
+            </div>
+            <div class="attr-checkbox-grid">
+              <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> first_name</label>
+              <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> last_name</label>
+              <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> groups <button class="info-icon-btn"><span data-icon="info" data-size="13" data-color="#5a52fa"></span></button></label>
+              <label class="attr-check-label"><input type="checkbox" class="adv-checkbox" checked> email</label>
+              <label class="attr-check-label"><input type="checkbox" class="adv-checkbox"> is_admin <button class="info-icon-btn"><span data-icon="info" data-size="13" data-color="#5a52fa"></span></button></label>
+            </div>
+          </div>
+
+          <button class="advanced-settings-btn" id="advanced-settings-toggle" onclick="toggleAdvancedSettings()">
+            Advanced settings
+            <span data-icon="chevron-right" data-size="14" data-icon-class="advanced-chevron"></span>
+          </button>
+          <div id="saml-advanced" style="display:none;">
+            <div class="advanced-checkboxes">
+              <label class="adv-check-label"><input type="checkbox" class="adv-checkbox"> Response signed</label>
+              <label class="adv-check-label"><input type="checkbox" class="adv-checkbox" checked> Assertion signed</label>
+              <label class="adv-check-label"><input type="checkbox" class="adv-checkbox"> Authentication requests signed</label>
+              <label class="adv-check-label"><input type="checkbox" class="adv-checkbox"> Logout requests signed</label>
+              <label class="adv-check-label"><input type="checkbox" class="adv-checkbox" checked> Allow unsolicited</label>
+            </div>
+            <div class="form-field adv-delimiter-field">
+              <label class="form-label">Groups delimiter</label>
+              <input type="text" class="form-input adv-delimiter-input" value="," />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-cancel" id="saml-back-btn" onclick="document.getElementById('saml-step-2').style.display='none';document.getElementById('saml-step-1').style.display='block';">Back</button>
+          <button class="modal-cancel" id="saml-cancel-btn" style="display:none;" onclick="closeModal('modal-saml')">Cancel</button>
+          <div class="tooltip-wrap" id="saml-save-wrap">
+            <button class="modal-submit" id="saml-save-btn" onclick="validateSamlSave()">Save changes</button>
+            <div class="tooltip-box" id="saml-save-tooltip" style="display:none;">Edit fields to enable save changes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add OIDC configuration modal -->
+  <div class="modal-backdrop" id="modal-oidc" style="display:none;" onclick="closeModal('modal-oidc')">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:820px; width:100%;">
+      <!-- Step 1 -->
+      <div id="oidc-step-1">
+        <div class="modal-header">
+          <h3 class="modal-title">Add OIDC configuration</h3>
+          <button class="modal-close" onclick="closeModal('modal-oidc')">
+            <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section-heading">Identity provider configuration</div>
+          <p class="modal-section-desc" style="margin-bottom:20px;">Use the following values when creating an app registration in your IdP. <a href="javascript:void(0)" class="modal-link">Learn more.</a></p>
+
+          <div class="form-field">
+            <label class="form-label">Identity provider<span class="required">*</span></label>
+            <div class="custom-select" id="oidc-idp-select">
+              <div class="custom-select-trigger" onclick="toggleCustomSelect('oidc-idp-select')">
+                <div class="custom-select-value" id="oidc-idp-value">
+                  <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  AD FS
+                </div>
+                <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="custom-select-chevron"></span>
+              </div>
+              <div class="custom-select-dropdown" style="display:none;">
+                <div class="custom-select-option selected" onclick="selectOidcIdp(this,'AD FS')">
+                  <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  AD FS
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'Auth0')">
+                  <img src="illustration/Auth0.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Auth0
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'JumpCloud')">
+                  <img src="illustration/JumpCloud.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  JumpCloud
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'Microsoft Entra')">
+                  <img src="illustration/microsoft-entra.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Microsoft Entra
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'Okta')">
+                  <img src="illustration/Okta.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  Okta
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'One Login')">
+                  <img src="illustration/one-login.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  One Login
+                </div>
+                <div class="custom-select-option" onclick="selectOidcIdp(this,'PingFederate')">
+                  <img src="illustration/PingFederate.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" />
+                  PingFederate
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-redirect-uri">Redirect URI</span></label>
+            <div class="form-input-copy">
+              <span class="form-input-copy-value">https://aihub.instabase.com/account/sso/oidc/org_wide_callback</span>
+              <button class="copy-btn" type="button" onclick="copyText(this,'https://aihub.instabase.com/account/sso/oidc/org_wide_callback')" title="Copy">
+                <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-scopes">Required scopes</span></label>
+            <div class="form-input-copy">
+              <span class="form-input-copy-value">openid, email, profile</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-cancel" onclick="closeModal('modal-oidc')">Cancel</button>
+          <button class="modal-submit" onclick="document.getElementById('oidc-step-1').style.display='none';document.getElementById('oidc-step-2').style.display='block';">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="oidc-step-2" style="display:none;">
+        <div class="modal-header">
+          <h3 class="modal-title">Add OIDC configuration</h3>
+          <button class="modal-close" onclick="closeModal('modal-oidc')">
+            <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section-heading">AI Hub configuration</div>
+          <p class="modal-section-desc" style="margin-bottom:20px;">Configure your AI Hub SSO settings using data from your identity provider. <a href="javascript:void(0)" class="modal-link">Learn more.</a></p>
+
+          <div class="form-field">
+            <label class="form-label">Display name<span class="required">*</span></label>
+            <input type="text" class="form-input" id="oidc-display-name" oninput="clearFieldError(this)" />
+            <span class="field-error-msg" id="oidc-display-name-err" style="display:none;">
+              <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+              Display name cannot be empty
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Identity provider</label>
+            <div class="custom-select">
+            <div class="custom-select-trigger" id="oidc-idp-value-locked" style="cursor:default; background:#F9FAFB; color:#6B7280;">
+              <div class="custom-select-value">
+                <img src="illustration/adfs.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" id="oidc-idp-locked-icon" />
+                <span id="oidc-idp-locked-name">AD FS</span>
+              </div>
+              <span data-icon="lock" data-size="14" data-color="#9CA3AF"></span>
+            </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-client-id">Client ID</span><span class="required">*</span></label>
+            <input type="text" class="form-input" id="oidc-client-id" oninput="clearFieldError(this)" />
+            <span class="field-error-msg" id="oidc-client-id-err" style="display:none;">
+              <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+              <span class="fl-client-id">Client ID</span> cannot be empty
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-client-secret">Client Secret</span><span class="required">*</span></label>
+            <div style="position:relative;">
+              <input type="password" class="form-input" id="oidc-client-secret" style="padding-right:40px;" />
+              <button onclick="toggleOidcSecret()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#6B7280; display:flex; align-items:center;">
+                <span data-icon="view" data-size="18"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label"><span class="fl-discovery-url">Discovery URL</span><span class="required">*</span></label>
+            <input type="text" class="form-input" id="oidc-discovery-url" placeholder=".../.well-known/openid-configuration" oninput="onOidcDiscoveryInput(this);clearFieldError(this)" />
+            <span class="field-error-msg" id="oidc-discovery-url-err" style="display:none;">
+              <span data-icon="alert" data-size="14" data-color="#EF4444"></span>
+              <span class="fl-discovery-url">Discovery URL</span> cannot be empty
+            </span>
+          </div>
+
+          <div id="oidc-extra-urls" style="display:none;">
+            <div class="form-field">
+              <label class="form-label">Authorization endpoint URL</label>
+              <input type="text" class="form-input" id="oidc-authorization-url" placeholder="https://<url form IdP>" disabled />
+            </div>
+            <div class="form-field">
+              <label class="form-label">Token URL</label>
+              <input type="text" class="form-input" id="oidc-token-url" placeholder="https://<url form IdP>" disabled />
+            </div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <div class="modal-section-heading">Claim mapping</div>
+            <p class="modal-section-desc" style="margin-top:6px;">Optionally map claims from your IdP to populate member profiles. Mapped claims override any values configured in AI Hub. Define claims as they appear in the IdP.</p>
+          </div>
+
+          <div class="form-grid" style="grid-template-columns:1fr 1fr;">
+            <div class="attr-field">
+              <label class="attr-label">Email</label>
+              <input type="text" class="form-input attr-input" value="email" />
+            </div>
+            <div class="attr-field">
+              <label class="attr-label">Is admin <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#5a52fa"></span></button></label>
+              <input type="text" class="form-input attr-input" value="is_admin" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-cancel" onclick="document.getElementById('oidc-step-2').style.display='none';document.getElementById('oidc-step-1').style.display='block';">Back</button>
+          <button class="modal-submit" onclick="validateOidcSave()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add OAuth provider modal -->
+  <div class="modal-backdrop" id="modal-oauth" style="display:none;" onclick="closeModal('modal-oauth')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Add OAuth provider configuration</h3>
+        <button class="modal-close" onclick="closeModal('modal-oauth')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section-heading">OAuth provider setup</div>
+        <p class="modal-section-desc">Register AI Hub as a valid audience in your OAuth provider. <a href="#" class="link-blue">Learn more.</a></p>
+
+        <div class="form-field" style="margin-top:16px;">
+          <label class="form-label">Audience<span class="required">*</span></label>
+          <p class="form-hint">Identifies AI Hub in your OAuth provider. Copy the default value to use when configuring your provider, or enter a custom audience value if already configured in your provider.</p>
+          <div class="code-block" style="margin-top:8px;">
+            <span class="code-value">api://ib-internal.aihub.instabase.com</span>
+            <button class="copy-btn" title="Copy" onclick="copyText(this, 'api://ib-internal.aihub.instabase.com')">
+              <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-section-heading" style="margin-top:20px;">OAuth Configuration</div>
+        <p class="modal-section-desc">Configure your OAuth provider settings.</p>
+
+        <div class="form-field" style="margin-top:16px;">
+          <label class="form-label">Display name<span class="required">*</span></label>
+          <input type="text" class="form-input" id="oauth-display-name" placeholder="" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">OAuth provider<span class="required">*</span></label>
+          <div class="custom-select" id="oauth-provider-select">
+            <button type="button" class="custom-select-trigger" onclick="toggleCustomSelect('oauth-provider-select')">
+              <span class="custom-select-value" id="oauth-provider-value">
+                <img src="illustration/Okta.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" alt="" />
+                OKTA
+              </span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="custom-select-chevron"></span>
+            </button>
+            <div class="custom-select-dropdown" style="display:none;">
+              <div class="custom-select-option selected" onclick="selectOAuthProvider(this)">
+                <img src="illustration/Okta.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" alt="" />
+                OKTA
+              </div>
+              <div class="custom-select-option" onclick="selectOAuthProvider(this)">
+                <img src="illustration/Auth0.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" alt="" />
+                Auth0
+              </div>
+              <div class="custom-select-option" onclick="selectOAuthProvider(this)">
+                <img src="illustration/microsoft-entra.png" width="18" height="18" style="object-fit:contain;flex-shrink:0;" alt="" />
+                Azure AD
+              </div>
+              <div class="custom-select-option" onclick="selectOAuthProvider(this)">
+                <svg width="18" height="18" viewBox="0 0 48 48" style="flex-shrink:0;" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 8 2.9l6-6C34.5 3.1 29.6 1 24 1 14.8 1 7 6.7 3.7 14.7l7 5.4C12.4 13.8 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 6.9-10.1 7.1-17z"/><path fill="#FBBC05" d="M10.7 28.6A14.5 14.5 0 019.5 24c0-1.6.3-3.2.8-4.6l-7-5.4A23.9 23.9 0 000 24c0 3.9.9 7.5 2.5 10.8l8.2-6.2z"/><path fill="#34A853" d="M24 47c5.9 0 10.9-2 14.5-5.3l-7.5-5.8c-2 1.3-4.5 2.1-7 2.1-6.3 0-11.6-4.3-13.4-10l-8.2 6.2C7 42.3 14.9 47 24 47z"/></svg>
+                Google
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discovery endpoint mode (default) -->
+        <div id="oauth-discovery-mode">
+          <div class="form-field">
+            <label class="form-label">Discovery Endpoint URL<span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="https://..." />
+          </div>
+          <a href="javascript:void(0)" class="link-blue" style="display:block; margin-bottom:16px;" onclick="toggleOAuthMode(event)">Configure with issuer URL and JWKS URL.</a>
+        </div>
+
+        <!-- Issuer/JWKS mode -->
+        <div id="oauth-issuer-mode" style="display:none;">
+          <div class="form-field">
+            <label class="form-label">Issuer URL<span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="https://..." />
+          </div>
+          <div class="form-field">
+            <label class="form-label">JWKS URL<span class="required">*</span></label>
+            <input type="text" class="form-input" placeholder="https://..." />
+          </div>
+          <a href="javascript:void(0)" class="link-blue" style="display:block; margin-bottom:16px;" onclick="toggleOAuthMode(event)">Configure with discovery endpoint URL instead.</a>
+        </div>
+
+        <div class="modal-section-heading" style="margin-top:24px;">Claim Mapping</div>
+        <p class="modal-section-desc">AI Hub expects the following standard OAuth claims. Subject and expiry claims can be customized if needed. Audience must be passed as "aud" and can't be customized. <a href="#" class="link-blue">Learn more.</a></p>
+
+        <div class="form-grid" style="margin-top:16px;">
+          <div class="form-field">
+            <label class="form-label">Subject<span class="required">*</span> <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#9CA3AF"></span></button></label>
+            <input type="text" class="form-input" value="sub" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Expiry<span class="required">*</span> <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#9CA3AF"></span></button></label>
+            <input type="text" class="form-input" value="exp" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Audience<span class="required">*</span> <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#9CA3AF"></span></button></label>
+            <input type="text" class="form-input form-input-disabled" value="aud" disabled />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Scope <button class="info-icon-btn"><span data-icon="info" data-size="14" data-color="#9CA3AF"></span></button></label>
+            <input type="text" class="form-input" value="scp" />
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-oauth')">Cancel</button>
+        <button class="modal-submit" onclick="submitAddOauthProvider()">Add Configuration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OAuth configuration saved success modal -->
+  <div class="modal-backdrop" id="modal-oauth-success" style="display:none;" onclick="closeModal('modal-oauth-success')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Configuration saved</h3>
+        <button class="modal-close" onclick="closeModal('modal-oauth-success')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <img src="illustration/success.png" width="200" height="200" alt="" style="margin: 0 auto 20px; display:block;" />
+        <p class="confirm-title" style="font-size:18px; margin-bottom:8px;">OAuth provider configuration added</p>
+        <p class="confirm-desc" style="max-width:420px; margin:0 auto;">To enable accounts to use this provider for authorization, add OAuth account mappings. Navigate to service accounts or user accounts to add mappings.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-submit" onclick="closeModal('modal-oauth-success')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testing SSO connection modal -->
+  <div class="modal-backdrop" id="modal-sso-test" style="display:none;" onclick="closeModal('modal-sso-test')">
+    <div class="modal sso-test-modal" onclick="event.stopPropagation()" style="max-width:600px; width:100%;">
+      <div class="modal-header">
+        <h3 class="modal-title">Testing SSO connection</h3>
+        <button class="modal-close" onclick="closeModal('modal-sso-test')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top:0; text-align:center;">
+        <!-- Illustration -->
+        <div style="margin: 16px 0 24px;">
+          <img src="illustration/Meditating.png" alt="Testing SSO" style="width:100%; border-radius:8px; display:block; padding: 16px 24px; box-sizing:border-box;" />
+        </div>
+
+        <!-- Spinner + status -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px;">
+          <div class="sso-spinner"></div>
+          <span class="modal-status-heading">Testing SSO connection...</span>
+        </div>
+        <p class="modal-status-body">Verifying configuration. This will take a few moments.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-test')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SSO connection success modal -->
+  <div class="modal-backdrop" id="modal-sso-success" style="display:none;" onclick="closeModal('modal-sso-success')">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:600px; width:100%;">
+      <div class="modal-header">
+        <h3 class="modal-title">Connection successful</h3>
+        <button class="modal-close" onclick="closeModal('modal-sso-success')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align:center; padding-top:0;">
+        <div style="margin:16px 0 24px;">
+          <img src="illustration/success.png" alt="Connection successful" style="height:220px; width:auto; max-width:100%; display:block; margin:0 auto; object-fit:contain;" />
+        </div>
+        <p class="modal-status-title">Successfully configured.</p>
+        <p class="modal-status-body">Your SSO connection established, test it before enforcing.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-submit" onclick="closeModal('modal-sso-success')">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SSO connection failed modal -->
+  <div class="modal-backdrop" id="modal-sso-failed" style="display:none;" onclick="closeModal('modal-sso-failed')">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:600px; width:100%;">
+      <div class="modal-header">
+        <h3 class="modal-title">Test connection failed</h3>
+        <button class="modal-close" onclick="closeModal('modal-sso-failed')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align:center; padding-top:0;">
+        <div style="margin:16px 0 24px;">
+          <img src="illustration/something-went-wrong.png" alt="Connection failed" style="width:100%; border-radius:8px; display:block; padding:16px 40px; box-sizing:border-box;" />
+        </div>
+        <p class="modal-status-title">Connection test unsuccessful.</p>
+        <p class="modal-status-body">Review your configuration and try again.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-failed'); openModal('modal-saml')">Review configuration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout / Landing Page -->
+  <div id="logout-page" style="display:none;">
+    <!-- Logout topnav -->
+    <header class="logout-nav">
+      <div class="logout-nav-logo">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="10" height="10" rx="1.5" fill="#F35325"/><rect x="12" y="0" width="10" height="10" rx="1.5" fill="#81BC06"/><rect x="0" y="12" width="10" height="10" rx="1.5" fill="#05A6F0"/><rect x="12" y="12" width="10" height="10" rx="1.5" fill="#FFBA08"/></svg>
+        <span class="logout-nav-title">AI Hub</span>
+      </div>
+      <div class="logout-nav-right">
+        <button class="icon-btn" title="Help">
+          <span data-icon="help" data-size="20" data-color="#6B7280"></span>
+        </button>
+        <button class="logout-demo-btn">Get a demo</button>
+        <button class="logout-signin-btn" onclick="document.getElementById('modal-signin').style.display='flex'">Sign in</button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="logout-main">
+      <!-- Welcome heading -->
+      <h1 class="logout-welcome">Welcome to AI Hub</h1>
+
+      <!-- Carousel -->
+      <div class="logout-carousel">
+        <div class="carousel-stage" id="carousel-track"></div>
+        <div class="carousel-nav">
+          <button type="button" class="carousel-arrow" onclick="carouselPrev()" aria-label="Previous slide">
+            <span data-icon="chevron-left" data-size="16" data-color="currentColor"></span>
+          </button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button type="button" class="carousel-arrow" onclick="carouselNext()" aria-label="Next slide">
+            <span data-icon="chevron-right" data-size="16" data-color="currentColor"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects section -->
+      <section class="logout-section">
+        <div class="logout-section-header">
+          <h2 class="logout-section-title">Projects</h2>
+          <button class="logout-create-btn">Create</button>
+        </div>
+        <div class="logout-projects-empty">
+          <span data-icon="plus-circle" data-size="40" data-color="#F59E0B"></span>
+          <div class="logout-projects-empty-title">Create a project</div>
+          <p class="logout-projects-empty-desc">Extract the data you need from unstructured documents<br>with high accuracy and automation.</p>
+        </div>
+      </section>
+
+      <!-- Featured apps section -->
+      <section class="logout-section">
+        <div class="logout-section-header">
+          <h2 class="logout-section-title">Featured apps</h2>
+          <a href="javascript:void(0)" class="logout-viewall">View all</a>
+        </div>
+        <div class="logout-apps-grid">
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#EDE9FE;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#3B82F6"/><path d="M9 14h10M9 10h6M9 18h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">Doc Translation</div>
+              <div class="logout-app-desc">(beta) Translate documents to another language</div>
+            </div>
+          </div>
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#FFF7ED;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#F97316"/><text x="14" y="18" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">W-2</text></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">Tax Form W-2</div>
+              <div class="logout-app-desc">Extract information from any Form W-2</div>
+            </div>
+          </div>
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#F5F3FF;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#7C3AED"/><path d="M9 14h10M14 9v10" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">InterCompany</div>
+              <div class="logout-app-desc">No summary</div>
+            </div>
+          </div>
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#F0FDF4;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#16A34A"/><path d="M9 14h10M9 10h10M9 18h6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">v3 udf</div>
+              <div class="logout-app-desc">No summary</div>
+            </div>
+          </div>
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#FFF7ED;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#F97316"/><text x="14" y="18" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">W-3</text></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">Tax Form W-3</div>
+              <div class="logout-app-desc">Initial Release</div>
+            </div>
+          </div>
+          <div class="logout-app-card">
+            <div class="logout-app-icon" style="background:#FFF7ED;">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" fill="#F97316"/><text x="14" y="18" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">1120</text></svg>
+            </div>
+            <div class="logout-app-info">
+              <div class="logout-app-by">BY INSTABASE</div>
+              <div class="logout-app-name">Tax Form 1120-S</div>
+              <div class="logout-app-desc">Extracts information from US tax form 1120-S</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="logout-footer">
+      <div class="logout-footer-left">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="0" y="0" width="8" height="8" rx="1" fill="#F35325"/><rect x="10" y="0" width="8" height="8" rx="1" fill="#81BC06"/><rect x="0" y="10" width="8" height="8" rx="1" fill="#05A6F0"/><rect x="10" y="10" width="8" height="8" rx="1" fill="#FFBA08"/></svg>
+        <span class="logout-footer-brand">INSTABASE</span>
+      </div>
+      <div class="logout-footer-links">
+        <a href="javascript:void(0)">PRIVACY POLICY</a>
+        <a href="javascript:void(0)">TERMS OF USE</a>
+      </div>
+      <div class="logout-footer-version">V26.20.13</div>
+    </footer>
+  </div>
+
+  <!-- Disable configuration confirmation modal -->
+  <div class="modal-backdrop" id="modal-sso-disable" style="display:none;" onclick="closeModal('modal-sso-disable')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#FEF3C7;">
+        <span data-icon="warning" data-size="28" data-color="#D97706"></span>
+      </div>
+      <h3 class="confirm-title">Disable configuration?</h3>
+      <p class="confirm-desc">Members will no longer be able to log in using the <span id="sso-disable-config-name" class="sso-config-name" style="font-weight:600;"></span> configuration. You can later re-enable this configuration.</p>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-disable')">Cancel</button>
+        <button class="modal-submit" onclick="confirmSsoAction('disable')">Disable</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enable configuration confirmation modal -->
+  <!-- Enable "sign-in with email and password" confirmation modal -->
+  <div class="modal-backdrop" id="modal-sso-email-enable" style="display:none;" onclick="closeModal('modal-sso-email-enable')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#F3F4F6;">
+        <span data-icon="info" data-size="28" data-color="#6B7280"></span>
+      </div>
+      <h3 class="confirm-title">Enables login with password for testing?</h3>
+      <p class="confirm-desc">This lets you test your SSO login configurations without getting locked out of Instabase AI Hub. Only invited admins has the password to sign in via this method. Disable this before enforcing SSO.</p>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-email-enable')">Cancel</button>
+        <button class="modal-submit" onclick="confirmSsoEmailToggleEnable()">Enable</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-sso-enable" style="display:none;" onclick="closeModal('modal-sso-enable')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#EEF2FF;">
+        <span data-icon="robot" data-size="28" data-color="#5a52fa"></span>
+      </div>
+      <h3 class="confirm-title">Enable configuration?</h3>
+      <p class="confirm-desc">Members will be able to log in using the <span id="sso-enable-config-name" class="sso-config-name" style="font-weight:600;"></span> configuration.</p>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-enable')">Cancel</button>
+        <button class="modal-submit" onclick="confirmSsoAction('enable')">Enable</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete configuration confirmation modal -->
+  <div class="modal-backdrop" id="modal-sso-delete" style="display:none;" onclick="closeModal('modal-sso-delete')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#FEE2E2;">
+        <span data-icon="delete" data-size="28" data-color="#DC2626"></span>
+      </div>
+      <h3 class="confirm-title">Delete configuration?</h3>
+      <p class="confirm-desc">Are you sure you want to delete the <span id="sso-delete-config-name" class="sso-config-name" style="font-weight:600;"></span> configuration? Organization members will no longer be able to log in using this method.</p>
+      <p class="confirm-desc" style="margin-top:-4px;">Type <strong id="sso-delete-confirm-label"></strong> to confirm.</p>
+      <div class="form-field" style="width:100%; max-width:360px; margin-bottom:24px;">
+        <input type="text" class="form-input" id="sso-delete-name-input" placeholder="" oninput="updateSsoDeleteButton()" />
+      </div>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-sso-delete')">Cancel</button>
+        <button class="modal-submit modal-submit-destructive" id="sso-delete-confirm-btn" disabled onclick="confirmSsoAction('delete')">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete group confirmation modal -->
+  <div class="modal-backdrop" id="modal-delete-group" style="display:none;" onclick="closeModal('modal-delete-group')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#FEE2E2;">
+        <span data-icon="delete" data-size="28" data-color="#DC2626"></span>
+      </div>
+      <h3 class="confirm-title">Delete <span id="delete-group-name-title"></span>?</h3>
+      <p class="confirm-desc">The group will be removed everywhere in AI Hub, and cannot be retrieved once deleted.</p>
+      <div class="form-field" style="width:100%; max-width:360px; margin-bottom:24px;">
+        <input type="text" class="form-input" id="delete-group-name-input" placeholder="" oninput="updateDeleteGroupButton()" />
+      </div>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-delete-group')">Cancel</button>
+        <button class="modal-submit modal-submit-destructive" id="delete-group-confirm-btn" disabled onclick="confirmDeleteGroup()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add OAuth account mapping modal -->
+  <div class="modal-backdrop" id="modal-oauth-mapping" style="display:none;" onclick="closeModal('modal-oauth-mapping')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Add OAuth account mapping</h3>
+        <button class="modal-close" onclick="closeModal('modal-oauth-mapping')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field">
+          <label class="form-label">Display name<span class="required">*</span></label>
+          <input type="text" class="form-input" id="oauth-mapping-display-name" />
+          <p class="form-hint">The following characters are allowed: alphanumeric (a-z, 0-9), underscores, and hyphens.</p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">OAuth provider<span class="required">*</span></label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="oauth-mapping-provider">
+              <option value="" disabled selected></option>
+              <option>OKTA</option>
+              <option>Auth0</option>
+              <option>Azure AD</option>
+              <option>Google</option>
+            </select>
+            <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">External account identifier<span class="required">*</span></label>
+          <input type="text" class="form-input" id="oauth-mapping-external-id" />
+          <p class="form-hint">Unique identifier for this account. Typically passed in the 'sub' claim, unless otherwise configured.</p>
+        </div>
+
+        <div class="modal-section-heading" style="margin-top:8px;">Scope</div>
+        <p class="modal-section-desc">Permissions default to the account's assigned role(s) but workspace permissions can be limited per token through the scope claim (typically 'scp'). The most restrictive workspace role applies. <a href="#" class="link-blue">Learn more.</a></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-oauth-mapping')">Cancel</button>
+        <button class="modal-submit" onclick="submitOAuthMapping()">Add mapping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add member to group (AI Hub source) modal -->
+  <div class="modal-backdrop" id="modal-add-group-member" style="display:none;" onclick="closeModal('modal-add-group-member')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Add member</h3>
+        <button class="modal-close" onclick="closeModal('modal-add-group-member')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field" style="position:relative;">
+          <label class="form-label">Member<span class="required">*</span></label>
+          <div class="chip-multiselect" id="add-group-member-multiselect" onclick="focusGroupMemberInput()">
+            <div class="chip-multiselect-chips" id="add-group-member-chips"></div>
+            <input type="text" class="chip-multiselect-input" id="add-group-member-input" placeholder="Search members..." autocomplete="off" oninput="filterGroupMemberOptions()" onfocus="showGroupMemberOptions()" />
+          </div>
+          <div class="chip-multiselect-dropdown" id="add-group-member-dropdown" style="display:none;"></div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Group role</label>
+          <div class="custom-select-wrap" id="add-group-member-role-select">
+            <button type="button" class="custom-select-trigger" id="add-group-member-role-trigger" onclick="toggleGroupMemberRoleMenu(event)">
+              <span id="add-group-member-role-value">Member</span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+            </button>
+            <div class="custom-select-menu" id="add-group-member-role-menu" style="display:none;">
+              <button type="button" class="custom-select-option active" data-value="Member" onclick="selectGroupMemberRole('Member')">Member</button>
+              <button type="button" class="custom-select-option" data-value="Admin" onclick="selectGroupMemberRole('Admin')">Admin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-add-group-member')">Cancel</button>
+        <button class="modal-submit" id="add-group-member-submit-btn" disabled onclick="submitAddGroupMember()">Add member</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OAuth account mapping added success modal -->
+  <div class="modal-backdrop" id="modal-oauth-mapping-success" style="display:none;" onclick="closeModal('modal-oauth-mapping-success')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#E7F6EC;">
+        <span data-icon="check-circle" data-size="28" data-color="#2F855A"></span>
+      </div>
+      <h3 class="confirm-title">OAuth account mapping added</h3>
+      <p class="confirm-desc" id="oauth-mapping-success-desc"></p>
+      <div class="confirm-footer">
+        <button class="modal-submit" onclick="closeModal('modal-oauth-mapping-success')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update member role modal -->
+  <div class="modal-backdrop" id="modal-update-member-role" style="display:none;" onclick="closeModal('modal-update-member-role')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title" id="update-member-role-title">Update role</h3>
+        <button class="modal-close" onclick="closeModal('modal-update-member-role')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field" style="margin-bottom:0;">
+          <label class="form-label form-label-muted">Role</label>
+          <div class="custom-select-wrap" id="member-role-select">
+            <button type="button" class="custom-select-trigger" id="member-role-trigger" onclick="toggleMemberRoleMenu(event)">
+              <span id="member-role-value">Member</span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+            </button>
+            <div class="custom-select-menu" id="member-role-menu" style="display:none;">
+              <button type="button" class="custom-select-option active" data-value="Member" onclick="selectMemberRole('Member')">Member</button>
+              <button type="button" class="custom-select-option" data-value="Admin" onclick="selectMemberRole('Admin')">Admin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-update-member-role')">Cancel</button>
+        <button class="modal-submit" id="update-member-role-save" onclick="saveMemberRole()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add members modal -->
+  <div class="modal-backdrop" id="modal-add-members" style="display:none;" onclick="closeModal('modal-add-members')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header modal-header-stacked">
+        <div>
+          <h3 class="modal-title">Add members</h3>
+          <p class="modal-section-desc" style="margin-top:8px;">Invite members by email. Separate multiple emails with a comma.</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-add-members')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top:0;">
+        <div class="form-field">
+          <label class="form-label form-label-muted">Email address</label>
+          <input type="text" class="form-input" id="add-members-emails" placeholder="name@instabase.com" oninput="updateAddMembersButton()" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label form-label-muted">Organization role</label>
+          <div class="custom-select-wrap" id="add-members-role-select">
+            <button type="button" class="custom-select-trigger" id="add-members-role-trigger" onclick="toggleAddMembersRoleMenu(event)">
+              <span id="add-members-role-value">Member</span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+            </button>
+            <div class="custom-select-menu" id="add-members-role-menu" style="display:none;">
+              <button type="button" class="custom-select-option active" data-value="Member" onclick="selectAddMembersRole('Member')">Member</button>
+              <button type="button" class="custom-select-option" data-value="Admin" onclick="selectAddMembersRole('Admin')">Admin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-add-members')">Cancel</button>
+        <button class="modal-submit" id="add-members-submit-btn" disabled onclick="submitAddMembers()">Add members</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add service account modal -->
+  <div class="modal-backdrop" id="modal-add-sa" style="display:none;" onclick="closeModal('modal-add-sa')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header modal-header-stacked">
+        <div>
+          <h3 class="modal-title">Add service account</h3>
+          <p class="modal-section-desc" style="margin-top:8px;">Service accounts are userless accounts used only for making API calls.</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-add-sa')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top:0;">
+        <div class="form-field">
+          <label class="form-label form-label-muted">Name</label>
+          <input type="text" class="form-input" id="sa-name-input" oninput="updateSaCreateButton()" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label form-label-muted">
+            Organization role
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon-btn" aria-label="Organization role info">
+                <span data-icon="info" data-size="16" data-color="#5a52fa"></span>
+              </button>
+              <div class="tooltip-box">Service accounts can be assigned organization, workspace, and group roles the same way as regular members.</div>
+            </span>
+          </label>
+          <div class="custom-select-wrap" id="sa-role-select">
+            <button type="button" class="custom-select-trigger" id="sa-role-trigger" onclick="toggleSaRoleMenu(event)">
+              <span id="sa-role-value">Member</span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+            </button>
+            <div class="custom-select-menu" id="sa-role-menu" style="display:none;">
+              <button type="button" class="custom-select-option active" data-value="Member" onclick="selectSaRole('Member')">Member</button>
+              <button type="button" class="custom-select-option" data-value="Admin" onclick="selectSaRole('Admin')">Admin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-add-sa')">Cancel</button>
+        <button class="modal-submit" id="sa-create-btn" disabled onclick="submitAddServiceAccount()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add AI Hub API token modal -->
+  <div class="modal-backdrop" id="modal-add-sa-token" style="display:none;" onclick="dismissSaTokenModal()">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Add AI Hub API token</h3>
+        <button class="modal-close" type="button" onclick="dismissSaTokenModal()">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field">
+          <label class="form-label">Name<span class="required">*</span></label>
+          <input type="text" class="form-input" id="sa-token-name" oninput="updateSaTokenAddButton()" />
+          <p class="form-hint">
+            <span data-icon="info" data-size="14" data-color="#9CA3AF"></span>
+            Alphanumeric characters (a-z, A-Z, 0-9), underscores, and dashes are allowed.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Description<span class="required">*</span></label>
+          <textarea class="form-textarea" id="sa-token-description" placeholder="Purpose of the token" oninput="updateSaTokenAddButton()"></textarea>
+        </div>
+
+        <div class="form-field" style="margin-bottom:0;">
+          <label class="form-label form-label-muted">Expiration</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="sa-token-expiration">
+              <option selected>Never expires</option>
+              <option>7 days</option>
+              <option>30 days</option>
+              <option>60 days</option>
+              <option>90 days</option>
+              <option>Custom</option>
+            </select>
+            <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="modal-cancel" id="sa-token-skip-btn" type="button" onclick="skipSaToken()">Skip</button>
+        <button class="modal-cancel" id="sa-token-cancel-btn" type="button" style="display:none;" onclick="dismissSaTokenModal()">Cancel</button>
+        <button class="modal-submit" id="sa-token-add-btn" type="button" disabled onclick="addSaToken()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rename group modal -->
+  <div class="modal-backdrop" id="modal-rename-group" style="display:none;" onclick="closeModal('modal-rename-group')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Rename group</h3>
+        <button class="modal-close" onclick="closeModal('modal-rename-group')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field" style="margin-bottom:0;">
+          <label class="form-label form-label-muted">Group name</label>
+          <input type="text" class="form-input" id="rename-group-input" oninput="updateRenameGroupButton()" />
+          <p class="form-help-text">Group names can reflect business roles, job titles, team names, or other identifying group traits.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-rename-group')">Cancel</button>
+        <button class="modal-submit" id="rename-group-save-btn" disabled onclick="saveRenameGroup()">Rename</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add new IdP group mapping modal (step 1) -->
+  <div class="modal-backdrop" id="modal-add-idp-mapping" style="display:none;" onclick="closeModal('modal-add-idp-mapping')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">Add new group mapping</h3>
+        <button class="modal-close" onclick="closeModal('modal-add-idp-mapping')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-field">
+          <label class="form-label form-label-muted">Membership source</label>
+          <div class="custom-select-wrap" id="add-idp-mapping-idp-select">
+            <button type="button" class="custom-select-trigger" id="add-idp-mapping-idp-trigger" onclick="toggleAddIdpMappingMenu(event)">
+              <span id="add-idp-mapping-idp-value">Select</span>
+              <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+            </button>
+            <div class="custom-select-menu" id="add-idp-mapping-idp-menu" style="display:none;"></div>
+          </div>
+        </div>
+        <div class="form-field" id="add-idp-mapping-groupid-field" style="margin-bottom:0; display:none;">
+          <label class="form-label form-label-muted">Group ID in identity provider</label>
+          <input type="text" class="form-input" id="add-idp-mapping-groupid" placeholder="<some group ID>" oninput="updateAddIdpMappingNextButton()" />
+          <p class="form-help-text">Must match the group ID in your identity provider exactly.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-add-idp-mapping')">Cancel</button>
+        <button class="modal-submit" id="add-idp-mapping-next-btn" disabled onclick="goToAddIdpMappingConfirm()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add new IdP group mapping modal (step 2 — confirm) -->
+  <div class="modal-backdrop" id="modal-confirm-idp-mapping" style="display:none;" onclick="closeModal('modal-confirm-idp-mapping')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#FEF3C7;">
+        <span data-icon="warning" data-size="28" data-color="#D97706"></span>
+      </div>
+      <h3 class="confirm-title">Add IdP group mapping?</h3>
+      <p class="confirm-desc">Group membership changes take effect at each member's next login.</p>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-confirm-idp-mapping')">Cancel</button>
+        <button class="modal-submit" onclick="confirmAddIdpMapping()">Add mapping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add group modal -->
+  <div class="modal-backdrop" id="modal-add-group" style="display:none;" onclick="closeModal('modal-add-group')">
+    <div class="modal modal-add-group" onclick="event.stopPropagation()">
+      <div class="modal-header modal-header-stacked">
+        <div>
+          <h3 class="modal-title modal-title-lg">Add group</h3>
+          <p class="modal-section-desc add-group-intro">Groups are collections of users that can be assigned the same set of permissions and access, including group-based workspace access.</p>
+        </div>
+        <button type="button" class="modal-close" onclick="closeModal('modal-add-group')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body add-group-modal-body">
+        <div class="form-field">
+          <label class="form-label form-label-muted" for="add-group-name-input">Group name</label>
+          <input type="text" class="form-input" id="add-group-name-input" placeholder="Enter group name" oninput="updateAddGroupForm()" />
+          <p class="form-help-text">Group names can reflect business roles, job titles, team names, or other identifying group traits.</p>
+        </div>
+
+        <div class="add-group-mapping-block">
+          <div class="toggle-row add-group-toggle-row">
+            <div class="toggle-wrap">
+              <button type="button" class="toggle toggle-brand" id="add-group-idp-toggle" aria-checked="false"></button>
+            </div>
+            <div>
+              <div class="add-group-toggle-label">Identity provider group mapping</div>
+              <p class="form-help-text add-group-mapping-desc" id="add-group-mapping-desc">Sync this group's membership with a group defined in your identity provider. Manage members through your identity provider instead of AI Hub.</p>
+            </div>
+          </div>
+
+          <div id="add-group-idp-fields" class="add-group-idp-fields" style="display:none;">
+            <div class="form-field">
+              <label class="form-label form-label-muted">Identity provider</label>
+              <div class="custom-select-wrap" id="add-group-idp-select">
+                <button type="button" class="custom-select-trigger" id="add-group-idp-trigger" onclick="toggleAddGroupIdpMenu(event)">
+                  <span id="add-group-idp-value">Select</span>
+                  <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+                </button>
+                <div class="custom-select-menu" id="add-group-idp-menu" style="display:none;"></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label form-label-muted" for="add-group-idp-group-id">Group ID in identity provider</label>
+              <input type="text" class="form-input" id="add-group-idp-group-id" placeholder="Enter group ID" oninput="updateAddGroupForm()" />
+              <p class="form-help-text">Must match the group ID in your identity provider exactly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-cancel" onclick="closeModal('modal-add-group')">Cancel</button>
+        <button type="button" class="modal-submit" id="add-group-submit-btn" disabled onclick="submitAddGroup()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group created success modal -->
+  <div class="modal-backdrop" id="modal-group-success" style="display:none;" onclick="closeGroupSuccessModal()">
+    <div class="modal confirm-modal group-success-modal" onclick="event.stopPropagation()">
+      <button type="button" class="modal-close token-success-close" onclick="closeGroupSuccessModal()">
+        <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+      </button>
+      <div class="confirm-icon-wrap" style="background:#E7F6EC;">
+        <span data-icon="check-circle" data-size="28" data-color="#2F855A"></span>
+      </div>
+      <h3 class="confirm-title" id="group-success-title">1 group added</h3>
+      <p class="confirm-desc" id="group-success-desc"></p>
+      <div class="confirm-footer group-success-footer">
+        <button type="button" class="modal-submit" onclick="closeGroupSuccessModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add multiple groups modal -->
+  <div class="modal-backdrop" id="modal-add-multiple-groups" style="display:none;" onclick="closeModal('modal-add-multiple-groups')">
+    <div class="modal modal-bulk-groups" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title modal-title-lg">Add multiple groups</h3>
+        <button type="button" class="modal-close" onclick="closeModal('modal-add-multiple-groups')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" id="bulk-groups-modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="modal-cancel" onclick="closeModal('modal-add-multiple-groups')">Cancel</button>
+        <button type="button" class="modal-submit" id="bulk-groups-submit-btn" disabled onclick="submitBulkGroups()">Add groups</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Token created success modal -->
+  <div class="modal-backdrop" id="modal-token-success" style="display:none;" onclick="closeTokenSuccessModal()">
+    <div class="modal confirm-modal token-success-modal" onclick="event.stopPropagation()">
+      <button class="modal-close token-success-close" type="button" onclick="closeTokenSuccessModal()">
+        <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+      </button>
+      <div class="confirm-icon-wrap token-success-icon">
+        <span data-icon="check-circle" data-size="28" data-color="#2F855A"></span>
+      </div>
+      <h3 class="confirm-title" id="token-success-title">Token added successfully</h3>
+      <p class="token-success-note">
+        <span data-icon="info" data-size="16" data-color="#5a52fa"></span>
+        Make sure to copy the token. You won't be able to see it again.
+      </p>
+      <div class="token-value-box">
+        <span class="token-value-text" id="token-success-value"></span>
+        <button class="copy-btn" id="token-success-copy" type="button" title="Copy">
+          <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="confirm-footer token-success-footer">
+        <button class="modal-cancel token-success-close-btn" type="button" onclick="closeTokenSuccessModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create AI Hub OAuth app modal -->
+  <div class="modal-backdrop" id="modal-create-oauth-app" style="display:none;" onclick="closeModal('modal-create-oauth-app')">
+    <div class="modal modal-sm" onclick="event.stopPropagation()">
+      <div class="modal-header modal-header-stacked">
+        <div>
+          <h3 class="modal-title">Create AI Hub OAuth app</h3>
+          <p class="modal-section-desc" style="margin-top:8px;">This lets you create tokens compliant with OAuth for API access. <a href="#" class="link-blue">Learn more.</a></p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-create-oauth-app')">
+          <span data-icon="x" data-size="18" data-color="#6B7280"></span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top:0;">
+        <div class="form-field">
+          <label class="form-label">App name<span class="required">*</span></label>
+          <input type="text" class="form-input" id="oauth-app-name" placeholder="some name" oninput="updateCreateOauthAppButton()" />
+          <p class="form-hint">The following characters are allowed: alphanumeric (a-z, 0-9), underscores, and hyphens.</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Description</label>
+          <input type="text" class="form-input" id="oauth-app-description" placeholder="<some value>" />
+        </div>
+        <div class="form-field">
+          <label class="form-label form-label-muted">Scope</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="oauth-app-scope">
+              <option>Admin</option>
+              <option>Workspace manager</option>
+              <option>Developer</option>
+              <option>Tester</option>
+              <option>Review manager</option>
+              <option>Reviewer</option>
+            </select>
+            <span data-icon="chevron-down" data-size="14" data-color="#6B7280" data-icon-class="select-chevron"></span>
+          </div>
+          <p class="form-hint">Used to control token permissions. <a href="#" class="link-blue">Learn more.</a></p>
+        </div>
+        <div class="modal-section-heading" style="margin-top:8px;">Token Expiry policy</div>
+        <p class="modal-section-desc">Token expiry policy is always set to 15 min to be compliant with OAuth 2.0</p>
+        <div class="modal-section-heading" style="margin-top:16px;">Resource owner</div>
+        <p class="modal-section-desc">Who ever creates this app become the resource owner for this AI Hub OAuth app.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-create-oauth-app')">Cancel</button>
+        <button class="modal-submit" id="create-oauth-app-btn" disabled onclick="submitCreateOauthApp()">Create OAuth app</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OAuth app created success modal -->
+  <div class="modal-backdrop" id="modal-oauth-app-success" style="display:none;" onclick="closeModal('modal-oauth-app-success')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#E7F6EC;">
+        <span data-icon="check-circle" data-size="28" data-color="#2F855A"></span>
+      </div>
+      <h3 class="confirm-title">OAuth app successfully created</h3>
+      <p class="token-success-note">
+        <span data-icon="info" data-size="16" data-color="#5a52fa"></span>
+        Make sure to copy your client secret. You won't be able to see it again.
+      </p>
+      <div class="form-field" style="width:400px; margin-left:auto; margin-right:auto; text-align:center;">
+        <label class="form-label form-label-muted">Client ID</label>
+        <div class="token-value-box" style="width:100%;">
+          <span class="token-value-text" id="oauth-app-client-id"></span>
+          <button class="copy-btn" id="oauth-app-client-id-copy" type="button" title="Copy">
+            <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+          </button>
+        </div>
+      </div>
+      <div class="form-field" style="width:400px; margin-left:auto; margin-right:auto; text-align:center; margin-bottom:0;">
+        <label class="form-label form-label-muted">Client Secret</label>
+        <div class="token-value-box" style="width:100%;">
+          <span class="token-value-text" id="oauth-app-client-secret"></span>
+          <button class="copy-btn" id="oauth-app-client-secret-copy" type="button" title="Copy">
+            <span data-icon="copy" data-size="16" data-color="#6B7280"></span>
+          </button>
+        </div>
+      </div>
+      <div class="confirm-footer token-success-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-oauth-app-success')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete OAuth provider configuration modal -->
+  <div class="modal-backdrop" id="modal-delete-oauth-provider" style="display:none;" onclick="closeModal('modal-delete-oauth-provider')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="confirm-icon-wrap" style="background:#FEE2E2;">
+        <span data-icon="delete" data-size="28" data-color="#DC2626"></span>
+      </div>
+      <h3 class="confirm-title">Delete <span id="delete-oauth-provider-title"></span>?</h3>
+      <p class="confirm-desc">Accounts using this OAuth provider will stop working. Are you sure you want to proceed?</p>
+      <div class="form-field" style="width:100%; max-width:360px; margin-bottom:24px;">
+        <input type="text" class="form-input" id="delete-oauth-provider-input" placeholder="" oninput="updateDeleteOauthProviderButton()" />
+      </div>
+      <div class="confirm-footer">
+        <button class="modal-cancel" onclick="closeModal('modal-delete-oauth-provider')">Cancel</button>
+        <button class="modal-submit modal-submit-destructive" id="delete-oauth-provider-confirm-btn" disabled onclick="confirmDeleteOauthProvider()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hub / Dashboard page (shown after sign-in) -->
+  <div id="hub-page" style="display:none; flex-direction:column; min-height:100vh;">
+    <!-- Top nav -->
+    <header class="topnav">
+      <div class="topnav-left">
+        <div class="logo">
+          <span class="logo-mark" data-icon="instabase" data-size="18" data-color="#161513" aria-hidden="true"></span>
+          <span class="logo-name">Instabase</span>
+          <span data-icon="chevron-down" data-size="16" data-color="#6B7280" data-icon-class="chevron"></span>
+        </div>
+        <nav class="topnav-links">
+          <a href="javascript:void(0)" class="nav-link">Workspaces</a>
+          <a href="javascript:void(0)" class="nav-link nav-link-active">Hub</a>
+        </nav>
+      </div>
+      <div class="topnav-right">
+        <button class="icon-btn" title="Help">
+          <span data-icon="help" data-size="20" data-color="#6B7280"></span>
+        </button>
+        <div class="avatar-menu">
+          <div class="avatar" onclick="toggleHubAvatarMenu()">LV</div>
+          <div class="avatar-dropdown" id="hub-avatar-dropdown" style="display:none;">
+            <div class="avatar-dropdown-item" onclick="document.getElementById('hub-page').style.display='none'; document.getElementById('hub-avatar-dropdown').style.display='none';">Go to Settings</div>
+            <div class="avatar-dropdown-divider"></div>
+            <div class="avatar-dropdown-item" onclick="document.getElementById('hub-page').style.display='none'; showLogoutPage(); document.getElementById('hub-avatar-dropdown').style.display='none';">Logout</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="hub-main">
+      <!-- Greeting -->
+      <div class="hub-greeting" id="hub-greeting">Good morning, Lokeshkumar</div>
+
+      <!-- Carousel banner -->
+      <div class="hub-banner">
+        <div class="logout-carousel">
+          <div class="carousel-stage" id="hub-carousel-track"></div>
+          <div class="carousel-nav">
+            <button type="button" class="carousel-arrow" onclick="carouselPrev()" aria-label="Previous slide">
+              <span data-icon="chevron-left" data-size="16" data-color="currentColor"></span>
+            </button>
+            <div class="carousel-dots" id="hub-carousel-dots"></div>
+            <button type="button" class="carousel-arrow" onclick="carouselNext()" aria-label="Next slide">
+              <span data-icon="chevron-right" data-size="16" data-color="currentColor"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-col: Projects + Chats -->
+      <div class="hub-row">
+        <!-- Projects -->
+        <div class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-title">Projects</span>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <a href="javascript:void(0)" class="hub-viewall">View all</a>
+              <button class="hub-action-btn">Create</button>
+            </div>
+          </div>
+          <div class="hub-list">
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#FEF3C7;color:#D97706;"><span data-icon="list" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">Copy of Cross-class Matches (Barclays) - John Smith</div>
+                <div class="hub-item-sub">Project edited 2 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#FEF3C7;color:#D97706;"><span data-icon="list" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">New Project (1)</div>
+                <div class="hub-item-sub">Project edited 3 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#FEF3C7;color:#D97706;"><span data-icon="list" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">New Project</div>
+                <div class="hub-item-sub">Project edited 3 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#FEF3C7;color:#D97706;"><span data-icon="list" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">Cross-class Matches (Barclays) - John Smith</div>
+                <div class="hub-item-sub">Project edited 7 months ago by Boris Dadvisard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Chats -->
+        <div class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-title">Chats</span>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <a href="javascript:void(0)" class="hub-viewall">View all</a>
+              <button class="hub-action-btn">Create <span data-icon="chevron-down" data-size="12"></span></button>
+            </div>
+          </div>
+          <div class="hub-list">
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#EDE9FE;color:#7C3AED;"><span data-icon="image" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">New Conversation (15)</div>
+                <div class="hub-item-sub">Conversation edited 5 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#EDE9FE;color:#7C3AED;"><span data-icon="image" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">New Conversation (14)</div>
+                <div class="hub-item-sub">Conversation edited 5 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#EDE9FE;color:#7C3AED;"><span data-icon="image" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">New Conversation (13)</div>
+                <div class="hub-item-sub">Conversation edited 5 months ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+            <div class="hub-list-item">
+              <div class="hub-item-icon" style="background:#EDE9FE;color:#7C3AED;"><span data-icon="image" data-size="16"></span></div>
+              <div class="hub-item-text">
+                <div class="hub-item-name">Instabase onboarding</div>
+                <div class="hub-item-sub">Conversation edited about 1 year ago by Lokeshkumar V M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-col: Deployments + Document reviews -->
+      <div class="hub-row">
+        <!-- Deployments -->
+        <div class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-title">Deployments</span>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <a href="javascript:void(0)" class="hub-viewall">View all</a>
+              <button class="hub-action-btn">Add deployment</button>
+            </div>
+          </div>
+          <table class="hub-table">
+            <thead><tr><th>Name</th><th>Last run status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="hub-dep-name">DocRedact Dep</div><div class="hub-dep-sub">Last run about 8 hours ago</div></td><td><span class="hub-status hub-status-review">● REVIEW REQUIRED</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">shivam_test_deployment</div><div class="hub-dep-sub">Last run about 20 hours ago</div></td><td><span class="hub-status hub-status-review">● REVIEW REQUIRED</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">VRSF-CLASSIFIER-ADV-...</div><div class="hub-dep-sub">Last run 1 day ago</div></td><td><span class="hub-status hub-status-done">COMPLETED</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">PASS DEPLOY FOR API TEST</div><div class="hub-dep-sub">Last run 3 days ago</div></td><td><span class="hub-status hub-status-done">COMPLETED</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">debug-task-dashboards-...</div><div class="hub-dep-sub">Last run 9 days ago</div></td><td><span class="hub-status hub-status-review">● REVIEW REQUIRED</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Document reviews -->
+        <div class="hub-card">
+          <div class="hub-card-header">
+            <span class="hub-card-title">Document reviews</span>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <a href="javascript:void(0)" class="hub-viewall">View all</a>
+              <button class="hub-action-btn">Start review</button>
+            </div>
+          </div>
+          <table class="hub-table">
+            <thead><tr><th>Document name</th><th>Time remaining</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="hub-dep-name">Note - Blossom Ridge.pdf</div><div class="hub-dep-sub">In review</div></td><td><span class="hub-overdue">Overdue by 139 days</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">Note - Blossom Ridge.pdf</div><div class="hub-dep-sub">In review</div></td><td><span class="hub-overdue">Overdue by 139 days</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">Note - Blossom Ridge.pdf</div><div class="hub-dep-sub">In review</div></td><td><span class="hub-overdue">Overdue by 139 days</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">Updated Sample Mortgage...</div><div class="hub-dep-sub">In review</div></td><td><span class="hub-overdue">Overdue by 138 days</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+              <tr><td><div class="hub-dep-name">Updated Sample Mortgage...</div><div class="hub-dep-sub">In review</div></td><td><span class="hub-overdue">Overdue by 138 days</span></td><td><span data-icon="chevron-right" data-size="14" data-color="#9CA3AF"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Featured apps -->
+      <div class="hub-featured">
+        <div class="hub-card-header" style="margin-bottom:16px;">
+          <span class="hub-card-title">Featured apps</span>
+          <a href="javascript:void(0)" class="hub-viewall">View all</a>
+        </div>
+        <div class="hub-apps-grid">
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#DBEAFE;"><span data-icon="list" data-size="22" data-color="#3B82F6"></span></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">Doc Translation</div>
+              <div class="hub-app-desc">(beta) Translate documents to another language</div>
+            </div>
+          </div>
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#FEF3C7;"><span data-icon="check-circle-filled" data-size="22" data-color="#D97706"></span></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">Tax Form W-2</div>
+              <div class="hub-app-desc">Extract information from any Form W-2</div>
+            </div>
+          </div>
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#EDE9FE;"><span data-icon="globe" data-size="22" data-color="#7C3AED"></span></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">Explore AIHub Docs</div>
+              <div class="hub-app-desc">A chatbot to answer all your questions about Instabase AI Hub</div>
+            </div>
+          </div>
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#D1FAE5;"><span data-icon="plus" data-size="22" data-color="#059669"></span></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">Underwriter Assistant</div>
+              <div class="hub-app-desc">A trustworthy underwriting assistant to get insights from complex policies</div>
+            </div>
+          </div>
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#FCE7F3;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#EC4899" opacity=".3"/><rect x="12" y="3" width="7" height="7" rx="1.5" fill="#EC4899" opacity=".3"/><rect x="3" y="12" width="7" height="7" rx="1.5" fill="#EC4899" opacity=".3"/><rect x="12" y="12" width="7" height="7" rx="1.5" fill="#EC4899" opacity=".3"/></svg></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">InterCompany</div>
+              <div class="hub-app-desc">No summary</div>
+            </div>
+          </div>
+          <div class="hub-app-card">
+            <div class="hub-app-icon" style="background:#FEF3C7;"><span data-icon="dashboard" data-size="22" data-color="#D97706"></span></div>
+            <div class="hub-app-info">
+              <div class="hub-app-by">BY INSTABASE</div>
+              <div class="hub-app-name">v3 udf</div>
+              <div class="hub-app-desc">No summary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="hub-footer">
+      <div class="hub-footer-left">
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="10" height="10" rx="1.5" fill="#F35325"/><rect x="12" y="0" width="10" height="10" rx="1.5" fill="#81BC06"/><rect x="0" y="12" width="10" height="10" rx="1.5" fill="#05A6F0"/><rect x="12" y="12" width="10" height="10" rx="1.5" fill="#FFBA08"/></svg>
+        <span class="hub-footer-brand">INSTABASE</span>
+        <a href="javascript:void(0)" class="hub-footer-link">PRIVACY POLICY</a>
+        <a href="javascript:void(0)" class="hub-footer-link">TERMS OF USE</a>
+      </div>
+      <div class="hub-footer-version">V26.20.13</div>
+    </footer>
+  </div>
+
+  <!-- Sign in modal -->
+  <div class="signin-backdrop" id="modal-signin" style="display:none;" onclick="closeSigninModal(event)">
+    <div class="signin-modal">
+      <button class="signin-close" onclick="document.getElementById('modal-signin').style.display='none'">
+        <span data-icon="x" data-size="20" data-color="#6B7280"></span>
+      </button>
+      <h3 class="signin-title">Sign into AI Hub</h3>
+      <button class="signin-google-btn" onclick="document.getElementById('modal-signin').style.display='none'; document.getElementById('logout-page').style.display='none'; document.body.style.overflow=''; showHubPage();">
+        <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 8 2.9l6-6C34.5 3.1 29.6 1 24 1 14.8 1 7 6.7 3.7 14.7l7 5.4C12.4 13.8 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 6.9-10.1 7.1-17z"/><path fill="#FBBC05" d="M10.7 28.6A14.5 14.5 0 019.5 24c0-1.6.3-3.2.8-4.6l-7-5.4A23.9 23.9 0 000 24c0 3.9.9 7.5 2.5 10.8l8.2-6.2z"/><path fill="#34A853" d="M24 47c5.9 0 10.9-2 14.5-5.3l-7.5-5.8c-2 1.3-4.5 2.1-7 2.1-6.3 0-11.6-4.3-13.4-10l-8.2 6.2C7 42.3 14.9 47 24 47z"/></svg>
+        Sign in with Google
+      </button>
+      <div class="signin-divider"><span>OR</span></div>
+      <div class="signin-field">
+        <label class="signin-label">Email</label>
+        <input type="email" class="signin-input" placeholder="Enter email address" />
+      </div>
+      <button class="signin-continue-btn">Continue</button>
+      <p class="signin-terms">By signing in and using the AI Hub services, you accept the <a href="javascript:void(0)" class="signin-link">Instabase Terms of Use</a> and <a href="javascript:void(0)" class="signin-link">Privacy Policy</a>.</p>
+    </div>
+  </div>
+
+  <!-- Version lab switcher -->
+  <div class="version-lab-wrap" id="version-lab-wrap">
+    <button class="version-lab-btn" type="button" title="Prototype versions" onclick="toggleVersionLabMenu(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 9.5V3"/><path d="M7.5 15h9"/></svg>
+    </button>
+    <span class="version-lab-indicator" id="version-lab-indicator">V5</span>
+    <div class="version-lab-menu" id="version-lab-menu" style="display:none;">
+      <div class="version-lab-menu-label">Prototype version</div>
+      <button type="button" class="version-lab-option" data-version="v0" onclick="setAppVersion('v0')">
+        <span class="version-lab-option-title">V0 — Before</span>
+        <span class="version-lab-option-desc">Not enterprise ready</span>
+      </button>
+      <button type="button" class="version-lab-option" data-version="v1" onclick="setAppVersion('v1')">
+        <span class="version-lab-option-title">V1 — SSO, &amp; RBAC</span>
+        <span class="version-lab-option-desc">AI Hub tokens only; single sign-on only in Identity &amp; access</span>
+      </button>
+      <button type="button" class="version-lab-option" data-version="v2" onclick="setAppVersion('v2')">
+        <span class="version-lab-option-title">V2 — SSO &amp; RBAC empty</span>
+        <span class="version-lab-option-desc">Same as V1, but empty for you to configure from scratch</span>
+      </button>
+      <button type="button" class="version-lab-option" data-version="v4" onclick="setAppVersion('v4')">
+        <span class="version-lab-option-title">V4 — API refresh release 1</span>
+        <span class="version-lab-option-desc">Blank slate; API authorization shows OAuth app migration status</span>
+      </button>
+      <button type="button" class="version-lab-option active" data-version="v5" onclick="setAppVersion('v5')">
+        <span class="version-lab-option-title">V5 — API refresh release 2</span>
+        <span class="version-lab-option-desc">Enterprise-ready: SSO, OAuth apps, group mappings</span>
+      </button>
+      <button type="button" class="version-lab-option" data-version="v6" onclick="setAppVersion('v6')">
+        <span class="version-lab-option-title">V6 — full version empty</span>
+        <span class="version-lab-option-desc">All features, all data empty for you to configure</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

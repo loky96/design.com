@@ -1,0 +1,359 @@
+@import url("case-study.css");
+
+/* ============ Motion Restriction VR — Coded rebuild (MES theme) ============ */
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Real images dropped into .ph placeholder slots ---------- */
+img.ph {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  color: transparent;
+  font-size: 0;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Paper link button ---------- */
+.vr-paper-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  width: fit-content; margin: 24px 0 24px; padding: 20px 26px;
+  background: var(--blue); border: none; border-radius: var(--radius);
+  color: #fff; font-weight: 700; font-size: 18px; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(74, 151, 238, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.vr-paper-link:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(74, 151, 238, 0.45); }
+.vr-paper-link span { font-size: 20px; transition: transform 0.15s ease; }
+.vr-paper-link:hover span { transform: translateX(4px); }
+
+/* ---------- Floating side navigation ---------- */
+.vr-side-nav {
+  position: fixed;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 82vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding: 8px 4px;
+}
+.vr-side-nav::-webkit-scrollbar { display: none; }
+
+.vr-side-nav-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+.vr-side-nav-bar {
+  flex-shrink: 0;
+  width: 2px;
+  height: 12px;
+  border-radius: 1px;
+  background: #d9d9de;
+  transition: background 0.2s ease;
+}
+.vr-side-nav-link.active .vr-side-nav-bar { background: var(--blue); }
+
+.vr-side-nav-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  white-space: nowrap;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, max-width 0.2s ease;
+}
+.vr-side-nav-link.active .vr-side-nav-label { color: var(--blue); font-weight: 500; }
+.vr-side-nav:hover .vr-side-nav-label { opacity: 1; max-width: 220px; transform: translateX(0); }
+
+@media (max-width: 700px) { .vr-side-nav { display: none; } }
+
+/* ---------- Cover ---------- */
+.vr-cover-device { min-height: 460px; max-width: 1050px; margin: 0 auto 70px; }
+.vr-cover-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; text-align: left; }
+.vr-cover-card {
+  background: #333333; border: 1px solid var(--dark-border);
+  border-radius: 16px; padding: 30px;
+}
+.vr-cover-card h3 { font-size: 26px; color: #fff; text-align: center; margin-bottom: 8px; }
+.vr-cover-card-sub { text-align: center; color: var(--dark-text-dim); font-size: 15px; margin-bottom: 20px; }
+.vr-cost-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.vr-cost-card { background: var(--mint); border-radius: 12px; padding: 18px 20px; }
+.vr-cost-card .vr-cost-label { color: #445; font-size: 15px; }
+.vr-cost-card .vr-cost-val { color: var(--ink); font-size: 17px; margin-top: 6px; }
+.vr-cost-card .vr-cost-val strong { font-size: 24px; }
+.vr-spec-list { list-style: none; display: grid; gap: 12px; }
+.vr-spec-list li {
+  background: #3d3d3d; border-radius: 10px; padding: 12px 16px;
+  color: var(--dark-text); font-size: 15px;
+  display: flex; justify-content: space-between; gap: 14px;
+}
+.vr-spec-list li strong { color: #fff; white-space: nowrap; }
+
+/* ---------- Process flow (circles) ---------- */
+.vr-process { display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; padding: 34px 0; }
+.vr-process-step {
+  width: 148px; height: 148px; border-radius: 50%;
+  background: var(--dark-card-2); border: 1px solid var(--dark-border); color: var(--dark-text);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font-size: 15px; padding: 12px; flex-shrink: 0;
+}
+.vr-process-step.odd { transform: translateY(-32px); }
+.vr-process-step.even { transform: translateY(32px); }
+.vr-process-arrow { font-size: 22px; color: #6f6f6f; flex-shrink: 0; }
+
+.sec.light .vr-process-step { background: #fff; border-color: var(--light-border); color: var(--ink); box-shadow: 0 1px 4px rgba(20,24,40,0.05); }
+.sec.light .vr-process-arrow { color: #9aa0ab; }
+
+/* ---------- Creative process variant ---------- */
+.vr-process.creative { gap: 2px; }
+.vr-process.creative .vr-process-step {
+  width: auto; height: auto; border-radius: 10px;
+  border: 1.5px solid var(--blue); background: none; font-weight: 600; font-size: 14.5px;
+  padding: 22px 24px; transform: none; box-shadow: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.vr-process.creative .vr-process-step:hover { transform: translateY(-4px); background: rgba(74, 151, 238, 0.08); }
+.vr-process.creative .vr-process-arrow { font-size: 26px; color: var(--blue); }
+
+/* ---------- Problem diagrams ---------- */
+.vr-diagram-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin-top: 30px; }
+.vr-diagram-stack { margin-top: 30px; }
+.vr-diagram-stack .vr-diagram-note { margin-bottom: 20px; }
+.vr-diagram-note { font-size: 16px; color: var(--ink-2); }
+.sec.dark .vr-diagram-note { color: var(--dark-text-dim); }
+
+/* ---------- State of art cards ---------- */
+.vr-soa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 34px; }
+.vr-soa-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.vr-soa-card.full { grid-column: 1 / -1; }
+.vr-soa-card h3 { font-size: 19px; margin-bottom: 16px; }
+.vr-soa-card .ph { min-height: 220px; margin-bottom: 18px; }
+.vr-soa-pain-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+  color: #a24c39; margin-bottom: 10px;
+}
+.vr-soa-pain { list-style: none; display: grid; gap: 8px; }
+.vr-soa-pain li {
+  background: var(--pink); border-radius: 8px; padding: 9px 14px;
+  font-size: 14.5px; color: var(--ink-2);
+}
+
+/* ---------- Goal boxes ---------- */
+.vr-goal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 30px 0 0; }
+.vr-goal-box {
+  background: var(--mint); border-radius: var(--radius);
+  padding: 20px 26px; font-size: 17px; font-weight: 600; text-align: center; color: #17472e;
+}
+
+.vr-goal-checklist {
+  list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px;
+  max-width: 620px; margin: 34px auto 0;
+}
+.vr-goal-checklist li {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 18px; font-weight: 600; color: #fff;
+}
+.vr-goal-checklist li::before {
+  content: "\2713"; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--mint); color: #17472e; font-size: 15px; font-weight: 700;
+}
+
+/* ---------- Mindmap diagram ---------- */
+.vr-mindmap-wrap { max-width: 780px; margin: 30px auto 0; }
+.vr-mindmap-svg { display: block; width: 100%; height: auto; }
+.vr-mindmap-svg .vr-mm-root {
+  font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 24px; fill: var(--ink);
+}
+.vr-mindmap-svg .vr-mm-cat {
+  font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 18px;
+}
+.vr-mindmap-svg .vr-mm-leaf {
+  font-family: inherit; font-size: 13.5px; fill: var(--ink-2);
+}
+
+/* ---------- Movement study ---------- */
+.vr-move-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 22px 0; }
+.vr-move-grid.two { grid-template-columns: 1fr 2fr; align-items: stretch; }
+.vr-move-grid.two .vr-move-card { display: flex; flex-direction: column; }
+.vr-move-grid.two .ph { flex: 1; height: 260px; object-fit: cover; }
+.vr-move-card { text-align: center; }
+.vr-move-card .ph { min-height: 220px; margin-bottom: 12px; }
+.vr-move-card p { font-size: 15px; color: var(--ink-2); }
+.vr-move-note { text-align: center; color: #8f8f8f; font-size: 13.5px; margin: 6px 0 34px; }
+
+/* ---------- Ideation columns ---------- */
+.vr-ideate-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 24px; }
+.vr-ideate-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.vr-ideate-card h4 { font-size: 21px; margin-bottom: 16px; font-family: "Rajdhani", sans-serif; font-weight: 700; }
+.vr-ideate-card .ph-diagram { min-height: 260px; margin: 0 0 14px; }
+.vr-ideate-card p { font-size: 14.5px; color: var(--ink-2); }
+
+/* ---------- Implementation captions ---------- */
+.vr-impl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 22px 0; }
+.vr-impl-card { text-align: center; }
+.vr-impl-card .ph-diagram { min-height: 240px; margin: 0 0 12px; }
+.vr-impl-card p { font-size: 14.5px; color: var(--ink-2); font-weight: 600; }
+.vr-impl-full { margin: 30px 0 10px; text-align: center; }
+.vr-impl-full h4 { font-size: 21px; margin-bottom: 14px; font-family: "Rajdhani", sans-serif; font-weight: 700; }
+.vr-impl-full .ph-diagram { min-height: 280px; margin: 0 auto; width: 100%; }
+
+/* ---------- Materials ---------- */
+.vr-material-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+.vr-material-card {
+  background: #fff; border: 1px solid var(--light-border); border-radius: var(--radius);
+  padding: 20px; box-shadow: 0 1px 4px rgba(20, 24, 40, 0.05);
+}
+.vr-material-card .ph-thumb { min-height: 120px; margin-bottom: 14px; }
+.vr-material-card h4 { font-size: 16px; margin-bottom: 4px; }
+.vr-material-card .vr-price {
+  display: inline-block; background: var(--cream); border-radius: 6px;
+  padding: 3px 9px; font-size: 12.5px; color: #6b5a20; margin-bottom: 10px;
+}
+.vr-material-card p.vr-desc { font-size: 12.5px; color: var(--ink-2); }
+
+/* ---------- Prototype / use cases / mechanism ---------- */
+.vr-split-row { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.vr-split-row.media-left { grid-template-columns: 1.1fr 0.9fr; }
+.vr-split-row p { font-size: 16.5px; color: var(--ink-2); margin-bottom: 16px; }
+.vr-split-row p:last-child { margin-bottom: 0; }
+.sec.dark .vr-split-row p { color: var(--dark-text-dim); }
+
+.vr-usecase-grid { display: grid; gap: 26px; margin-top: 24px; }
+.vr-usecase {
+  display: grid; grid-template-columns: 0.65fr 1.35fr; gap: 34px; align-items: center;
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 28px 32px;
+}
+.vr-usecase h4 { font-size: 22px; margin-bottom: 10px; }
+.vr-usecase p { font-size: 15.5px; color: var(--ink-2); }
+.vr-usecase .ph-diagram { min-height: 280px; margin: 0; }
+
+.vr-mech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 24px; }
+.vr-mech-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.vr-mech-card .ph-diagram { min-height: 300px; margin: 0 0 18px; }
+.vr-mech-card h4 { font-size: 21px; margin-bottom: 10px; }
+.vr-mech-card p { font-size: 15px; color: var(--ink-2); }
+
+/* ---------- Without / with device ---------- */
+.vr-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.vr-compare-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 22px 24px;
+}
+.vr-compare-card.highlight { background: #eef4fd; border-color: #cadcf7; }
+.vr-compare-card .ph { min-height: 240px; margin-bottom: 18px; }
+.vr-compare-card h4 { font-size: 20px; margin-bottom: 8px; }
+.vr-compare-card.highlight h4 { color: #2563c7; }
+.vr-compare-card p { font-size: 15px; color: var(--ink-2); }
+
+/* ---------- Interactions & evaluation ---------- */
+.vr-eval-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 30px 0 50px; }
+.vr-eval-strip .ph { min-height: 150px; font-size: 12px; padding: 10px; }
+
+.vr-eval-table {
+  display: grid; grid-template-columns: 1.05fr 1fr 1fr;
+  border: 1px solid var(--light-border); border-radius: var(--radius); overflow: hidden;
+}
+.vr-eval-head {
+  padding: 16px 22px; font-weight: 700; font-family: "Rajdhani", sans-serif;
+  font-size: 17px; letter-spacing: 0.6px;
+}
+.vr-eval-head.label { background: var(--light-card); }
+.vr-eval-head.with { background: #eef4fd; color: #2563c7; text-align: center; }
+.vr-eval-head.without { background: var(--greyblue); color: #55606f; text-align: center; }
+.vr-eval-row-label { padding: 22px; background: #fff; border-top: 1px solid var(--light-border); }
+.vr-eval-letter {
+  display: inline-block; background: var(--greyblue); border-radius: 6px;
+  padding: 3px 9px; font-size: 12px; font-weight: 700; color: #55606f; margin-bottom: 10px;
+}
+.vr-eval-row-label h4 { font-size: 17px; margin-bottom: 6px; }
+.vr-eval-row-label p { font-size: 13.5px; color: var(--ink-2); }
+.vr-eval-cell { padding: 18px; border-top: 1px solid var(--light-border); display: flex; }
+.vr-eval-cell.with { background: rgba(238, 244, 253, 0.55); }
+.vr-eval-cell.without { background: rgba(244, 246, 248, 0.6); }
+.vr-eval-cell .ph { min-height: 150px; width: 100%; font-size: 12px; padding: 10px; }
+
+/* ---------- Text card pairs ---------- */
+.vr-twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.vr-text-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 30px 34px;
+}
+.vr-text-card h3 { font-size: 26px; margin-bottom: 16px; }
+.vr-text-card p { font-size: 15.5px; color: var(--ink-2); margin-bottom: 14px; }
+.vr-text-card p:last-child { margin-bottom: 0; }
+.sec.dark .vr-text-card { background: transparent; border-color: var(--dark-border); }
+.sec.dark .vr-text-card h3 { color: #fff; }
+.sec.dark .vr-text-card p { color: var(--dark-text-dim); }
+
+/* ---------- Info / hardware cards ---------- */
+.vr-info-card {
+  background: var(--light-card); border: 1px solid var(--light-border);
+  border-radius: var(--radius); padding: 30px 34px; margin-top: 26px;
+}
+.vr-info-card h3 { font-size: 24px; margin-bottom: 18px; }
+.vr-info-card ul { list-style: none; display: grid; gap: 12px; }
+.vr-info-card li { font-size: 15.5px; color: var(--ink-2); padding-left: 20px; position: relative; }
+.vr-info-card li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.sec.dark .vr-info-card { background: var(--dark-card); border-color: var(--dark-border); }
+.sec.dark .vr-info-card h3 { color: #fff; }
+.sec.dark .vr-info-card li { color: var(--dark-text-dim); }
+
+.vr-hw-card {
+  background: var(--light-card); border: 1px solid var(--light-border); border-radius: var(--radius);
+  padding: 34px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 34px; align-items: center; margin: 26px 0;
+}
+.vr-hw-card h4 { font-size: 20px; margin-bottom: 18px; }
+.vr-hw-pills { display: grid; gap: 12px; }
+.vr-hw-pill {
+  background: #eef4fd; color: #2563c7; border: 1px solid #d5e4fa;
+  text-align: center; font-weight: 600; border-radius: 8px; padding: 13px;
+}
+.vr-hw-card .ph { min-height: 280px; max-width: 260px; margin: 0 auto; }
+
+/* ---------- Core game loop ---------- */
+.vr-loop-wrap { max-width: 560px; margin: 30px auto 10px; }
+.vr-loop-svg { display: block; width: 100%; height: auto; }
+
+/* ---------- Dark scene placeholders (game) ---------- */
+.ph.vr-dark-shot { background: #0b0e14; border-color: #333a47; color: #7a8699; }
+
+/* ---------- Gallery 9 ---------- */
+.vr-gallery-9 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 16px; }
+.vr-gallery-9 .ph { min-height: 170px; font-size: 12px; padding: 10px; }
+.vr-gallery-single { min-height: 460px; margin: 26px 0 16px; }
+.vr-gallery-caption { text-align: center; color: #8f8f8f; font-size: 13.5px; margin-bottom: 34px; }
+.vr-future-levels { margin-top: 26px; }
+.vr-future-levels h4 { font-size: 19px; margin-bottom: 12px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .vr-cover-cards, .vr-cost-row, .vr-goal-grid, .vr-goal-checklist, .vr-soa-grid,
+  .vr-move-grid, .vr-move-grid.two, .vr-ideate-cols, .vr-impl-grid, .vr-material-grid,
+  .vr-split-row, .vr-split-row.media-left, .vr-usecase, .vr-mech-grid, .vr-compare-grid,
+  .vr-eval-strip, .vr-twocol, .vr-hw-card, .vr-gallery-9,
+  .vr-diagram-row { grid-template-columns: 1fr; }
+  .vr-eval-table { grid-template-columns: 1fr; }
+  .vr-eval-head.label { display: none; }
+  .vr-cover-device { min-height: 260px; }
+  .vr-process-step.odd, .vr-process-step.even { transform: none; }
+}
