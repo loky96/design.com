@@ -30,6 +30,7 @@ export function initFlowerField(container, opts = {}) {
         height: 100%;
         gap: ${GAP};
         pointer-events: none;
+        opacity: 0.2;
       }
       .flower-field .flower {
         transform-origin: bottom center;
