@@ -5,6 +5,7 @@
  *   initFlowerField(document.getElementById('field'), { count: 11 });
  */
 export function initFlowerField(container, opts = {}) {
+  if (typeof window !== 'undefined') window.initFlowerField = initFlowerField;
   const COUNT = opts.count ?? 11;
   const MAX_ANGLE = opts.maxAngle ?? 35;
   const RADIUS = opts.radius ?? 250;
@@ -24,13 +25,17 @@ export function initFlowerField(container, opts = {}) {
       .flower-field {
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
         gap: ${GAP};
+        pointer-events: none;
       }
       .flower-field .flower {
         transform-origin: bottom center;
         transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         will-change: transform;
+        pointer-events: auto;
       }
       .flower-field .flower svg { display: block; overflow: visible; }
     `;

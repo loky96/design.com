@@ -13,12 +13,13 @@ html { scroll-behavior: smooth; }
   z-index: 40;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-height: 82vh;
+  gap: 4px;
+  max-height: 88vh;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
   padding: 8px 4px;
+  mix-blend-mode: difference;
 }
 .mes-side-nav::-webkit-scrollbar { display: none; }
 
@@ -27,24 +28,38 @@ html { scroll-behavior: smooth; }
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.mes-side-nav-link:hover {
+  background: rgba(200, 200, 200, 0.06);
 }
 
 .mes-side-nav-bar {
   flex-shrink: 0;
   width: 2px;
   height: 12px;
+  background: #D1D5DB;
   border-radius: 1px;
-  background: #d9d9de;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+.mes-side-nav-link:hover .mes-side-nav-bar,
+.mes-side-nav-link.active .mes-side-nav-bar {
+  opacity: 1;
 }
 .mes-side-nav-link.active .mes-side-nav-bar {
-  background: var(--blue);
+  width: 4px;
+  height: 18px;
+  background: #E5E7EB;
+  border-radius: 99px;
 }
 
 .mes-side-nav-label {
   font-size: 12px;
   font-weight: 400;
-  color: #6b7280;
+  color: #D1D5DB;
   white-space: nowrap;
   opacity: 0;
   max-width: 0;
@@ -53,8 +68,8 @@ html { scroll-behavior: smooth; }
   transition: opacity 0.2s ease, transform 0.2s ease, max-width 0.2s ease;
 }
 .mes-side-nav-link.active .mes-side-nav-label {
-  color: var(--blue);
-  font-weight: 500;
+  color: #F3F4F6;
+  font-weight: 600;
 }
 
 .mes-side-nav:hover .mes-side-nav-label {
@@ -90,11 +105,21 @@ img.ph {
   padding: 0;
 }
 img.brand-logo {
-  display: block;
-  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
   width: auto;
-  margin: 0 auto 26px;
-  border-radius: 4px;
+  margin: 0 auto 22px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 24px 4px 24px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+  object-position: center;
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
 /* ---------- Competitor table: sleek redesign ---------- */

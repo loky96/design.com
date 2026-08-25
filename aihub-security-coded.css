@@ -13,13 +13,72 @@ html { scroll-behavior: smooth; }
 }
 
 /* ---------- Side nav ---------- */
-.aih-side-nav { position: fixed; left: 28px; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 10px; }
-.aih-side-nav-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.aih-side-nav-bar { width: 2px; height: 12px; background: #ccc; }
-.aih-side-nav-link.active .aih-side-nav-bar { background: var(--blue); }
-.aih-side-nav-label { opacity: 0; max-width: 0; overflow: hidden; white-space: nowrap; transform: translateX(-6px); transition: opacity .15s, max-width .15s, transform .15s; font-size: 13px; color: var(--ink-2); }
-.aih-side-nav-link.active .aih-side-nav-label { color: var(--blue); font-weight: 500; }
-.aih-side-nav:hover .aih-side-nav-label { opacity: 1; max-width: 220px; transform: translateX(0); }
+.aih-side-nav {
+  position: fixed;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  mix-blend-mode: difference;
+}
+.aih-side-nav::-webkit-scrollbar { display: none; }
+.aih-side-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.aih-side-nav-link:hover {
+  background: rgba(200, 200, 200, 0.06);
+}
+.aih-side-nav-bar {
+  width: 2px;
+  height: 12px;
+  background: #D1D5DB;
+  border-radius: 1px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+.aih-side-nav-link:hover .aih-side-nav-bar,
+.aih-side-nav-link.active .aih-side-nav-bar {
+  opacity: 1;
+}
+.aih-side-nav-link.active .aih-side-nav-bar {
+  width: 4px;
+  height: 18px;
+  background: #E5E7EB;
+  border-radius: 99px;
+}
+.aih-side-nav-label {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translateX(-6px);
+  transition: opacity .15s, max-width .15s, transform .15s;
+  font-size: 13px;
+  color: #D1D5DB;
+}
+.aih-side-nav-link.active .aih-side-nav-label {
+  color: #F3F4F6;
+  font-weight: 600;
+}
+.aih-side-nav:hover .aih-side-nav-label {
+  opacity: 1;
+  max-width: 220px;
+  transform: translateX(0);
+}
 
 /* ---------- Placeholder-value chip (swap before publishing) ---------- */
 .todo { display: inline; color: var(--green); }

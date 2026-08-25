@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lokesh Design — V-Shaped Product Designer</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    if (sessionStorage.getItem('hasSeenIntro')) {
+      document.documentElement.classList.add('has-seen-intro');
+    }
+  </script>
 </head>
 <body class="intro-loading">
 
@@ -105,7 +108,7 @@
 
       <a href="aihub-security-coded.html" class="hcard fade-up">
         <div class="hcard-text">
-          <h3 class="hcard-title">Enabling enterprise security suite, Authentication &amp; Identity for AI Hub</h3>
+          <h3 class="hcard-title">Enabling enterprise security suite for AI Hub</h3>
           <p class="hcard-desc">Made AI Hub enterprise-ready by designing a platform security suite including SSO (SAML + OIDC), IdP group mapping for RBAC, &amp; OAuth-compliant APIs from scratch.</p>
           <div class="hcard-metrics">
             <div class="hcard-metric">
@@ -113,8 +116,8 @@
               <span class="hcard-metric-label">Deals unlocked</span>
             </div>
             <div class="hcard-metric">
-              <span class="hcard-metric-value"><small>XX to</small> XXX M$</span>
-              <span class="hcard-metric-label">40% more revenue</span>
+              <span class="hcard-metric-value"><small>4 weeks to</small> 5 days</span>
+              <span class="hcard-metric-label">-87.7% in org setup time</span>
             </div>
           </div>
           <div class="hcard-meta">
@@ -541,7 +544,6 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-flowers" id="footerFlowers" aria-hidden="true"></div>
     <div class="footer-inner">
       <nav class="footer-links">
         <a href="#intro">Home</a>
@@ -549,12 +551,13 @@
         <a href="#projects">Featured Work</a>
         <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
-      <span>Copyright © 2024 Lokeshdesign®</span>
+      <span>Copyright © 2026 Lokeshdesign®</span>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="script.js"></script>
+  <script src="nav-scroll.js"></script>
   <script type="module">
     import { initPixelCursor } from './pixel-cursor.js';
     initPixelCursor({
@@ -597,17 +600,16 @@
   </script>
   <script type="module">
     import { initFlowerField } from './flower-field.js';
-    const options = {
-      count: 24,
-      maxAngle: 22,
-      radius: 220,
-      colors: ['#a8709f', '#5e9482', '#d99a38', '#4b75a6', '#ba6474'],
-      centerColor: '#ffd76a',
-    };
     const contactField = document.getElementById('contactFlowers');
-    if (contactField) initFlowerField(contactField, options);
-    const footerField = document.getElementById('footerFlowers');
-    if (footerField) initFlowerField(footerField, options);
+    if (contactField) {
+      initFlowerField(contactField, {
+        count: 24,
+        maxAngle: 22,
+        radius: 220,
+        colors: ['#a8709f', '#5e9482', '#d99a38', '#4b75a6', '#ba6474'],
+        centerColor: '#ffd76a',
+      });
+    }
   </script>
   <script>
     document.querySelectorAll('.contact-copy-btn').forEach((btn) => {
@@ -629,7 +631,7 @@
 
       const FLY_ANIMS = ['contactBeeFly1', 'contactBeeFly2', 'contactBeeFly3'];
       let extraBeeCount = 0;
-      const MAX_EXTRA_BEES = 8;
+      const MAX_EXTRA_BEES = 6;
       let lastSpawn = 0;
 
       function fallBee(bee) {
@@ -664,12 +666,11 @@
 
       flowers.addEventListener('mousemove', (e) => {
         const now = Date.now();
-        if (now - lastSpawn < 500) return;
+        if (now - lastSpawn < 350) return;
         lastSpawn = now;
-        const rect = flowers.getBoundingClientRect();
         const hiveRect = beeHive.getBoundingClientRect();
         const x = e.clientX - hiveRect.left;
-        const y = rect.top - hiveRect.top - 10;
+        const y = e.clientY - hiveRect.top;
         spawnBee(x, y);
       });
     })();
@@ -681,11 +682,17 @@
   <script>
     (function introLoader() {
       const overlay = document.getElementById('introOverlay');
-      const video = document.getElementById('introVideo');
-      if (!overlay || !video) return;
+      if (!overlay) return;
+
+      if (sessionStorage.getItem('hasSeenIntro')) {
+        overlay.remove();
+        document.body.classList.remove('intro-loading');
+        return;
+      }
+
+      sessionStorage.setItem('hasSeenIntro', 'true');
 
       const MIN_DURATION = 1000;
-      const start = performance.now();
       let pageReady = false;
       let minTimeElapsed = false;
 
