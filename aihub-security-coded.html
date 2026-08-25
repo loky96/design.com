@@ -797,7 +797,7 @@
       <div style="display:flex;flex-direction:column;gap:20px;">
         <h4 style="margin:24px 0 10px;">Iteration of add multiple group for many-to-one mapping</h4>
         <p class="lead">Why: admins have a long list to map initially when they configure any org. Doing it via single addition is cumbersome. Chose the best of each iteration for the final implementation.</p>
-        <img src="aihub-security-coded/bulk-add-options.webp" alt="Bulk add options" style="width:100%;border-radius:12px;" />
+        <img src="aihub-security-coded/bul-add-options.webp" alt="Bulk add options" style="width:100%;border-radius:12px;" />
       </div>
 
     </div>
@@ -933,6 +933,7 @@
             <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>A staged migration: (1) external IdP tokens ship alongside native tokens; (2) admins gain granular control over native token creation — all members, selected groups, or nobody; (3) an org that has moved to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a release note. Giving each organisation the switch — and a reversible one, since disabling native tokens suspends rather than destroys them — let security-forward customers move immediately without breaking anyone else.</div>
           </div>
+          <img src="aihub-security-coded/deprecation-emails.webp" alt="Deprecation warning emails and token migration notifications" style="width:100%;border-radius:12px;margin-top:16px;" />
         </div>
 
         
@@ -1497,9 +1498,7 @@
       <div class="flag-card">
         <div class="grid-2">
           <div><h4>🗣 Feedback</h4><p>"I don't know which of these fields my IdP calls what — I'm guessing." Participants tab-switched constantly and transcribed values by hand.</p></div>
-          <div><h4>✅ Change made</h4><p>Field labels carry per-IdP naming, and the setup surfaces the exact place in each of the 8 supported IdPs where each value is found.</p> <p>
-          "Exact IdP field names, and Import and export capablities" 
-          </p></div>
+          <div><h4>✅ Change made</h4><p>Field labels carry per-IdP naming, and the setup surfaces the exact place in each of the 8 supported IdPs where each value is found (Exact IdP field names, import and export capabilities).</p></div>
         </div>
         <div class="grid-2" style="margin-top:20px;">
           <div><h4>🗣 Feedback</h4><p>"So if I save this, is SSO on now? Am I about to break login for everyone?"</p></div>
@@ -1507,9 +1506,7 @@
         </div>
         <div class="grid-2" style="margin-top:20px;">
           <div><h4>🗣 Feedback</h4><p>"I created the mapping but the group is empty — did it fail?"</p></div>
-          <div><h4>✅ Change made</h4><p>Sync timing stated inline at the moment of creation, so an empty list reads as expected behaviour rather than failure. </p> <p></p>
-            "Starting showing the message in confirmation modal and table empty state"
-          </p></div>
+          <div><h4>✅ Change made</h4><p>Sync timing stated inline at the moment of creation, so an empty list reads as expected behaviour rather than failure (showing messages in confirmation modal and table empty state).</p></div>
         </div>
         <div class="grid-2" style="margin-top:20px;">
           <div><h4>🗣 Feedback</h4><p>"Why can't I just paste the role name into the scope? These UUIDs are unreadable."</p></div>
