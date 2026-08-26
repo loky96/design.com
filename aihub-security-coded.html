@@ -119,7 +119,7 @@
       <div class="brief-text">
         <h2 class="sec-h2">Project brief</h2>
         
-        <p>My job was to design the identity and enterprise security layer that lets a global enterprise trust AI Hub — put their own identity provider behind it, control who sees what, and issue their own API tokens — prove that trust to their security team, and win the enterprise logo by considering:</p>
+        <p>I designed AI Hub’s enterprise security layer—enabling global organizations to bring their own Identity Provider (IdP), enforce granular RBAC, issue scoped OAuth tokens, and pass enterprise security reviews considering:</p>
         <div class="tech-groups">
           <div class="tech-group-row">
            
@@ -147,7 +147,7 @@
       <div class="brief-problem">
         <div class="brief-text">  
         <h2 class="sec-h2">Problem statement</h2>
-        <p>An enterprise IT admin evaluating AI Hub is trying to pass their security review, but encounters an app that still authenticates like a consumer product — email + password, Google sign-in, groups managed manually, one click at a time, and API tokens that never expire and can't be scoped — which makes them feel like the product isn't ready to trust with their organization's data.</p>
+        <p>Enterprise IT admins evaluating AI Hub couldn't pass security reviews. The platform authenticated like a consumer product—relying on passwords, manual group assignment, and un-scoped, non-expiring API tokens.</p>
         </div>
       </div>
     </div>
@@ -761,7 +761,7 @@
           <h4>1. Many-to-one mapping, not one-to-one</h4>
           <div class="dec-quad q3">
             <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Real enterprises don't have one clean group per function. They have <code>eu-analysts</code>, <code>us-analysts</code> and <code>contractor-analysts</code> — all of whom need the same AI Hub workspace access.</div>
-            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Let an AI Hub group accept multiple IdP group names, entered as a list. This removed earlier limitation the earlier SAML implementation had carried.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Allowed AI Hub groups to map to multiple IdP group names as a list, removing the strict 1-to-1 restriction of the previous SAML implementation.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>The one-to-one constraint was an implementation artefact leaking into the mental model. Modelling the mapping the way customers actually think — "these IdP groups mean this thing here" — removed a whole class of workaround groups.</div>
           </div>
 </div>
@@ -770,7 +770,7 @@
           <h4>2. Telling the truth about sync timing</h4>
           <div class="dec-quad q3">
             <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Group membership doesn't sync when the admin saves the mapping. It syncs at each member's <em>next login</em>. So an admin creates a mapping, sees an empty member list, and concludes it's broken. Worse: removing someone from a group in the IdP does not remove their access until they log in again. </div>
-            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>State it at the moment of the action, & also in empty states, not in a help article: the member list will populate as members log in, and removals apply at next login. Requires SCIM implementation. But started with JIT provisioning due to time constraints.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Surfaced sync timing rules inline and in empty states: memberships update on the user's next login. Launched with JIT provisioning to unblock immediate enterprise needs while laying the groundwork for SCIM.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the honest version of a security-relevant limitation. An admin who knows about the delay can plan around it; one who doesn't will assume offboarding is instant, which is exactly the assumption an auditor punishes. It also gave the roadmap its clearest argument for SCIM.</div>
           </div>
 </div>
@@ -778,7 +778,7 @@
         <div class="dec-card">
           <h4>3. Handling existing user groups in an org while transitioning to new RBAC</h4>
           <div class="dec-quad q3">
-            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to existing members in AI Hub who are already part of a group in AI Hub, and what happens when a new SAML or OIDC group mapping is added?</div>
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to current AI Hub members when a new SAML or OIDC group mapping is introduced?</div>
             <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Preserve existing AI Hub group mappings, and show the membership source clearly. Let admins handle removal of AI Hub-managed group membership if they wish.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Old group mappings still hold value for existing users. In orgs transitioning to new RBAC, this allows admins to preserve existing group memberships for current users.</div>
           </div>
@@ -805,7 +805,7 @@
       <div class="pnq-grid">
         <div class="pnq-card pain"><h3>😓 Pain points</h3><ul>
           <li>Automation has no identity of its own in an SSO-only org</li>
-          <li>Long-lived tokens violate their own security policy, transition to new Oauth</li>
+          <li>Long-lived tokens violated enterprise security policies, requiring a transition to OAuth2 standards</li>
           <li>A token silently carries its creator's full admin rights</li>
           <li>No API to create, rotate or delete tokens programmatically</li>
         </ul></div>
@@ -836,7 +836,7 @@
   <section class="sec light">
     <div class="wrap">
       <h2 class="sec-h2">OAuth-compliant API authentication</h2>
-      <p class="lead">Delivered in two phases: <b>Release 2:</b> making existing AI-hub Oauth app to issue Oauth compliant tokens and depreciation of raw AI-Hub issued tokens. <b>Release 3:</b> let organisations bring their own OAuth provider so their IdP issues the JWTs AI Hub validates, added scopes so a token can carry <em>less</em> authority than the identity behind it.</p>
+      <p class="lead">Delivered in two phases—<b>Release 2:</b> Enabled AI Hub to issue short-lived, OAuth2-compliant tokens while deprecating legacy raw tokens. <b>Release 3:</b> Allowed organizations to Bring Your Own IdP (BYO-OAuth), enforcing scoped JWT validation.</p>
 
       <div class="ba-row-split">
         <div class="ba-card before"><h4>Before</h4><ul>
@@ -917,14 +917,14 @@
           </div>
         </div>
 
-        <div class="dec-card hidden-extra">
+        <div class="dec-card">
           <h4>5. A migration path, not a flag day</h4>
           <div class="dec-quad q3">
             <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had working automation built on raw internal tokens. Deprecating them abruptly breaks production pipelines at exactly the customers we're trying to impress.</div>
             <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>A staged migration: (1) external IdP tokens ship alongside native tokens; (2) admins gain granular control over native token creation — all members, selected groups, or nobody; (3) an org that has moved to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a release note. Giving each organisation the switch — and a reversible one, since disabling native tokens suspends rather than destroys them — let security-forward customers move immediately without breaking anyone else.</div>
           </div>
-          <img src="aihub-security-coded/deprecation-emails.webp" alt="Deprecation warning emails and token migration notifications" style="width:100%;border-radius:12px;margin-top:16px;" />
+          <img src="aihub-security-coded/depreciation-emails.webp" alt="Deprecation warning emails and token migration notifications" style="width:100%;border-radius:12px;margin-top:16px;" />
         </div>
 
         
@@ -950,7 +950,7 @@
   <section id="research" class="sec light">
     <div class="wrap">
       <h2 class="sec-h2">Research — mining the evidence that already existed</h2>
-      <p class="lead">I had no budget for a formal study and no access to a bank's IT team on demand. What I did have was three years of Slack: presales questions, Zendesk escalations, engineering threads and customer call notes. Internal engineers support,I treated that as the research corpus.</p>
+      <p class="lead">Without direct access to enterprise IT teams, I mined 3 years of Slack presales logs, Zendesk tickets, customer call notes, and internal support threads as our primary research corpus.</p>
 
       <div class="research-card" style="grid-template-columns:1fr;">
         <div class="research-text">
@@ -979,7 +979,7 @@
   <section id="primary-research" class="sec light">
     <div class="wrap">
       <h2 class="sec-h2">Primary research — in the users' own words</h2>
-      <p class="lead">Hard to get an access to the enterprise customers. Was on presales and support channel calls to get the insights. Below are the quotes from the calls. Including some interviews with internal customer engineers.</p>
+      <p class="lead">Gained direct customer insights by attending presales and support calls, alongside interviews with internal Solution Engineers. Below are key verbatims from those engagements:</p>
 
       <!-- THEME 1 -->
       <div class="qt-theme">
@@ -1599,8 +1599,8 @@
       <h3 style="margin-top:28px;">Working with product &amp; presales (partial PM support & presales team)</h3>
       <p class="lead">Presales and support were my highest-signal research channel — they hold the objection list. In return, the benchmark and entitlement tables I produced went straight into their hands, so "do you support X?" stopped being answered from memory.</p>
 
-      <h3 style="margin-top:28px;">Working with documentation: (1 Docs lead)</h3>
-      <p class="lead">I treated docs as part of the design surface: required vs optional attribute tables, per-IdP setup guidance, and the token scope matrix were all shaped as design deliverables and reviewed by the Docs team who wrote the code. The process change I pushed for: docs accuracy is verified by an implementing engineer before publication, Doc links in description line of each section of the product.</p>
+      <h3 style="margin-top:28px;">Working with documentation (1 Docs lead)</h3>
+      <p class="lead">I treated documentation as a core design deliverable—creating required/optional attribute tables and per-IdP setup guides. I established a new workflow requiring engineering verification of doc accuracy before publication, alongside in-product documentation links.</p>
 
       <h3 style="margin-top:28px;">Design sign-off</h3>
       <p class="lead">Every screen was walked through with the implementing engineer against the states list — empty, gated, loading, error, partial, destructive-confirm — before it was called done. For identity features the error and gated states <em>are</em> the product, so they got the same scrutiny as the happy path.</p>
