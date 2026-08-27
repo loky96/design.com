@@ -446,7 +446,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .org-marquee-static .org-marquee-set {
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
   padding-right: 0;
 }
