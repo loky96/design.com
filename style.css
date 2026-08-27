@@ -788,9 +788,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-.pub-large .hcard-title {
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-}
 
 /* Two vertical publication cards */
 .pub-row {

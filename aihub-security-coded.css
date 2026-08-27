@@ -475,29 +475,29 @@ a.ref-pill::after { content: " \2197"; font-size: 11px; opacity: .55; }
 .phase-row.done .phase-tag { color: var(--green); }
 
 /* ---------- Release timeline — actual chronological order ---------- */
-.release-timeline { position: relative; margin-top: 34px; padding-left: 36px; }
-.release-timeline::before { content: ""; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 2px; background: var(--dark-border); }
-.rel-item { position: relative; padding-bottom: 32px; }
+.release-timeline { position: relative; margin-top: 24px; padding-left: 32px; }
+.release-timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: var(--dark-border); }
+.rel-item { position: relative; padding-bottom: 16px; }
 .rel-item:last-child { padding-bottom: 0; }
 .rel-dot {
-  position: absolute; left: -36px; top: 3px; width: 18px; height: 18px; border-radius: 50%;
-  border: 3px solid var(--dark-bg); box-shadow: 0 0 0 1.5px currentColor;
+  position: absolute; left: -32px; top: 3px; width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--dark-bg); box-shadow: 0 0 0 1.5px currentColor;
 }
 .rel-dot.shipped { background: var(--green); color: var(--green); }
 .rel-dot.roadmap { background: #5b6472; color: #5b6472; }
 .rel-dot.gap { background: #b07d00; color: #b07d00; }
 .rel-dot.next { background: var(--blue); color: var(--blue); }
-.rel-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 5px; }
+.rel-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 2px; }
 .rel-tag {
-  font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px;
-  text-transform: uppercase; padding: 2px 9px; border-radius: 5px;
+  font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.8px;
+  text-transform: uppercase; padding: 1px 7px; border-radius: 4px;
 }
 .rel-tag.shipped { color: #7be2a3; background: rgba(123,226,163,.12); }
 .rel-tag.roadmap { color: #b7bec8; background: rgba(183,190,200,.12); }
 .rel-tag.gap { color: #f0c869; background: rgba(240,200,105,.12); }
 .rel-tag.next { color: #9fc6f2; background: rgba(159,198,242,.14); }
-.rel-item h4 { font-size: 18.5px; color: #fff; margin: 0; }
-.rel-item p { font-size: 15px; color: var(--dark-text-dim); margin-top: 6px; }
+.rel-item h4 { font-size: 16.5px; color: #fff; margin: 0; }
+.rel-item p { font-size: 13.5px; color: var(--dark-text-dim); margin-top: 3px; line-height: 1.45; }
 
 /* ---------- Small stat strip ---------- */
 .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 26px; }
