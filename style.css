@@ -336,10 +336,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero-wave-emoji {
   display: inline-block;
-  font-size: 1.15rem;
-  line-height: 1;
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: -2px;
   transform-origin: 70% 70%;
   animation: heroWave 2s ease-in-out infinite;
+  filter: brightness(0.4);
+  opacity: 0.4;
 }
 @keyframes heroWave {
   0%, 100% { transform: rotate(0deg); }
@@ -362,12 +365,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: justify;
 }
 .hero-highlight {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none'%3E%3Cpath d='M4,26 C14,10 34,7 62,12 C122,20 176,5 238,13 C298,21 356,9 396,24 L397,39 C358,53 298,42 240,49 C178,57 122,45 62,50 C34,54 14,45 4,37 Z' fill='%23FFC82C' fill-opacity='0.45'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 68%;
+  background-color: rgba(255, 200, 44, 0.14);
   padding: 2px 5px;
   margin: 0 -2px;
+  border-radius: 4px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -452,6 +453,9 @@ h1, h2, h3, h4, h5, h6 {
 .org-marquee-static .org-marquee-set img {
   height: 34px;
   max-width: 110px;
+}
+.org-marquee-static .org-marquee-set img[alt="Nutanix"] {
+  height: 30.6px;
 }
 
 .hero-socials {
@@ -771,7 +775,7 @@ h1, h2, h3, h4, h5, h6 {
   background-image: linear-gradient(45deg, transparent 14%, #F0F0F0 15%, #F0F0F0 20%, transparent 21%, transparent 79%, #F0F0F0 80%, #F0F0F0 85%, transparent 86%),
     linear-gradient(135deg, transparent 14%, #F0F0F0 15%, #F0F0F0 20%, transparent 21%, transparent 79%, #F0F0F0 80%, #F0F0F0 85%, transparent 86%),
     radial-gradient(transparent 14%, #F0F0F0 15%, #F0F0F0 25%, transparent 26%);
-  background-size: 2em 2em;
+  background-size: 1.4em 1.4em;
   background-color: #ffffff;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 140px);
   mask-image: linear-gradient(to bottom, transparent 0, #000 140px);
@@ -796,7 +800,7 @@ h1, h2, h3, h4, h5, h6 {
   background-image: linear-gradient(45deg, transparent 14%, #F0F0F0 15%, #F0F0F0 20%, transparent 21%, transparent 79%, #F0F0F0 80%, #F0F0F0 85%, transparent 86%),
     linear-gradient(135deg, transparent 14%, #F0F0F0 15%, #F0F0F0 20%, transparent 21%, transparent 79%, #F0F0F0 80%, #F0F0F0 85%, transparent 86%),
     radial-gradient(transparent 14%, #F0F0F0 15%, #F0F0F0 25%, transparent 26%);
-  background-size: 2em 2em;
+  background-size: 1.4em 1.4em;
   background-color: #ffffff;
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 140px), transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 140px), transparent 100%);
@@ -1287,9 +1291,9 @@ h1, h2, h3, h4, h5, h6 {
 .contact-val:hover { color: var(--blue); }
 .contact-icon {
   display: inline-block;
-  font-size: 1rem;
-  line-height: 1;
-  text-decoration: none;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
   transition: transform var(--transition);
 }
 .contact-val:hover .contact-icon { animation: contactIconBounce 0.6s ease; }
@@ -1460,6 +1464,18 @@ h1, h2, h3, h4, h5, h6 {
   .hero-role,
   .hero-quote {
     text-align: center;
+  }
+
+  .contact-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-actions .contact-socials { order: 1; }
+  .contact-actions .resume-btn { order: 3; }
+  .contact-actions::after {
+    content: "";
+    flex-basis: 100%;
+    order: 2;
   }
 
   .hcard { grid-template-columns: 1fr; }
