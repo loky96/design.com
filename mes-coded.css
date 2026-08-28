@@ -332,6 +332,11 @@ img.brand-logo {
   font-size: 14px;
 }
 
+.explore-solutions .explore-list,
+.explore-solutions .explore-list li {
+  text-align: center;
+}
+
 /* ---------- Research cards: image takes priority ---------- */
 .research-card {
   grid-template-columns: 0.3fr 0.7fr;
