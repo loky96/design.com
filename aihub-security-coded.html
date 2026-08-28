@@ -916,8 +916,18 @@
           </div>
 </div>
 
+        <div class="dec-card">
+          <h4>3. A migration path, not a flag day</h4>
+          <div class="dec-quad q3">
+            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had working automation built on raw internal tokens. <strong>Deprecating them abruptly breaks production pipelines</strong> at exactly the customers we're trying to impress.</div>
+            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>A staged migration:</strong> (1) external IdP tokens ship alongside native tokens; (2) admins gain granular control over native token creation — all members, selected groups, or nobody; (3) an org that has moved to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
+            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a release note. Giving each organisation the switch — and a reversible one, since disabling native tokens suspends rather than destroys them — <strong>let security-forward customers move immediately without breaking anyone else</strong>.</div>
+          </div>
+          <img src="aihub-security-coded/depreciation-emails.webp" alt="Deprecation warning emails and token migration notifications" style="width:100%;border-radius:12px;margin-top:16px;" />
+        </div>
+
         <div class="dec-card hidden-extra">
-          <h4>3. One client, one identity</h4>
+          <h4>4. One client, one identity</h4>
           <div class="dec-quad q3">
             <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Should several external OAuth apps be allowed to map to a single shared service account? It's convenient — and <strong>it destroys least privilege</strong>, because every app inherits the same rights.</div>
             <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>One-to-one. <strong>Each external client maps to exactly one AI Hub user or service account.</strong> Each account may hold one mapping per configured provider.</div>
@@ -926,22 +936,12 @@
         </div>
 
         <div class="dec-card hidden-extra">
-          <h4>4. Scope may only reduce, never grant</h4>
+          <h4>5. Scope may only reduce, never grant</h4>
           <div class="dec-quad q3">
             <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>If a JWT's scope claim controls what the token can do, could a customer <strong>mint themselves admin rights</strong> by writing an admin role into a token?</div>
             <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>Scope always downscopes and never upscopes.</strong> It is expressed as immutable role UUIDs; multiple roles are additive (most permissive wins); a workspace role without an organisation role is invalid; and a workspace role still requires real membership of that workspace. If the scope claim is absent or invalid, the token falls back to the mapped account's normal roles.</div>
             <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the whole reason enterprise security teams accept token-based access. Using role UUIDs instead of readable strings was the less friendly choice for humans — and the right one, because <strong>a renamed role must never silently change what a live token can do</strong>.</div>
           </div>
-        </div>
-
-        <div class="dec-card">
-          <h4>5. A migration path, not a flag day</h4>
-          <div class="dec-quad q3">
-            <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had working automation built on raw internal tokens. <strong>Deprecating them abruptly breaks production pipelines</strong> at exactly the customers we're trying to impress.</div>
-            <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>A staged migration:</strong> (1) external IdP tokens ship alongside native tokens; (2) admins gain granular control over native token creation — all members, selected groups, or nobody; (3) an org that has moved to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
-            <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a release note. Giving each organisation the switch — and a reversible one, since disabling native tokens suspends rather than destroys them — <strong>let security-forward customers move immediately without breaking anyone else</strong>.</div>
-          </div>
-          <img src="aihub-security-coded/depreciation-emails.webp" alt="Deprecation warning emails and token migration notifications" style="width:100%;border-radius:12px;margin-top:16px;" />
         </div>
 
         

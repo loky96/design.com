@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <script>
-    if (sessionStorage.getItem('hasSeenIntro')) {
+    if (localStorage.getItem('hasSeenIntro')) {
       document.documentElement.classList.add('has-seen-intro');
     }
   </script>
@@ -672,13 +672,13 @@
       const overlay = document.getElementById('introOverlay');
       if (!overlay) return;
 
-      if (sessionStorage.getItem('hasSeenIntro')) {
+      if (localStorage.getItem('hasSeenIntro')) {
         overlay.remove();
         document.body.classList.remove('intro-loading');
         return;
       }
 
-      sessionStorage.setItem('hasSeenIntro', 'true');
+      localStorage.setItem('hasSeenIntro', 'true');
 
       const MIN_DURATION = 1000;
       let pageReady = false;

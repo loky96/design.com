@@ -290,12 +290,15 @@ img.brand-logo {
   position: relative;
   max-width: 1050px;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
 }
 .cover-laptop-wrap img.cover-laptop {
   margin: 0;
   position: relative;
   z-index: 1;
   border-radius: 20px;
+  transform: scale(1.01);
 }
 .cover-laptop-gif {
   position: absolute;
