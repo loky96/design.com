@@ -638,6 +638,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hcard:hover .hcard-img > img { transform: scale(1.12); }
 
+.hcard-img > img.hcard-img-shrink { transform: scale(0.9); }
+.hcard:hover .hcard-img > img.hcard-img-shrink { transform: scale(1); }
+
 .hcard-img > video {
   position: absolute;
   inset: 12px 20px 12px 0;

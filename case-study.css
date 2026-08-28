@@ -674,32 +674,21 @@ a.explore-pill:hover {
 
 .explore-list {
   list-style: none;
-  margin: 30px 0 0 10px;
-  border-left: 1.5px solid rgba(255, 255, 255, 0.6);
-  padding-left: 24px;
+  margin: 22px 0 0;
+  padding: 0;
   display: grid;
-  gap: 16px;
+  gap: 10px;
 }
 
 .explore-list li {
-  font-weight: 600;
-  font-size: 17px;
-  position: relative;
-}
-
-.explore-list li::before {
-  content: "";
-  position: absolute;
-  left: -28.5px;
-  top: 9px;
-  width: 7px;
-  height: 7px;
-  background: #fff;
-  border-radius: 50%;
+  font-weight: 500;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .explore-list li.gap {
-  margin-top: 26px;
+  margin-top: 22px;
 }
 
 /* ---------- 6/17/20. Strips ---------- */
@@ -935,6 +924,37 @@ a.explore-pill:hover {
 .pnq-card h3 {
   font-size: 22px;
   margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Icon tile (elevated icon badge, used where an icon needs more visual weight) ---------- */
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.icon-tile .mi {
+  width: 18px;
+  height: 18px;
+  vertical-align: 0;
+}
+.icon-tile--red {
+  background: rgba(214, 62, 62, 0.12);
+  color: #c23636;
+}
+.icon-tile--yellow {
+  background: rgba(196, 141, 12, 0.14);
+  color: #a06c0a;
+}
+.icon-tile--grey {
+  background: rgba(100, 116, 139, 0.12);
+  color: #51606f;
 }
 
 .pnq-card ul {
@@ -1369,7 +1389,13 @@ a.explore-pill:hover {
 }
 
 .adopt-block p strong {
+  display: block;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
   color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 4px;
 }
 
 .h3-sub {

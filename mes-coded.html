@@ -9,6 +9,48 @@
 </head>
 <body>
 
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+      <symbol id="i-hard-hat" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></symbol>
+      <symbol id="i-check-circle-2" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-x-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></symbol>
+      <symbol id="i-refresh-cw" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+      <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+      <symbol id="i-footprints" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol>
+      <symbol id="i-move-horizontal" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></symbol>
+      <symbol id="i-clipboard-list" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+      <symbol id="i-circle-dollar-sign" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+      <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol>
+      <symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/></symbol>
+      <symbol id="i-lightbulb" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol>
+      <symbol id="i-graduation-cap" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></symbol>
+      <symbol id="i-message-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></symbol>
+      <symbol id="i-circle-help" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+      <symbol id="i-triangle-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-frown" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10V9"/><path d="M9 10V9"/><path d="M9 16a5 5 0 016 0"/><circle cx="12" cy="12" r="10"/></symbol>
+    </defs>
+  </svg>
+
   <!-- NAV -->
   <header class="nav">
     <div class="nav-inner">
@@ -32,14 +74,14 @@
     <a href="#board-operator" class="mes-side-nav-link" data-target="board-operator"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The Board Cutting Operator</span></a>
     <a href="#accessibility" class="mes-side-nav-link" data-target="accessibility"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Designing for everyone</span></a>
     <a href="#process" class="mes-side-nav-link" data-target="process"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">How I got there</span></a>
-    <a href="#user-research" class="mes-side-nav-link" data-target="user-research"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Getting into the factory</span></a>
-    <a href="#competitor-analysis" class="mes-side-nav-link" data-target="competitor-analysis"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Learning from what exists</span></a>
-    <a href="#personas" class="mes-side-nav-link" data-target="personas"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Meet the users</span></a>
-    <a href="#iteration-solution" class="mes-side-nav-link" data-target="iteration-solution"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Shaping the solution</span></a>
-    <a href="#visual-design" class="mes-side-nav-link" data-target="visual-design"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Bringing it to life</span></a>
-    <a href="#usability-evaluation" class="mes-side-nav-link" data-target="usability-evaluation"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Putting it to the test</span></a>
-    <a href="#collaboration" class="mes-side-nav-link" data-target="collaboration"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Working with the team</span></a>
-    <a href="#challenge-faced" class="mes-side-nav-link" data-target="challenge-faced"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The hardest problem</span></a>
+    <a href="#user-research" class="mes-side-nav-link mes-side-nav-collapsible" data-target="user-research"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Getting into the factory</span></a>
+    <a href="#competitor-analysis" class="mes-side-nav-link mes-side-nav-collapsible" data-target="competitor-analysis"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Learning from what exists</span></a>
+    <a href="#personas" class="mes-side-nav-link mes-side-nav-collapsible" data-target="personas"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Meet the users</span></a>
+    <a href="#iteration-solution" class="mes-side-nav-link mes-side-nav-collapsible" data-target="iteration-solution"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Shaping the solution</span></a>
+    <a href="#visual-design" class="mes-side-nav-link mes-side-nav-collapsible" data-target="visual-design"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Bringing it to life</span></a>
+    <a href="#usability-evaluation" class="mes-side-nav-link mes-side-nav-collapsible" data-target="usability-evaluation"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Putting it to the test</span></a>
+    <a href="#collaboration" class="mes-side-nav-link mes-side-nav-collapsible" data-target="collaboration"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Working with the team</span></a>
+    <a href="#challenge-faced" class="mes-side-nav-link mes-side-nav-collapsible" data-target="challenge-faced"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The hardest problem</span></a>
     <a href="#impact-results" class="mes-side-nav-link" data-target="impact-results"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Did it work?</span></a>
     <a href="#success-metrics" class="mes-side-nav-link" data-target="success-metrics"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">What success looks like</span></a>
     <a href="#adoption-retention" class="mes-side-nav-link" data-target="adoption-retention"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Growth over time</span></a>
@@ -56,10 +98,10 @@
       <p class="cover-sub">For Modular Furniture Factory Workflow.</p>
 
       <div class="meta-grid">
-        <div class="meta-chip"><span class="meta-label">🖥️ Product:</span><span class="meta-val">New product from scratch</span></div>
-        <div class="meta-chip"><span class="meta-label">👥 Team:</span><span class="meta-val">Lead Designer, PM, EM, CTO, 1 Dev</span></div>
-        <div class="meta-chip"><span class="meta-label">💼 Role:</span><span class="meta-val">(0-10) Research, design &amp; testing</span></div>
-        <div class="meta-chip"><span class="meta-label">⏱️ Time:</span><span class="meta-val">3 Months to first release</span></div>
+        <div class="meta-chip"><span class="meta-label"><svg class="mi"><use href="#i-monitor"></use></svg> Product:</span><span class="meta-val">New product from scratch</span></div>
+        <div class="meta-chip"><span class="meta-label"><svg class="mi"><use href="#i-users"></use></svg> Team:</span><span class="meta-val">Lead Designer, PM, EM, CTO, 1 Dev</span></div>
+        <div class="meta-chip"><span class="meta-label"><svg class="mi"><use href="#i-briefcase"></use></svg> Role:</span><span class="meta-val">(0-10) Research, design &amp; testing</span></div>
+        <div class="meta-chip"><span class="meta-label"><svg class="mi"><use href="#i-timer"></use></svg> Time:</span><span class="meta-val">3 Months to first release</span></div>
       </div>
 
       <div class="cover-laptop-wrap">
@@ -73,8 +115,8 @@
           <p class="cover-card-sub">Comparing data of 1st week to 6 Months</p>
           <img class="ph-chart" src="Mes-coded/01b.webp" alt="Revenue Indicators chart — Revenue in Rs, Panel added for Manufacturing, Unit Enabled, Work Order Created" loading="lazy" decoding="async" />
           <div class="stat-row">
-            <div class="stat-card"><div class="stat-label">💰 Revenue in (INR):</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">+2250%</div></div>
-            <div class="stat-card"><div class="stat-label">📄 Work-order created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">+833%</div></div>
+            <div class="stat-card"><div class="stat-label"><svg class="mi"><use href="#i-circle-dollar-sign"></use></svg> Revenue in (INR):</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">+2250%</div></div>
+            <div class="stat-card"><div class="stat-label"><svg class="mi"><use href="#i-file-text"></use></svg> Work-order created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">+833%</div></div>
           </div>
           <p class="dark-fine" style="margin-top:12px;">Source: from Infurnia Mixpanel.com . *Revenue shown only for process fee of panels</p>
         </div>
@@ -84,12 +126,12 @@
           <img class="ph-chart" src="Mes-coded/01c.webp" alt="All panels added / all user profile ratio chart" loading="lazy" decoding="async" />
           <p class="nps-caption">NPS test conducted with users</p>
           <div class="nps-block">
-            <div class="nps-head"><span class="nps-who">Production designers <span class="nps-count">60 👤</span></span><span class="nps-score">NPS Score: 61</span></div>
+            <div class="nps-head"><span class="nps-who">Production designers <span class="nps-count">60 <svg class="mi"><use href="#i-user"></use></svg></span></span><span class="nps-score">NPS Score: 61</span></div>
             <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:65%;"></div></div>
             <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
           </div>
           <div class="nps-block">
-            <div class="nps-head"><span class="nps-who">Operators / managers <span class="nps-count">55 👤</span></span><span class="nps-score">NPS Score: 58</span></div>
+            <div class="nps-head"><span class="nps-who">Operators / managers <span class="nps-count">55 <svg class="mi"><use href="#i-user"></use></svg></span></span><span class="nps-score">NPS Score: 58</span></div>
             <div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:63%;"></div></div>
             <div class="nps-scale"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div>
           </div>
@@ -103,10 +145,10 @@
     <div class="wrap">
       <h2 class="sec-h2">At a glance</h2>
       <div class="grid-2">
-        <div class="ctx-card"><h3>❓ Why</h3><ul><li>Bring the <strong>exact kitchen design</strong> into the customer's home</li><li><strong>Faster and error free</strong> manufacturing</li></ul></div>
-        <div class="ctx-card"><h3>🔍 What</h3><ul><li><strong>Digital aid</strong> for furniture factory workflow</li><li>Similar to <strong>PLM products</strong> for cabinet units</li></ul></div>
-        <div class="ctx-card"><h3>👥 Whom</h3><ul><li>Cabinet production designer</li><li>Different types of Operators</li><li>Production managers / Supervisors / Owners</li></ul></div>
-        <div class="ctx-card"><h3>🛠 How</h3><ul><li>A whole <strong>new product</strong> for factories</li><li><strong>Various touch points</strong> (tracking, scheduling etc.)</li><li><strong>Paperless process</strong>, portable solutions</li></ul></div>
+        <div class="ctx-card"><h3><svg class="mi"><use href="#i-circle-help"></use></svg> Why</h3><ul><li>Bring the <strong>exact kitchen design</strong> into the customer's home</li><li><strong>Faster and error free</strong> manufacturing</li></ul></div>
+        <div class="ctx-card"><h3><svg class="mi"><use href="#i-search"></use></svg> What</h3><ul><li><strong>Digital aid</strong> for furniture factory workflow</li><li>Similar to <strong>PLM products</strong> for cabinet units</li></ul></div>
+        <div class="ctx-card"><h3><svg class="mi"><use href="#i-users"></use></svg> Whom</h3><ul><li>Cabinet production designer</li><li>Different types of Operators</li><li>Production managers / Supervisors / Owners</li></ul></div>
+        <div class="ctx-card"><h3><svg class="mi"><use href="#i-wrench"></use></svg> How</h3><ul><li>A whole <strong>new product</strong> for factories</li><li><strong>Various touch points</strong> (tracking, scheduling etc.)</li><li><strong>Paperless process</strong>, portable solutions</li></ul></div>
       </div>
     </div>
   </section>
@@ -127,16 +169,16 @@
     <div class="wrap">
       <p class="why-h2">Why a design platform built a factory system</p>
       <div class="grid-2 why-grid" style="margin-top:26px;">
-        <div class="why-card"><h3><span class="emoji-lead">🎯💰</span>1. Business Goals to make quick revenue</h3><p>Unlocking rapid revenue growth with minimal engineering overhead.</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">🆕👥</span>2. Easy to acquire new user base</h3><p>Modular furniture factories are already <strong>our client's customers</strong> — <strong>easy to reach</strong></p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-target"></use></svg><svg class="mi"><use href="#i-circle-dollar-sign"></use></svg></span>1. Business Goals to make quick revenue</h3><p>Unlocking rapid revenue growth with minimal engineering overhead.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-sparkles"></use></svg><svg class="mi"><use href="#i-users"></use></svg></span>2. Easy to acquire new user base</h3><p>Modular furniture factories are already <strong>our client's customers</strong> — <strong>easy to reach</strong></p></div>
         <div class="why-card">
-          <h3><span class="emoji-lead">📋✔️</span>3. Manufacturing outputs were already built</h3>
+          <h3><span class="emoji-lead"><svg class="mi"><use href="#i-clipboard-list"></use></svg><svg class="mi"><use href="#i-check"></use></svg></span>3. Manufacturing outputs were already built</h3>
           <p>Our design app already generates the <strong>3 main outputs</strong> manufacturing needs.</p>
           <p class="why-note">We already have design portal to design modular units.</p>
           <img class="ph-img" src="Mes-coded/04a.webp" alt="DesignX portal screenshot — 3D cabinet view with Option used by production designer / Output needed for Factories callouts" loading="lazy" decoding="async" />
         </div>
         <div class="why-card">
-          <h3><span class="emoji-lead">👨‍🎨👷</span>4. Addressing different personas</h3>
+          <h3><span class="emoji-lead"><svg class="mi"><use href="#i-users"></use></svg></span>4. Addressing different personas</h3>
           <p>Needs of <strong>Interior designer</strong> and <strong>production designer</strong> separately.</p>
           <div class="persona-cols">
             <div class="persona-col">
@@ -152,8 +194,8 @@
           </div>
           <p class="why-note" style="text-align:center;margin-top:14px;">Both were using the same design portal until now</p>
         </div>
-        <div class="why-card"><h3><span class="emoji-lead">🌟📦</span>5. Completing full suite in interiors</h3><p>Easy for business to buy full suite which takes care of <strong>design to manufacturing</strong></p></div>
-        <div class="why-card"><h3><span class="emoji-lead">⚡⏱</span>6. Faster time to market</h3><p>Other architecture verticals <strong>take years to build</strong> — MES shipped in months.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-star"></use></svg><svg class="mi"><use href="#i-package"></use></svg></span>5. Completing full suite in interiors</h3><p>Easy for business to buy full suite which takes care of <strong>design to manufacturing</strong></p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-zap"></use></svg><svg class="mi"><use href="#i-timer"></use></svg></span>6. Faster time to market</h3><p>Other architecture verticals <strong>take years to build</strong> — MES shipped in months.</p></div>
       </div>
     </div>
   </section>
@@ -179,7 +221,7 @@
           </ul>
         </div>
         <div>
-          <a href="#process" class="explore-pill">🖐 See how I got there</a>
+          <a href="#process" class="explore-pill"><svg class="mi"><use href="#i-hand"></use></svg> See how I got there</a>
           <ul class="explore-list">
             <li>User research</li>
             <li>Competitor analysis</li>
@@ -219,14 +261,14 @@
     <div class="wrap">
       <div class="flow-head">
         <h3 class="sec-h2" style="margin-bottom:0;">Current work flow in factory</h3>
-        <div class="insight-chip">🔍 Insights are from user research. for more details go to my process</div>
+        <div class="insight-chip"><svg class="mi"><use href="#i-search"></use></svg> Insights are from user research. for more details go to my process</div>
       </div>
       <h3 class="flow-sub">Overall workflow</h3>
       <div class="flow-steps">
-        <div class="flow-step"><span class="fs-emoji">🤝</span><p><strong>Interior designer</strong> hands over the design file to production designers</p></div>
-        <div class="flow-step"><span class="fs-emoji">📦</span><p><strong>Production designers</strong> verify and correct all units in the file, then give production sign-off</p></div>
-        <div class="flow-step"><span class="fs-emoji">👷</span><p>Hands over manufacturing files to <strong>supervisor</strong> who oversees production</p></div>
-        <div class="flow-step"><span class="fs-emoji">🏃</span><p>Different <strong>Machine Operators</strong> get the files &amp; perform their respective actions</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg class="mi"><use href="#i-handshake"></use></svg></span><p><strong>Interior designer</strong> hands over the design file to production designers</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg class="mi"><use href="#i-package"></use></svg></span><p><strong>Production designers</strong> verify and correct all units in the file, then give production sign-off</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg class="mi"><use href="#i-hard-hat"></use></svg></span><p>Hands over manufacturing files to <strong>supervisor</strong> who oversees production</p></div>
+        <div class="flow-step"><span class="fs-emoji"><svg class="mi"><use href="#i-footprints"></use></svg></span><p>Different <strong>Machine Operators</strong> get the files &amp; perform their respective actions</p></div>
       </div>
       <h3 class="flow-sub">Detailed flow</h3>
       <img src="Mes-coded/Detailed%20flow%20in%20factory.webp" alt="Detailed flow in factory diagram" loading="lazy" decoding="async" class="ph-chart-lg" />
@@ -245,22 +287,22 @@
   <section id="production-designer" class="sec light">
     <div class="wrap">
       <div class="flow-head">
-        <h2 class="sec-h2" style="margin-bottom:0;">🧑‍💻 The Production Designer</h2>
-        <div class="insight-chip">🔍 Insights are from user research. for more details Go to my process</div>
+        <h2 class="sec-h2" style="margin-bottom:0;"><small class="h2-light">Solution 1: for </small><svg class="mi"><use href="#i-laptop"></use></svg> The Production Designer</h2>
+        <div class="insight-chip"><svg class="mi"><use href="#i-search"></use></svg> Insights are from user research. for more details Go to my process</div>
       </div>
       <p class="persona-meta">Name: <strong>Sanjay</strong> &nbsp;|&nbsp; Age: <strong>35</strong> &nbsp;|&nbsp; Qualification: <strong>Diploma in product design</strong></p>
       <div class="pnq-grid">
-        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li>Units are <strong>scattered across the design file</strong> — hard to check one by one.</li><li><strong>Remembering</strong> verified units</li><li>Editing requires lot of clicks &amp; juggling in design app</li><li>Handling <strong>frequent interior design changes</strong></li></ul></div>
-        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li>Creating &amp; managing multiple work orders</li><li>Verify, edit &amp; give sign off to production</li><li><strong>Easy coordination</strong> with both manufacturing &amp; Interior designer.</li></ul></div>
-        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Keen on details</li><li>Tech savvy</li><li>Understands manufacturing constraints</li><li>Collaborative</li></ul></div>
+        <div class="pnq-card pain"><h3><span class="icon-tile icon-tile--red"><svg class="mi"><use href="#i-frown"></use></svg></span> Pain points</h3><ul><li>Units are <strong>scattered across the design file</strong> — hard to check one by one.</li><li><strong>Remembering</strong> verified units</li><li>Editing requires lot of <strong>clicks &amp; juggling</strong> in design app</li><li>Handling <strong>frequent interior design changes</strong></li></ul></div>
+        <div class="pnq-card needs"><h3><span class="icon-tile icon-tile--yellow"><svg class="mi"><use href="#i-key"></use></svg></span> Needs</h3><ul><li><strong>Creating &amp; managing</strong> multiple work orders</li><li><strong>Verify, edit &amp; give sign off</strong> to production</li><li><strong>Easy coordination</strong> with both manufacturing &amp; Interior designer.</li></ul></div>
+        <div class="pnq-card qualities"><h3><span class="icon-tile icon-tile--grey"><svg class="mi"><use href="#i-flame"></use></svg></span> Qualities</h3><ul><li><strong>Keen on details</strong></li><li><strong>Tech savvy</strong></li><li>Understands <strong>manufacturing constraints</strong></li><li><strong>Collaborative</strong></li></ul></div>
       </div>
       <div class="uflow-card">
-        <h3>🔄 User flow</h3>
+        <h3><svg class="mi"><use href="#i-refresh-cw"></use></svg> User flow</h3>
         <div class="uflow-row">
           <div class="uflow-box">Creates <strong>work order</strong> (term used for a file in factories)</div>
           <span class="uflow-arrow">→</span>
           <div class="uflow-box">Verifies cabinets</div>
-          <span class="uflow-arrow">↔</span>
+          <span class="uflow-arrow"><svg class="mi"><use href="#i-move-horizontal"></use></svg></span>
           <div class="uflow-box">Edits cabinet's properties</div>
           <span class="uflow-arrow">→</span>
           <div class="uflow-box">Verifies output files</div>
@@ -275,13 +317,13 @@
   <section class="sec dark">
     <div class="wrap">
       <div class="sol-row">
-        <div><p class="sol-title">&ldquo;Work order creation flow&rdquo;</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>&ldquo;1. Converting design to factory work file&rdquo;</p><p>&ldquo;2. Creating &amp; managing active work orders&rdquo;</p></div></div>
+        <div><p class="sol-title">&ldquo;Work order creation flow&rdquo;</p><div class="sol-persona"><span><svg class="mi"><use href="#i-laptop"></use></svg></span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>&ldquo;1. Converting design to factory work file&rdquo;</p><p>&ldquo;2. Creating &amp; managing active work orders&rdquo;</p></div></div>
         <div class="video-embed">
           <video preload="auto" src="Mes-coded/mes%20videos/09%20-%20work%20order%20creation%20video.mp4" title="Work order creation flow walkthrough"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button>
         </div>
       </div>
       <div class="sol-row">
-        <div><p class="sol-title">Basics actions inside work order</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>A flat list of units means far less navigating than the design app.</p><p>See all essential details of units upfront.</p><p>Search, filter &amp; sort units</p></div></div>
+        <div><p class="sol-title">Basics actions inside work order</p><div class="sol-persona"><span><svg class="mi"><use href="#i-laptop"></use></svg></span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>A flat list of units means far less navigating than the design app.</p><p>See all essential details of units upfront.</p><p>Search, filter &amp; sort units</p></div></div>
         <div class="video-embed">
           <video preload="auto" src="Mes-coded/mes%20videos/10%20-%20navigation%20in%20workorder.mp4" title="Basic actions inside work order walkthrough"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button>
         </div>
@@ -296,24 +338,24 @@
   <!-- ============ 12. SOLUTION: PRODUCTION DESIGNER cont'd (dark) ============ -->
   <section class="sec dark">
     <div class="wrap">
-      <div class="sol-row"><div><p class="sol-title">Different ways of Editing the Units</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Three ways of editing units and panels</p><p>Quick edit for short edits.</p><p>Detailed edit in design interface</p><p>Bulk edits using templates</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/08%20-%20Editing%20workorder.mp4" title="Different ways of editing the units"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
-      <div class="sol-row"><div><p class="sol-title">Verifying and removing of units</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Delete units which are not required</p><p>Restore deleted units</p><p>Verify units 1 by 1 or in bulk</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/12%20-%20delete%20and%20verify.mp4" title="Verifying and removing of units"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
-      <div class="sol-row"><div><p class="sol-title">Design changes and Production sign off</p><div class="sol-persona"><span>🧑‍💻</span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Resetting the wrong changes</p><p>Import new changes made by interior designers</p><p>Giving Production sign off by publishing</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/06%20-%20Resync%20and%20publish.mp4" title="Design changes and production sign off"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Different ways of Editing the Units</p><div class="sol-persona"><span><svg class="mi"><use href="#i-laptop"></use></svg></span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Three ways of editing units and panels</p><p>Quick edit for short edits.</p><p>Detailed edit in design interface</p><p>Bulk edits using templates</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/08%20-%20Editing%20workorder.mp4" title="Different ways of editing the units"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Verifying and removing of units</p><div class="sol-persona"><span><svg class="mi"><use href="#i-laptop"></use></svg></span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Delete units which are not required</p><p>Restore deleted units</p><p>Verify units 1 by 1 or in bulk</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/12%20-%20delete%20and%20verify.mp4" title="Verifying and removing of units"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Design changes and Production sign off</p><div class="sol-persona"><span><svg class="mi"><use href="#i-laptop"></use></svg></span><em>Production designer</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Resetting the wrong changes</p><p>Import new changes made by interior designers</p><p>Giving Production sign off by publishing</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/06%20-%20Resync%20and%20publish.mp4" title="Design changes and production sign off"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
     </div>
   </section>
 
   <!-- ============ 13. PRODUCTION MANAGER / SUPERVISOR (light) ============ -->
   <section id="production-manager" class="sec light">
     <div class="wrap">
-      <h2 class="sec-h2">🧑‍💼 The Production Manager</h2>
+      <h2 class="sec-h2"><small class="h2-light">Solution 2: for </small><svg class="mi"><use href="#i-briefcase"></use></svg> The Production Manager</h2>
       <p class="persona-meta">Name: <strong>Ramesh</strong> &nbsp;|&nbsp; Age: <strong>40</strong> &nbsp;|&nbsp; Qualification: <strong>Business man</strong></p>
       <div class="pnq-grid">
-        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li><strong>No big picture / real time feedback</strong> of factory operations</li><li>Giving <strong>frequent inputs</strong> to the operators</li><li>Errors going unnoticed</li></ul></div>
-        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li><strong>Track the progress</strong> of order to get the job done</li><li>Track each operator's efficiency</li><li><strong>Managing rejections</strong> &amp; breakdowns in factory</li><li>Plan and <strong>scheduling work</strong> to operators</li></ul></div>
-        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Leadership / Team player</li><li>Business oriented</li><li>Handles sheer volume</li></ul></div>
+        <div class="pnq-card pain"><h3><span class="icon-tile icon-tile--red"><svg class="mi"><use href="#i-frown"></use></svg></span> Pain points</h3><ul><li><strong>No big picture / real time feedback</strong> of factory operations</li><li>Giving <strong>frequent inputs</strong> to the operators</li><li><strong>Errors going unnoticed</strong></li></ul></div>
+        <div class="pnq-card needs"><h3><span class="icon-tile icon-tile--yellow"><svg class="mi"><use href="#i-key"></use></svg></span> Needs</h3><ul><li><strong>Track the progress</strong> of order to get the job done</li><li>Track each operator's <strong>efficiency</strong></li><li><strong>Managing rejections</strong> &amp; breakdowns in factory</li><li>Plan and <strong>scheduling work</strong> to operators</li></ul></div>
+        <div class="pnq-card qualities"><h3><span class="icon-tile icon-tile--grey"><svg class="mi"><use href="#i-flame"></use></svg></span> Qualities</h3><ul><li><strong>Leadership</strong> / Team player</li><li><strong>Business oriented</strong></li><li><strong>Handles sheer volume</strong></li></ul></div>
       </div>
       <div class="uflow-card">
-        <h3>🔄 User flow</h3>
+        <h3><svg class="mi"><use href="#i-refresh-cw"></use></svg> User flow</h3>
         <div class="uflow-row">
           <div class="uflow-box">Published work orders</div><span class="uflow-arrow">→</span>
           <div class="uflow-stack"><div class="uflow-box">Schedules / plans work order for execution</div><span class="uflow-arrow up">↑</span><div class="uflow-box">Creates stations / manages operators</div></div>
@@ -327,23 +369,23 @@
   <!-- ============ 14. SOLUTION: PRODUCTION MANAGER (dark) ============ -->
   <section class="sec dark">
     <div class="wrap">
-      <div class="sol-row"><div><p class="sol-title">Tracking work order executions</p><div class="sol-persona"><span>🧑‍💼</span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Seeing the overall status of every work order</p><p>Seeing details till each panel level.</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/05%20-%20Production%20manager%20.mp4" title="Tracking work order executions"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
-      <div class="sol-row"><div><p class="sol-title">Managing stations &amp; operators</p><div class="sol-persona"><span>🧑‍💼</span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Creating new stations and mapping operator to stations</p><p>Planning execution by scheduling work to the operators</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/11%20-%20Mapping%20station%20and%20scheduling.mp4" title="Managing stations and operators"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Tracking work order executions</p><div class="sol-persona"><span><svg class="mi"><use href="#i-briefcase"></use></svg></span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Seeing the overall status of every work order</p><p>Seeing details till each panel level.</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/05%20-%20Production%20manager%20.mp4" title="Tracking work order executions"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Managing stations &amp; operators</p><div class="sol-persona"><span><svg class="mi"><use href="#i-briefcase"></use></svg></span><em>Production manager</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Creating new stations and mapping operator to stations</p><p>Planning execution by scheduling work to the operators</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/11%20-%20Mapping%20station%20and%20scheduling.mp4" title="Managing stations and operators"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
     </div>
   </section>
 
   <!-- ============ 15. BOARD CUTTING OPERATOR (light) ============ -->
   <section id="board-operator" class="sec light">
     <div class="wrap">
-      <h2 class="sec-h2">✏️👷 The Board Cutting Operator</h2>
+      <h2 class="sec-h2"><small class="h2-light">Solution 3: for </small><svg class="mi"><use href="#i-pencil"></use></svg><svg class="mi"><use href="#i-hard-hat"></use></svg> The Board Cutting Operator</h2>
       <p class="persona-meta">Name: <strong>Ajay</strong> &nbsp;|&nbsp; Age: <strong>40</strong> &nbsp;|&nbsp; Qualification: <strong>Skilled Technician</strong></p>
       <div class="pnq-grid">
-        <div class="pnq-card pain"><h3>😓 Pain points</h3><ul><li>Hard to handle <strong>paper documents</strong> in factory</li><li>Time and effort to <strong>calculate Dimension &amp; order of cutting</strong></li><li><strong>Getting right label to stick</strong> after cutting the panel</li></ul></div>
-        <div class="pnq-card needs"><h3>🔑 Needs</h3><ul><li>Knowing which <strong>work-order to execute</strong> for a given day</li><li>Way to <strong>understand and cut panels faster</strong></li><li>Option to <strong>customise the board</strong> settings, to their need.</li></ul></div>
-        <div class="pnq-card qualities"><h3>🔥 Qualities</h3><ul><li>Not tech savvy</li><li>Years of muscle memory</li><li>Handles sheer volume</li><li>Own style of working</li></ul></div>
+        <div class="pnq-card pain"><h3><span class="icon-tile icon-tile--red"><svg class="mi"><use href="#i-frown"></use></svg></span> Pain points</h3><ul><li>Hard to handle <strong>paper documents</strong> in factory</li><li>Time and effort to <strong>calculate Dimension &amp; order of cutting</strong></li><li><strong>Getting right label to stick</strong> after cutting the panel</li></ul></div>
+        <div class="pnq-card needs"><h3><span class="icon-tile icon-tile--yellow"><svg class="mi"><use href="#i-key"></use></svg></span> Needs</h3><ul><li>Knowing which <strong>work-order to execute</strong> for a given day</li><li>Way to <strong>understand and cut panels faster</strong></li><li>Option to <strong>customise the board</strong> settings, to their need.</li></ul></div>
+        <div class="pnq-card qualities"><h3><span class="icon-tile icon-tile--grey"><svg class="mi"><use href="#i-flame"></use></svg></span> Qualities</h3><ul><li>Not tech savvy</li><li><strong>Years of muscle memory</strong></li><li><strong>Handles sheer volume</strong></li><li>Own style of working</li></ul></div>
       </div>
       <div class="uflow-card">
-        <h3>🔄 User flow</h3>
+        <h3><svg class="mi"><use href="#i-refresh-cw"></use></svg> User flow</h3>
         <div class="uflow-row">
           <div class="uflow-box">Open assigned work order of the day</div><span class="uflow-arrow">→</span>
           <div class="uflow-stack"><div class="uflow-box">Sheet layouts files</div><div class="uflow-box">Gets Ply sheets from factory</div></div>
@@ -358,8 +400,8 @@
   <!-- ============ 16. SOLUTION: BOARD CUTTING OPERATOR (dark) ============ -->
   <section class="sec dark">
     <div class="wrap">
-      <div class="sol-row"><div><p class="sol-title">Accessing board layout for cutting</p><div class="sol-persona"><span>👷</span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Seeing boards and changing board setting if needed</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/07%20-%20Sawing%20operator.mp4" title="Accessing board layout for cutting"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
-      <div class="sol-row"><div><p class="sol-title">Assisted Sawing for easy cutting</p><div class="sol-persona"><span>👷</span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Assisted sawing a mode where operator can work faster</p><p>Printing labels and sticking on panels</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/04%20-%20Assisted%20sawing.mp4" title="Assisted sawing for easy cutting"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Accessing board layout for cutting</p><div class="sol-persona"><span><svg class="mi"><use href="#i-hard-hat"></use></svg></span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Seeing boards and changing board setting if needed</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/07%20-%20Sawing%20operator.mp4" title="Accessing board layout for cutting"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
+      <div class="sol-row"><div><p class="sol-title">Assisted Sawing for easy cutting</p><div class="sol-persona"><span><svg class="mi"><use href="#i-hard-hat"></use></svg></span><em>Machine Operators</em></div><div class="needs-solved"><h4>Needs solved</h4><p>Assisted sawing a mode where operator can work faster</p><p>Printing labels and sticking on panels</p></div></div><div class="video-embed"><video preload="auto" src="Mes-coded/mes%20videos/04%20-%20Assisted%20sawing.mp4" title="Assisted sawing for easy cutting"></video><button class="video-play-btn" aria-label="Play video">&#9658;</button></div></div>
     </div>
   </section>
 
@@ -393,22 +435,22 @@
           <h3>Text readability &amp; contrast ratios</h3>
           <p>Body text: <strong>14px</strong> #202126 &nbsp; Used 95%<br/>Small text: <strong>12px</strong> #323338 &nbsp; Used 10%</p>
           <div class="contrast-row">
-            <div class="contrast-card"><p class="contrast-label"><em>Default text &amp; Background contrast. Used 95%</em></p><p class="contrast-val">10.31:1</p><p style="font-size:12px;">✅ AA (Normal) &nbsp;✅ AA (Large) <br/>✅ AAA (Normal) &nbsp;✅ AAA (Large)</p></div>
-            <div class="contrast-card"><p class="contrast-label"><em>Least contrast of text &amp; background in interface. Used 5%</em></p><p class="contrast-val">5.07:1</p><p style="font-size:12px;">✅ AA (Normal) &nbsp;✅ AA (Large) <br/>🔴 AAA (Normal) &nbsp;✅ AAA (Large)</p></div>
+            <div class="contrast-card"><p class="contrast-label"><em>Default text &amp; Background contrast. Used 95%</em></p><p class="contrast-val">10.31:1</p><p style="font-size:12px;"><svg class="mi"><use href="#i-check-circle-2"></use></svg> AA (Normal) &nbsp;<svg class="mi"><use href="#i-check-circle-2"></use></svg> AA (Large) <br/><svg class="mi"><use href="#i-check-circle-2"></use></svg> AAA (Normal) &nbsp;<svg class="mi"><use href="#i-check-circle-2"></use></svg> AAA (Large)</p></div>
+            <div class="contrast-card"><p class="contrast-label"><em>Least contrast of text &amp; background in interface. Used 5%</em></p><p class="contrast-val">5.07:1</p><p style="font-size:12px;"><svg class="mi"><use href="#i-check-circle-2"></use></svg> AA (Normal) &nbsp;<svg class="mi"><use href="#i-check-circle-2"></use></svg> AA (Large) <br/><svg class="mi"><use href="#i-x-circle"></use></svg> AAA (Normal) &nbsp;<svg class="mi"><use href="#i-check-circle-2"></use></svg> AAA (Large)</p></div>
           </div>
         </div>
         <div class="acc-card">
           <h3>Other accessibility elements</h3>
           <ul class="acc-checklist">
-            <li>✅ Predictable &amp; consistent navigations, similar to Design App</li>
-            <li>✅ Progressive disclosure unfolds elements on selection</li>
-            <li>✅ Using plain language free from technical jargons</li>
-            <li>✅ Link purpose is clear from the link text itself</li>
-            <li>✅ Using icons along with color to communicate status in alerts</li>
-            <li>✅ Tooltips accessible (dismissible, hover-able, persistent)</li>
-            <li>✅ All Larger button, 10% of least button size is 32px</li>
-            <li>🔴 No Captions and transcription since No video elements</li>
-            <li>🔴 No voice only interface, since user base is strongly defined</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Predictable &amp; consistent navigations, similar to Design App</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Progressive disclosure unfolds elements on selection</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Using plain language free from technical jargons</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Link purpose is clear from the link text itself</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Using icons along with color to communicate status in alerts</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> Tooltips accessible (dismissible, hover-able, persistent)</li>
+            <li><svg class="mi"><use href="#i-check-circle-2"></use></svg> All Larger button, 10% of least button size is 32px</li>
+            <li><svg class="mi"><use href="#i-x-circle"></use></svg> No Captions and transcription since No video elements</li>
+            <li><svg class="mi"><use href="#i-x-circle"></use></svg> No voice only interface, since user base is strongly defined</li>
           </ul>
         </div>
       </div>
@@ -417,8 +459,28 @@
 
   <!-- ============ 19. STRIP "MY PROCESS" (blue) ============ -->
   <section class="sec blue strip" id="process">
-    <div class="wrap"><h2 class="strip-title white">How I got there</h2></div>
+    <div class="wrap">
+      <h2 class="strip-title white">How I got there</h2>
+      <div class="process-expand-row">
+        <button type="button" class="process-expand-btn" id="processExpandBtn" aria-expanded="false" aria-controls="processDetails">
+          <span class="process-expand-btn-label">Expand whole process</span>
+          <svg class="process-expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="process-summary-list">
+          <li><strong>Getting into the factory</strong> — Factory visits, interviews &amp; affinity mapping with real users.</li>
+          <li><strong>Learning from what exists</strong> — Competitive teardown of Naadi, Ardis &amp; 3 other MES tools.</li>
+          <li><strong>Meet the users</strong> — Personas, journey maps &amp; need prioritisation.</li>
+          <li><strong>Shaping the solution</strong> — Wireframes, IA, and iteration with stakeholders.</li>
+          <li><strong>Bringing it to life</strong> — Visual design system &amp; prototyping.</li>
+          <li><strong>Putting it to the test</strong> — Usability testing, SUS &amp; NPS scoring.</li>
+          <li><strong>Working with the team</strong> — Dev handoff &amp; cross-functional collaboration.</li>
+          <li><strong>The hardest problem</strong> — A tough tradeoff with engineering, and how I resolved it.</li>
+        </ul>
+      </div>
+    </div>
   </section>
+
+  <div id="processDetails" class="process-details" hidden>
 
   <!-- ============ 20. USER RESEARCH (light) ============ -->
   <section id="user-research" class="sec light">
@@ -693,7 +755,7 @@
       <h3 class="sec-h2">Information architecture</h3>
       <p style="color:var(--ink-2);">Several rounds of card sorting were performed to finalise the information architecture</p>
       <div style="display:flex;gap:12px;margin:14px 0 20px;">
-        <span class="insight-chip">👤 Users: 8</span>
+        <span class="insight-chip"><svg class="mi"><use href="#i-user"></use></svg> Users: 8</span>
         <span class="insight-chip">Closed card sorting</span>
       </div>
       <img src="Mes-coded/26.webp" alt="Full IA tree: Home page &gt; Nav bar / All work orders / Tracking (+ Combined board optimiser, Inventory, Scheduling) | All Modular Units / Cutlist / Board optimiser / CNC (machining) / Packaging / Shipment / Work order progress (+ Assisted sawing, Assembly)" loading="lazy" decoding="async" class="ph-chart-lg" style="margin-top:0;" />
@@ -756,8 +818,8 @@
           <p style="color:var(--ink-2);">Users were given a set of tasks while we observed their workflow. We probed frequently to understand their feedback.</p>
           <p style="font-weight:700;margin:14px 0 8px;">Testing performed with:</p>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <span class="insight-chip" style="width:fit-content;">5 👤 Customer success executives</span>
-            <span class="insight-chip" style="width:fit-content;">5 👤 Users in factory</span>
+            <span class="insight-chip" style="width:fit-content;">5 <svg class="mi"><use href="#i-user"></use></svg> Customer success executives</span>
+            <span class="insight-chip" style="width:fit-content;">5 <svg class="mi"><use href="#i-user"></use></svg> Users in factory</span>
           </div>
         </div>
         <div>
@@ -813,7 +875,7 @@
     <div class="wrap">
       <div class="flow-head">
         <h3 class="sec-h2" style="margin-bottom:0;">SUS evaluation</h3>
-        <span class="insight-chip">10 👤</span>
+        <span class="insight-chip">10 <svg class="mi"><use href="#i-user"></use></svg></span>
       </div>
       <ul style="padding-left:20px;margin:16px 0;font-size:15.5px;color:var(--ink-2);display:grid;gap:6px;">
         <li>In-person survey conducted with each user at different stations of the factory</li>
@@ -826,20 +888,20 @@
       <div class="grid-2">
         <div class="uflow-card">
           <h3>For Production Designers</h3>
-          <div class="nps-detail-row"><span class="k">👤</span><span class="v">60</span><span class="k">⏱ When:</span><span class="v">After Org's 1st renewal</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-user"></use></svg></span><span class="v">60</span><span class="k"><svg class="mi"><use href="#i-timer"></use></svg> When:</span><span class="v">After Org's 1st renewal</span></div>
           <p class="nps-quote">&ldquo;How likely are you to recommend MES product to a friend or colleague?&rdquo;</p>
-          <div class="nps-detail-row"><span class="k">🔄 Method:</span><span class="v" style="color:var(--ink);">Survey form</span></div>
-          <div class="nps-detail-row"><span class="k">🎯 Task:</span><span class="v" style="color:var(--ink);">Creation to publishing work order</span></div>
-          <div class="nps-breakdown"><span class="promoters">Promoters: 42 👤</span><span class="passives">Passives 13 👤</span><span class="detractors">Detractors: 5 👤</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-refresh-cw"></use></svg> Method:</span><span class="v" style="color:var(--ink);">Survey form</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-target"></use></svg> Task:</span><span class="v" style="color:var(--ink);">Creation to publishing work order</span></div>
+          <div class="nps-breakdown"><span class="promoters">Promoters: 42 <svg class="mi"><use href="#i-user"></use></svg></span><span class="passives">Passives 13 <svg class="mi"><use href="#i-user"></use></svg></span><span class="detractors">Detractors: 5 <svg class="mi"><use href="#i-user"></use></svg></span></div>
           <div class="nps-block" style="background:var(--light-card);"><div class="nps-head"><span class="nps-who" style="color:var(--ink);">NPS Score</span><span class="nps-score">61</span></div><div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:65%;"></div></div><div class="nps-scale" style="color:var(--ink-2);"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div></div>
         </div>
         <div class="uflow-card">
           <h3>For Operators &amp; supervisors</h3>
-          <div class="nps-detail-row"><span class="k">👤</span><span class="v">55</span><span class="k">⏱ When:</span><span class="v">After Org's 1st renewal</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-user"></use></svg></span><span class="v">55</span><span class="k"><svg class="mi"><use href="#i-timer"></use></svg> When:</span><span class="v">After Org's 1st renewal</span></div>
           <p class="nps-quote">&ldquo;How likely are you to recommend MES tracking, pack-n-ship and outputs to a friend or colleague?&rdquo;</p>
-          <div class="nps-detail-row"><span class="k">🔄 Method:</span><span class="v" style="color:var(--ink);">Via Renewal feedback calls</span></div>
-          <div class="nps-detail-row"><span class="k">🎯 Task:</span><span class="v" style="color:var(--ink);">For sawing / tracking / packaging &amp; ship. etc.</span></div>
-          <div class="nps-breakdown"><span class="promoters">Promoters: 39 👤</span><span class="passives">Passives 12 👤</span><span class="detractors">Detractors: 4 👤</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-refresh-cw"></use></svg> Method:</span><span class="v" style="color:var(--ink);">Via Renewal feedback calls</span></div>
+          <div class="nps-detail-row"><span class="k"><svg class="mi"><use href="#i-target"></use></svg> Task:</span><span class="v" style="color:var(--ink);">For sawing / tracking / packaging &amp; ship. etc.</span></div>
+          <div class="nps-breakdown"><span class="promoters">Promoters: 39 <svg class="mi"><use href="#i-user"></use></svg></span><span class="passives">Passives 12 <svg class="mi"><use href="#i-user"></use></svg></span><span class="detractors">Detractors: 4 <svg class="mi"><use href="#i-user"></use></svg></span></div>
           <div class="nps-block" style="background:var(--light-card);"><div class="nps-head"><span class="nps-who" style="color:var(--ink);">NPS Score</span><span class="nps-score">58</span></div><div class="nps-gauge"><div class="g-red"></div><div class="g-yellow"></div><div class="g-green"></div><div class="g-marker" style="left:63%;"></div></div><div class="nps-scale" style="color:var(--ink-2);"><span>-100</span><span>0</span><span>30</span><span>70</span><span>100</span></div></div>
         </div>
       </div>
@@ -878,12 +940,12 @@
       </div>
       <h3 style="font-size:22px;margin:30px 0 14px;">How I approached this challenge</h3>
       <div class="grid-2 why-grid">
-        <div class="why-card"><h3><span class="emoji-lead">🤔</span>1. Understanding root problem</h3><p>It needed code restructure in multiple places, Hence only one type of data in canvas can be fetched.</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">💬</span>2. Explaining rationale to get on the same page</h3><p>I showed him the research insights, indicating 3d view port and 2d panel drawing is important.</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">💡</span>3. Finding alternate implementation method</h3><p>Meeting with engineering manager, brainstormed a solution, of having single canvas but switching context based on input</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">🍭</span>4. Knowledge Update, for future changes.</h3><p>Updated all the existing design iteration to have one canvas per page. Updated it in the design guidelines.</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">✏️</span>5. Quick Iterations and validating with user</h3><p>Iterated few layouts &amp; made detailed prototype to test them with the user</p></div>
-        <div class="why-card"><h3><span class="emoji-lead">🔄</span>6. Getting other in the loop</h3><p>Informed PM &amp; QA team regarding the changes, and delays in release cycle if any.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-brain"></use></svg></span>1. Understanding root problem</h3><p>It needed code restructure in multiple places, Hence only one type of data in canvas can be fetched.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-message-circle"></use></svg></span>2. Explaining rationale to get on the same page</h3><p>I showed him the research insights, indicating 3d view port and 2d panel drawing is important.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-lightbulb"></use></svg></span>3. Finding alternate implementation method</h3><p>Meeting with engineering manager, brainstormed a solution, of having single canvas but switching context based on input</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-graduation-cap"></use></svg></span>4. Knowledge Update, for future changes.</h3><p>Updated all the existing design iteration to have one canvas per page. Updated it in the design guidelines.</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-pencil"></use></svg></span>5. Quick Iterations and validating with user</h3><p>Iterated few layouts &amp; made detailed prototype to test them with the user</p></div>
+        <div class="why-card"><h3><span class="emoji-lead"><svg class="mi"><use href="#i-refresh-cw"></use></svg></span>6. Getting other in the loop</h3><p>Informed PM &amp; QA team regarding the changes, and delays in release cycle if any.</p></div>
       </div>
       <div class="flag-card success-flag" style="margin-top:26px;display:grid;grid-template-columns:0.8fr 1.2fr;gap:30px;align-items:center;">
         <div><h4>Final redesign:</h4><ul><li>Redesigned the layout to have one canvas at once.</li><li>along with that preserving the context of 2D and 3D based on old state.</li><li>30% Bigger space for 3d and 2d ports.</li></ul></div>
@@ -891,6 +953,9 @@
       </div>
     </div>
   </section>
+
+  </div>
+  <!-- /#processDetails -->
 
   <!-- ============ 34. STRIP "IMPACT & RESULTS" (dark) ============ -->
   <section id="impact-results" class="sec dark strip">
@@ -931,10 +996,10 @@
       <img src="Mes-coded/36a.webp" alt="Revenue Indicators chart, Jul 22 to Dec 30 2024: Revenue in Rs, Panel added for Manufacturing, Unit Enabled, Work Order Created" loading="lazy" decoding="async" class="ph-chart-lg" />
       <p style="font-size:12.5px;color:#8f8f8f;display:flex;justify-content:space-between;">Source: Data from Infurnia Mixpanel.com <span>*Revenue shown only for process fee of panels</span></p>
       <div class="grid-2 impact-grid">
-        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">💰 Revenue in Rs:</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">2250.7%</div></div>
-        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">📦 Panels added:</div><div class="stat-val">40.6K to <strong>954.4K</strong></div><div class="stat-pct">2250.7%</div></div>
-        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">📄 Workorder created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">833.18%</div></div>
-        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label">🗄 Units enabled</div><div class="stat-val">5.9K to <strong>152K</strong></div><div class="stat-pct">2455.5%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label"><svg class="mi"><use href="#i-circle-dollar-sign"></use></svg> Revenue in Rs:</div><div class="stat-val">0.162 M to <strong>3.82 M</strong></div><div class="stat-pct">2250.7%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label"><svg class="mi"><use href="#i-package"></use></svg> Panels added:</div><div class="stat-val">40.6K to <strong>954.4K</strong></div><div class="stat-pct">2250.7%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label"><svg class="mi"><use href="#i-file-text"></use></svg> Workorder created:</div><div class="stat-val">633 to <strong>5650</strong></div><div class="stat-pct">833.18%</div></div>
+        <div class="stat-card lg" style="background:var(--mint);"><div class="stat-label"><svg class="mi"><use href="#i-archive"></use></svg> Units enabled</div><div class="stat-val">5.9K to <strong>152K</strong></div><div class="stat-pct">2455.5%</div></div>
       </div>
     </div>
   </section>
@@ -944,10 +1009,10 @@
     <div class="wrap">
       <h2 class="sec-h2">What I'd do differently</h2>
       <div class="grid-2 reflect-grid">
-        <div class="reflect-card"><h3>🎯 Pilot study helped refine research direction</h3><p>Conducting a pilot study before actual user interviews helped validate research assumptions and ensured the right questions were asked, leading to more effective insights.</p></div>
-        <div class="reflect-card"><h3>😓 Finding edge cases early minimises redesigns</h3><p>Addressing all possible user scenarios upfront before wireframing reduced the need for frequent iterations, saving both time and effort in later stages.</p></div>
-        <div class="reflect-card"><h3>❗ Readymade design systems aren't always a perfect fit</h3><p>While leveraging existing design systems speeds up the process, some customisation was necessary to correct contrast ratio in components and meet specific user and business needs.</p></div>
-        <div class="reflect-card"><h3>🚀 Knowing Implementation feasibility accelerates execution</h3><p>A strong understanding of technical feasibility is must for better collaboration with developers, leading to faster and more efficient product delivery.</p></div>
+        <div class="reflect-card"><h3><svg class="mi"><use href="#i-target"></use></svg> Pilot study helped refine research direction</h3><p>Conducting a pilot study before actual user interviews helped validate research assumptions and ensured the right questions were asked, leading to more effective insights.</p></div>
+        <div class="reflect-card"><h3><svg class="mi"><use href="#i-frown"></use></svg> Finding edge cases early minimises redesigns</h3><p>Addressing all possible user scenarios upfront before wireframing reduced the need for frequent iterations, saving both time and effort in later stages.</p></div>
+        <div class="reflect-card"><h3><svg class="mi"><use href="#i-triangle-alert"></use></svg> Readymade design systems aren't always a perfect fit</h3><p>While leveraging existing design systems speeds up the process, some customisation was necessary to correct contrast ratio in components and meet specific user and business needs.</p></div>
+        <div class="reflect-card"><h3><svg class="mi"><use href="#i-rocket"></use></svg> Knowing Implementation feasibility accelerates execution</h3><p>A strong understanding of technical feasibility is must for better collaboration with developers, leading to faster and more efficient product delivery.</p></div>
         <div class="reflect-card wide"><h3>&lt;/&gt; Versioning designs for smooth implementation</h3><p>Since the designs were implemented in phases, maintaining clear versions of design files helped developers track changes &amp; avoid misalignment.</p></div>
       </div>
     </div>
@@ -1019,6 +1084,25 @@
       updateActive();
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", updateActive);
+    })();
+  </script>
+  <script>
+    (function initProcessExpand() {
+      var btn = document.getElementById("processExpandBtn");
+      var details = document.getElementById("processDetails");
+      if (!btn || !details) return;
+      var collapsibleNavLinks = document.querySelectorAll(".mes-side-nav-link.mes-side-nav-collapsible");
+
+      btn.addEventListener("click", function () {
+        var expanded = btn.getAttribute("aria-expanded") === "true";
+        var next = !expanded;
+        btn.setAttribute("aria-expanded", String(next));
+        details.hidden = !next;
+        btn.querySelector(".process-expand-btn-label").textContent = next ? "Collapse process" : "Expand whole process";
+        collapsibleNavLinks.forEach(function (link) {
+          link.classList.toggle("is-visible", next);
+        });
+      });
     })();
   </script>
   <script>

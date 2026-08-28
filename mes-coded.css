@@ -82,6 +82,103 @@ html { scroll-behavior: smooth; }
   .mes-side-nav { display: none; }
 }
 
+.mes-side-nav-link.mes-side-nav-collapsible {
+  display: none;
+}
+.mes-side-nav-link.mes-side-nav-collapsible.is-visible {
+  display: flex;
+}
+
+/* ---------- Process expand/collapse ---------- */
+#process.sec.strip {
+  padding-top: 48px;
+}
+#process .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.process-expand-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: 64px;
+  row-gap: 24px;
+  margin-top: 8px;
+}
+@media (max-width: 760px) {
+  .process-expand-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: auto;
+  padding: 17px 34px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 99px;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.process-expand-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.process-expand-chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.process-expand-btn[aria-expanded="true"] .process-expand-chevron {
+  transform: rotate(180deg);
+}
+
+.process-summary-list {
+  list-style: none;
+  margin: 0;
+  padding-top: 15px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  display: grid;
+  gap: 10px;
+  max-width: 640px;
+}
+.process-summary-list li {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+.process-summary-list strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Icon system (replaces emoji) ---------- */
+.mi {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+  stroke: currentColor;
+}
+h1 .mi, h2 .mi, h3 .mi, h4 .mi {
+  vertical-align: -0.1em;
+}
+
 /* ---------- Real image overrides (replacing .ph placeholders) ---------- */
 img.cover-laptop,
 img.ph-chart,
