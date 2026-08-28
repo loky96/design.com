@@ -66,7 +66,7 @@
 
   <nav class="mes-side-nav" aria-label="Section navigation">
     <a href="#quick-context" class="mes-side-nav-link" data-target="quick-context"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">At a glance</span></a>
-    <a href="#product-brief" class="mes-side-nav-link" data-target="product-brief"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Why this product exists</span></a>
+    <a href="#product-brief" class="mes-side-nav-link" data-target="product-brief"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Product brief</span></a>
     <a href="#explore" class="mes-side-nav-link" data-target="explore"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Choose your path</span></a>
     <a href="#current-flow" class="mes-side-nav-link" data-target="current-flow"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Inside the factory floor</span></a>
     <a href="#production-designer" class="mes-side-nav-link" data-target="production-designer"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The Production Designer</span></a>
@@ -82,7 +82,6 @@
     <a href="#usability-evaluation" class="mes-side-nav-link mes-side-nav-collapsible" data-target="usability-evaluation"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Putting it to the test</span></a>
     <a href="#collaboration" class="mes-side-nav-link mes-side-nav-collapsible" data-target="collaboration"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Working with the team</span></a>
     <a href="#challenge-faced" class="mes-side-nav-link mes-side-nav-collapsible" data-target="challenge-faced"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The hardest problem</span></a>
-    <a href="#impact-results" class="mes-side-nav-link" data-target="impact-results"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Did it work?</span></a>
     <a href="#success-metrics" class="mes-side-nav-link" data-target="success-metrics"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">What success looks like</span></a>
     <a href="#adoption-retention" class="mes-side-nav-link" data-target="adoption-retention"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">Growth over time</span></a>
     <a href="#business-impact" class="mes-side-nav-link" data-target="business-impact"><span class="mes-side-nav-bar"></span><span class="mes-side-nav-label">The business case</span></a>
@@ -157,7 +156,7 @@
   <section id="product-brief" class="sec dark">
     <div class="wrap brief-row">
       <div class="brief-text">
-        <h2 class="sec-h2">Why this product exists</h2>
+        <h2 class="sec-h2">Product brief</h2>
         <p>Designed a 0→1 factory execution platform to seamlessly convert interior CAD designs into precision-manufactured, ready-to-assemble furniture units.</p>
       </div>
       <img class="brief-illus" src="Mes-coded/03.webp" alt="Illustration: designer at computer, factory and delivery truck icons" loading="lazy" decoding="async" />
@@ -330,7 +329,7 @@
       </div>
       <div class="iter-card">
         <h4>Multiple Iterations, incorporating user feedbacks</h4>
-        <div class="iter-item"><img class="ph" src="Mes-coded/11c.webp" alt="Iteration 1 — larger 3D viewport layout where panel details and 3D cannot be viewed together" loading="lazy" decoding="async" /><p><strong>Iteration 1:</strong> layout has bigger 3d view but user can see only 3d or panel details at once</p></div>
+        <div class="iter-item"><img class="ph" src="Mes-coded/11c.webp" alt="Iteration 1 — larger 3D viewport layout where panel details and 3D cannot be viewed together" loading="lazy" decoding="async" /></div>
       </div>
     </div>
   </section>
@@ -463,7 +462,7 @@
       <h2 class="strip-title white">How I got there</h2>
       <div class="process-expand-row">
         <button type="button" class="process-expand-btn" id="processExpandBtn" aria-expanded="false" aria-controls="processDetails">
-          <span class="process-expand-btn-label">Expand whole process</span>
+          <span class="process-expand-btn-label">Expand my process</span>
           <svg class="process-expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <ul class="process-summary-list">
@@ -1024,10 +1023,11 @@
       <h2 class="thanks-title">Thank You</h2>
       <div class="project-nav">
         <a href="aihub-security-coded.html" class="project-nav-card project-nav-prev">
-          <img src="images/banners/SSO banner .webp" alt="AI Hub Enterprise Security project" />
+          <img src="images/banners/SSO-card-image.webp" alt="AI Hub Enterprise Security project" />
           <div class="project-nav-meta">
             <span class="project-nav-label">Previous project</span>
             <span class="project-nav-title">Enterprise Authentication &amp; Identity for AI Hub</span>
+            <p class="project-nav-desc">Made AI Hub enterprise-ready by designing SSO (SAML + OIDC), RBAC, &amp; OAuth-compliant APIs from scratch.</p>
           </div>
         </a>
         <a href="ftue-coded.html" class="project-nav-card project-nav-next">
@@ -1035,6 +1035,7 @@
           <div class="project-nav-meta">
             <span class="project-nav-label">Next project</span>
             <span class="project-nav-title">First-Time User Experience in Security Central</span>
+            <p class="project-nav-desc">Redesigned onboarding for a B2B SaaS security platform, cutting support tickets with a scalable framework.</p>
           </div>
         </a>
       </div>
@@ -1098,7 +1099,7 @@
         var next = !expanded;
         btn.setAttribute("aria-expanded", String(next));
         details.hidden = !next;
-        btn.querySelector(".process-expand-btn-label").textContent = next ? "Collapse process" : "Expand whole process";
+        btn.querySelector(".process-expand-btn-label").textContent = next ? "Collapse process" : "Expand my process";
         collapsibleNavLinks.forEach(function (link) {
           link.classList.toggle("is-visible", next);
         });

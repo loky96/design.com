@@ -44,6 +44,10 @@ body {
   padding: 0 32px;
 }
 
+section[id] {
+  scroll-margin-top: 70px;
+}
+
 h1,
 h2,
 h3,
@@ -678,6 +682,7 @@ a.explore-pill:hover {
   padding: 0;
   display: grid;
   gap: 10px;
+  text-align: center;
 }
 
 .explore-list li {
@@ -812,28 +817,59 @@ a.explore-pill:hover {
 }
 
 .flow-step {
-  background: #fff;
-  border: 1px solid var(--light-border);
+  position: relative;
+  background: var(--greyblue);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 28px 20px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(20, 24, 40, 0.05);
+  transition: background 0.15s ease;
+}
+
+.flow-step:hover {
+  background: #eef1f5;
+}
+
+.flow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -21px;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid var(--light-border);
+  border-right: 2px solid var(--light-border);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .flow-step:not(:last-child)::after {
+    display: none;
+  }
 }
 
 .fs-emoji {
-  font-size: 30px;
-  display: block;
-  margin-bottom: 12px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  box-shadow: 0 1px 3px rgba(20, 24, 40, 0.08);
 }
 
 .fs-emoji svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--ink-2);
+  width: 20px;
+  height: 20px;
+  stroke: var(--ink);
 }
 
 .flow-step p {
   font-size: 14.5px;
+  line-height: 1.5;
+  font-weight: 500;
   color: var(--ink-2);
 }
 
@@ -1496,8 +1532,9 @@ a.explore-pill:hover {
 .project-nav-card {
   display: flex;
   align-items: center;
-  gap: 18px;
-  flex: 1 1 360px;
+  gap: 20px;
+  flex: 1 1 380px;
+  max-width: 600px;
   padding: 18px;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1517,8 +1554,8 @@ a.explore-pill:hover {
 }
 
 .project-nav-card img {
-  width: 100px;
-  height: 76px;
+  width: 140px;
+  height: 106px;
   object-fit: cover;
   border-radius: 10px;
   flex-shrink: 0;
@@ -1545,10 +1582,22 @@ a.explore-pill:hover {
   color: var(--ink);
 }
 
+.project-nav-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
 .project-nav-next {
   margin-left: auto;
   text-align: right;
   flex-direction: row-reverse;
+}
+
+.project-nav-card:only-child {
+  margin-left: 0;
+  flex-direction: row;
+  text-align: left;
 }
 
 /* ---------- Footer ---------- */
