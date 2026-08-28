@@ -4,6 +4,21 @@
 
 html { scroll-behavior: smooth; }
 
+.ctx-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.icon-tile--lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+.icon-tile--lg .mi {
+  width: 28px;
+  height: 28px;
+}
+
 /* ---------- Floating side navigation ---------- */
 .mes-side-nav {
   position: fixed;
@@ -93,19 +108,24 @@ html { scroll-behavior: smooth; }
 #process.sec.strip {
   padding-top: 48px;
 }
-#process .wrap {
+.process-expand-row {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  align-items: center;
+  justify-items: start;
+  column-gap: 64px;
+  row-gap: 24px;
+  width: 100%;
+}
+.process-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 22px;
+  text-align: left;
 }
-
-.process-expand-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  column-gap: 64px;
-  row-gap: 24px;
-  margin-top: 8px;
+.process-left .strip-title {
+  margin: 0;
 }
 @media (max-width: 760px) {
   .process-expand-row {
@@ -148,13 +168,11 @@ html { scroll-behavior: smooth; }
 .process-summary-list {
   list-style: none;
   margin: 0;
-  padding-top: 15px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
+  padding: 0;
   display: grid;
   gap: 10px;
   max-width: 640px;
+  text-align: left;
 }
 .process-summary-list li {
   font-size: 14.5px;
@@ -271,12 +289,13 @@ img.brand-logo {
 .cover-laptop-wrap {
   position: relative;
   max-width: 1050px;
-  margin: 0 auto 90px;
+  margin: 0 auto;
 }
 .cover-laptop-wrap img.cover-laptop {
   margin: 0;
   position: relative;
   z-index: 1;
+  border-radius: 20px;
 }
 .cover-laptop-gif {
   position: absolute;
@@ -334,7 +353,59 @@ img.brand-logo {
 
 .explore-solutions .explore-list,
 .explore-solutions .explore-list li {
-  text-align: center;
+  text-align: left;
+}
+
+.explore-pill-num {
+  white-space: nowrap;
+}
+
+/* ---------- Overall workflow: image + steps side by side ---------- */
+.overall-flow-row {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.overall-flow-row .overall-flow-img {
+  margin: 0;
+}
+.overall-flow-row .flow-steps {
+  grid-template-columns: 1fr;
+  margin-bottom: 0;
+}
+.overall-flow-row .flow-step {
+  position: relative;
+  text-align: left;
+  padding: 18px 20px;
+}
+.overall-flow-row .flow-step .fs-emoji {
+  margin: 0 0 10px;
+}
+.overall-flow-row .flow-step:not(:last-child)::before,
+.overall-flow-row .flow-step:not(:last-child)::after {
+  left: 50%;
+  top: calc(100% + 4px);
+  transform: translateX(-50%);
+}
+.overall-flow-row .flow-step:not(:last-child)::before {
+  width: 2px;
+  height: 10px;
+  background: #b9bfc9;
+}
+.overall-flow-row .flow-step:not(:last-child)::after {
+  top: calc(100% + 14px);
+  border-top: 6px solid #b9bfc9;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  .overall-flow-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Research cards: image takes priority ---------- */

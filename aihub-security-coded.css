@@ -17,12 +17,31 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
   vertical-align: -0.1em;
 }
 
+.ctx-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.icon-tile--lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+.icon-tile--lg .mi {
+  width: 28px;
+  height: 28px;
+}
+
 .cover-laptop-img {
   display: block;
   width: 100%;
   max-width: 1050px;
   margin: 0 auto;
   border-radius: var(--radius);
+}
+
+.cover-laptop-wrap {
+  margin-bottom: 60px;
 }
 
 /* ---------- Side nav ---------- */
@@ -576,19 +595,25 @@ a.ref-pill::after { content: " \2197"; font-size: 11px; opacity: .55; }
 #my-process.sec.strip {
   padding-top: 48px;
 }
-#my-process .wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
 .process-expand-row {
   display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: start;
+  grid-template-columns: 3fr 7fr;
+  align-items: center;
+  justify-items: start;
   column-gap: 64px;
   row-gap: 24px;
-  margin-top: 8px;
+  width: 100%;
+}
+.process-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  text-align: left;
+}
+.process-left .strip-title {
+  margin: 0;
 }
 @media (max-width: 760px) {
   .process-expand-row {
@@ -631,13 +656,11 @@ a.ref-pill::after { content: " \2197"; font-size: 11px; opacity: .55; }
 .process-summary-list {
   list-style: none;
   margin: 0;
-  padding-top: 15px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
+  padding: 0;
   display: grid;
   gap: 10px;
   max-width: 640px;
+  text-align: left;
 }
 .process-summary-list li {
   font-size: 14.5px;

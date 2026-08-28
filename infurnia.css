@@ -19,3 +19,26 @@
   margin: 0 auto;
   height: auto;
 }
+
+.infurnia-video-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px;
+}
+
+.infurnia-video-title {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto 32px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.infurnia-video {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  border-radius: 12px;
+}

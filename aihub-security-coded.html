@@ -89,6 +89,7 @@
 
   <nav class="aih-side-nav" aria-label="Section navigation">
     <a href="#quick-context" class="aih-side-nav-link" data-target="quick-context"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">The 30-second version</span></a>
+    <a href="#product-brief" class="aih-side-nav-link" data-target="product-brief"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Project brief</span></a>
     <a href="#why-building" class="aih-side-nav-link" data-target="why-building"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Why we're building this</span></a>
     <a href="#explore" class="aih-side-nav-link" data-target="explore"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Three pillars, one identity story</span></a>
     <a href="#users" class="aih-side-nav-link" data-target="users"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Who I designed for</span></a>
@@ -102,10 +103,13 @@
     <a href="#frameworks" class="aih-side-nav-link aih-side-nav-collapsible" data-target="frameworks"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">The frameworks that shaped my thinking</span></a>
     <a href="#principles" class="aih-side-nav-link aih-side-nav-collapsible" data-target="principles"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Five principles I set before drawing anything</span></a>
     <a href="#ia" class="aih-side-nav-link aih-side-nav-collapsible" data-target="ia"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Mapping three pillars into one system</span></a>
+    <a href="#visual-design" class="aih-side-nav-link aih-side-nav-collapsible" data-target="visual-design"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Visual design &amp; system work</span></a>
     <a href="#usability" class="aih-side-nav-link aih-side-nav-collapsible" data-target="usability"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Usability evaluation</span></a>
     <a href="#ai-in-design" class="aih-side-nav-link aih-side-nav-collapsible" data-target="ai-in-design"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">How I used AI in this project</span></a>
     <a href="#collaboration" class="aih-side-nav-link aih-side-nav-collapsible" data-target="collaboration"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Collaboration</span></a>
+    <a href="#challenges" class="aih-side-nav-link aih-side-nav-collapsible" data-target="challenges"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Challenges faced</span></a>
     <a href="#success-metrics" class="aih-side-nav-link" data-target="success-metrics"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">What I'd call success</span></a>
+    <a href="#adoption-retention" class="aih-side-nav-link" data-target="adoption-retention"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Adoption and retention</span></a>
     <a href="#business-impact" class="aih-side-nav-link" data-target="business-impact"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Impact on business</span></a>
     <a href="#reflections" class="aih-side-nav-link" data-target="reflections"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Reflections &amp; learnings</span></a>
     <a href="#thanks" class="aih-side-nav-link" data-target="thanks"><span class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Thank you</span></a>
@@ -130,9 +134,8 @@
       </div>
 
       <div class="cover-laptop-wrap">
-        <video class="cover-laptop-img" src="aihub-security-coded/videos/AIhub%20project%20short.mp4" autoplay muted loop playsinline></video>
+        <img class="cover-laptop-img" src="images/banners/sso-illustration-black.webp" alt="Single sign-on and identity access illustration" loading="eager" decoding="async" />
       </div>
-      <p class="dark-fine" style="text-align:center;margin-top:8px;margin-bottom:70px;"><em>*Prototype video with dummy data</em></p>
 
       <h3 style="text-align:center;color:#fff;font-size:26px;margin-bottom:8px;">Business impact</h3>
       <p class="cover-card-sub" style="margin-bottom:20px;">Unlocked enterprise deals that named security as a blocker</p>
@@ -170,10 +173,10 @@
     <div class="wrap">
       <h2 class="sec-h2">The 30-second version</h2>
       <div class="grid-2" style="grid-template-columns:repeat(2,1fr);">
-        <div class="ctx-card"><h3><svg class="mi"><use href="#i-circle-help"></use></svg> Why</h3><ul><li>Enterprise buyers <strong>could not pass security review</strong> without SSO, IdP-driven access control and short-lived API tokens</li><li>Deals were being <strong>worked around, not won</strong></li></ul></div>
-        <div class="ctx-card"><h3><svg class="mi"><use href="#i-search"></use></svg> What</h3><ul><li><strong>Self-serve SSO</strong> (SAML 2.0 + OIDC) for multi- &amp; single-tenant</li><li><strong>IdP group mapping</strong> driving RBAC</li><li><strong>OAuth2 Compliant tokens</strong> for API access, with scopes</li></ul></div>
-        <div class="ctx-card"><h3><svg class="mi"><use href="#i-users"></use></svg> Whom</h3><ul><li>Org / IT admins configuring identity</li><li>Platform engineers calling APIs</li><li>Security architects signing off</li><li>Instabase presales &amp; support</li></ul></div>
-        <div class="ctx-card"><h3><svg class="mi"><use href="#i-wrench"></use></svg> How</h3><ul><li>Three connected tracks across <strong> releases</strong></li><li>Design decisions driven by <strong>threat modelling</strong>, not just flows</li><li>AI used end-to-end for research synthesis &amp; spec drafting</li></ul></div>
+        <div class="ctx-card"><h3><span class="icon-tile icon-tile--grey icon-tile--lg"><svg class="mi"><use href="#i-circle-help"></use></svg></span> Why</h3><ul><li>Enterprise buyers <strong>could not pass security review</strong> without SSO, IdP-driven access control and short-lived API tokens</li><li>Deals were being <strong>worked around, not won</strong></li></ul></div>
+        <div class="ctx-card"><h3><span class="icon-tile icon-tile--grey icon-tile--lg"><svg class="mi"><use href="#i-search"></use></svg></span> What</h3><ul><li><strong>Self-serve SSO</strong> (SAML 2.0 + OIDC) for multi- &amp; single-tenant</li><li><strong>IdP group mapping</strong> driving RBAC</li><li><strong>OAuth2 Compliant tokens</strong> for API access, with scopes</li></ul></div>
+        <div class="ctx-card"><h3><span class="icon-tile icon-tile--grey icon-tile--lg"><svg class="mi"><use href="#i-users"></use></svg></span> Whom</h3><ul><li>Org / IT admins configuring identity</li><li>Platform engineers calling APIs</li><li>Security architects signing off</li><li>Instabase presales &amp; support</li></ul></div>
+        <div class="ctx-card"><h3><span class="icon-tile icon-tile--grey icon-tile--lg"><svg class="mi"><use href="#i-wrench"></use></svg></span> How</h3><ul><li>Three connected tracks across <strong> releases</strong></li><li>Design decisions driven by <strong>threat modelling</strong>, not just flows</li><li>AI used end-to-end for research synthesis &amp; spec drafting</li></ul></div>
       </div>
     </div>
   </section>
@@ -291,7 +294,7 @@
           </ul>
         </div>
       </div>
-      <p class="explore-footnote">To explore my process go to "<a href="#my-process">How I got there</a>" section. Keep scrolling for the solution.</p>
+      <p class="explore-footnote">Keep scrolling for the solution. To explore my process go to "<a href="#my-process">How I got there</a>" section.</p>
     </div>
   </section>
 
@@ -1018,12 +1021,14 @@
   <!-- strip -->
   <section class="sec blue strip" id="my-process">
     <div class="wrap">
-      <h2 class="strip-title white">How I got there</h2>
       <div class="process-expand-row">
-        <button type="button" class="process-expand-btn" id="processExpandBtn" aria-expanded="false" aria-controls="processDetails">
-          <span class="process-expand-btn-label">Expand my process</span>
-          <svg class="process-expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
+        <div class="process-left">
+          <h2 class="strip-title white">How I got there</h2>
+          <button type="button" class="process-expand-btn" id="processExpandBtn" aria-expanded="false" aria-controls="processDetails">
+            <span class="process-expand-btn-label">Expand my process</span>
+            <svg class="process-expand-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
         <ul class="process-summary-list">
           <li><strong>Research</strong> — Mined 3 years of Slack, Zendesk &amp; support logs into an evidence-backed problem list.</li>
           <li><strong>Primary research</strong> — Direct customer quotes and validation-call constraints that shaped the design.</li>
