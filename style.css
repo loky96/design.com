@@ -1002,7 +1002,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .journey-hobbies-title {
   text-align: center;
-  margin-top: 40px;
+  margin: 40px 0 24px;
   font-family: inherit;
   font-weight: 400;
   font-style: italic;
