@@ -315,6 +315,40 @@ img.brand-logo {
   display: block;
 }
 
+/* ---------- Cover laptop: hover-to-swap product screenshot ---------- */
+.cover-laptop-wrap img.cover-laptop-swap {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  object-fit: cover;
+  object-position: center bottom;
+  transform: scale(1.01);
+  transition: opacity 0.3s ease;
+}
+.cover-caption-row {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 70px;
+}
+.cover-laptop-hint {
+  font-size: 13px;
+  color: var(--dark-text-dim);
+  white-space: nowrap;
+}
+.cover-product-block:has(.cover-laptop-hint:hover) .cover-laptop-wrap img.cover-laptop:not(.cover-laptop-swap) {
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+.cover-product-block:has(.cover-laptop-hint:hover) .cover-laptop-wrap img.cover-laptop-swap {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.1s;
+}
+.cover-product-block:has(.cover-laptop-hint:hover) .cover-laptop-wrap {
+  margin-bottom: 20px;
+  transition: margin-bottom 0.3s ease 0.1s;
+}
+
 /* ---------- Video embed ---------- */
 .video-embed {
   position: relative;

@@ -135,6 +135,8 @@
 
       <div class="cover-laptop-wrap">
         <img class="cover-laptop-img" src="images/banners/sso-illustration-black.webp" alt="Single sign-on and identity access illustration" loading="eager" decoding="async" />
+        <img class="cover-laptop-img cover-laptop-swap" src="images/banners/SSO-card-image.webp" alt="SSO product preview" loading="lazy" decoding="async" />
+        <span class="cover-laptop-hint">View product</span>
       </div>
 
       <h3 style="text-align:center;color:#fff;font-size:26px;margin-bottom:8px;">Business impact</h3>
@@ -769,6 +771,22 @@
         <div class="video-embed">
           <video preload="auto" src="aihub-security-coded/videos/RBAC%20after.mp4" title="RBAC after walkthrough"></video>
           <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        </div>
+
+        <div class="img-side-gallery">
+          <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="img-gallery-track">
+            <div class="img-gallery-item"><div class="ph">🖼️ Image 1</div></div>
+            <div class="img-gallery-item"><div class="ph">🖼️ Image 2</div></div>
+            <div class="img-gallery-item"><div class="ph">🖼️ Image 3</div></div>
+            <div class="img-gallery-item"><div class="ph">🖼️ Image 4</div></div>
+          </div>
+          <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <div class="img-gallery-dots"></div>
         </div>
       </div>
 
@@ -1942,6 +1960,10 @@
   <script type="module">
     import { initBottomConfetti } from './confetti.js';
     initBottomConfetti();
+  </script>
+  <script type="module">
+    import { initImgGalleries } from './img-gallery.js';
+    initImgGalleries();
   </script>
   <script type="module">
     import { initPixelCursor } from './pixel-cursor.js';

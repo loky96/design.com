@@ -208,6 +208,112 @@ h3,
   line-height: 0;
 }
 
+/* ---------- Image side-view gallery: scrollable, arrow-navigable ---------- */
+.img-side-gallery {
+  position: relative;
+  width: 100%;
+  margin: 24px 0;
+}
+.img-gallery-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 2px 10px;
+}
+.img-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+.img-gallery-item {
+  flex: 0 0 auto;
+  width: min(60%, 420px);
+  scroll-snap-align: start;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.img-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-gallery-item .ph {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  margin: 0;
+}
+.img-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(127, 127, 127, 0.55);
+  color: #fff;
+  mix-blend-mode: difference;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.img-gallery-arrow:hover {
+  opacity: 1;
+}
+.img-gallery-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+.img-gallery-arrow.prev { left: -18px; }
+.img-gallery-arrow.next { right: -18px; }
+
+.img-gallery-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+}
+.img-gallery-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(127, 127, 127, 0.4);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.img-gallery-dot:hover {
+  background: rgba(127, 127, 127, 0.65);
+}
+.img-gallery-dot.active {
+  background: var(--blue);
+  transform: scale(1.35);
+}
+
+.ba-row-split .img-side-gallery {
+  grid-column: 1 / -1;
+  margin: 10px 0 4px;
+}
+.ba-row-split.solution .ph {
+  border-color: #5c5c5c;
+  color: #9a9a9a;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 640px) {
+  .img-gallery-item { width: 82%; }
+  .img-gallery-arrow { display: none; }
+}
+
 .video-embed video {
   display: block;
   width: 100%;

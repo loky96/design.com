@@ -41,7 +41,32 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
 }
 
 .cover-laptop-wrap {
+  position: relative;
   margin-bottom: 60px;
+}
+
+.cover-laptop-swap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cover-laptop-wrap:hover .cover-laptop-img:not(.cover-laptop-swap) {
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+.cover-laptop-wrap:hover .cover-laptop-swap {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.cover-laptop-hint {
+  display: block;
+  width: fit-content;
+  margin: 14px auto 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
 /* ---------- Side nav ---------- */

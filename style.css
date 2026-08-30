@@ -685,6 +685,23 @@ h1, h2, h3, h4, h5, h6 {
 .hcard-img-contain { object-fit: contain !important; }
 .hcard:hover .hcard-img .hcard-img-contain { transform: none; }
 
+.hcard-img-swap {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.4s ease;
+}
+.hcard:hover .hcard-img-swap {
+  opacity: 1;
+  transition: opacity 0.8s ease 0.6s, transform 0.4s ease;
+}
+
+.hcard-img:has(.hcard-img-swap) > img:not(.hcard-img-swap) {
+  transition: opacity 0.8s ease;
+}
+.hcard:hover .hcard-img:has(.hcard-img-swap) > img:not(.hcard-img-swap) {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.6s;
+}
+
 .hcard-mac-wrap {
   position: absolute;
   inset: 10px -10px 14px 0;
