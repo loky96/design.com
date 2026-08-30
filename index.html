@@ -482,11 +482,6 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="contact-bees" aria-hidden="true">
-      <span class="contact-bee contact-bee-1">🐝</span>
-      <span class="contact-bee contact-bee-2">🐝</span>
-      <span class="contact-bee contact-bee-3">🐝</span>
-    </div>
     <div class="contact-inner">
       <h2>Let's spark a conversation!</h2>
       <div class="contact-body">
@@ -529,7 +524,6 @@
       </div>
     </div>
     <div class="contact-flowers" id="contactFlowers" aria-hidden="true"></div>
-    <p class="contact-bee-notice">🐝 Don't kill bees</p>
   </section>
 
   <!-- HOBBY WAVE -->
@@ -538,7 +532,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" style="display:none;">
     <div class="footer-inner">
       <nav class="footer-links">
         <a href="#intro">Home</a>
@@ -617,58 +611,6 @@
         } catch (err) {}
       });
     });
-  </script>
-  <script>
-    (() => {
-      const beeHive = document.querySelector('.contact-bees');
-      const flowers = document.getElementById('contactFlowers');
-      if (!beeHive || !flowers) return;
-
-      const FLY_ANIMS = ['contactBeeFly1', 'contactBeeFly2', 'contactBeeFly3'];
-      let extraBeeCount = 0;
-      const MAX_EXTRA_BEES = 6;
-      let lastSpawn = 0;
-
-      function fallBee(bee) {
-        if (bee.classList.contains('falling')) return;
-        bee.style.animation = 'none';
-        bee.classList.add('falling');
-        setTimeout(() => bee.remove(), 1200);
-      }
-
-      function spawnBee(x, y) {
-        if (extraBeeCount >= MAX_EXTRA_BEES) return;
-        extraBeeCount++;
-        const bee = document.createElement('span');
-        bee.className = 'contact-bee';
-        bee.textContent = '🐝';
-        bee.style.left = `${x}px`;
-        bee.style.top = `${y}px`;
-        const anim = FLY_ANIMS[Math.floor(Math.random() * FLY_ANIMS.length)];
-        const duration = 6 + Math.random() * 5;
-        bee.style.animation = `${anim} ${duration}s ease-in-out infinite`;
-        beeHive.appendChild(bee);
-        setTimeout(() => {
-          bee.remove();
-          extraBeeCount--;
-        }, duration * 1000 * 2);
-      }
-
-      beeHive.addEventListener('click', (e) => {
-        const bee = e.target.closest('.contact-bee');
-        if (bee) fallBee(bee);
-      });
-
-      flowers.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - lastSpawn < 350) return;
-        lastSpawn = now;
-        const hiveRect = beeHive.getBoundingClientRect();
-        const x = e.clientX - hiveRect.left;
-        const y = e.clientY - hiveRect.top;
-        spawnBee(x, y);
-      });
-    })();
   </script>
   <script>
     (function introLoader() {
