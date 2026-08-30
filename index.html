@@ -198,15 +198,14 @@
 
     </div>
     <a href="#publications" class="view-published-link" id="viewPublishedLink">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      View published works
+      <svg class="view-published-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      <span class="view-published-label">View published works</span>
     </a>
-  </section>
 
-  <!-- PUBLICATIONS -->
-  <section class="publications" id="publications" style="display:none;">
-    <h2 class="sec-title">Published Work</h2>
-    <div class="cards-list">
+    <!-- PUBLICATIONS -->
+    <div class="publications" id="publications" style="display:none;">
+      <h2 class="sec-title">Published Work</h2>
+      <div class="cards-list">
 
       <!-- Large card -->
       <a href="lumigo-coded.html" class="hcard pub-large fade-up">
@@ -308,6 +307,7 @@
         </a>
 
       </div>
+    </div>
     </div>
   </section>
 
@@ -612,11 +612,21 @@
   <script>
     const viewPublishedLink = document.getElementById('viewPublishedLink');
     const publicationsSection = document.getElementById('publications');
+    const viewPublishedLabel = viewPublishedLink && viewPublishedLink.querySelector('.view-published-label');
     if (viewPublishedLink && publicationsSection) {
       viewPublishedLink.addEventListener('click', (e) => {
         e.preventDefault();
-        publicationsSection.style.display = '';
-        publicationsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const isOpen = publicationsSection.style.display !== 'none';
+        if (isOpen) {
+          publicationsSection.style.display = 'none';
+          viewPublishedLabel.textContent = 'View published works';
+          viewPublishedLink.classList.remove('is-open');
+        } else {
+          publicationsSection.style.display = '';
+          viewPublishedLabel.textContent = 'Hide published work';
+          viewPublishedLink.classList.add('is-open');
+          publicationsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     }
   </script>

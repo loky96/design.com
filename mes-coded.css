@@ -344,10 +344,6 @@ img.brand-logo {
   opacity: 1;
   transition: opacity 0.3s ease 0.1s;
 }
-.cover-product-block:has(.cover-laptop-hint:hover) .cover-laptop-wrap {
-  margin-bottom: 20px;
-  transition: margin-bottom 0.3s ease 0.1s;
-}
 
 /* ---------- Video embed ---------- */
 .video-embed {

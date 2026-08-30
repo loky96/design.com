@@ -51,11 +51,11 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.cover-laptop-wrap:hover .cover-laptop-img:not(.cover-laptop-swap) {
+.cover-laptop-wrap:has(.cover-laptop-hint:hover) .cover-laptop-img:not(.cover-laptop-swap) {
   opacity: 0;
   transition: opacity 0.3s ease 0.1s;
 }
-.cover-laptop-wrap:hover .cover-laptop-swap {
+.cover-laptop-wrap:has(.cover-laptop-hint:hover) .cover-laptop-swap {
   opacity: 1;
   transition: opacity 0.3s ease 0.1s;
 }
