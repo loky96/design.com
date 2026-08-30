@@ -33,16 +33,30 @@ export function initPixelCursor(options = {}) {
   host.style.cssText = 'position:fixed;inset:0;z-index:9999;overflow:hidden;opacity:0;pointer-events:none;mix-blend-mode:difference;';
   document.body.appendChild(host);
 
+  const isArrow = opts.pixelShape === 'arrow';
+  const rotateDeg = opts.pixelShape === 'square' ? 45 : 0;
+  const arrowSvg = (size) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}"><path d="M6 18L18 6M18 6H9M18 6V15" stroke="${opts.trailColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+
   const pool = [];
   for (let i = 0; i < Math.max(1, opts.pixelCount); i++) {
     const node = document.createElement('div');
-    node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize}px;height:${opts.pixelSize}px;border-radius:${opts.pixelShape === 'circle' ? '50%' : '0'};background-color:${opts.trailColor};display:none;`;
+    if (isArrow) {
+      node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;display:none;`;
+      node.innerHTML = arrowSvg(opts.pixelSize);
+    } else {
+      node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize}px;height:${opts.pixelSize}px;box-sizing:border-box;border-radius:${opts.pixelShape === 'circle' ? '50%' : '30%'};border:2px solid ${opts.trailColor};background-color:transparent;display:none;`;
+    }
     host.appendChild(node);
     pool.push({ node, x: -1000, y: -1000, vx: 0, vy: 0, hidden: true });
   }
 
   const ring = document.createElement('div');
-  ring.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize * 2.04}px;height:${opts.pixelSize * 2.04}px;border-radius:50%;border:1.5px solid ${opts.trailColor};box-sizing:border-box;opacity:0;transition:opacity 0.18s ease;`;
+  if (isArrow) {
+    ring.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;opacity:0;transition:opacity 0.18s ease;`;
+    ring.innerHTML = arrowSvg(opts.pixelSize * 1.4);
+  } else {
+    ring.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize * 1.4}px;height:${opts.pixelSize * 1.4}px;border-radius:30%;border:2px solid ${opts.trailColor};background-color:transparent;box-sizing:border-box;opacity:0;transition:opacity 0.18s ease;`;
+  }
   host.appendChild(ring);
 
   const cursor = { x: -1000, y: -1000 };
@@ -167,12 +181,12 @@ export function initPixelCursor(options = {}) {
       }
       if (hide) continue;
 
-      s.transform = `translate(${px.x + offX}px, ${px.y + offY}px) translate(-50%, -50%) scale(${scale})`;
+      s.transform = `translate(${px.x + offX}px, ${px.y + offY}px) translate(-50%, -50%) scale(${scale}) rotate(${rotateDeg}deg)`;
       s.opacity = String(opacity);
     }
 
     const ringScale = 1;
-    ring.style.transform = `translate(${cursor.x}px, ${cursor.y}px) translate(-50%, -50%) scale(${ringScale})`;
+    ring.style.transform = `translate(${cursor.x}px, ${cursor.y}px) translate(-50%, -50%) scale(${ringScale}) rotate(${rotateDeg}deg)`;
 
     rafId = requestAnimationFrame(frame);
   }
