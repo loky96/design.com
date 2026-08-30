@@ -66,9 +66,8 @@
       </div>
 
       <p class="hero-bio">
-        With <span class="hero-highlight">7+ years of experience</span>, currently designing <span class="hero-highlight">Multiplayer AI product</span> &amp; leading <span class="hero-highlight">enterprise platform design @Instabase</span>.
-        Ex-designer at Infurnia; scaled <span class="hero-highlight">product from 2 to 500+ Clients &amp; 0 to $1M ARR in 1.8 years</span>.
-        M.Des in Interaction Design from <span class="hero-highlight">IDC, IIT Bombay</span>.
+        With <span class="hero-highlight">7+ years of experience</span>, currently designing <span class="hero-highlight">Multiplayer AI collaboration product</span> &amp; leading <span class="hero-highlight">enterprise platform designs @Instabase</span> closed <span class="hero-highlight">9 enterprise deals</span>.
+        Ex-founding designer @ Infurnia; Drove <span class="hero-highlight">$1M ARR from 0, in 1.5 years</span>, M.Des in IxD from <span class="hero-highlight">IDC, IIT Bombay</span>.
       </p>
 
       <!-- ORG LOGOS ROW -->
@@ -195,10 +194,14 @@
       </a>
 
     </div>
+    <a href="#publications" class="view-published-link" id="viewPublishedLink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      View published works
+    </a>
   </section>
 
   <!-- PUBLICATIONS -->
-  <section class="publications" id="publications">
+  <section class="publications" id="publications" style="display:none;">
     <h2 class="sec-title">Published Work</h2>
     <div class="cards-list">
 
@@ -600,6 +603,17 @@
         radius: 220,
         colors: ['#a8709f', '#5e9482', '#d99a38', '#4b75a6', '#ba6474'],
         centerColor: '#ffd76a',
+      });
+    }
+  </script>
+  <script>
+    const viewPublishedLink = document.getElementById('viewPublishedLink');
+    const publicationsSection = document.getElementById('publications');
+    if (viewPublishedLink && publicationsSection) {
+      viewPublishedLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        publicationsSection.style.display = '';
+        publicationsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
   </script>

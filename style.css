@@ -265,7 +265,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 6px;
   border-radius: 8px;
 }
-.hero-role-loader p { margin: 0; }
+.hero-role-loader p { margin: 0; opacity: 0.5; }
 .hero-role-words {
   overflow: hidden;
   position: relative;
@@ -365,8 +365,11 @@ h1, h2, h3, h4, h5, h6 {
   text-align: justify;
 }
 .hero-highlight {
-  background-color: rgba(255, 200, 44, 0.14);
-  padding: 2px 5px;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 32' preserveAspectRatio='none'%3E%3Cpath d='M3,14 C60,10 140,16 190,12 C230,9 265,14 297,12 L297,24 C265,27 230,23 190,26 C140,29 60,24 3,27 Z' fill='%23FFC82C' fill-opacity='0.12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 3px 5px;
   margin: 0 -2px;
   border-radius: 4px;
   box-decoration-break: clone;
@@ -521,6 +524,25 @@ h1, h2, h3, h4, h5, h6 {
 .projects .sec-title,
 .publications .sec-title {
   max-width: calc(var(--cards-max) + 2 * var(--page-gutter));
+}
+
+.view-published-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: 56px auto 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.view-published-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.view-published-link:hover {
+  color: var(--blue);
 }
 
 /* ─── HORIZONTAL CARD ────────────────────────────────────────── */
@@ -784,7 +806,8 @@ h1, h2, h3, h4, h5, h6 {
   mask-image: linear-gradient(to bottom, transparent 0, #000 140px);
 }
 .projects > .sec-title,
-.projects > .cards-list {
+.projects > .cards-list,
+.projects > .view-published-link {
   position: relative;
   z-index: 1;
 }
