@@ -239,12 +239,23 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   flex-shrink: 0;
 }
+.hero-avatar-img-back {
+  position: absolute;
+  inset: 0;
+  width: 210px;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+}
 .hero-avatar-img {
   width: 210px;
   height: auto;
   object-fit: contain;
   position: relative;
   z-index: 1;
+  -webkit-mask-image: radial-gradient(circle 24px at var(--reveal-x, -9999px) var(--reveal-y, -9999px), transparent 0 24px, black 36px 100%);
+  mask-image: radial-gradient(circle 24px at var(--reveal-x, -9999px) var(--reveal-y, -9999px), transparent 0 24px, black 36px 100%);
 }
 .hero-avatar-shimmer {
   position: absolute;
@@ -719,7 +730,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hcard:hover .hcard-img-swap {
   opacity: 1;
-  transition: opacity 0.8s ease 0s, transform 0.4s ease;
+  transition: opacity 0.8s ease 0.2s, transform 0.4s ease;
 }
 .hcard:hover .hcard-img .hcard-img-swap.hcard-img-contain {
   transform: scale(1.08);
@@ -730,7 +741,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hcard:hover .hcard-img:has(.hcard-img-swap) > img:not(.hcard-img-swap) {
   opacity: 0;
-  transition: opacity 0.8s ease 0s;
+  transition: opacity 0.2s ease 0s;
 }
 
 .hcard-mac-wrap {

@@ -100,7 +100,7 @@ export function initPixelCursor(options = {}) {
     const y = e.clientY;
     cursor.x = x;
     cursor.y = y;
-    host.style.opacity = '1';
+    host.style.opacity = document.body.classList.contains('pixel-cursor-hidden') ? '0' : '1';
     hideNativeCursor(true);
     if (!seen) {
       seen = true;
