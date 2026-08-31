@@ -72,7 +72,7 @@ html { scroll-behavior: smooth; }
 }
 
 .mes-side-nav-label {
-  font-size: 12px;
+  font-size: var(--fs-caption);
   font-weight: 400;
   color: #D1D5DB;
   white-space: nowrap;
@@ -145,7 +145,7 @@ html { scroll-behavior: smooth; }
   border-radius: 99px;
   color: #fff;
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: var(--fs-body);
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
@@ -175,7 +175,7 @@ html { scroll-behavior: smooth; }
   text-align: left;
 }
 .process-summary-list li {
-  font-size: 14.5px;
+  font-size: var(--fs-body-sm);
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.75);
 }
@@ -249,7 +249,7 @@ img.brand-logo {
   border-spacing: 0;
 }
 .comp-table {
-  font-size: 12.5px;
+  font-size: var(--fs-label);
 }
 .comp-table th, .comp-table td {
   border: none;
@@ -258,7 +258,7 @@ img.brand-logo {
 }
 .comp-table thead th {
   background: var(--light-card);
-  font-size: 13px;
+  font-size: var(--fs-label);
   letter-spacing: 0.6px;
   padding-top: 12px;
   padding-bottom: 10px;
@@ -332,7 +332,7 @@ img.brand-logo {
   margin-bottom: 70px;
 }
 .cover-laptop-hint {
-  font-size: 13px;
+  font-size: var(--fs-label);
   color: var(--dark-text-dim);
   white-space: nowrap;
 }
@@ -381,7 +381,7 @@ img.brand-logo {
 }
 .explore-list li {
   text-align: left;
-  font-size: 14px;
+  font-size: var(--fs-body-sm);
 }
 
 .explore-solutions .explore-list,
@@ -456,7 +456,7 @@ img.brand-logo {
 }
 .meta-chip {
   padding: 8px 14px;
-  font-size: 13px;
+  font-size: var(--fs-label);
 }
 
 /* ---------- User Need Classification staircase ---------- */
@@ -471,9 +471,9 @@ img.brand-logo {
 .stair-row:nth-child(3) { background: #e3f0f9; }
 .stair-row:nth-child(4) { background: #edf5fa; opacity: 0.75; }
 .stair-row:nth-child(5) { background: #f5fafc; opacity: 0.55; }
-.stair-row h4 { font-size: 20px; margin-bottom: 4px; }
-.stair-row .stair-sub { font-size: 13.5px; color: var(--ink-2); }
-.stair-row ul { padding-left: 18px; display: grid; gap: 4px; font-size: 14.5px; color: var(--ink-2); }
+.stair-row h4 { font-size: var(--fs-h5); margin-bottom: 4px; }
+.stair-row .stair-sub { font-size: var(--fs-body-sm); color: var(--ink-2); }
+.stair-row ul { padding-left: 18px; display: grid; gap: 4px; font-size: var(--fs-body-sm); color: var(--ink-2); }
 
 /* ---------- Persona photo cards (row of 3) ---------- */
 .persona-photo-row {
@@ -532,7 +532,7 @@ img.brand-logo {
 .pp-identity { min-width: 0; }
 .pp-role {
   display: inline-block;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -541,13 +541,13 @@ img.brand-logo {
 }
 .persona-photo-card h4 {
   font-family: "Rajdhani", sans-serif;
-  font-size: 26px;
+  font-size: var(--fs-h4);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: 0.2px;
 }
 .pp-meta {
-  font-size: 13px;
+  font-size: var(--fs-label);
   color: var(--ink-2);
   margin: 2px 0 0;
 }
@@ -559,7 +559,7 @@ img.brand-logo {
   background: color-mix(in srgb, var(--pp-accent-soft) 70%, #fff);
   border-radius: 10px;
   font-style: italic;
-  font-size: 14.5px;
+  font-size: var(--fs-body-sm);
   line-height: 1.45;
   color: var(--ink);
 }
@@ -582,7 +582,7 @@ img.brand-logo {
 .pp-block.pp-pain { background: var(--pink); }
 .pp-block.pp-needs { background: var(--cream); }
 .persona-photo-card h5 {
-  font-size: 11.5px;
+  font-size: var(--fs-caption);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.55px;
@@ -594,7 +594,7 @@ img.brand-logo {
   padding-left: 16px;
   display: grid;
   gap: 6px;
-  font-size: 13px;
+  font-size: var(--fs-label);
   color: var(--ink-2);
   line-height: 1.4;
 }
@@ -615,7 +615,7 @@ img.brand-logo {
   display: inline-block;
   padding: 5px 9px;
   border-radius: 999px;
-  font-size: 11.5px;
+  font-size: var(--fs-caption);
   font-weight: 600;
   line-height: 1.2;
   color: var(--pp-accent);
@@ -631,21 +631,21 @@ img.brand-logo {
 
 /* ---------- User Journey Map table ---------- */
 .ujm-table-wrap { overflow-x: auto; border: 1px solid var(--light-border); border-radius: var(--radius); margin-top: 20px; }
-.ujm-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 900px; }
+.ujm-table { width: 100%; border-collapse: collapse; font-size: var(--fs-label); min-width: 900px; }
 .ujm-table th, .ujm-table td { padding: 14px 16px; border-bottom: 1px solid var(--light-border); border-right: 1px solid var(--light-border); vertical-align: top; text-align: left; }
 .ujm-table th:last-child, .ujm-table td:last-child { border-right: none; }
-.ujm-table thead th { background: var(--light-card); font-family: "Rajdhani", sans-serif; font-size: 15px; }
+.ujm-table thead th { background: var(--light-card); font-family: "Rajdhani", sans-serif; font-size: var(--fs-body); }
 .ujm-table tbody th { font-weight: 700; background: var(--light-card); width: 120px; }
 .ujm-table td { color: var(--ink-2); }
 .ujm-table tbody tr:last-child th, .ujm-table tbody tr:last-child td { border-bottom: none; }
 
 /* ---------- NPS detail rows (extends .nps-block) ---------- */
-.nps-detail-row { display: flex; gap: 10px; font-size: 13.5px; margin-bottom: 8px; }
+.nps-detail-row { display: flex; gap: 10px; font-size: var(--fs-body-sm); margin-bottom: 8px; }
 .nps-detail-row .k { color: #9a9a9a; min-width: 74px; flex-shrink: 0; }
 .nps-detail-row .v { color: #fff; }
-.nps-quote { font-style: italic; color: var(--dark-text-dim); font-size: 14.5px; margin: 12px 0 16px; }
+.nps-quote { font-style: italic; color: var(--dark-text-dim); font-size: var(--fs-body-sm); margin: 12px 0 16px; }
 .nps-breakdown { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
-.nps-breakdown span { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+.nps-breakdown span { padding: 6px 12px; border-radius: 8px; font-size: var(--fs-label); font-weight: 600; }
 .nps-breakdown .promoters { background: rgba(58,168,94,0.2); color: #6bcf8e; }
 .nps-breakdown .passives { background: rgba(232,185,60,0.2); color: #e8b93c; }
 .nps-breakdown .detractors { background: rgba(228,96,78,0.2); color: #e4604e; }
@@ -654,8 +654,8 @@ img.brand-logo {
 .flag-card { border-radius: var(--radius); padding: 26px 28px; }
 .flag-card.pain-flag { background: var(--pink); }
 .flag-card.success-flag { background: var(--mint); }
-.flag-card h4 { font-size: 19px; margin-bottom: 14px; }
-.flag-card ul, .flag-card p { font-size: 15px; color: var(--ink-2); }
+.flag-card h4 { font-size: var(--fs-h5); margin-bottom: 14px; }
+.flag-card ul, .flag-card p { font-size: var(--fs-body); color: var(--ink-2); }
 .flag-card ul { padding-left: 18px; display: grid; gap: 8px; }
 
 @media (max-width: 900px) {
