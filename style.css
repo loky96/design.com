@@ -1502,16 +1502,20 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero-top {
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .hero-intro {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
   .hero-greet,
   .hero-role,
   .hero-quote {
-    text-align: center;
+    text-align: left;
+  }
+  .hero-quote {
+    font-size: var(--fs-h4);
   }
 
   .contact-actions {
