@@ -69,20 +69,20 @@ export function initPixelCursor(options = {}) {
   function onOver(e) {
     if (e.target.closest && e.target.closest(CLICKABLE_SELECTOR)) {
       hoveringClickable = true;
-      ring.style.opacity = '0.5';
+      host.style.opacity = '0';
     }
   }
   function onOut(e) {
     if (e.target.closest && e.target.closest(CLICKABLE_SELECTOR) && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(CLICKABLE_SELECTOR))) {
       hoveringClickable = false;
-      ring.style.opacity = '0';
     }
   }
   document.addEventListener('pointerover', onOver, { passive: true });
   document.addEventListener('pointerout', onOut, { passive: true });
 
   const cursorStyleTag = document.createElement('style');
-  cursorStyleTag.textContent = '* { cursor: none !important; }';
+  const CLICKABLE_DESCENDANTS = CLICKABLE_SELECTOR.split(',').map((s) => s.trim() + ' *').join(', ');
+  cursorStyleTag.textContent = `* { cursor: none !important; } ${CLICKABLE_SELECTOR}, ${CLICKABLE_DESCENDANTS} { cursor: pointer !important; }`;
 
   function hideNativeCursor(hide) {
     if (hide === cursorHidden) return;
@@ -100,7 +100,7 @@ export function initPixelCursor(options = {}) {
     const y = e.clientY;
     cursor.x = x;
     cursor.y = y;
-    host.style.opacity = document.body.classList.contains('pixel-cursor-hidden') ? '0' : '1';
+    host.style.opacity = (document.body.classList.contains('pixel-cursor-hidden') || hoveringClickable) ? '0' : '1';
     hideNativeCursor(true);
     if (!seen) {
       seen = true;
