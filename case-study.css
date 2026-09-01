@@ -327,6 +327,142 @@ h3,
   .img-gallery-arrow { display: none; }
 }
 
+.media-toggle {
+  flex: 1;
+}
+
+.ba-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ba-card .ba-card-head h4 {
+  margin-bottom: 0;
+}
+
+.media-toggle-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.media-toggle-tab {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.media-toggle-tab:hover {
+  color: #fff;
+}
+
+.media-toggle-tab.active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.video-embed.mode-live video,
+.video-embed.mode-live .video-play-btn {
+  visibility: hidden;
+}
+
+.media-toggle-caption {
+  display: none;
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.video-embed.mode-live ~ .media-toggle-caption {
+  display: block;
+}
+
+.media-toggle-fs-trigger {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.media-toggle-fs-trigger:hover {
+  color: #fff;
+}
+
+.ba-row-split.problem .media-toggle-caption {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ba-row-split.problem .media-toggle-fs-trigger {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.ba-row-split.problem .media-toggle-fs-trigger:hover {
+  color: #000;
+}
+
+.media-toggle-iframe-scale {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.video-embed.mode-live .media-toggle-iframe-scale {
+  display: block;
+}
+
+.video-embed:fullscreen {
+  background: #000;
+}
+
+.media-toggle-fs-exit {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 4;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+}
+
+.media-toggle-fs-exit:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.video-embed:fullscreen .media-toggle-fs-exit {
+  display: block;
+}
+
+.media-toggle-iframe {
+  display: block;
+  border: 0;
+  background: #fff;
+  transform-origin: top left;
+}
+
 .video-embed video {
   display: block;
   width: 100%;

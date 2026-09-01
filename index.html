@@ -592,7 +592,7 @@
   <script type="module">
     import { initDitherBackground } from './dither-bg.js';
     const ditherBg = document.getElementById('heroDitherBg');
-    if (ditherBg) {
+    if (ditherBg && window.matchMedia('(min-width: 768px)').matches) {
       initDitherBackground(ditherBg, {
         background: '#FFFFFF',
         color: '#576E81',

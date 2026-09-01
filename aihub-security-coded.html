@@ -642,15 +642,32 @@
       </div>
 
       <div class="ba-row-split solution">
-        <div class="ba-card after"><h4>Solution</h4><ul>
-          <li>Self-serve SAML + OIDC config for MT org admins</li>
-          <li>Multiple configurations per organisation, protocols mixed</li>
-          <li>Guided setup that mirrors the admin's own IdP vocabulary</li>
-          <li>Test sign-in first; enforce SSO only once it works</li>
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/SSO%20config.mp4" title="SSO config walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card after">
+          <div class="ba-card-head">
+            <h4>Solution</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>Self-serve SAML + OIDC config for MT org admins</li>
+            <li>Multiple configurations per organisation, protocols mixed</li>
+            <li>Guided setup that mirrors the admin's own IdP vocabulary</li>
+            <li>Test sign-in first; enforce SSO only once it works</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v2&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/SSO%20config.mp4" title="SSO config walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
       </div>
 
@@ -749,28 +766,62 @@
       <p class="lead">SSO answers "can this person log in?". Group mapping answers "and what should they be able to see?". SAML group mapping existed only for single tenants; OIDC group mapping was documented but did not exist — the gap a major customer found before we did.</p>
 
       <div class="ba-row-split problem">
-        <div class="ba-card before"><h4>Before</h4><ul>
-          <li>OIDC customers managed every group membership by hand</li>
-          <li>Docs claimed OIDC group mapping worked — it didn't</li>
-          <li>SAML mapping was one IdP group per AI Hub group</li>
-          <li>No signal about when a membership change would take effect</li>
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/RBAC%20before.mp4" title="RBAC before walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card before">
+          <div class="ba-card-head">
+            <h4>Before</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>OIDC customers managed every group membership by hand</li>
+            <li>Docs claimed OIDC group mapping worked — it didn't</li>
+            <li>SAML mapping was one IdP group per AI Hub group</li>
+            <li>No signal about when a membership change would take effect</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/RBAC%20before.mp4" title="RBAC before walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
       </div>
 
       <div class="ba-row-split solution">
-        <div class="ba-card after"><h4>Solution</h4><ul>
-          <li>OIDC group mapping at parity with SAML, same mental model</li>
-          <li>Many external IdP groups can map to one AI Hub group</li>
-          <li>Mapping created inline while creating the group, or added later</li>
-          <li>Sync timing stated explicitly wherever mapping is configured</li>
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/RBAC%20after.mp4" title="RBAC after walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card after">
+          <div class="ba-card-head">
+            <h4>Solution</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>OIDC group mapping at parity with SAML, same mental model</li>
+            <li>Many external IdP groups can map to one AI Hub group</li>
+            <li>Mapping created inline while creating the group, or added later</li>
+            <li>Sync timing stated explicitly wherever mapping is configured</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v1&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/RBAC%20after.mp4" title="RBAC after walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
 
         <div class="img-side-gallery" style="display:none;">
@@ -874,41 +925,90 @@
       <p class="lead">Delivered in two phases—<b>Release 2:</b> Enabled AI Hub to issue short-lived, OAuth2-compliant tokens while deprecating legacy raw tokens. <b>Release 3:</b> Allowed organizations to Bring Your Own IdP (BYO-OAuth), enforcing scoped JWT validation.</p>
 
       <div class="ba-row-split problem">
-        <div class="ba-card before"><h4>Before</h4><ul>
-          <li>Long-lived opaque tokens, generated in the UI</li>
-          <li>Token silently inherits its owner's full permissions</li>
-          <li>No expiry, no rotation, no IdP-side revocation</li>
-          
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/API%20before.mp4" title="API before walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card before">
+          <div class="ba-card-head">
+            <h4>Before</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>Long-lived opaque tokens, generated in the UI</li>
+            <li>Token silently inherits its owner's full permissions</li>
+            <li>No expiry, no rotation, no IdP-side revocation</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/API%20before.mp4" title="API before walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
       </div>
 
       <div class="ba-row-split solution">
-        <div class="ba-card after"><h4>Stage 1 solution</h4><ul>
-          <li>AIhub Oauth app which issues short lived tokens (15min)</li>
-          <li>Signature, issuer, audience and expiry validated on every call</li>
-          <li>Ability to set scope of the token</li>
-          <li>Depreciation and migration plan of the old AI-Hub raw rokens</li>
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/API%20stage%201.mp4" title="API stage 1 walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card after">
+          <div class="ba-card-head">
+            <h4>Stage 1 solution</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>AIhub Oauth app which issues short lived tokens (15min)</li>
+            <li>Signature, issuer, audience and expiry validated on every call</li>
+            <li>Ability to set scope of the token</li>
+            <li>Depreciation and migration plan of the old AI-Hub raw rokens</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v4&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/API%20stage%201.mp4" title="API stage 1 walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
       </div>
 
       <div class="ba-row-split solution">
-        <div class="ba-card after"><h4>Stage 2 solution</h4><ul>
-          <li>Customer's own OAuth provider issues short-lived JWTs (15–60 min)</li>
-          <li>Signature, issuer, audience and expiry validated on every call</li>
-          <li>Scope claim downscopes the token to specific roles</li>
-        
-        </ul></div>
-        <div class="video-embed">
-          <video preload="auto" src="aihub-security-coded/videos/API%20stage%202.mp4" title="API stage 2 walkthrough"></video>
-          <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+        <div class="ba-card after">
+          <div class="ba-card-head">
+            <h4>Stage 2 solution</h4>
+            <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+              <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true" aria-label="Show video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </button>
+              <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false" aria-label="Show live prototype">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l-6 6 6 6"/><path d="M15 9l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul>
+            <li>Customer's own OAuth provider issues short-lived JWTs (15–60 min)</li>
+            <li>Signature, issuer, audience and expiry validated on every call</li>
+            <li>Scope claim downscopes the token to specific roles</li>
+          </ul>
+        </div>
+        <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v5&amp;embed=1">
+          <div class="video-embed">
+            <video preload="auto" src="aihub-security-coded/videos/API%20stage%202.mp4" title="API stage 2 walkthrough"></video>
+            <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+            <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full screen</button>
+          </div>
+          <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button type="button" class="media-toggle-fs-trigger">Full screen</button></p>
         </div>
       </div>
 
@@ -1953,6 +2053,91 @@
           wrap.classList.remove("is-playing");
           video.controls = false;
         });
+      });
+    })();
+  </script>
+  <script>
+    (function initMediaToggles() {
+      document.querySelectorAll(".media-toggle").forEach(function (wrap) {
+        var src = wrap.dataset.iframeSrc;
+        var videoEmbed = wrap.querySelector(".video-embed");
+        var video = wrap.querySelector("video");
+        var tabs = wrap.closest(".ba-row-split").querySelectorAll(".media-toggle-tab");
+        var fsBtn = wrap.querySelector(".media-toggle-fs-trigger");
+        var iframe = null;
+        var scaleWrap = null;
+        var DESKTOP_WIDTH = 1440;
+        var DESKTOP_HEIGHT = 900;
+        if (!src || !videoEmbed) return;
+
+        // scaleWrap overlays videoEmbed exactly (position:absolute; inset:0),
+        // so the live prototype is always clipped to the video's own box -
+        // never the surrounding card - regardless of the video's aspect ratio.
+        // Uses contain-fit (min of width/height ratio) + centering so it also
+        // looks right in fullscreen, where the viewport aspect ratio varies.
+        function rescale() {
+          if (!scaleWrap || !iframe) return;
+          var sx = videoEmbed.clientWidth / DESKTOP_WIDTH;
+          var sy = videoEmbed.clientHeight / DESKTOP_HEIGHT;
+          var s = Math.min(sx, sy);
+          var offX = (videoEmbed.clientWidth - DESKTOP_WIDTH * s) / 2;
+          var offY = (videoEmbed.clientHeight - DESKTOP_HEIGHT * s) / 2;
+          iframe.style.transform = "translate(" + offX + "px, " + offY + "px) scale(" + s + ")";
+        }
+
+        function goLive() {
+          if (video) video.pause();
+          videoEmbed.classList.add("mode-live");
+          tabs.forEach(function (t) {
+            var active = t.dataset.mode === "live";
+            t.classList.toggle("active", active);
+            t.setAttribute("aria-pressed", String(active));
+          });
+          if (!scaleWrap) {
+            scaleWrap = document.createElement("div");
+            scaleWrap.className = "media-toggle-iframe-scale";
+            iframe = document.createElement("iframe");
+            iframe.src = src;
+            iframe.title = "Live prototype";
+            iframe.loading = "lazy";
+            iframe.className = "media-toggle-iframe";
+            iframe.style.width = DESKTOP_WIDTH + "px";
+            iframe.style.height = DESKTOP_HEIGHT + "px";
+            scaleWrap.appendChild(iframe);
+            videoEmbed.appendChild(scaleWrap);
+            new ResizeObserver(rescale).observe(videoEmbed);
+          }
+          rescale();
+        }
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            if (tab.dataset.mode === "live") {
+              goLive();
+            } else {
+              tabs.forEach(function (t) {
+                var active = t === tab;
+                t.classList.toggle("active", active);
+                t.setAttribute("aria-pressed", String(active));
+              });
+              videoEmbed.classList.remove("mode-live");
+            }
+          });
+        });
+
+        if (fsBtn) {
+          fsBtn.addEventListener("click", function () {
+            goLive();
+            if (videoEmbed.requestFullscreen) videoEmbed.requestFullscreen();
+          });
+        }
+
+        var exitBtn = videoEmbed.querySelector(".media-toggle-fs-exit");
+        if (exitBtn) {
+          exitBtn.addEventListener("click", function () {
+            if (document.exitFullscreen) document.exitFullscreen();
+          });
+        }
       });
     })();
   </script>
