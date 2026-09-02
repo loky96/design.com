@@ -348,7 +348,41 @@
   <section class="journey" id="journey">
     <div class="journey-inner">
       <h2 class="journey-hobbies-title">My journey</h2>
-      <img src="images/journey.webp" alt="Career journey timeline" class="journey-img fade-up" />
+      <div class="journey-timeline">
+        <div class="tl-runway"></div>
+        <div class="tl-intro">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="tl-introg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#8fbcff" stop-opacity="0"/>
+                <stop offset=".55" stop-color="#8fbcff" stop-opacity=".10"/>
+                <stop offset=".86" stop-color="#8fbcff" stop-opacity=".34"/>
+                <stop offset="1" stop-color="#8fbcff" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#tl-introg)" d="M0 0 H100 C 62 32, 50.2 58, 50.2 100 H49.8 C 49.8 58, 38 32, 0 0 Z"/>
+          </svg>
+        </div>
+        <div class="tl-track" id="tlTrack">
+          <div class="tl-rail"><i id="tlRailfill"></i></div>
+        </div>
+        <div class="tl-finale">
+          <div class="tl-cone">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="tl-coneg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#e3e7ed" stop-opacity="1"/>
+                  <stop offset=".45" stop-color="#e3e7ed" stop-opacity=".62"/>
+                  <stop offset="1" stop-color="#e3e7ed" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#tl-coneg)" d="M49.8 0 H50.2 C 50.2 42, 62 68, 100 100 H 0 C 38 68, 49.8 42, 49.8 0 Z"/>
+            </svg>
+          </div>
+          <div class="tl-spread"><div class="tl-inner"></div></div>
+        </div>
+        <div class="tl-outro"></div>
+      </div>
     </div>
     <h3 class="journey-hobbies-title" style="display:none;">Life outside the pixels</h3>
     <img src="images/hobby-high-res.webp" alt="Hobbies" class="journey-img-full fade-up" style="display:none;" />
@@ -597,7 +631,7 @@
         background: '#FFFFFF',
         color: '#576E81',
         shape: 'swirl',
-        type: 'random',
+        type: '8x8',
         size: 2,
         speed: 0.7,
         scale: 1.4,
@@ -701,6 +735,183 @@
         minTimeElapsed = true;
         reveal();
       }, MIN_DURATION);
+    })();
+  </script>
+  <script>
+    (function initJourneyTimeline() {
+      const root = document.querySelector('.journey-timeline');
+      const track = document.getElementById('tlTrack');
+      const railfill = document.getElementById('tlRailfill');
+      if (!root || !track || !railfill) return;
+
+      const IMG_DIR = 'timeline-pics';
+      const AUTO_NUMBERED = true;
+      const FIRST_PIC_NN = 10; // no source photos below timeline-pics/10.webp - hide those slots instead of showing numbered placeholders
+
+      const DATA = [
+        { t: 'Schooling in science group', d: 'Foundation stats rolled. Curious & creative.', chips: ['99.5%'], logos: [], add: '+2 years', imgs: ['timeline-pics/01.png', '', ''] },
+        { t: 'Under graduate in Engineering', d: 'Engineering base class unlocked.', chips: ['8.5 GPA', '4 years'], logos: [], add: '+4 years', imgs: ['timeline-pics/04.jpeg', '', ''] },
+        { t: 'UX / UI Designer & Developer', d: 'Fintech domain. Design + code dual-wield.', chips: ['2 years'], logos: ['images/Logos/LTI.webp'], add: '+2 years', imgs: ['timeline-pics/07.jpg', '', ''] },
+        { t: 'UX Designer & Indie game designer', d: 'Shipped indie games solo. Craft +1.', chips: ['1 year'], logos: ['images/Logos/loky-studio.webp'], add: '+1 year', imgs: ['', '', ''] },
+        { t: 'M.Des in Interaction Design (HCI)', d: 'Teaching assistantship. Research skill tree opened.', chips: ['2 years', '8.9 GPA'], logos: ['images/Logos/IDC.webp', 'images/Logos/IIT bombay.webp'], add: '+2 years', imgs: ['', '', ''] },
+        { t: 'UX Design Intern', d: 'B2B SaaS security product.', chips: ['3 months'], logos: ['images/Logos/nutanix.webp'], add: '+3 months', imgs: ['', '', ''] },
+        { t: 'Founding & senior UX designer', d: 'Sole designer, led design vertical. 7 B2B SaaS products.', chips: ['2.8 years'], logos: ['images/Logos/infurnia.webp'], add: '+2.8 years', imgs: ['', '', ''] },
+        { t: 'Sr Product Designer', d: 'AI-native IDP products & AI collaboration product.', chips: ['Now'], logos: ['images/Logos/Instabase.webp'], add: '+2 years', imgs: ['', '', ''] },
+      ];
+
+      DATA.forEach((n, i) => {
+        const el = document.createElement('div');
+        el.className = 'tl-node' + (i % 2 ? ' right' : '');
+        el.innerHTML = `
+          <div class="tl-card">
+            <div class="tl-meta">${n.chips.map((c) => `<span class="tl-chip">${c}</span>`).join('')}</div>
+            <h3>${n.t}</h3>
+            <p>${n.d}</p>
+            ${n.logos.length ? `<span class="tl-brand">${n.logos.map((src) => `<img src="${src}" alt="">`).join('')}</span>` : ''}
+          </div>
+          <div class="tl-dot"><i></i></div>
+          <div class="tl-pic">${(n.imgs || ['', '', '']).map((src, k) => {
+            const nn = i * 3 + k + 1;
+            if (!src && nn < FIRST_PIC_NN) return '';
+            const use = src || (AUTO_NUMBERED ? `${IMG_DIR}/${String(nn).padStart(2, '0')}.webp` : '');
+            return use ? `<div class="tl-shot"><div class="tl-frame"><img src="${use}" alt=""></div></div>` : '';
+          }).join('')}</div>`;
+        track.appendChild(el);
+      });
+
+      const nodes = [...track.querySelectorAll('.tl-node')];
+      let unlocked = 0;
+
+      function floatTime(node, label, delay) {
+        const f = document.createElement('div');
+        f.className = 'tl-float';
+        f.style.animationDelay = (delay || 0) + 's';
+        f.textContent = label;
+        node.appendChild(f);
+        setTimeout(() => f.remove(), 1700 + (delay || 0) * 1000);
+      }
+
+      function unlock(i, stagger) {
+        const n = nodes[i];
+        if (n.dataset.on) return;
+        n.dataset.on = 1;
+        const d = (stagger || 0) * 0.1;
+        n.style.transitionDelay = d + 's';
+        n.classList.add('on');
+        unlocked++;
+        rail();
+        floatTime(n, DATA[i].add, d);
+        if (unlocked === DATA.length) root.classList.add('complete');
+      }
+
+      const railEl = root.querySelector('.tl-rail');
+      const finale = root.querySelector('.tl-finale');
+      const intro = root.querySelector('.tl-intro');
+      const cone = root.querySelector('.tl-cone');
+      const spread = root.querySelector('.tl-spread');
+      const introPath = root.querySelector('.tl-intro path');
+      const conePath = root.querySelector('.tl-cone path');
+      let railH = 0;
+      let baseH = 0;
+      const TAIL = 64;
+
+      function check() {
+        const h = window.innerHeight;
+        const line = h * 0.5;
+        const inn = h * 1.02;
+        let n0 = 0;
+
+        const centers = nodes.map((n) => { const d = n.querySelector('.tl-dot').getBoundingClientRect(); return d.top + d.height / 2; });
+        const next = centers.findIndex((c) => c > line);
+        const incoming = next === -1 ? -1 : next;
+        const leaving = next === -1 ? nodes.length - 1 : next - 1;
+
+        nodes.forEach((n, i) => {
+          const dot = n.querySelector('.tl-dot').getBoundingClientRect();
+          const dc = dot.top + dot.height / 2;
+          const reached = dc < line;
+          n.classList.toggle('lit', reached);
+          if (!n.dataset.on && reached) unlock(i, n0++);
+          const app = Math.max(0, Math.min(1, (inn - dc) / (inn - line)));
+          const away = Math.max(0, Math.min(1, (line - dc) / (h * 0.40)));
+          const active = (i === incoming || i === leaving);
+          n.style.setProperty('--p', active ? (1 - away).toFixed(3) : '0');
+          const live = active && !!n.dataset.on && away < 1;
+          let k = Math.max(0, 1 - Math.abs(dc - line) / (h * 0.34));
+          k = k * k * (3 - 2 * k);
+          n.style.setProperty('--k', k.toFixed(3));
+          n.querySelectorAll('.tl-shot').forEach((sh, j) => sh.classList.toggle('in', live && app > 0.18 + j * 0.27));
+        });
+
+        const last = nodes[nodes.length - 1].querySelector('.tl-dot').getBoundingClientRect();
+        const tp = Math.max(0, Math.min(1, (line - (last.top + last.height / 2)) / TAIL));
+        railEl.style.height = (baseH + TAIL * tp) + 'px';
+
+        const ir = intro.getBoundingClientRect();
+        const ip = Math.max(0, Math.min(1, (line - ir.top) / ir.height));
+        intro.style.setProperty('--i', ip.toFixed(3));
+        root.classList.toggle('started', ip > 0.99);
+
+        const cr = cone.getBoundingClientRect();
+        finale.style.setProperty('--c', Math.max(0, Math.min(1, (line - cr.top) / cr.height)).toFixed(3));
+        const sr = spread.getBoundingClientRect();
+        finale.style.setProperty('--s', Math.max(0, Math.min(1, (line - sr.top) / (h * 0.3))).toFixed(3));
+      }
+
+      function necks(railW) {
+        [[introPath, 'intro'], [conePath, 'cone']].forEach(([el, kind]) => {
+          const w = el.ownerSVGElement.getBoundingClientRect().width;
+          if (!w) return;
+          const hw = (railW / w) * 50;
+          const l = (50 - hw).toFixed(3), rt = (50 + hw).toFixed(3);
+          el.setAttribute('d', kind === 'cone'
+            ? `M${l} 0 H${rt} C ${rt} 42, 62 68, 100 100 H 0 C 38 68, ${l} 42, ${l} 0 Z`
+            : `M0 0 H100 C 62 32, ${rt} 58, ${rt} 100 H${l} C ${l} 58, 38 32, 0 0 Z`);
+        });
+      }
+
+      function layout() {
+        const t = track.getBoundingClientRect();
+        const r = railEl.getBoundingClientRect();
+        root.style.setProperty('--tl-railx', (r.left + r.width / 2) + 'px');
+        necks(r.width);
+        const d = nodes[nodes.length - 1].querySelector('.tl-dot').getBoundingClientRect();
+        baseH = d.top + d.height / 2 - t.top;
+        railH = baseH + TAIL;
+        finale.style.marginTop = (railH - t.height) + 'px';
+      }
+
+      function rail() {
+        if (!railH) { railfill.style.height = '0%'; return; }
+        const t = track.getBoundingClientRect();
+        const focus = window.innerHeight * 0.5;
+        let p = (focus - t.top) / railH;
+        const capNode = nodes[Math.min(unlocked, nodes.length - 1)];
+        const d = capNode.querySelector('.tl-dot').getBoundingClientRect();
+        const cap = (d.top + d.height / 2 - t.top) / railH;
+        p = Math.max(0, Math.min(p, cap, 1));
+        railfill.style.height = (p * 100) + '%';
+      }
+
+      let ticking = false;
+      function tick() { ticking = false; rail(); check(); }
+      function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
+
+      const SCROLL_EASE = 0.35;
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey) return;
+        const t = track.getBoundingClientRect();
+        const inSection = t.top < innerHeight * 0.9 && t.bottom > innerHeight * 0.1;
+        if (!inSection) return;
+        e.preventDefault();
+        scrollBy({ top: e.deltaY * SCROLL_EASE, behavior: 'instant' });
+      }, { passive: false });
+
+      window.addEventListener('load', () => { layout(); onScroll(); });
+      window.addEventListener('resize', () => { layout(); onScroll(); });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      layout();
+      onScroll();
     })();
   </script>
 </body>

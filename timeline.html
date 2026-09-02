@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Tree Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2f7bf6;
+    --blue-dark:#1a5fd0;
+    --ink:#1c2430;
+    --muted:#7d8794;
+    --line:#e3e7ed;
+    --chip:#e8f1ff;
+    --rail-w:3px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none}
+  html::-webkit-scrollbar{display:none}
+  body{
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- shell ---------- */
+  .wrap{max-width:1120px; margin:0 auto; padding:24px 16px 0}
+  .runway{height:0; min-height:0}
+  .outro{height:0; min-height:0}
+  .track{position:relative; padding:6px 0}
+  /* rail */
+  .rail{
+    position:absolute; left:50%; top:0; width:var(--rail-w); height:100%;
+    transform:translateX(-50%);
+    background:var(--line); border-radius:99px;
+    opacity:0; transition:opacity .5s;
+  }
+  body.started .rail{opacity:1}
+  .rail{transition:opacity .5s, height .1s linear}
+  .rail i{
+    position:absolute; left:0; top:0; width:100%; height:0%;
+    display:block; border-radius:99px;
+    background:linear-gradient(180deg,#8fbcff,var(--blue));
+    box-shadow:0 0 12px rgba(47,123,246,.5);
+    transition:height .1s linear;
+  }
+
+  /* ---------- node rows ---------- */
+  .node{
+    position:relative;
+    display:grid; grid-template-columns:1fr 46px 1fr;
+    align-items:center;
+    margin:0 0 96px;
+  }
+  .node:last-child{margin-bottom:0}
+
+  .card,.dot,.pic{grid-row:1}   /* keep all three on one row, both orientations */
+  .dot{
+    grid-column:2; justify-self:center;
+    position:relative; width:15px; height:15px; border-radius:50%;
+    background:#fff; border:var(--rail-w) solid var(--line);
+    opacity:0;
+    transition:border-color .35s, opacity .4s, transform .35s cubic-bezier(.3,1.6,.5,1);
+    z-index:2;
+  }
+  .dot::after{
+    content:""; position:absolute; inset:-9px; border-radius:50%;
+    background:radial-gradient(circle,rgba(47,123,246,.28),transparent 70%);
+    opacity:0; transition:opacity .4s;
+  }
+  body.started .dot{opacity:1}                       /* upcoming checkpoints sit grey on the line */
+  .node.lit .dot{opacity:1; border-color:var(--blue); transform:scale(calc(1.25 + var(--k,0) * .25))}
+  .node.lit .dot::after{opacity:1}
+  .node.lit .dot i{
+    position:absolute; inset:1px; border-radius:50%; background:var(--blue);
+    animation:pop .45s cubic-bezier(.3,1.7,.5,1);
+  }
+  @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+  .card{
+    grid-column:1; min-height:60px; text-align:right; padding-right:4px;
+    opacity:0; transform:translateX(-14px);
+    transition:opacity .5s, transform .18s linear;
+  }
+  .node.right .float{left:calc(50% - 34px)}
+  .card{transform-origin:right center}
+  .node.right .card{transform-origin:left center}
+  .node.right .card{grid-column:3; text-align:left; padding:0 0 0 4px; transform:translateX(14px)}
+  .node.on .card{opacity:1; transform:scale(calc(1 + var(--k,0) * .05))}   /* focused entry sits bigger */
+
+  .card h3{
+    margin:0 0 3px; font-size:14px; font-weight:700; line-height:1.32;
+    transform-origin:right center;
+    transform:scale(calc(1 + var(--k,0) * .22));
+    color:color-mix(in srgb, var(--ink) calc(72% + var(--k,0) * 28%), #fff);
+    transition:transform .12s linear, color .12s linear;
+  }
+  .node.right .card h3{transform-origin:left center}
+  .card .logo{
+    transform-origin:right center;
+    transform:scale(calc(1 + var(--k,0) * .06));
+    transition:transform .12s linear;
+  }
+  .node.right .card .logo{transform-origin:left center}
+  .brand{
+    display:flex; align-items:center; justify-content:flex-end;
+    height:22px; margin-top:9px;
+    transform-origin:right center;
+    transform:scale(calc(1 + var(--k,0) * .06));
+    transition:transform .12s linear;
+  }
+  .node.right .brand{justify-content:flex-start; transform-origin:left center}
+  .brand img{height:100%; width:auto; max-width:150px; object-fit:contain; display:block}
+  .brand i{font-style:normal; font-size:10px; font-weight:800; letter-spacing:.06em; color:#c2cad6}
+  .card p{margin:0; font-size:12px; line-height:1.5; color:var(--muted)}
+
+  .meta{display:flex; gap:6px; align-items:center; justify-content:flex-end; margin-bottom:5px; flex-wrap:wrap}
+  .node.right .meta{justify-content:flex-start}
+  .chip{
+    font-size:10px; font-weight:700; letter-spacing:.02em;
+    color:var(--blue-dark); background:var(--chip);
+    padding:2.5px 8px; border-radius:99px; white-space:nowrap;
+  }
+  .logo{
+    display:inline-block; margin-top:6px;
+    font-size:10.5px; font-weight:800; letter-spacing:.06em;
+    padding:3px 8px; border-radius:5px;
+    border:1px solid var(--line); background:#fbfcfe;
+  }
+
+  /* side image cluster (3 per checkpoint, fanned sideways) */
+  .pic{
+    opacity:var(--p,1);
+    transition:opacity .12s linear;
+    grid-column:3; justify-self:start; padding-left:44px;
+    display:flex; align-items:center;
+    pointer-events:none;
+  }
+  .node.right .pic{grid-column:1; justify-self:end; padding:0 44px 0 0}
+  .pic .shot{
+    position:relative; flex:none;
+    opacity:0; transform:translateX(22px) scale(.94);
+    transition:opacity .45s, transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .node.right .pic .shot{transform:translateX(-22px) scale(.94)}
+  .pic .shot + .shot{margin-left:-46px}
+  .pic .shot:nth-child(1){z-index:3}
+  .pic .shot:nth-child(2){z-index:2}
+  .pic .shot:nth-child(3){z-index:1}
+  /* each one arrives on its own as the checkpoint travels up the screen */
+  .pic .shot.in{opacity:1}
+  .pic .shot:nth-child(1).in{transform:rotate(-3deg)}
+  .pic .shot:nth-child(2).in{transform:rotate(2deg)}
+  .pic .shot:nth-child(3).in{transform:rotate(-1.5deg)}
+
+  .pic .frame{
+    width:190px; height:126px; border-radius:11px;
+    background:#fff; padding:4px;
+    box-shadow:0 5px 16px rgba(28,36,48,.13);
+  }
+  .shot.in .frame{animation:drift 4.2s ease-in-out infinite}
+  .pic .shot:nth-child(2) .frame{animation-duration:5.1s; animation-delay:-1.4s}
+  .pic .shot:nth-child(3) .frame{animation-duration:4.6s; animation-delay:-2.6s}
+  @keyframes drift{
+    0%,100%{transform:translateY(-5px)}
+    50%{transform:translateY(6px)}
+  }
+
+  .pic img,.pic .ph{display:block; width:100%; height:100%; border-radius:8px}
+  .pic img{object-fit:cover}
+  .pic .ph{
+    border:1px dashed #cfd7e2; background:#fafbfd;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; font-weight:800; letter-spacing:.02em; color:#c2cad6;
+  }
+
+  /* floating xp text */
+  .float{
+    position:absolute; left:calc(50% + 34px); top:34%;
+    transform:translate(-50%,-50%);
+    font-size:13px; font-weight:800; letter-spacing:.02em;
+    color:var(--blue); pointer-events:none; white-space:nowrap;
+    text-shadow:0 1px 8px rgba(255,255,255,.9);
+    animation:rise 1.5s cubic-bezier(.2,.7,.3,1) forwards;
+    z-index:5;
+  }
+  @keyframes rise{
+    0%{opacity:0; transform:translate(-50%,-50%) scale(.7)}
+    18%{opacity:1; transform:translate(-50%,-120%) scale(1.08)}
+    45%{opacity:1; transform:translate(-50%,-180%) scale(1)}
+    100%{opacity:0; transform:translate(-50%,-330%) scale(.95)}
+  }
+
+  /* intro: a small inverted cone funnelling down into the start of the line */
+  .intro{
+    position:relative; height:140px; overflow:hidden;
+    margin-left:calc(50% - 50vw); width:100vw;
+  }
+  .intro svg{
+    position:absolute; inset:0; display:block; width:100%; height:100%;
+    clip-path:inset(0 0 calc((1 - var(--i,0)) * 100%) 0);
+    transition:clip-path .1s linear;
+  }
+
+  /* finale: the line opens into a cone, then a full-bleed section */
+  .finale{position:relative; margin-top:-2px}
+  .cone{position:relative; height:210px; overflow:hidden; margin-left:calc(50% - 50vw); width:100vw}
+  .cone svg{
+    position:absolute; inset:0; display:block; width:100%; height:100%;
+    /* wipe the finished shape in from the top — no vertical squeeze */
+    clip-path:inset(0 0 calc((1 - var(--c,0)) * 100%) 0);
+    transition:clip-path .1s linear;
+  }
+  .spread{
+    margin-left:calc(50% - 50vw); width:100vw;
+    min-height:32vh; padding:0 24px 44px;
+    background:#fff;
+    opacity:var(--s,0);
+    transform:translateY(calc((1 - var(--s,0)) * 14px));
+    transition:opacity .1s linear, transform .1s linear;
+  }
+  .spread .inner{max-width:1120px; margin:0 auto}
+
+  @media (max-width:600px){
+    .node{grid-template-columns:26px 1fr; gap:12px}
+    .rail{left:13px}
+    .dot{grid-column:1; justify-self:center}
+    .card,.node.right .card{grid-column:2; text-align:left; padding:0; transform:translateX(12px)}
+    .meta,.node.right .meta{justify-content:flex-start}
+    .pic{display:none}                                  /* photos are desktop-only */
+    .card h3,.node.right .card h3{transform-origin:left center}
+    .card,.node.right .card{transform-origin:left center}
+    .logo,.node.right .logo{transform-origin:left center}
+    .brand,.node.right .brand{justify-content:flex-start; transform-origin:left center}
+    /* funnel + cone keep their apex over the rail, which now sits on the left */
+    .intro svg,.cone svg{width:200vw; transform:translateX(calc(var(--railx,50%) - 100vw))}
+    /* only the half that opens to the right of the rail */
+    .intro,.cone{clip-path:inset(0 0 0 var(--railx,0px))}
+
+    /* tighter on a phone: no photo column to fill, so the run can be much shorter */
+    .wrap{padding:16px 14px 0}
+    .node{margin:0 0 44px}
+    .card{min-height:0}
+    .card h3{font-size:13px}
+    .card p{font-size:11.5px; line-height:1.45}
+    .chip{font-size:9.5px; padding:2px 7px}
+    .logo{font-size:10.5px; margin-top:5px}
+    .brand{height:18px; margin-top:6px}
+    .float{font-size:12px}
+    .runway{height:0; min-height:0}
+    .intro{height:96px}
+    .cone{height:130px}
+    .spread{min-height:22vh; padding:0 16px 28px}
+    .outro{height:0; min-height:0}
+    .float,.node.right .float{left:auto; right:8px; top:8%; transform:translate(0,-50%)}
+    @keyframes rise{0%{opacity:0;transform:translate(0,-50%) scale(.7)}18%{opacity:1;transform:translate(0,-140%) scale(1.08)}45%{opacity:1;transform:translate(0,-200%) scale(1)}100%{opacity:0;transform:translate(0,-340%) scale(.95)}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important; transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="runway">
+  </div>
+  <div class="intro">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="introg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"    stop-color="#8fbcff" stop-opacity="0"/>
+          <stop offset=".55"  stop-color="#8fbcff" stop-opacity=".10"/>
+          <stop offset=".86"  stop-color="#8fbcff" stop-opacity=".34"/>
+          <stop offset="1"    stop-color="#8fbcff" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#introg)"
+            d="M0 0 H100 C 62 32, 50.2 58, 50.2 100 H49.8 C 49.8 58, 38 32, 0 0 Z"/>
+    </svg>
+  </div>
+  <div class="track" id="track">
+    <div class="rail"><i id="railfill"></i></div>
+  </div>
+  <div class="finale">
+    <div class="cone">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="coneg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#e3e7ed" stop-opacity="1"/>
+            <stop offset=".45" stop-color="#e3e7ed" stop-opacity=".62"/>
+            <stop offset="1"   stop-color="#e3e7ed" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#coneg)"
+              d="M49.8 0 H50.2 C 50.2 42, 62 68, 100 100 H 0 C 38 68, 49.8 42, 49.8 0 Z"/>
+      </svg>
+    </div>
+    <div class="spread"><div class="inner">
+      <!-- final section content goes here -->
+    </div></div>
+  </div>
+  <div class="outro"></div>
+</div>
+
+<script>
+/* Images: drop files named 01.jpg … 24.jpg into the folder below and they wire up
+   automatically (numbers run top-to-bottom, 3 per checkpoint). Any missing file just
+   falls back to its numbered placeholder. To point at a specific path instead, fill the
+   entry in `imgs` — that always wins. */
+const IMG_DIR = 'timeline-pics';
+const LOGO_DIR = 'logo';      /* logo/L01.png … L08.png, one per checkpoint */
+const LOGO_AUTO = true;
+const AUTO_NUMBERED = true;
+
+const DATA = [
+  {mark:"text", t:"Schooling in science group", d:"Foundation stats rolled. Curious & creative.", chips:["99.5%"], logo:"", xp:150, add:"+2 years", imgs:["","",""]},
+  {mark:"text", t:"Under graduate in Engineering", d:"Engineering base class unlocked.", chips:["8.5 GPA","4 years"], logo:"", xp:250, add:"+4 years", imgs:["","",""]},
+  {t:"UX / UI Designer & Developer", d:"Fintech domain. Design + code dual-wield.", chips:["2 years"], logo:"LTI", xp:350, add:"+2 years", imgs:["","",""]},
+  {mark:"text", t:"UX Designer & Indie game designer", d:"Shipped indie games solo. Craft +1.", chips:["1 year"], logo:"LokyStudios", xp:300, add:"+1 year", imgs:["","",""]},
+  {t:"M.Des in Interaction Design (HCI)", d:"Teaching assistantship. Research skill tree opened.", chips:["2 years","8.9 GPA"], logo:"IDC · IIT Bombay", xp:450, add:"+2 years", imgs:["","",""]},
+  {t:"UX Design Intern", d:"B2B SaaS security product.", chips:["3 months"], logo:"NUTANIX", xp:200, add:"+3 months", imgs:["","",""]},
+  {t:"Founding & senior UX designer", d:"Sole designer, led design vertical. 7 B2B SaaS products.", chips:["2.8 years"], logo:"infurnia", xp:600, add:"+2.8 years", imgs:["","",""]},
+  {t:"Sr Product Designer", d:"AI-native IDP products & AI collaboration product.", chips:["Now"], logo:"INSTABASE", xp:700, add:"+2 years", imgs:["","",""]}
+];
+
+const track = document.getElementById('track');
+const railfill = document.getElementById('railfill');
+
+DATA.forEach((n,i)=>{
+  const el = document.createElement('div');
+  el.className = 'node' + (i%2 ? ' right' : '');
+  el.innerHTML = `
+    <div class="card">
+      <div class="meta">${n.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
+      <h3>${n.t}</h3>
+      <p>${n.d}</p>
+      ${n.mark === 'text'
+        ? (n.logo ? `<span class="logo">${n.logo}</span>` : '')
+        : `<span class="brand">${LOGO_AUTO
+            ? `<img src="${LOGO_DIR}/L${String(i+1).padStart(2,'0')}.png" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{textContent:'L${String(i+1).padStart(2,'0')}'}))">`
+            : `<i>L${String(i+1).padStart(2,'0')}</i>`}</span>`}
+    </div>
+    <div class="dot"><i></i></div>
+    <div class="pic">${(n.imgs||['','','']).map((src,k)=>{
+      const nn = String(i*3 + k + 1).padStart(2,'0');          /* 01 … 24, top-to-bottom */
+      const use = src || (AUTO_NUMBERED ? `${IMG_DIR}/${nn}.webp` : '');
+      return `<div class="shot"><div class="frame">${
+        use ? `<img src="${use}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'<b>${nn}</b>'}))">`
+            : `<div class="ph"><b>${nn}</b></div>`
+      }</div></div>`;
+    }).join('')}</div>`;
+  track.appendChild(el);
+});
+
+const nodes = [...document.querySelectorAll('.node')];
+let unlocked = 0;
+
+function floatTime(node, label, delay){
+  const f = document.createElement('div');
+  f.className = 'float';
+  f.style.animationDelay = (delay||0)+'s';
+  f.textContent = label;
+  node.appendChild(f);
+  setTimeout(()=>f.remove(), 1700 + (delay||0)*1000);
+}
+
+function unlock(i, stagger){
+  const n = nodes[i];
+  if(n.dataset.on) return;
+  n.dataset.on = 1;
+  const d = (stagger||0) * 0.1;
+  n.style.transitionDelay = d+'s';
+  n.classList.add('on');
+  unlocked++;
+  rail();
+  floatTime(n, DATA[i].add, d);
+  if(unlocked === DATA.length) document.body.classList.add('complete');
+}
+
+function check(){
+  const h    = window.innerHeight;
+  const line = h * 0.5;    /* everything happens on the centre line of the screen */
+  const inn  = h * 1.02;   /* first photo starts arriving */
+  let n0 = 0;
+
+  /* only two clusters live at once: the checkpoint just left behind, and the next one coming */
+  const centers = nodes.map(n=>{ const d = n.querySelector('.dot').getBoundingClientRect(); return d.top + d.height/2; });
+  const next = centers.findIndex(c => c > line);
+  const incoming = next === -1 ? -1 : next;
+  const leaving  = next === -1 ? nodes.length - 1 : next - 1;
+
+  nodes.forEach((n,i)=>{
+    const top = n.getBoundingClientRect().top;
+    /* the dot only lights when the fill actually arrives at it */
+    const dot = n.querySelector('.dot').getBoundingClientRect();
+    const dc = dot.top + dot.height/2;
+    const reached = dc < line;
+    n.classList.toggle('lit', reached);          /* goes back to grey when the fill recedes */
+    if(!n.dataset.on && reached) unlock(i, n0++);
+    /* photos arrive one by one on the way up, are all in at the checkpoint,
+       then the whole cluster fades as it travels past */
+    const app  = Math.max(0, Math.min(1, (inn - dc) / (inn - line)));   /* 0 → 1 approaching */
+    const away = Math.max(0, Math.min(1, (line - dc) / (h * 0.40)));    /* 0 → 1 leaving */
+    const active = (i === incoming || i === leaving);
+    n.style.setProperty('--p', active ? (1 - away).toFixed(3) : '0');
+    const live = active && !!n.dataset.on && away < 1;
+    /* peaks exactly when the fill line sits on this checkpoint, eases off either side */
+    let k = Math.max(0, 1 - Math.abs(dc - line) / (h * 0.34));
+    k = k * k * (3 - 2 * k);                       /* smooth in and out, no linear ramp */
+    n.style.setProperty('--k', k.toFixed(3));
+    n.querySelectorAll('.shot').forEach((sh,j)=>
+      sh.classList.toggle('in', live && app > 0.18 + j * 0.27));
+  });
+  /* the grey tail only grows once the blue has landed on the final checkpoint,
+     and the cone picks up straight where the tail stops */
+  const last = nodes[nodes.length-1].querySelector('.dot').getBoundingClientRect();
+  const tp = Math.max(0, Math.min(1, (line - (last.top + last.height/2)) / TAIL));
+  railEl.style.height = (baseH + TAIL * tp) + 'px';
+
+  const ir = intro.getBoundingClientRect();
+  /* the funnel finishes exactly when the fill line reaches the top of the rail,
+     so the line starts filling the moment the blue touches it */
+  const ip = Math.max(0, Math.min(1, (line - ir.top) / ir.height));
+  intro.style.setProperty('--i', ip.toFixed(3));
+  /* the rail shows up as the funnel lands on it, not one checkpoint later */
+  document.body.classList.toggle('started', ip > 0.99);
+
+  /* the cone opens as you scroll into it, not all at once at the end */
+  const cr = cone.getBoundingClientRect();
+  finale.style.setProperty('--c', Math.max(0, Math.min(1, (line - cr.top) / cr.height)).toFixed(3));
+  const sr = spread.getBoundingClientRect();
+  finale.style.setProperty('--s', Math.max(0, Math.min(1, (line - sr.top) / (h * 0.3))).toFixed(3));
+
+}
+
+/* rail fill + unlock checks, driven by real scroll events */
+/* the grey line stops at the last checkpoint; the cone takes over from there */
+const railEl = document.querySelector('.rail');
+const finale = document.querySelector('.finale');
+const intro  = document.querySelector('.intro');
+const cone   = document.querySelector('.cone');
+const spread = document.querySelector('.spread');
+let railH = 0;
+const TAIL = 64;   /* grey overshoot below the final dot, before the cone opens */
+
+/* the SVGs stretch with the viewport, so the neck is re-cut each layout
+   to land on exactly the rail's own width */
+const introPath = document.querySelector('.intro path');
+const conePath  = document.querySelector('.cone path');
+
+function necks(railW){
+  [[introPath, 'intro'], [conePath, 'cone']].forEach(([el, kind])=>{
+    const w = el.ownerSVGElement.getBoundingClientRect().width;
+    if(!w) return;
+    const hw = (railW / w) * 50;                 /* half the rail, in viewBox units */
+    const l = (50 - hw).toFixed(3), rt = (50 + hw).toFixed(3);
+    el.setAttribute('d', kind === 'cone'
+      ? `M${l} 0 H${rt} C ${rt} 42, 62 68, 100 100 H 0 C 38 68, ${l} 42, ${l} 0 Z`
+      : `M0 0 H100 C 62 32, ${rt} 58, ${rt} 100 H${l} C ${l} 58, 38 32, 0 0 Z`);
+  });
+}
+
+let baseH = 0;   /* rail length up to the final checkpoint, before the tail grows */
+
+function layout(){
+  const t = track.getBoundingClientRect();
+  /* funnel + cone apexes follow wherever the rail actually sits */
+  const r = railEl.getBoundingClientRect();
+  document.documentElement.style.setProperty('--railx', (r.left + r.width/2) + 'px');
+  necks(r.width);
+  const d = nodes[nodes.length-1].querySelector('.dot').getBoundingClientRect();
+  baseH = d.top + d.height/2 - t.top;
+  railH = baseH + TAIL;
+  finale.style.marginTop = (railH - t.height)+'px';
+}
+
+/* fills smoothly with the scroll, but never runs past the next unhit checkpoint —
+   and it follows the scroll back up the same way */
+function rail(){
+  if(!railH){ railfill.style.height = '0%'; return; }
+  const t = track.getBoundingClientRect();
+  const focus = window.innerHeight * 0.5;
+  let p = (focus - t.top) / railH;
+
+  const capNode = nodes[Math.min(unlocked, nodes.length - 1)];
+  const d = capNode.querySelector('.dot').getBoundingClientRect();
+  const cap = (d.top + d.height/2 - t.top) / railH;
+
+  p = Math.max(0, Math.min(p, cap, 1));
+  railfill.style.height = (p*100)+'%';
+}
+let ticking = false;
+function tick(){ ticking = false; rail(); check(); }
+function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(tick); } }
+addEventListener('load', ()=>{ layout(); onScroll(); });
+addEventListener('resize', layout);
+/* the timeline itself scrolls slower than the rest of the page */
+const SCROLL_EASE = 0.45;          /* 1 = normal speed, lower = slower through the track */
+addEventListener('wheel', e=>{
+  if(e.ctrlKey) return;            /* leave pinch-zoom alone */
+  const t = track.getBoundingClientRect();
+  const inSection = t.top < innerHeight * 0.9 && t.bottom > innerHeight * 0.1;
+  if(!inSection) return;
+  e.preventDefault();
+  scrollBy({top: e.deltaY * SCROLL_EASE, behavior:'instant'});   /* bypass the page's smooth-scroll */
+}, {passive:false});
+
+addEventListener('scroll', onScroll, {passive:true});
+addEventListener('resize', onScroll);
+layout(); onScroll();
+</script>
+</body>
+</html>
