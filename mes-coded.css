@@ -661,3 +661,28 @@ img.brand-logo {
 @media (max-width: 900px) {
   .stair-row, .persona-photo-row, .pp-tq { grid-template-columns: 1fr; }
 }
+
+.persona-card2 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 20px;
+}
+.persona-card2-head { display: flex; flex-direction: column; gap: 6px; }
+.persona-card2-avatar {
+  width: 160px; height: 160px; min-height: 0;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.persona-card2-head .sec-h2 { margin: 0; }
+.persona-card2-name {
+  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-weight: 700; font-size: var(--fs-h3);
+  line-height: 1.1; color: var(--ink); letter-spacing: 0.02em;
+}
+.persona-card2-name span {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400; color: var(--ink-2);
+  font-size: var(--fs-body-sm);
+  display: block; margin-top: 6px; line-height: 1.45; max-width: 90ch;
+}
