@@ -809,6 +809,7 @@
       const intro = root.querySelector('.tl-intro');
       const cone = root.querySelector('.tl-cone');
       const spread = root.querySelector('.tl-spread');
+      const contactSection = document.getElementById('contact');
       const introPath = root.querySelector('.tl-intro path');
       const conePath = root.querySelector('.tl-cone path');
       let railH = 0;
@@ -853,7 +854,9 @@
         root.classList.toggle('started', ip > 0.99);
 
         const cr = cone.getBoundingClientRect();
-        finale.style.setProperty('--c', Math.max(0, Math.min(1, (line - cr.top) / cr.height)).toFixed(3));
+        const cVal = Math.max(0, Math.min(1, (line - cr.top) / cr.height));
+        finale.style.setProperty('--c', cVal.toFixed(3));
+        if (contactSection) contactSection.classList.toggle('tl-cone-filled', cVal >= 1);
         const sr = spread.getBoundingClientRect();
         finale.style.setProperty('--s', Math.max(0, Math.min(1, (line - sr.top) / (h * 0.3))).toFixed(3));
       }

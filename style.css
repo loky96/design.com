@@ -1475,6 +1475,13 @@ h1, h2, h3, h4, h5, h6 {
   padding: 100px 0 0;
   background: #ffffff;
   clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.contact.tl-cone-filled {
+  opacity: 1;
+  transform: translateY(0);
 }
 #contactFlowers.contact-flowers {
   display: none;
