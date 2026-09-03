@@ -205,7 +205,7 @@ function renderSaOauthApps(sa) {
     <div class="sa-token-row">
       <div class="col-token-name">${app.name}</div>
       <div class="col-token-desc">${app.description || ''}</div>
-      <div class="col-token-value">${app.clientId}</div>
+      <div class="col-token-value">${truncateTokenValue(app.clientId)}</div>
       <div class="col-token-value">${'*'.repeat(9)}</div>
       <div class="col-token-expiration">${truncateTokenValue(app.clientId)}</div>
       <div class="col-token-actions-spacer"></div>
@@ -236,7 +236,7 @@ function renderOauthAppsInto(apps, ids) {
     <div class="sa-token-row">
       <div class="col-token-name">${app.name}</div>
       <div class="col-token-desc">${app.description || ''}</div>
-      <div class="col-token-value">${app.clientId}</div>
+      <div class="col-token-value">${truncateTokenValue(app.clientId)}</div>
       <div class="col-token-value">${'*'.repeat(9)}</div>
       <div class="col-token-expiration">${truncateTokenValue(app.clientId)}</div>
       <div class="col-token-actions-spacer"></div>
@@ -1401,7 +1401,7 @@ function formatTokenExpiration(option) {
 }
 
 function truncateTokenValue(value) {
-  if (!value || value.length <= 8) return value || '';
+  if (!value) return '';
   return value.slice(0, 4) + '...';
 }
 
@@ -3543,7 +3543,7 @@ function toggleConfigMethod(val) {
 // Advanced settings expand/collapse
 function toggleAdvancedSettings() {
   const panel = document.getElementById('saml-advanced');
-  const chevron = document.getElementById('advanced-chevron');
+  const chevron = document.getElementById('advanced-settings-toggle').querySelector('.advanced-chevron');
   const isOpen = panel.style.display !== 'none';
   panel.style.display = isOpen ? 'none' : 'block';
   // chevron: right when closed, down when open

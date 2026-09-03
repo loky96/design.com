@@ -721,3 +721,23 @@ a.ref-pill::after { content: " \2197"; font-size: 11px; opacity: .55; }
   font-size: var(--fs-body-sm);
   display: block; margin-top: 6px; line-height: 1.45; max-width: 90ch;
 }
+
+/* Gallery images 1.4x the shared default size, scoped to this case study */
+.img-gallery-item {
+  width: min(84%, 588px);
+  height: auto;
+  overflow: visible;
+}
+.img-gallery-item img {
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+.img-gallery-item .ph { min-height: 364px; }
+.img-gallery-caption {
+  margin: 8px 2px 0;
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+}
