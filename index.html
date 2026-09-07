@@ -48,7 +48,7 @@
         <div class="hero-avatar-wrap" id="heroAvatarWrap">
           <img src="images/shimmer.svg" alt="" class="hero-avatar-shimmer" aria-hidden="true" />
           <img src="images/Mysketch-back.webp" alt="" class="hero-avatar-img-back" aria-hidden="true" />
-          <img src="images/Mysketch.webp" alt="Lokesh Kumar — Product Designer" class="hero-avatar-img" />
+          <img src="images/character/ideal.gif" alt="Lokesh Kumar — Product Designer" class="hero-avatar-img" onmouseenter="this.src='images/character/hello.webp'" onmouseleave="this.src='images/character/ideal.gif'" />
         </div>
 
         <div class="hero-intro">
@@ -141,7 +141,6 @@
           </div>
           <div class="hcard-meta">
             <span>⏱ 3 Months</span>
-            <span>🕰 Before AI</span>
             <span>@ Infurnia</span>
           </div>
         </div>
@@ -163,7 +162,6 @@
           </div>
           <div class="hcard-meta">
             <span>⏱ 3 Months</span>
-            <span>🕰 Before AI</span>
           </div>
         </div>
         <div class="hcard-img">
@@ -187,7 +185,6 @@
           </div>
           <div class="hcard-meta">
             <span>⏱ 2 Years</span>
-            <span>🕰 Before AI</span>
             <span>@ Infurnia</span>
           </div>
         </div>
@@ -229,7 +226,6 @@
           </div>
           <div class="hcard-meta">
             <span>⏱ 5 Months</span>
-            <span>🕰 Before AI</span>
             <span>@ Personal</span>
           </div>
         </div>
@@ -347,7 +343,6 @@
   <!-- JOURNEY -->
   <section class="journey" id="journey">
     <div class="journey-inner">
-      <h2 class="journey-hobbies-title">My journey</h2>
       <div class="journey-timeline">
         <div class="tl-runway"></div>
         <div class="tl-intro">
@@ -554,7 +549,6 @@
               </a>
             </div>
             <a href="Resume/Lokesh_Kumar_V_M_Sr_Product_Designer_ATS_Resume.pdf" target="_blank" rel="noopener" class="resume-btn">ATS Resume</a>
-            <a href="Resume/Lokesh Kumar V M Sr Product Designer Resume.pdf" target="_blank" rel="noopener" class="resume-btn">Design Resume</a>
             <div class="contact-socials">
               <a href="https://wa.me/919677192082" target="_blank" rel="noopener" aria-label="WhatsApp">
                 <img src="images/whatsapp.png" alt="WhatsApp" />
@@ -635,24 +629,6 @@
         size: 2,
         speed: 0.7,
         scale: 1.4,
-      });
-    }
-  </script>
-  <script>
-    const heroAvatarWrap = document.getElementById('heroAvatarWrap');
-    if (heroAvatarWrap) {
-      heroAvatarWrap.addEventListener('pointermove', (e) => {
-        const rect = heroAvatarWrap.getBoundingClientRect();
-        heroAvatarWrap.style.setProperty('--reveal-x', `${e.clientX - rect.left}px`);
-        heroAvatarWrap.style.setProperty('--reveal-y', `${e.clientY - rect.top}px`);
-      });
-      heroAvatarWrap.addEventListener('pointerenter', () => {
-        document.body.classList.add('pixel-cursor-hidden');
-      });
-      heroAvatarWrap.addEventListener('pointerleave', () => {
-        heroAvatarWrap.style.removeProperty('--reveal-x');
-        heroAvatarWrap.style.removeProperty('--reveal-y');
-        document.body.classList.remove('pixel-cursor-hidden');
       });
     }
   </script>
@@ -901,14 +877,23 @@
       function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
 
       const SCROLL_EASE = 0.35;
-      window.addEventListener('wheel', (e) => {
+      function onWheel(e) {
         if (e.ctrlKey) return;
         const t = track.getBoundingClientRect();
         const inSection = t.top < innerHeight * 0.9 && t.bottom > innerHeight * 0.1;
         if (!inSection) return;
         e.preventDefault();
         scrollBy({ top: e.deltaY * SCROLL_EASE, behavior: 'instant' });
-      }, { passive: false });
+      }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          const active = entries[0].isIntersecting;
+          window.removeEventListener('wheel', onWheel, { passive: false });
+          if (active) window.addEventListener('wheel', onWheel, { passive: false });
+        }, { rootMargin: '10% 0px' }).observe(track);
+      } else {
+        window.addEventListener('wheel', onWheel, { passive: false });
+      }
 
       window.addEventListener('load', () => { layout(); onScroll(); });
       window.addEventListener('resize', () => { layout(); onScroll(); });

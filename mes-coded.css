@@ -540,7 +540,7 @@ img.brand-logo {
   margin-bottom: 2px;
 }
 .persona-photo-card h4 {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Arima", sans-serif;
   font-size: var(--fs-h4);
   font-weight: 700;
   line-height: 1.1;
@@ -558,6 +558,7 @@ img.brand-logo {
   padding: 12px 14px 12px 16px;
   background: color-mix(in srgb, var(--pp-accent-soft) 70%, #fff);
   border-radius: 10px;
+  font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: var(--fs-body-sm);
   line-height: 1.45;
@@ -568,7 +569,7 @@ img.brand-logo {
   position: absolute;
   top: -6px;
   left: 8px;
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Arima", sans-serif;
   font-size: 42px;
   line-height: 1;
   color: color-mix(in srgb, var(--pp-accent) 35%, transparent);
@@ -634,7 +635,7 @@ img.brand-logo {
 .ujm-table { width: 100%; border-collapse: collapse; font-size: var(--fs-label); min-width: 900px; }
 .ujm-table th, .ujm-table td { padding: 14px 16px; border-bottom: 1px solid var(--light-border); border-right: 1px solid var(--light-border); vertical-align: top; text-align: left; }
 .ujm-table th:last-child, .ujm-table td:last-child { border-right: none; }
-.ujm-table thead th { background: var(--light-card); font-family: "Rajdhani", sans-serif; font-size: var(--fs-body); }
+.ujm-table thead th { background: var(--light-card); font-family: "Arima", sans-serif; font-size: var(--fs-body); }
 .ujm-table tbody th { font-weight: 700; background: var(--light-card); width: 120px; }
 .ujm-table td { color: var(--ink-2); }
 .ujm-table tbody tr:last-child th, .ujm-table tbody tr:last-child td { border-bottom: none; }
@@ -643,7 +644,7 @@ img.brand-logo {
 .nps-detail-row { display: flex; gap: 10px; font-size: var(--fs-body-sm); margin-bottom: 8px; }
 .nps-detail-row .k { color: #9a9a9a; min-width: 74px; flex-shrink: 0; }
 .nps-detail-row .v { color: #fff; }
-.nps-quote { font-style: italic; color: var(--dark-text-dim); font-size: var(--fs-body-sm); margin: 12px 0 16px; }
+.nps-quote { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--dark-text-dim); font-size: var(--fs-body-sm); margin: 12px 0 16px; }
 .nps-breakdown { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
 .nps-breakdown span { padding: 6px 12px; border-radius: 8px; font-size: var(--fs-label); font-weight: 600; }
 .nps-breakdown .promoters { background: rgba(58,168,94,0.2); color: #6bcf8e; }
@@ -676,7 +677,7 @@ img.brand-logo {
 }
 .persona-card2-head .sec-h2 { margin: 0; }
 .persona-card2-name {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-weight: 700; font-size: var(--fs-h3);
   line-height: 1.1; color: var(--ink); letter-spacing: 0.02em;
 }

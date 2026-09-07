@@ -275,7 +275,7 @@
 .lg-finding-list--num li::before {
   content: counter(finding-num);
   position: absolute; left: 14px; top: 12px;
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-body-sm); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-body-sm); font-weight: 700;
   color: var(--lg-cyan); opacity: 0.75;
 }
 
@@ -295,7 +295,7 @@
   box-shadow: 0 14px 36px rgba(0,0,0,0.35);
 }
 .lg-retro-num {
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-h3); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-h3); font-weight: 700;
   line-height: 1; color: #fff; opacity: 0.35;
 }
 .lg-retro-card h4 { font-size: var(--fs-body-lg); font-weight: 600; color: #fff; margin: -8px 0 0; }
@@ -305,6 +305,7 @@
   margin: 4px 0 0; padding: 14px 16px;
   background: rgba(78,205,253,0.08); border-radius: 10px;
   border: 1px solid rgba(78,205,253,0.15);
+  font-family: "Cormorant Garamond", serif;
   font-size: var(--fs-body-sm); font-style: italic; line-height: 1.55;
   color: var(--lg-cyan-dim);
 }
@@ -322,14 +323,14 @@
 /* ---------- Insight cards (Takeaways + Conclusion) ---------- */
 .lg-insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
 .lg-insight-card { border-radius: 14px; padding: 22px 20px; }
-.lg-insight-card .num { font-family: "Rajdhani", sans-serif; font-size: var(--fs-h4); font-weight: 700; color: #fff; opacity: 0.6; margin-bottom: 10px; display: block; }
+.lg-insight-card .num { font-family: "Arima", sans-serif; font-size: var(--fs-h4); font-weight: 700; color: #fff; opacity: 0.6; margin-bottom: 10px; display: block; }
 .lg-insight-card p { font-size: var(--fs-body-sm); line-height: 1.55; color: rgba(255,255,255,0.9); margin: 0; }
 .lg-insight-card.c1 { background: #2166c9; }
 .lg-insight-card.c2 { background: #1d7a8c; }
 .lg-insight-card.c3 { background: #c9432f; }
 .lg-insight-card.c4 { background: #1c3f8c; }
 .lg-insight-card.c5 { background: #7a4fc9; }
-.lg-quote-strip { font-size: var(--fs-body); font-style: italic; color: var(--lg-cyan-dim); margin-top: 14px; padding-left: 0; }
+.lg-quote-strip { font-family: "Cormorant Garamond", serif; font-size: var(--fs-body); font-style: italic; color: var(--lg-cyan-dim); margin-top: 14px; padding-left: 0; }
 
 /* ---------- Eval methodology cards ---------- */
 .lg-eval-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -372,7 +373,7 @@
   border: 1px solid rgba(78,205,253,0.12);
 }
 .lg-eval-method-num {
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-h3); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-h3); font-weight: 700;
   line-height: 1; color: var(--lg-cyan); opacity: 0.7; flex-shrink: 0;
 }
 .lg-eval-method h4 { font-size: var(--fs-body); font-weight: 600; color: #fff; margin: 0 0 6px; }
@@ -392,7 +393,7 @@
   position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
   width: 26px; height: 26px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-body-sm); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-body-sm); font-weight: 700;
   color: #fff; background: var(--lg-eval-accent, var(--lg-cyan));
   box-shadow: 0 0 12px rgba(78,205,253,0.35);
 }
@@ -418,7 +419,7 @@
 .lg-protocol-badge {
   flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-h4); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-h4); font-weight: 700;
   color: #fff; background: var(--lg-protocol-accent, #7a4fc9);
   box-shadow: 0 0 20px rgba(78,205,253,0.35);
 }
@@ -452,7 +453,7 @@
 .lg-task-checklist li::after {
   content: counter(task-step, decimal-leading-zero);
   margin-left: auto; flex-shrink: 0;
-  font-family: "Rajdhani", sans-serif; font-size: var(--fs-label); font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: var(--fs-label); font-weight: 700;
   color: var(--lg-protocol-accent, var(--lg-cyan)); opacity: 0.55;
 }
 .lg-goal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -474,7 +475,7 @@
 }
 .lg-goal-questions li::before {
   content: "?"; position: absolute; left: 0; top: 0;
-  font-family: "Rajdhani", sans-serif; font-size: 13px; font-weight: 700;
+  font-family: "Arima", sans-serif; font-size: 13px; font-weight: 700;
   color: var(--lg-cyan); opacity: 0.8;
 }
 

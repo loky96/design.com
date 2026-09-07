@@ -200,7 +200,7 @@ img.brand-logo {
   margin-bottom: 20px;
 }
 .sec.navy .brief-quote {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: var(--fs-h4);
   font-weight: 600;
   line-height: 1.35;
@@ -318,7 +318,7 @@ img.brand-logo {
 .framework-name {
   position: relative;
   padding: 16px 18px 16px 44px;
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-weight: 700;
   font-size: var(--fs-body);
   letter-spacing: 0.02em;
@@ -366,7 +366,7 @@ img.brand-logo {
   color: var(--ink);
 }
 .persona-card2-banner h3 {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-label);
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -397,7 +397,7 @@ img.brand-logo {
   padding: 0;
 }
 .persona-card2-name {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-weight: 700;
   font-size: var(--fs-h3);
   line-height: 1.1;
@@ -519,7 +519,7 @@ img.brand-logo {
   box-shadow: 0 10px 24px rgba(23, 69, 138, 0.1);
 }
 .need-pill-num {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-h3);
   font-weight: 700;
   line-height: 1;
@@ -530,7 +530,7 @@ img.brand-logo {
 .need-pill-text {
   position: relative;
   z-index: 1;
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-body);
   font-weight: 700;
   line-height: 1.3;
@@ -573,7 +573,7 @@ img.brand-logo {
   background: rgba(220, 80, 80, 0.45);
 }
 .eval-checklist-card h4 {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-body);
   font-weight: 700;
   margin: 0 0 12px;
@@ -701,7 +701,7 @@ img.brand-logo {
   background: linear-gradient(135deg, #17458a 0%, #0f3266 100%);
   color: #fff;
   text-decoration: none;
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-h6);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -784,7 +784,7 @@ img.brand-logo {
   background: rgba(220, 80, 80, 0.45);
 }
 .check-box h4 {
-  font-family: "Rajdhani", "DM Sans", sans-serif;
+  font-family: "Arima", "DM Sans", sans-serif;
   font-size: var(--fs-h6);
   font-weight: 700;
   margin: 0 0 14px;
