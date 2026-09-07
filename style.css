@@ -255,6 +255,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   position: relative;
   z-index: 1;
+  mix-blend-mode: multiply;
 }
 .hero-avatar-shimmer {
   position: absolute;
@@ -268,21 +269,36 @@ h1, h2, h3, h4, h5, h6 {
 .hero-intro {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 4px;
   padding-top: 6px;
 }
 .hero-greet {
-  font-size: var(--fs-body);
+  font-family: 'Arima', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--fs-body-lg);
   color: var(--mid);
   margin: 0;
   text-align: left;
+  position: relative;
+  align-self: flex-start;
+}
+/* Tail sweeps up from the lower left; tip lands on the text's centre line. */
+.hero-greet-arrow {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  width: 40px;
+  height: auto;
+  color: #C89A1E;
+  opacity: 0.5;
+  transform: translateY(-20%);
+  pointer-events: none;
 }
 .hero-role-loader {
   --bg-color: #FFFFFF;
   color: var(--mid);
-  font-family: inherit;
-  font-weight: 500;
-  font-size: var(--fs-h4);
+  font-family: 'Arima', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: var(--fs-h3);
   box-sizing: content-box;
   height: 1.3em;
   display: flex;
@@ -391,10 +407,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero-highlight {
   background-color: transparent;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 32' preserveAspectRatio='none'%3E%3Cpath d='M3,14 C60,10 140,16 190,12 C230,9 265,14 297,12 L297,24 C265,27 230,23 190,26 C140,29 60,24 3,27 Z' fill='%23FFC82C' fill-opacity='0.12'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 32' preserveAspectRatio='none'%3E%3Cpath d='M3,14 C60,10 140,16 190,12 C230,9 265,14 297,12 L297,24 C265,27 230,23 190,26 C140,29 60,24 3,27 Z' fill='%23FFC82C' fill-opacity='0.45'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 3px 5px;
+  padding: 3px 6px;
   margin: 0 -2px;
   border-radius: 4px;
   box-decoration-break: clone;
@@ -1044,15 +1060,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 .about-img-col {
   display: flex;
+  flex-direction: column;
   min-height: 0;
+  align-items: flex-start;
+  position: relative;
+}
+.about-photo-caption {
+  align-self: stretch;
+  margin: 10px 0 0;
+  font-size: var(--fs-caption);
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+  transform: rotate(-3deg);
+}
+.about-img-col::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 90px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 2;
+  pointer-events: none;
 }
 .about-photo {
   width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
   border-radius: var(--radius);
   object-fit: cover;
   object-position: center top;
   box-shadow: var(--shadow-lg);
+  transform: rotate(-3deg);
 }
 .about-text-col h2 {
   font-family: 'Arima', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1200,7 +1244,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: var(--p, 1);
   transition: opacity .12s linear;
   grid-column: 3; justify-self: start; padding-left: 44px;
-  display: flex; align-items: center;
+  display: flex; align-items: flex-start;
   pointer-events: none;
 }
 .journey-timeline .tl-node.right .tl-pic { grid-column: 1; justify-self: end; padding: 0 44px 0 0; }
@@ -1768,6 +1812,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .hero-quote {
     font-size: var(--fs-h4);
+  }
+  .hero-greet-arrow {
+    display: none;
   }
 
   .contact-actions {
