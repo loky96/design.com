@@ -203,3 +203,65 @@ document.addEventListener('click', (e) => {
     spawnSniper(e.clientX, e.clientY);
   });
 })();
+
+// Animated character cursor over project cards.
+// A DOM <img> rather than a CSS cursor, because browsers only ever render
+// frame 0 of an image passed to cursor: url().
+(function initCardCursor() {
+  if (!document.querySelector('.hcard')) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Fingertip sits at 58,44 of the 64x64 art — line it up with the real pointer.
+  const HOTSPOT_X = (58 / 64) * 100;
+  const HOTSPOT_Y = (44 / 64) * 100;
+
+  const img = document.createElement('img');
+  img.src = 'images/character/pointingsmall.gif';
+  img.alt = '';
+  img.className = 'card-cursor';
+  img.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(img);
+
+  let x = 0, y = 0, cx = 0, cy = 0, rot = 0;
+  let active = false, placed = false, raf = null;
+
+  function frame() {
+    const prev = cx;
+    cx += (x - cx) * 0.2;
+    cy += (y - cy) * 0.2;
+    const target = Math.max(-16, Math.min(16, (cx - prev) * 1.2));
+    rot += (target - rot) * 0.16;
+    img.style.transform =
+      `translate3d(${cx}px, ${cy}px, 0) translate(-${HOTSPOT_X}%, -${HOTSPOT_Y}%) rotate(${rot}deg)`;
+
+    // Keep animating while hovering, then let it settle before parking the loop.
+    raf = (active || Math.hypot(x - cx, y - cy) > 0.4 || Math.abs(rot) > 0.4)
+      ? requestAnimationFrame(frame)
+      : null;
+  }
+  function start() { if (!raf) raf = requestAnimationFrame(frame); }
+
+  window.addEventListener('pointermove', (e) => {
+    x = e.clientX;
+    y = e.clientY;
+    if (!placed) { cx = x; cy = y; placed = true; }
+    if (active) start();
+  }, { passive: true });
+
+  document.addEventListener('pointerover', (e) => {
+    if (active || !e.target.closest || !e.target.closest('.hcard')) return;
+    active = true;
+    cx = x; cy = y; rot = 0;
+    img.classList.add('is-on');
+    start();
+  }, { passive: true });
+
+  document.addEventListener('pointerout', (e) => {
+    if (!active || !e.target.closest || !e.target.closest('.hcard')) return;
+    const to = e.relatedTarget;
+    if (to && to.closest && to.closest('.hcard')) return;
+    active = false;
+    img.classList.remove('is-on');
+  }, { passive: true });
+})();

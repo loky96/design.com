@@ -107,7 +107,7 @@ h3,
 }
 
 .nav-logo {
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Arima", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: var(--fs-h6);
   color: var(--ink);
@@ -121,6 +121,7 @@ h3,
 }
 
 .nav-links a {
+  font-family: "Arima", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink-2);
   text-decoration: none;
   font-size: var(--fs-body-sm);

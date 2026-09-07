@@ -576,8 +576,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── HORIZONTAL CARD ────────────────────────────────────────── */
+/* Beats the `a *` rule pixel-cursor.js injects, so the character in
+   .card-cursor stands in for the pointer across the whole card. */
+.hcard,
+.hcard * {
+  cursor: none !important;
+}
+.card-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 54px;
+  height: auto;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  will-change: transform;
+  image-rendering: pixelated;
+}
+.card-cursor.is-on { opacity: 1; }
+
 .hcard {
-  cursor: url("images/character/pointingsmall-cursor.png") 32 32, pointer !important;
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   align-items: stretch;
