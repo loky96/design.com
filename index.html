@@ -811,12 +811,16 @@
           const dot = n.querySelector('.tl-dot').getBoundingClientRect();
           const dc = dot.top + dot.height / 2;
           const reached = dc < line;
-          n.classList.toggle('lit', reached);
+          if (reached) n.classList.add('lit');
           if (!n.dataset.on && reached) unlock(i, n0++);
           const app = Math.max(0, Math.min(1, (inn - dc) / (inn - line)));
           const away = Math.max(0, Math.min(1, (line - dc) / (h * 0.40)));
           const active = (i === incoming || i === leaving);
-          n.style.setProperty('--p', active ? (1 - away).toFixed(3) : '0');
+          const p = active ? (1 - away) : 0;
+          if (p > (n.dataset.maxP || 0)) {
+            n.dataset.maxP = p;
+            n.style.setProperty('--p', p.toFixed(3));
+          }
           const live = active && !!n.dataset.on && away < 1;
           let k = Math.max(0, 1 - Math.abs(dc - line) / (h * 0.34));
           k = k * k * (3 - 2 * k);
