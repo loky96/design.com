@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursor options — Loky</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { min-height: 100vh; }
+    .bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--dark); padding: 12px 20px;
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    }
+    .bar h6 {
+      font-family: 'DM Sans', sans-serif; color: #fff; font-size: 12px;
+      font-weight: 700; letter-spacing: 1px; margin-right: 8px;
+      -webkit-mask-image: none; mask-image: none;
+    }
+    .opt {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 8px;
+      padding: 7px 13px; cursor: pointer; transition: background .15s, color .15s;
+    }
+    .opt:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .opt.on { background: #fff; color: var(--dark); border-color: #fff; }
+    .desc {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(15,17,23,0.92); backdrop-filter: blur(10px);
+      color: rgba(255,255,255,0.8); font-family: 'DM Sans', sans-serif;
+      font-size: 13px; padding: 12px 20px; line-height: 1.5;
+    }
+    .desc b { color: #fff; }
+
+    .stage { padding: 104px 40px 96px; max-width: 980px; margin: 0 auto; }
+    .stage h1 { font-size: clamp(2.2rem,1.4rem+2.6vw,3.2rem); line-height: 1.1; margin: 0 0 18px; -webkit-mask-image: none; mask-image: none; }
+    .stage p { font-size: var(--fs-body-lg); color: var(--mid); line-height: 1.65; max-width: 60ch; margin: 0 0 22px; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 34px; }
+    .btn {
+      font-family: 'DM Sans', sans-serif; font-size: var(--fs-body); font-weight: 600;
+      padding: 13px 22px; border-radius: 10px; text-decoration: none; display: inline-block;
+      background: var(--dark); color: #fff; border: none;
+    }
+    .btn.ghost { background: transparent; color: var(--dark); border: 1.5px solid var(--border); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 16px; }
+    .card {
+      border: 2px solid var(--dark); border-radius: var(--radius);
+      padding: 24px; background: var(--bg); box-shadow: var(--shadow);
+      transition: transform .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card h3 { font-size: var(--fs-h5); margin: 0 0 8px; -webkit-mask-image: none; mask-image: none; }
+    .card p { font-size: var(--fs-body-sm); color: var(--muted); margin: 0; }
+
+    /* cursor layer */
+    #layer { position: fixed; inset: 0; z-index: 190; pointer-events: none; overflow: hidden; }
+    body.hide-native, body.hide-native * { cursor: none !important; }
+    .dot, .ring, .glow, .charc { position: absolute; left: 0; top: 0; will-change: transform; }
+    .glow { border-radius: 50%; filter: blur(28px); }
+    .charc { width: 54px; height: auto; }
+    .cross { position: absolute; background: var(--blue); will-change: transform; }
+  </style>
+</head>
+<body>
+
+<div class="bar">
+  <h6>CURSOR</h6>
+  <button class="opt" data-k="none">0 · Native</button>
+  <button class="opt on" data-k="current">1 · Current trail</button>
+  <button class="opt" data-k="tuned">2 · Trail, tuned</button>
+  <button class="opt" data-k="ringdot">3 · Ring + dot</button>
+  <button class="opt" data-k="magnetic">4 · Magnetic</button>
+  <button class="opt" data-k="glow">5 · Soft glow</button>
+  <button class="opt" data-k="crosshair">6 · Crosshair</button>
+  <button class="opt" data-k="character">7 · Character</button>
+</div>
+
+<div class="stage">
+  <h1>Move your cursor around. Hover the buttons and cards.</h1>
+  <p>Each option changes how the pointer feels, not just how it looks. Switch between them above and pay attention to two things: how much the cursor <em>lags</em> behind your hand, and what it does when it reaches something clickable.</p>
+  <div class="row">
+    <a class="btn" href="#">See my work &rarr;</a>
+    <a class="btn ghost" href="#">Resume</a>
+  </div>
+  <div class="cards">
+    <div class="card"><h3>Enterprise security</h3><p>SSO, RBAC and OAuth-compliant APIs built from scratch.</p></div>
+    <div class="card"><h3>MES platform</h3><p>Zero to ten, driving 40% of total company ARR.</p></div>
+    <div class="card"><h3>Founding UX</h3><p>Cloud-based 3D BIM collaborative design platform.</p></div>
+  </div>
+</div>
+
+<div class="desc" id="desc"></div>
+<div id="layer"></div>
+
+<script>
+(function () {
+  var layer = document.getElementById('layer');
+  var descEl = document.getElementById('desc');
+  var mouse = { x: innerWidth / 2, y: innerHeight / 2 };
+  var hovering = false;
+  var active = null;
+  var rafId = null;
+  var last = performance.now();
+
+  addEventListener('pointermove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  document.addEventListener('pointerover', function (e) {
+    hovering = !!(e.target.closest && e.target.closest('a, button, .card'));
+  }, { passive: true });
+
+  function el(cls, css) {
+    var d = document.createElement('div');
+    d.className = cls;
+    if (css) d.style.cssText += css;
+    layer.appendChild(d);
+    return d;
+  }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  /* ── spring trail (shared by 1 & 2) ─────────────────────── */
+  function makeTrail(o) {
+    var pool = [], nodes = [];
+    for (var i = 0; i < o.count; i++) {
+      var n = el('dot', 'width:' + o.size + 'px;height:' + o.size + 'px;border-radius:50%;' +
+        'border:' + o.stroke + 'px solid ' + o.color + ';box-sizing:border-box;');
+      if (o.blend) n.style.mixBlendMode = 'difference';
+      nodes.push(n);
+      pool.push({ x: mouse.x, y: mouse.y, vx: 0, vy: 0 });
+    }
+    return {
+      frame: function (dt) {
+        var k = o.k, decay = Math.pow(o.retain, dt * 60);
+        var pull = 1 - Math.exp(-dt / o.ease);
+        for (var i = 0; i < pool.length; i++) {
+          var p = pool[i];
+          var ax = i === 0 ? mouse.x : pool[i - 1].x;
+          var ay = i === 0 ? mouse.y : pool[i - 1].y;
+          var dx = ax - p.x, dy = ay - p.y;
+          p.vx = (p.vx + dx * k * dt) * decay;
+          p.vy = (p.vy + dy * k * dt) * decay;
+          p.x += p.vx * dt; p.y += p.vy * dt;
+          if (i > 0) {
+            var dist = Math.hypot(dx, dy);
+            if (dist > o.spacing) {
+              var r = ((dist - o.spacing) / dist) * pull;
+              p.x += dx * r; p.y += dy * r;
+            }
+          }
+          var prog = i / pool.length;
+          var sc = (1 - prog * 0.55) * (hovering ? 0.35 : 1);
+          nodes[i].style.transform = 'translate3d(' + p.x + 'px,' + p.y + 'px,0) translate(-50%,-50%) scale(' + sc + ')';
+          nodes[i].style.opacity = (1 - prog) * (hovering ? 0.25 : 0.8);
+        }
+      }
+    };
+  }
+
+  /* ── modules ────────────────────────────────────────────── */
+  var MODULES = {
+    none: {
+      native: true,
+      desc: '<b>Native.</b> No custom cursor at all. Zero cost, zero personality — the baseline to compare against.',
+      build: function () { return { frame: function () {} }; }
+    },
+    current: {
+      desc: '<b>Current trail.</b> 30 rings, damping 10 → each dot loses half its speed every frame, so the tail collapses onto your pointer almost instantly. That is the “snappy” feel. Also uses <code>mix-blend-mode: difference</code>, the most expensive part.',
+      build: function () {
+        return makeTrail({ count: 30, size: 10, stroke: 2, color: '#393939', k: 720, retain: 0.5, ease: 0.028, spacing: 2, blend: true });
+      }
+    },
+    tuned: {
+      desc: '<b>Trail, tuned.</b> Same idea, softer physics — fewer dots, weaker spring, much less damping and wider spacing, so the tail actually flows and settles instead of snapping. No blend mode, so it is cheaper too.',
+      build: function () {
+        return makeTrail({ count: 18, size: 9, stroke: 1.5, color: 'rgba(59,107,245,0.65)', k: 210, retain: 0.86, ease: 0.075, spacing: 14, blend: false });
+      }
+    },
+    ringdot: {
+      desc: '<b>Ring + dot.</b> A small dot tracks your hand exactly while an outlined ring lags behind and swells over anything clickable. The most common “designed” cursor — calm, precise, never in the way.',
+      build: function () {
+        var dot = el('dot', 'width:6px;height:6px;border-radius:50%;background:var(--dark);');
+        var ring = el('ring', 'width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(15,17,23,0.45);box-sizing:border-box;transition:opacity .2s;');
+        var rx = mouse.x, ry = mouse.y, s = 1;
+        return {
+          frame: function (dt) {
+            rx = lerp(rx, mouse.x, 1 - Math.pow(0.001, dt));
+            ry = lerp(ry, mouse.y, 1 - Math.pow(0.001, dt));
+            s = lerp(s, hovering ? 1.75 : 1, 1 - Math.pow(0.002, dt));
+            dot.style.transform = 'translate3d(' + mouse.x + 'px,' + mouse.y + 'px,0) translate(-50%,-50%)';
+            ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%) scale(' + s + ')';
+            ring.style.borderColor = hovering ? 'rgba(59,107,245,0.75)' : 'rgba(15,17,23,0.45)';
+          }
+        };
+      }
+    },
+    magnetic: {
+      desc: '<b>Magnetic.</b> A single ring that squashes and stretches along its direction of travel — fast flicks elongate it, stopping lets it settle back to a circle. Playful and physical without a whole tail to render.',
+      build: function () {
+        var ring = el('ring', 'width:30px;height:30px;border-radius:50%;border:2px solid var(--blue);box-sizing:border-box;');
+        var rx = mouse.x, ry = mouse.y, px = rx, py = ry, sc = 1;
+        return {
+          frame: function (dt) {
+            px = rx; py = ry;
+            var t = 1 - Math.pow(0.0015, dt);
+            rx = lerp(rx, mouse.x, t); ry = lerp(ry, mouse.y, t);
+            var vx = rx - px, vy = ry - py;
+            var sp = Math.min(Math.hypot(vx, vy) / 18, 1);
+            var ang = Math.atan2(vy, vx) * 180 / Math.PI;
+            sc = lerp(sc, hovering ? 1.9 : 1, 1 - Math.pow(0.002, dt));
+            ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%) rotate(' + ang + 'deg) scale(' + (sc * (1 + sp * 0.7)) + ',' + (sc * (1 - sp * 0.42)) + ')';
+          }
+        };
+      }
+    },
+    glow: {
+      desc: '<b>Soft glow.</b> No shape at all — just a blurred wash of colour trailing your hand, with the native arrow left visible. The most subtle option, and it pairs well with the dot-grid and aurora hero backgrounds.',
+      build: function () {
+        var g = el('glow', 'width:220px;height:220px;background:radial-gradient(circle,rgba(59,107,245,0.42),transparent 68%);');
+        var gx = mouse.x, gy = mouse.y;
+        return {
+          native: true,
+          frame: function (dt) {
+            var t = 1 - Math.pow(0.004, dt);
+            gx = lerp(gx, mouse.x, t); gy = lerp(gy, mouse.y, t);
+            g.style.transform = 'translate3d(' + gx + 'px,' + gy + 'px,0) translate(-50%,-50%) scale(' + (hovering ? 1.35 : 1) + ')';
+          }
+        };
+      }
+    },
+    crosshair: {
+      desc: '<b>Crosshair.</b> Two hairlines and a centre dot — echoes the sniper burst you already fire on click, so the resting cursor and the click effect finally belong to the same idea.',
+      build: function () {
+        var h = el('cross', 'height:1px;width:26px;opacity:.6;');
+        var v = el('cross', 'width:1px;height:26px;opacity:.6;');
+        var d = el('dot', 'width:5px;height:5px;border-radius:50%;background:var(--blue);');
+        var s = 1;
+        return {
+          frame: function (dt) {
+            s = lerp(s, hovering ? 1.7 : 1, 1 - Math.pow(0.002, dt));
+            var base = 'translate3d(' + mouse.x + 'px,' + mouse.y + 'px,0) translate(-50%,-50%) ';
+            h.style.transform = base + 'scaleX(' + s + ')';
+            v.style.transform = base + 'scaleY(' + s + ')';
+            d.style.transform = base;
+          }
+        };
+      }
+    },
+    character: {
+      desc: '<b>Character.</b> Your pixel character points at whatever you are hovering, lagging slightly and tilting into the movement. Maximum personality — best used sparingly, e.g. only over the project cards.',
+      build: function () {
+        var img = document.createElement('img');
+        img.className = 'charc';
+        img.src = 'images/character/pointingsmall.gif';
+        layer.appendChild(img);
+        var cx = mouse.x, cy = mouse.y, px = cx, rot = 0;
+        return {
+          frame: function (dt) {
+            px = cx;
+            var t = 1 - Math.pow(0.004, dt);
+            cx = lerp(cx, mouse.x, t); cy = lerp(cy, mouse.y, t);
+            rot = lerp(rot, Math.max(-14, Math.min(14, (cx - px) * 0.9)), 1 - Math.pow(0.01, dt));
+            img.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) translate(-14%,-12%) rotate(' + rot + 'deg) scale(' + (hovering ? 1.25 : 1) + ')';
+          }
+        };
+      }
+    }
+  };
+
+  function select(key) {
+    layer.innerHTML = '';
+    var def = MODULES[key];
+    active = def.build();
+    descEl.innerHTML = def.desc;
+    var native = def.native || active.native;
+    document.body.classList.toggle('hide-native', !native);
+    [].forEach.call(document.querySelectorAll('.opt'), function (b) {
+      b.classList.toggle('on', b.dataset.k === key);
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('.opt'), function (b) {
+    b.addEventListener('click', function () { select(b.dataset.k); });
+  });
+
+  function frame(now) {
+    var dt = Math.min(0.05, Math.max(0.001, (now - last) / 1000));
+    last = now;
+    if (active && active.frame) active.frame(dt);
+    rafId = requestAnimationFrame(frame);
+  }
+  rafId = requestAnimationFrame(frame);
+
+  select('current');
+})();
+</script>
+
+</body>
+</html>
