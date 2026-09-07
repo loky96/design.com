@@ -123,6 +123,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .nav-logo {
@@ -138,6 +139,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   gap: 28px;
   align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-links a {
   font-family: 'Arima', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -148,6 +152,16 @@ h1, h2, h3, h4, h5, h6 {
   transition: color var(--transition);
 }
 .nav-links a:hover { color: var(--dark); }
+
+.nav-resume {
+  font-family: 'Arima', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.nav-resume:hover { color: var(--dark); }
 
 .hamburger {
   display: none;
@@ -255,6 +269,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   position: relative;
   z-index: 1;
+  opacity: 0.9;
   mix-blend-mode: multiply;
 }
 .hero-avatar-shimmer {
@@ -1554,6 +1569,14 @@ h1, h2, h3, h4, h5, h6 {
 .contact-hobbies-wrap {
   margin-top: 48px;
 }
+.contact-footnote {
+  text-align: center;
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 12px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
 .contact-hobbies-title {
   text-align: center;
   margin: 0 0 12px;
@@ -1783,6 +1806,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .nav-resume { display: none; }
   .hamburger { display: flex; }
 
   .sec-title,

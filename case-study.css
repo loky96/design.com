@@ -104,6 +104,7 @@ h3,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .nav-logo {
@@ -118,6 +119,9 @@ h3,
   display: flex;
   gap: 28px;
   align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
@@ -129,6 +133,18 @@ h3,
 }
 
 .nav-links a:hover {
+  color: var(--ink);
+}
+
+.nav-resume {
+  font-family: "Arima", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+}
+
+.nav-resume:hover {
   color: var(--ink);
 }
 
@@ -1994,6 +2010,10 @@ a.explore-pill:hover {
 
   .nav-links {
     gap: 16px;
+    font-size: var(--fs-body-sm);
+  }
+
+  .nav-resume {
     font-size: var(--fs-body-sm);
   }
 }
