@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Work-in-progress and scratch pages — not for indexing.
+Disallow: /hero-variations.html
+Disallow: /hero-variations-2.html
+Disallow: /cursor-options.html
+Disallow: /timeline.html
+Disallow: /infurnia.html
+
+Sitemap: https://lokeshdesign.com/sitemap.xml

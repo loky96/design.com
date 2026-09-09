@@ -5,6 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enterprise Authentication &amp; Identity for AI Hub — Case Study | Loky</title>
+  <meta name="description" content="How I designed AI Hub&#39;s enterprise security layer at Instabase: self-serve SAML and OIDC SSO, IdP group mapping for RBAC, and OAuth-compliant scoped API tokens. Unblocked 9 enterprise orgs and cut org setup from 4 weeks to 5 days." />
+  <meta name="author" content="Lokesh Kumar V M" />
+  <link rel="canonical" href="https://lokeshdesign.com/aihub-security-coded.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Lokesh Kumar &mdash; Product Design" />
+  <meta property="og:url" content="https://lokeshdesign.com/aihub-security-coded.html" />
+  <meta property="og:title" content="Enterprise Authentication &amp; Identity for AI Hub &mdash; Case Study" />
+  <meta property="og:description" content="How I designed AI Hub&#39;s enterprise security layer at Instabase: self-serve SAML and OIDC SSO, IdP group mapping for RBAC, and OAuth-compliant scoped API tokens. Unblocked 9 enterprise orgs and cut org setup from 4 weeks to 5 days." />
+  <meta property="og:image" content="https://lokeshdesign.com/images/og-aihub.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Enterprise Authentication &amp; Identity for AI Hub &mdash; Case Study" />
+  <meta name="twitter:description" content="How I designed AI Hub&#39;s enterprise security layer at Instabase: self-serve SAML and OIDC SSO, IdP group mapping for RBAC, and OAuth-compliant scoped API tokens. Unblocked 9 enterprise orgs and cut org setup from 4 weeks to 5 days." />
+  <meta name="twitter:image" content="https://lokeshdesign.com/images/og-aihub.png" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <link rel="stylesheet" href="aihub-security-coded.css" />
 
 </head>
@@ -426,12 +447,12 @@
     <a href="#users" class="aih-side-nav-link" data-target="users"><span class="aih-side-nav-bar"></span><span
         class="aih-side-nav-label">Who I designed for</span></a>
     <a href="#track-sso" class="aih-side-nav-link" data-target="track-sso"><span class="aih-side-nav-bar"></span><span
-        class="aih-side-nav-label">Pillar 1 — Self serve Single Sign-On for every tenant</span></a>
+        class="aih-side-nav-label">Pillar 1 — Self-serve single sign-on for every tenant</span></a>
     <a href="#track-groups" class="aih-side-nav-link" data-target="track-groups"><span
         class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Pillar 2 — Access that follows the org chart
         (RBAC)</span></a>
     <a href="#track-tokens" class="aih-side-nav-link" data-target="track-tokens"><span
-        class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Pillar 3 — From raw tokens to oauth
+        class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Pillar 3 — From raw tokens to OAuth
         compliance</span></a>
     <a href="#my-process" class="aih-side-nav-link" data-target="my-process"><span class="aih-side-nav-bar"></span><span
         class="aih-side-nav-label">How I got there</span></a>
@@ -511,17 +532,15 @@
           <span class="cover-laptop-hint">View product</span>
         </div>
 
-        <h3 style="text-align:center;color:#fff;font-size:26px;margin-bottom:8px;">Business impact</h3>
-        <p class="cover-card-sub" style="margin-bottom:20px;">Unlocked enterprise deals that named security as a blocker
-        </p>
+        <h3 style="text-align:center;color:#fff;font-size:26px;margin-bottom:22px;">Business impact</h3>
         <div class="cover-cards" style="grid-template-columns:repeat(3, 1fr);">
           <div class="cover-card">
             <div class="stat-card">
               <div class="stat-label"><svg class="mi">
                   <use href="#i-circle-dollar-sign"></use>
                 </svg> ARR unblocked:</div>
-              <div class="stat-val"> $X M to <strong> $XXX M </strong></div>
-              <div class="stat-pct">+40% approx.</div>
+              <div class="stat-val"><strong class="stat-hi">8-figure</strong> revenue</div>
+              <div class="stat-pct stat-pct--note">in security-gated deals</div>
             </div>
           </div>
           <div class="cover-card">
@@ -529,8 +548,8 @@
               <div class="stat-label"><svg class="mi">
                   <use href="#i-building-2"></use>
                 </svg> Enterprise orgs won:</div>
-              <div class="stat-val"> <strong>+9</strong> </div>
-              <div class="stat-pct">New logos</div>
+              <div class="stat-val"><strong class="stat-hi">+9</strong> new deals</div>
+              <div class="stat-pct stat-pct--note">Security no longer a blocker</div>
             </div>
           </div>
           <div class="cover-card">
@@ -538,9 +557,8 @@
               <div class="stat-label"><svg class="mi">
                   <use href="#i-timer"></use>
                 </svg> Initial org setup time</div>
-              <div class="stat-val"> <span class="todo">4 Weeks</span> to <strong> <span class="todo">5 Days</span>
-                </strong></div>
-              <div class="stat-pct">-87.7%</div>
+              <div class="stat-val"><strong class="stat-hi">-82%</strong></div>
+              <div class="stat-pct stat-pct--note">4 weeks to 5 days</div>
             </div>
           </div>
           <div class="cover-card" hidden>
@@ -599,7 +617,7 @@
             <ul>
               <li><strong>Self-serve SSO</strong> (SAML 2.0 + OIDC) for multi- &amp; single-tenant</li>
               <li><strong>IdP group mapping</strong> driving RBAC</li>
-              <li><strong>OAuth2 Compliant tokens</strong> for API access, with scopes</li>
+              <li><strong>OAuth2-compliant tokens</strong> for API access, with scopes</li>
             </ul>
           </div>
           <div class="ctx-card">
@@ -633,7 +651,7 @@
         <div class="brief-text">
           <h2 class="sec-h2">Project brief</h2>
 
-          <p>I designed AI Hub’s enterprise security layer—enabling global organizations to bring their own Identity
+          <p>I designed AI Hub’s enterprise security layer—enabling global organisations to bring their own Identity
             Provider (IdP), enforce granular RBAC, issue scoped OAuth tokens, and pass enterprise security reviews
             considering:</p>
           <div class="tech-groups">
@@ -688,6 +706,35 @@
             </p>
           </div>
         </div>
+      </div>
+
+      <!-- Glimpse of the product: fanned deck, one shipped screen per pillar -->
+      <div class="wrap glimpse-wrap">
+        <section class="glimpse" aria-labelledby="glimpse-title">
+          <h3 class="glimpse-title" id="glimpse-title">The glimpse of the product</h3>
+
+          <div class="glimpse-fan" id="glimpseStack" role="group"
+            aria-label="Shipped product screens. Drag or use the arrow keys to change the front screen."
+            tabindex="0">
+            <figure class="glimpse-card" data-caption="&lt;strong&gt;SSO&lt;/strong&gt; &mdash; SAML setup in the admin&rsquo;s own vocabulary: the provider is named, values are pulled from the metadata URL instead of transcribed by hand, and required fields are marked before anything can be saved.">
+              <img src="aihub-security-coded/SSO%20config/3-saml-2%201.webp"
+                alt="Add SAML configuration dialog in AI Hub, with identity provider set to Okta, a remote metadata URL, and the single sign-on URL, issuer and signing certificate extracted from that metadata"
+                width="1508" height="946" loading="eager" decoding="async" draggable="false" />
+            </figure>
+            <figure class="glimpse-card" data-caption="&lt;strong&gt;RBAC&lt;/strong&gt; &mdash; one AI Hub group fed by two membership sources at once, each labelled with where it came from, so an admin can always see which access is IdP-managed and which is manual.">
+              <img src="aihub-security-coded/RBAC/6-multigroup%20added%201-redacted.webp"
+                alt="An AI Hub group showing two membership sources, AI Hub and Okta OIDC, each listing its members separately with the source group ID"
+                width="1508" height="946" loading="eager" decoding="async" draggable="false" />
+            </figure>
+            <figure class="glimpse-card" data-caption="&lt;strong&gt;OAuth API access&lt;/strong&gt; &mdash; a service account with its external OAuth mapping listed explicitly: one client, one identity, and the provider it authenticates against.">
+              <img src="aihub-security-coded/api%20stage%202/6-mapping%20in%20table%201.webp"
+                alt="A service account page in AI Hub showing its role, user ID and organisation ID, with an OAuth account mapping linking an external ID to the configured Okta OIDC provider"
+                width="1508" height="946" loading="eager" decoding="async" draggable="false" />
+            </figure>
+          </div>
+
+          <p class="glimpse-caption" id="glimpseCaption" aria-live="polite"></p>
+        </section>
       </div>
     </section>
 
@@ -788,7 +835,7 @@
                 <use href="#i-ticket"></use>
               </svg> Pillar 3 — OAuth tokens</a>
             <ul class="explore-list">
-              <li>Customer-IdP-issued Tokens</li>
+              <li>Customer-IdP-issued tokens</li>
               <li>Account mappings per identity</li>
               <li>Scopes that only downscope</li>
               <li>Deprecating raw internal tokens</li>
@@ -858,7 +905,7 @@
             <ul>
               <li>Just wants "Continue with SSO" to work</li>
               <li>Should never see a SAML error string</li>
-              <li>Needs right group access</li>
+              <li>Needs the right group access</li>
             </ul>
           </div>
 
@@ -1276,7 +1323,7 @@
     <!-- ============ TRACK 1 STRIP ============ -->
     <section class="sec blue strip" id="track-sso">
       <div class="wrap">
-        <h2 class="strip-title white">Pillar 1 — Self serve Single Sign-On for every tenant</h2>
+        <h2 class="strip-title white">Pillar 1 — Self-serve single sign-on for every tenant</h2>
       </div>
     </section>
 
@@ -1353,7 +1400,7 @@
             <h3>Before</h3>
             <ul>
               <li>SSO available only to single-tenant customers, Configuration done by Instabase engineers via
-                environment variables, if MT customers approched they were given a whole ST environment as a workaround
+                environment variables, if MT customers approached, they were given a whole ST environment as a workaround
               </li>
             </ul>
           </div>
@@ -1411,17 +1458,17 @@
             <div class="img-gallery-track">
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/1-selection%201.webp"
                   alt="SSO: protocol selection" loading="lazy" />
-                <p class="img-gallery-caption">A new Identiry & Access setting, Admin chooses which SSO protocol to
+                <p class="img-gallery-caption">A new Identity &amp; access setting. The admin chooses which SSO protocol to
                   configure —<br />SAML or OIDC.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/2-saml1%201.webp"
                   alt="SSO: SAML config step 1" loading="lazy" />
-                <p class="img-gallery-caption">This step give you the details you configure in IdP side,<br />step one
+                <p class="img-gallery-caption">This step gives you the details you configure on the IdP side.<br />Step one
                   of SAML setup.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/3-saml-2%201.webp"
                   alt="SSO: SAML config step 2" loading="lazy" />
-                <p class="img-gallery-caption">Configure values from the IdP, Reviewing values extracted from the
+                <p class="img-gallery-caption">Configure values from the IdP. Review the values extracted from the
                   metadata<br />before saving.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/4-saml-test%201.webp"
@@ -1434,7 +1481,7 @@
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/6-oidc1%201.webp"
                   alt="SSO: OIDC config step 1" loading="lazy" />
-                <p class="img-gallery-caption">This step give you the details you configure in IdP side,<br />step one
+                <p class="img-gallery-caption">This step gives you the details you configure on the IdP side.<br />Step one
                   of OIDC setup.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/7-oidc2%201.webp"
@@ -1443,12 +1490,12 @@
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/8-testmode%201.webp"
                   alt="SSO: test mode" loading="lazy" />
-                <p class="img-gallery-caption">Enabling basic auth sign in so admins can use this to test sso
+                <p class="img-gallery-caption">Enabling basic auth sign-in so admins can test the SSO
                   configuration<br />before enforcing SSO org-wide.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/9-test-modal%201.webp"
                   alt="SSO: test modal" loading="lazy" />
-                <p class="img-gallery-caption">Test sign-in cofirmation modal <br />before activating basic auth
+                <p class="img-gallery-caption">Test sign-in confirmation modal <br />before activating basic auth
                   sign-in.</p>
               </div>
               <div class="img-gallery-item"><img src="aihub-security-coded/SSO%20config/10-delete%201.webp"
@@ -1477,7 +1524,7 @@
               style="width:100%;border-radius:12px;" />
           </div>
           <div>
-            <h4 style="margin-bottom:10px;">Flow without test option: user gets locked out in wrong config.</h4>
+            <h4 style="margin-bottom:10px;">Flow without the test option: the user gets locked out if the config is wrong.</h4>
             <img src="aihub-security-coded/No-test-mode.webp"
               alt="Flow without test option: user gets locked out in wrong config"
               style="width:100%;border-radius:12px;" />
@@ -1492,7 +1539,7 @@
 
             <div class="ba-row">
               <div class="video-embed">
-                <video preload="auto" src="aihub-security-coded/videos/SSO%20field%20change%20.mp4"
+                <video preload="metadata" src="aihub-security-coded/videos/SSO%20field%20change%20.mp4"
                   title="SSO field change walkthrough"></video>
                 <button class="video-play-btn" aria-label="Play video">&#9658;</button>
               </div>
@@ -1606,644 +1653,649 @@
             more decisions <span class="dec-toggle-icon">▾</span></button>
         </div>
 
+          <h3 class="flow-sub">Audit logs of everything</h3>
+          <p class="lead">Previously, audit trails were dug out of raw log files by an internal engineer — there was no UI
+            for admins to see them at all. This was a named SOC 2 blocker for several enterprise deals; giving admins a
+            self-serve audit log view unlocked it.</p>
+          <img src="aihub-security-coded/auditlogs.webp" alt="Audit logs" style="width:100%;border-radius:12px;" />
+          <p class="dec-plain-note" style="margin-top:8px;"><em>*All values shown are dummy placeholders</em></p>
+
       </div>
     </section>
 
     <!-- ============ TRACK 2 ============ -->
-    <section class="sec blue strip" id="track-groups">
-      <div class="wrap">
-        <h2 class="strip-title white">Pillar 2 — Access that follows the org chart (RBAC)</h2>
-      </div>
-    </section>
-
-    <section class="sec light">
-      <div class="wrap">
-        <h2 class="sec-h2">IdP group mapping for RBAC - By Admin</h2>
-        <p class="lead">SSO answers "can this person log in?". Group mapping answers "and what should they be able to
-          see?". SAML group mapping existed only for single tenants; OIDC group mapping was documented but did not exist
-          — the gap a major customer found before we did.</p>
-
-        <div class="ba-row-split problem">
-          <div class="ba-card before">
-            <div class="ba-card-head">
-              <h4>Before</h4>
-              <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
-                <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
-                  aria-label="Show video">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                  </svg>
-                </button>
-                <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
-                  aria-label="Show live prototype">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 9l-6 6 6 6" />
-                    <path d="M15 9l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <ul>
-              <li>OIDC customers managed every group membership by hand</li>
-              <li>Docs claimed OIDC group mapping worked — it didn't</li>
-              <li>SAML mapping was one IdP group per AI Hub group</li>
-              <li>No signal about when a membership change would take effect</li>
-            </ul>
-          </div>
-          <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
-            <div class="video-embed">
-              <video preload="auto" src="aihub-security-coded/videos/RBAC%20before.mp4"
-                title="RBAC before walkthrough"></video>
-              <button class="video-play-btn" aria-label="Play video">&#9658;</button>
-              <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
-                screen</button>
-            </div>
-            <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
-                type="button" class="media-toggle-fs-trigger">Full screen</button></p>
-          </div>
+    <details class="solution-more" id="track-groups-solution">
+      <summary class="sec blue strip solution-more-summary" id="track-groups">
+        <div class="wrap">
+          <h2 class="strip-title white">Pillar 2 — Access that follows the org chart (RBAC)</h2>
+          <span class="solution-more-btn"><span class="solution-more-label solution-more-label--closed">See Solution</span><span class="solution-more-label solution-more-label--open">Hide Solution</span></span>
         </div>
-
-        <div class="ba-row-split solution">
-          <div class="ba-card after">
-            <div class="ba-card-head">
-              <h4>Solution</h4>
-              <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
-                <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
-                  aria-label="Show video">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                  </svg>
-                </button>
-                <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
-                  aria-label="Show live prototype">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 9l-6 6 6 6" />
-                    <path d="M15 9l6 6-6 6" />
-                  </svg>
-                </button>
+      </summary>
+      <section class="sec light">
+        <div class="wrap">
+          <h2 class="sec-h2">IdP group mapping for RBAC &mdash; by the admin</h2>
+          <p class="lead">SSO answers "can this person log in?". Group mapping answers "and what should they be able to
+            see?". SAML group mapping existed only for single tenants; OIDC group mapping was documented but did not exist
+            — the gap a major customer found before we did.</p>
+  
+          <div class="ba-row-split problem">
+            <div class="ba-card before">
+              <div class="ba-card-head">
+                <h4>Before</h4>
+                <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+                  <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
+                    aria-label="Show video">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="23 7 16 12 23 17 23 7" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </button>
+                  <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
+                    aria-label="Show live prototype">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 9l-6 6 6 6" />
+                      <path d="M15 9l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul>
+                <li>OIDC customers managed every group membership by hand</li>
+                <li>Docs claimed OIDC group mapping worked — it didn't</li>
+                <li>SAML mapping was one IdP group per AI Hub group</li>
+                <li>No signal about when a membership change would take effect</li>
+              </ul>
+            </div>
+            <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
+              <div class="video-embed">
+                <video preload="metadata" src="aihub-security-coded/videos/RBAC%20before.mp4"
+                  title="RBAC before walkthrough"></video>
+                <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+                <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
+                  screen</button>
+              </div>
+              <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
+                  type="button" class="media-toggle-fs-trigger">Full screen</button></p>
+            </div>
+          </div>
+  
+          <div class="ba-row-split solution">
+            <div class="ba-card after">
+              <div class="ba-card-head">
+                <h4>Solution</h4>
+                <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+                  <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
+                    aria-label="Show video">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="23 7 16 12 23 17 23 7" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </button>
+                  <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
+                    aria-label="Show live prototype">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 9l-6 6 6 6" />
+                      <path d="M15 9l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul>
+                <li>OIDC group mapping at parity with SAML, same mental model</li>
+                <li>Many external IdP groups can map to one AI Hub group</li>
+                <li>Mapping created inline while creating the group, or added later</li>
+                <li>Sync timing stated explicitly wherever mapping is configured</li>
+              </ul>
+            </div>
+            <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v1&amp;embed=1">
+              <div class="video-embed">
+                <video preload="metadata" src="aihub-security-coded/videos/RBAC%20after.mp4"
+                  title="RBAC after walkthrough"></video>
+                <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+                <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
+                  screen</button>
+              </div>
+              <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
+                  type="button" class="media-toggle-fs-trigger">Full screen</button></p>
+            </div>
+  
+            <div class="img-side-gallery">
+              <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-track">
+  
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/1-first-user%201.webp"
+                    alt="RBAC: adding the first user" loading="lazy" />
+                  <p class="img-gallery-caption">Admin adds the first user before setting up<br />any group
+                    mappings.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/2-adding%20group%201.webp"
+                    alt="RBAC: adding a group" loading="lazy" />
+                  <p class="img-gallery-caption">Creating a new group mapping with configured IdP from<br />the Groups
+                    tab.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/3-gorupadded%201.webp"
+                    alt="RBAC: group added" loading="lazy" />
+                  <p class="img-gallery-caption">The new group mapping confirmation<br />explains JIT
+                    provisioning in more detail</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/4-group-screen%201.webp"
+                    alt="RBAC: group screen" loading="lazy" />
+                  <p class="img-gallery-caption">Inside the created group, the empty state indicates JIT provisioning
+                    <br />Users list will appear upon their first login</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/5-dd-mulit-group%201.webp"
+                    alt="RBAC: mapping multiple groups" loading="lazy" />
+                  <p class="img-gallery-caption">Mapping several external IdP groups to one AI Hub group.<br /> Many to
+                    one mapping</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/6-multigroup%20added%201-redacted.webp"
+                    alt="RBAC: multiple groups added" loading="lazy" />
+                  <p class="img-gallery-caption">The table showing an AI Hub group configured with multiple group
+                    mappings<br />from various sources</p>
+                </div>
+              </div>
+              <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-dots"></div>
+            </div>
+          </div>
+  
+          <h3 class="flow-sub">Key design decisions</h3>
+          <div class="dec-grid">
+            <div class="dec-card win">
+              <h4>1. Many-to-one mapping, not one-to-one</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Real enterprises don't have
+                  one clean group per function. They have <code>eu-analysts</code>, <code>us-analysts</code> and
+                  <code>contractor-analysts</code> — <strong>all of whom need the same AI Hub workspace access</strong>.
+                </div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Allowed AI Hub groups to map
+                  to multiple IdP group names as a list, <strong>removing the strict 1-to-1 restriction</strong> of the
+                  previous SAML implementation.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>The one-to-one constraint was an
+                  implementation artefact leaking into the mental model. Modelling the mapping the way customers actually
+                  think — "these IdP groups mean this thing here" — <strong>removed a whole class of workaround
+                    groups</strong>.</div>
               </div>
             </div>
-            <ul>
-              <li>OIDC group mapping at parity with SAML, same mental model</li>
-              <li>Many external IdP groups can map to one AI Hub group</li>
-              <li>Mapping created inline while creating the group, or added later</li>
-              <li>Sync timing stated explicitly wherever mapping is configured</li>
-            </ul>
-          </div>
-          <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v1&amp;embed=1">
-            <div class="video-embed">
-              <video preload="auto" src="aihub-security-coded/videos/RBAC%20after.mp4"
-                title="RBAC after walkthrough"></video>
-              <button class="video-play-btn" aria-label="Play video">&#9658;</button>
-              <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
-                screen</button>
-            </div>
-            <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
-                type="button" class="media-toggle-fs-trigger">Full screen</button></p>
-          </div>
-
-          <div class="img-side-gallery">
-            <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-track">
-
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/1-first-user%201.webp"
-                  alt="RBAC: adding the first user" loading="lazy" />
-                <p class="img-gallery-caption">Admin adds the first user before setting up<br />any group
-                  mappings.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/2-adding%20group%201.webp"
-                  alt="RBAC: adding a group" loading="lazy" />
-                <p class="img-gallery-caption">Creating a new group mapping with configured IdP from<br />the Groups
-                  tab.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/3-gorupadded%201.webp"
-                  alt="RBAC: group added" loading="lazy" />
-                <p class="img-gallery-caption">The new group mapping confirmation<br />Tell you more details about JIT
-                  provisioning</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/4-group-screen%201.webp"
-                  alt="RBAC: group screen" loading="lazy" />
-                <p class="img-gallery-caption">Inside created group the emoty state indicates the JIT provisioning
-                  <br />Users list will appear upon their first login</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/5-dd-mulit-group%201.webp"
-                  alt="RBAC: mapping multiple groups" loading="lazy" />
-                <p class="img-gallery-caption">Mapping several external IdP groups to one AI Hub group.<br /> Many to
-                  one mapping</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/RBAC/6-multigroup%20added%201.webp"
-                  alt="RBAC: multiple groups added" loading="lazy" />
-                <p class="img-gallery-caption">The tables showing AI-hub group configured with multiple group
-                  mapping<br />from various sources</p>
+  
+            <div class="dec-card">
+              <h4>2. Telling the truth about sync timing</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Group membership doesn't sync
+                  when the admin saves the mapping. It syncs at each member's <em>next login</em>. So an admin creates a
+                  mapping, sees an empty member list, and concludes it's broken. Worse: <strong>removing someone from a
+                    group in the IdP does not remove their access until they log in again</strong>.</div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Surfaced sync timing rules
+                  inline and in empty states: <strong>memberships update on the user's next login</strong>. Launched with
+                  JIT provisioning to unblock immediate enterprise needs while laying the groundwork for SCIM.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the honest version of a
+                  security-relevant limitation. An admin who knows about the delay can plan around it; one who doesn't
+                  will assume offboarding is instant, which is <strong>exactly the assumption an auditor
+                    punishes</strong>. It also gave the roadmap its clearest argument for SCIM.</div>
               </div>
             </div>
-            <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-dots"></div>
+  
+            <div class="dec-card">
+              <h4>3. Handling existing user groups in an org while transitioning to new RBAC</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to
+                  <strong>current AI Hub members</strong> when a new SAML or OIDC group mapping is introduced?
+                </div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>Preserve existing AI
+                    Hub group mappings</strong>, and show the membership source clearly. Let admins handle removal of AI
+                  Hub-managed group membership if they wish.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Old group mappings still hold value
+                  for existing users. In orgs transitioning to new RBAC, this allows admins to <strong>preserve existing
+                    group memberships for current users</strong>.</div>
+              </div>
+            </div>
           </div>
+  
+          <div style="display:flex;flex-direction:column;">
+            <h4 style="margin:24px 0 8px;font-family:'Rajdhani', sans-serif;font-size:22px;">Iterations of &ldquo;add multiple
+              groups&rdquo; for many-to-one mapping</h4>
+            <p class="lead" style="margin-bottom:32px;">Why: admins have a long list to map initially when they configure
+              any org. Doing it via single addition is cumbersome. Chose the best of each iteration for the final
+              implementation.</p>
+            <img src="aihub-security-coded/bul-add-options.webp" alt="Bulk add options"
+              style="width:100%;border-radius:12px;" />
+          </div>
+  
         </div>
-
-        <h3 class="flow-sub">Key design decisions</h3>
-        <div class="dec-grid">
-          <div class="dec-card win">
-            <h4>1. Many-to-one mapping, not one-to-one</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Real enterprises don't have
-                one clean group per function. They have <code>eu-analysts</code>, <code>us-analysts</code> and
-                <code>contractor-analysts</code> — <strong>all of whom need the same AI Hub workspace access</strong>.
-              </div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Allowed AI Hub groups to map
-                to multiple IdP group names as a list, <strong>removing the strict 1-to-1 restriction</strong> of the
-                previous SAML implementation.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>The one-to-one constraint was an
-                implementation artefact leaking into the mental model. Modelling the mapping the way customers actually
-                think — "these IdP groups mean this thing here" — <strong>removed a whole class of workaround
-                  groups</strong>.</div>
-            </div>
-          </div>
-
-          <div class="dec-card">
-            <h4>2. Telling the truth about sync timing</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Group membership doesn't sync
-                when the admin saves the mapping. It syncs at each member's <em>next login</em>. So an admin creates a
-                mapping, sees an empty member list, and concludes it's broken. Worse: <strong>removing someone from a
-                  group in the IdP does not remove their access until they log in again</strong>.</div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Surfaced sync timing rules
-                inline and in empty states: <strong>memberships update on the user's next login</strong>. Launched with
-                JIT provisioning to unblock immediate enterprise needs while laying the groundwork for SCIM.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the honest version of a
-                security-relevant limitation. An admin who knows about the delay can plan around it; one who doesn't
-                will assume offboarding is instant, which is <strong>exactly the assumption an auditor
-                  punishes</strong>. It also gave the roadmap its clearest argument for SCIM.</div>
-            </div>
-          </div>
-
-          <div class="dec-card">
-            <h4>3. Handling existing user groups in an org while transitioning to new RBAC</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>What happens to
-                <strong>current AI Hub members</strong> when a new SAML or OIDC group mapping is introduced?
-              </div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>Preserve existing AI
-                  Hub group mappings</strong>, and show the membership source clearly. Let admins handle removal of AI
-                Hub-managed group membership if they wish.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Old group mappings still hold value
-                for existing users. In orgs transitioning to new RBAC, this allows admins to <strong>preserve existing
-                  group memberships for current users</strong>.</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;">
-          <h4 style="margin:24px 0 8px;font-family:'Rajdhani', sans-serif;font-size:22px;">Iteration of add multiple
-            group for many-to-one mapping</h4>
-          <p class="lead" style="margin-bottom:32px;">Why: admins have a long list to map initially when they configure
-            any org. Doing it via single addition is cumbersome. Chose the best of each iteration for the final
-            implementation.</p>
-          <img src="aihub-security-coded/bul-add-options.webp" alt="Bulk add options"
-            style="width:100%;border-radius:12px;" />
-        </div>
-
-      </div>
-    </section>
+      </section>
+    </details>
 
     <!-- ============ TRACK 3 ============ -->
-    <section class="sec blue strip" id="track-tokens">
-      <div class="wrap">
-        <h2 class="strip-title white">Pillar 3 — From raw tokens to oauth compliance</h2>
-      </div>
-    </section>
-
-    <section class="sec light" style="padding-top:0;">
-      <div class="wrap">
-        <div class="persona-card2" style="margin-top:54px;">
-          <img class="persona-card2-avatar" src="aihub-security-coded/dev.png" alt="Developer / API engineer" />
-          <div class="persona-card2-head">
-            <h2 class="sec-h2"><svg class="mi">
-                <use href="#i-laptop"></use>
-              </svg> Developers / API engineer</h2>
-            <div class="persona-card2-name"><span>Age: 29 &middot; Backend engineer integrating AI Hub's API into an
-                internal platform &middot; City: Remote (US) &middot; Ships against the API weekly, reads docs before
-                asking for help</span></div>
+    <details class="solution-more" id="track-tokens-solution">
+      <summary class="sec blue strip solution-more-summary" id="track-tokens">
+        <div class="wrap">
+          <h2 class="strip-title white">Pillar 3 — From raw tokens to OAuth compliance</h2>
+          <span class="solution-more-btn"><span class="solution-more-label solution-more-label--closed">See Solution</span><span class="solution-more-label solution-more-label--open">Hide Solution</span></span>
+        </div>
+      </summary>
+      <section class="sec light" style="padding-top:0;">
+        <div class="wrap">
+          <div class="persona-card2" style="margin-top:54px;">
+            <img class="persona-card2-avatar" src="aihub-security-coded/dev.png" alt="Developer / API engineer" />
+            <div class="persona-card2-head">
+              <h2 class="sec-h2"><svg class="mi">
+                  <use href="#i-laptop"></use>
+                </svg> Developers / API engineer</h2>
+              <div class="persona-card2-name"><span>Age: 29 &middot; Backend engineer integrating AI Hub's API into an
+                  internal platform &middot; City: Remote (US) &middot; Ships against the API weekly, reads docs before
+                  asking for help</span></div>
+            </div>
+          </div>
+          <div class="pnq-grid">
+            <div class="pnq-card pain">
+              <h3><span class="icon-tile icon-tile--red"><svg class="mi">
+                    <use href="#i-frown"></use>
+                  </svg></span> Pain points</h3>
+              <ul>
+                <li>Automation has <strong>no identity of its own</strong> in an SSO-only org</li>
+                <li><strong>Long-lived tokens</strong> violated enterprise security policies, requiring a transition to
+                  OAuth2 standards</li>
+                <li>A token <strong>silently carries</strong> its creator's full admin rights</li>
+                <li><strong>No API</strong> to create, rotate or delete tokens programmatically</li>
+              </ul>
+            </div>
+            <div class="pnq-card needs">
+              <h3><span class="icon-tile icon-tile--yellow"><svg class="mi">
+                    <use href="#i-key"></use>
+                  </svg></span> Needs</h3>
+              <ul>
+                <li>Tokens <strong>issued and revoked</strong> by their own IdP</li>
+                <li>A <strong>non-human account</strong> they can map a client to use</li>
+                <li><strong>Explicit, inspectable scope</strong> on every token</li>
+                <li>A copy-paste path that <strong>actually works first try</strong></li>
+              </ul>
+            </div>
+            <div class="pnq-card qualities">
+              <h3><span class="icon-tile icon-tile--grey"><svg class="mi">
+                    <use href="#i-flame"></use>
+                  </svg></span> Qualities</h3>
+              <ul>
+                <li>Reads the <strong>error body</strong>, not the error toast</li>
+                <li>Judges the product by its <strong>first successful API call</strong></li>
+                <li>Will happily <strong>automate around us</strong> if we get in the way</li>
+              </ul>
+            </div>
+          </div>
+          <h3 style="margin-top:36px;"><svg class="mi">
+              <use href="#i-refresh-cw"></use>
+            </svg> Target flow</h3>
+          <div class="uflow-row">
+            <div class="uflow-box">Register app in own IdP</div><span class="uflow-arrow">→</span>
+            <div class="uflow-box">Add OAuth provider config in AI Hub</div><span class="uflow-arrow">→</span>
+            <div class="uflow-box">Map <code>sub</code> to a service account</div><span class="uflow-arrow">→</span>
+            <div class="uflow-box">Request JWT from IdP</div><span class="uflow-arrow">→</span>
+            <div class="uflow-box">Call AI Hub API as Bearer</div><span class="uflow-arrow">→</span>
+            <div class="uflow-box">Disable native tokens org-wide</div>
           </div>
         </div>
-        <div class="pnq-grid">
-          <div class="pnq-card pain">
-            <h3><span class="icon-tile icon-tile--red"><svg class="mi">
-                  <use href="#i-frown"></use>
-                </svg></span> Pain points</h3>
-            <ul>
-              <li>Automation has <strong>no identity of its own</strong> in an SSO-only org</li>
-              <li><strong>Long-lived tokens</strong> violated enterprise security policies, requiring a transition to
-                OAuth2 standards</li>
-              <li>A token <strong>silently carries</strong> its creator's full admin rights</li>
-              <li><strong>No API</strong> to create, rotate or delete tokens programmatically</li>
-            </ul>
+      </section>
+  
+      <section class="sec light">
+        <div class="wrap">
+          <h2 class="sec-h2">OAuth-compliant API authentication</h2>
+          <p class="lead">Delivered in two phases—<b>Release 2:</b> Enabled AI Hub to issue short-lived, OAuth2-compliant
+            tokens while deprecating legacy raw tokens. <b>Release 3:</b> Allowed organisations to bring their own IdP
+            (BYO-OAuth), enforcing scoped JWT validation.</p>
+  
+          <div class="ba-row-split problem">
+            <div class="ba-card before">
+              <div class="ba-card-head">
+                <h4>Before</h4>
+                <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+                  <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
+                    aria-label="Show video">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="23 7 16 12 23 17 23 7" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </button>
+                  <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
+                    aria-label="Show live prototype">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 9l-6 6 6 6" />
+                      <path d="M15 9l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul>
+                <li>Long-lived opaque tokens, generated in the UI</li>
+                <li>Token silently inherits its owner's full permissions</li>
+                <li>No expiry, no rotation, no IdP-side revocation</li>
+              </ul>
+            </div>
+            <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
+              <div class="video-embed">
+                <video preload="metadata" src="aihub-security-coded/videos/API%20before.mp4"
+                  title="API before walkthrough"></video>
+                <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+                <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
+                  screen</button>
+              </div>
+              <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
+                  type="button" class="media-toggle-fs-trigger">Full screen</button></p>
+            </div>
           </div>
-          <div class="pnq-card needs">
-            <h3><span class="icon-tile icon-tile--yellow"><svg class="mi">
-                  <use href="#i-key"></use>
-                </svg></span> Needs</h3>
-            <ul>
-              <li>Tokens <strong>issued and revoked</strong> by their own IdP</li>
-              <li>A <strong>non-human account</strong> they can map a client to use</li>
-              <li><strong>Explicit, inspectable scope</strong> on every token</li>
-              <li>A copy-paste path that <strong>actually works first try</strong></li>
-            </ul>
+  
+          <div class="ba-row-split solution">
+            <div class="ba-card after">
+              <div class="ba-card-head">
+                <h4>Stage 1 solution</h4>
+                <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+                  <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
+                    aria-label="Show video">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="23 7 16 12 23 17 23 7" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </button>
+                  <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
+                    aria-label="Show live prototype">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 9l-6 6 6 6" />
+                      <path d="M15 9l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul>
+                <li>AI Hub OAuth app issues short-lived tokens (15 min)</li>
+                <li>Signature, issuer, audience and expiry validated on every call</li>
+                <li>Ability to set scope of the token</li>
+                <li>Deprecation and migration plan for the old AI Hub raw tokens</li>
+              </ul>
+            </div>
+            <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v4&amp;embed=1">
+              <div class="video-embed">
+                <video preload="metadata" src="aihub-security-coded/videos/API%20stage%201.mp4"
+                  title="API stage 1 walkthrough"></video>
+                <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+                <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
+                  screen</button>
+              </div>
+              <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
+                  type="button" class="media-toggle-fs-trigger">Full screen</button></p>
+            </div>
+  
+            <div class="img-side-gallery">
+              <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-track">
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/1-banner%201.webp"
+                    alt="Stage 1: OAuth app banner" loading="lazy" />
+                  <p class="img-gallery-caption">Banner announcing the deprecation of old AI Hub raw tokens<br />Prompts migration to the new OAuth-compliant AI Hub OAuth app</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/2-idp%20view%201.webp"
+                    alt="Stage 1: identity provider view" loading="lazy" />
+                  <p class="img-gallery-caption">Identity &amp; access menu lists all OAuth apps and AI Hub tokens<br />Admin can view all API-related integrations in one place.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/3-banner%20pressed%201.webp"
+                    alt="Stage 1: banner pressed" loading="lazy" />
+                  <p class="img-gallery-caption">Admin clicks through the banner, to see all the existing service accounts using AI Hub tokens in one place<br />and plan the migration</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/4-service-acc%201.webp"
+                    alt="Stage 1: service account" loading="lazy" />
+                  <p class="img-gallery-caption">Creating a service account to hold<br />the new OAuth app. OAuth app's empty state</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/5-add-mapping%201.webp"
+                    alt="Stage 1: add mapping" loading="lazy" />
+                  <p class="img-gallery-caption">Configure the AI Hub OAuth app. Adding a scope mapping<br />for the tokens provided.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/6-added%20mapping%201.webp"
+                    alt="Stage 1: mapping added" loading="lazy" />
+                  <p class="img-gallery-caption">Confirmation that the mapping was added, and save the client credentials used in the code</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/7-added-intable%201.webp"
+                    alt="Stage 1: mapping in table" loading="lazy" />
+                  <p class="img-gallery-caption">New OAuth app now listed<br />in the table with scope and client ID, refreshing the token every 15 minutes</p>
+                </div>
+              </div>
+              <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-dots"></div>
+            </div>
           </div>
-          <div class="pnq-card qualities">
-            <h3><span class="icon-tile icon-tile--grey"><svg class="mi">
-                  <use href="#i-flame"></use>
-                </svg></span> Qualities</h3>
-            <ul>
-              <li>Reads the <strong>error body</strong>, not the error toast</li>
-              <li>Judges the product by its <strong>first successful API call</strong></li>
-              <li>Will happily <strong>automate around us</strong> if we get in the way</li>
-            </ul>
+  
+          <div class="ba-row-split solution">
+            <div class="ba-card after">
+              <div class="ba-card-head">
+                <h4>Stage 2 solution</h4>
+                <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
+                  <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
+                    aria-label="Show video">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="23 7 16 12 23 17 23 7" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </button>
+                  <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
+                    aria-label="Show live prototype">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 9l-6 6 6 6" />
+                      <path d="M15 9l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <ul>
+                <li>Customer's own OAuth provider issues short-lived JWTs (15–60 min)</li>
+                <li>Signature, issuer, audience and expiry validated on every call</li>
+                <li>Scope claim downscopes the token to specific roles</li>
+              </ul>
+            </div>
+            <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v5&amp;embed=1">
+              <div class="video-embed">
+                <video preload="metadata" src="aihub-security-coded/videos/API%20stage%202.mp4"
+                  title="API stage 2 walkthrough"></video>
+                <button class="video-play-btn" aria-label="Play video">&#9658;</button>
+                <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
+                  screen</button>
+              </div>
+              <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
+                  type="button" class="media-toggle-fs-trigger">Full screen</button></p>
+            </div>
+  
+            <div class="img-side-gallery">
+              <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-track">
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/1-idp%20authorization%201.webp"
+                    alt="Stage 2: IdP authorization" loading="lazy" />
+                  <p class="img-gallery-caption">Identity &amp; access menu now has an option to configure a new IdP<br />OAuth provider.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/2-idp%20config%201.webp"
+                    alt="Stage 2: IdP config" loading="lazy" />
+                  <p class="img-gallery-caption">Configuring the external IdP's<br />OAuth provider.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/3-service%20acc%20page%201.webp"
+                    alt="Stage 2: service account page" loading="lazy" />
+                  <p class="img-gallery-caption">Service account now has option to map <br />external OAuth provider.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/4-mapping%201.webp"
+                    alt="Stage 2: claim mapping" loading="lazy" />
+                  <p class="img-gallery-caption">Mapping claims from the<br />customer's JWT.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/5-mapping%20addded%201.webp"
+                    alt="Stage 2: mapping added" loading="lazy" />
+                  <p class="img-gallery-caption">Confirmation that the configuration<br />was added.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/6-mapping%20in%20table%201.webp"
+                    alt="Stage 2: mapping in table" loading="lazy" />
+                  <p class="img-gallery-caption">List shows the added external<br /> OAuth provider mappings for API access.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/7-list%20of%20all%201.webp"
+                    alt="Stage 2: list of all mappings" loading="lazy" />
+                  <p class="img-gallery-caption">Full list of configured mappings<br />for the org in identity and access menu.</p>
+                </div>
+                <div class="img-gallery-item"><img
+                    src="aihub-security-coded/api%20stage%202/8-admin-access%20member%20api%201.webp"
+                    alt="Stage 2: admin reviewing member API access" loading="lazy" />
+                  <p class="img-gallery-caption">Admin can add or remove a member's<br />API access setting.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/8-list%20table%201.webp"
+                    alt="Stage 2: member token scope table" loading="lazy" />
+                  <p class="img-gallery-caption">Table shows a list of all service accounts using this<br />OAuth provider for API access.</p>
+                </div>
+                <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/9-member's%20api%201.webp"
+                    alt="Stage 2: member's own API view" loading="lazy" />
+                  <p class="img-gallery-caption">A member's own view<br />of their API access.</p>
+                </div>
+              </div>
+              <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+              <div class="img-gallery-dots"></div>
+            </div>
           </div>
+  
+  
+          <h3 class="flow-sub">Key design decisions</h3>
+          <div class="dec-grid">
+            <div class="dec-card win">
+              <h4>1. Two objects, not one: provider configuration and account mapping</h4>
+              <div class="dec-quad">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>"Set up OAuth" is really
+                  <strong>two different jobs done by two different people at two different times</strong>: an org-wide
+                  trust relationship with an identity provider, and a per-identity claim that "this external subject is
+                  that account here".
+                </div>
+                <div class="dec-note options"><span class="dec-note-label">🔀 Options</span>(a) One combined wizard. (b)
+                  Two separate objects, each with its own lifecycle and its own home in the IA.</div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Two objects. The provider
+                  configuration lives under Identity &amp; access; the account mapping lives on the member or service
+                  account it belongs to. <strong>Both are required before any external token authenticates.</strong></div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Configuring a provider is a one-time
+                  act; mapping accounts is continuous, and belongs where the account lives. Splitting them also made the
+                  failure states diagnosable — <strong>"no provider" and "no mapping" are genuinely different problems
+                    with different fixes</strong>.</div>
+              </div>
+            </div>
+  
+            <div class="dec-card">
+              <h4>2. Terminology as a design deliverable</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Early drafts used "OAuth
+                  client" for three different things: the customer's IdP auth server, the app registered inside it, and
+                  the link between that app and an AI Hub identity. <strong>Reviews kept stalling on which one anyone
+                    meant.</strong></div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Fix the vocabulary before the
+                  UI: <strong>OAuth provider configuration</strong> (the trust relationship), <strong>external OAuth
+                    client</strong> (the app in the customer's IdP), <strong>account mapping</strong> (the link to an AI
+                  Hub identity).</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>In identity work, the naming
+                  <em>is</em> the mental model. Once the three objects had distinct names, the screens, the API and the
+                  documentation fell out of it — and <strong>the review conversations stopped going in circles</strong>.
+                </div>
+              </div>
+            </div>
+  
+            <div class="dec-card">
+              <h4>3. A migration path, not a flag day</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had
+                  working automation built on raw internal tokens. <strong>Deprecating them abruptly breaks production
+                    pipelines</strong> at exactly the customers we're trying to impress.</div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>A staged
+                    migration:</strong> (1) external IdP tokens ship alongside native tokens; (2) admins gain granular
+                  control over native token creation — all members, selected groups, or nobody; (3) an org that has moved
+                  to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI
+                  Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a
+                  release note. Giving each organisation the switch — and a reversible one, since disabling native tokens
+                  suspends rather than destroys them — <strong>let security-forward customers move immediately without
+                    breaking anyone else</strong>.</div>
+              </div>
+              <img src="aihub-security-coded/deprecation-emails.webp"
+                alt="Deprecation warning emails and token migration notifications"
+                style="width:100%;border-radius:12px;margin-top:16px;" />
+            </div>
+  
+            <div class="dec-card hidden-extra">
+              <h4>4. One client, one identity</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Should several external OAuth
+                  apps be allowed to map to a single shared service account? It's convenient — and <strong>it destroys
+                    least privilege</strong>, because every app inherits the same rights.</div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>One-to-one. <strong>Each
+                    external client maps to exactly one AI Hub user or service account.</strong> Each account may hold one
+                  mapping per configured provider.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>One global investment bank customer
+                  cannot configure scopes on their side at all. If a customer can't express least privilege through scope,
+                  the only remaining lever is the identity itself — so <strong>the client had to become the unit of
+                    privilege</strong>. A constraint from one customer's security policy became the safer default for
+                  everyone.</div>
+              </div>
+            </div>
+  
+            <div class="dec-card hidden-extra">
+              <h4>5. Scope may only reduce, never grant</h4>
+              <div class="dec-quad q3">
+                <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>If a JWT's scope claim
+                  controls what the token can do, could a customer <strong>mint themselves admin rights</strong> by
+                  writing an admin role into a token?</div>
+                <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>Scope always
+                    downscopes and never upscopes.</strong> It is expressed as immutable role UUIDs; multiple roles are
+                  additive (most permissive wins); a workspace role without an organisation role is invalid; and a
+                  workspace role still requires real membership of that workspace. If the scope claim is absent or
+                  invalid, the token falls back to the mapped account's normal roles.</div>
+                <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the whole reason enterprise
+                  security teams accept token-based access. Using role UUIDs instead of readable strings was the less
+                  friendly choice for humans — and the right one, because <strong>a renamed role must never silently
+                    change what a live token can do</strong>.</div>
+              </div>
+            </div>
+  
+  
+  
+            <button type="button" class="dec-toggle-btn"
+              onclick="var g=this.closest('.dec-grid'); g.classList.toggle('expanded'); this.firstChild.textContent = g.classList.contains('expanded') ? 'View fewer decisions ' : 'View more decisions ';">View
+              more decisions <span class="dec-toggle-icon">▾</span></button>
+          </div>
+  
+  
         </div>
-        <h3 style="margin-top:36px;"><svg class="mi">
-            <use href="#i-refresh-cw"></use>
-          </svg> Target flow</h3>
-        <div class="uflow-row">
-          <div class="uflow-box">Register app in own IdP</div><span class="uflow-arrow">→</span>
-          <div class="uflow-box">Add OAuth provider config in AI Hub</div><span class="uflow-arrow">→</span>
-          <div class="uflow-box">Map <code>sub</code> to a service account</div><span class="uflow-arrow">→</span>
-          <div class="uflow-box">Request JWT from IdP</div><span class="uflow-arrow">→</span>
-          <div class="uflow-box">Call AI Hub API as Bearer</div><span class="uflow-arrow">→</span>
-          <div class="uflow-box">Disable native tokens org-wide</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec light">
-      <div class="wrap">
-        <h2 class="sec-h2">OAuth-compliant API authentication</h2>
-        <p class="lead">Delivered in two phases—<b>Release 2:</b> Enabled AI Hub to issue short-lived, OAuth2-compliant
-          tokens while deprecating legacy raw tokens. <b>Release 3:</b> Allowed organizations to Bring Your Own IdP
-          (BYO-OAuth), enforcing scoped JWT validation.</p>
-
-        <div class="ba-row-split problem">
-          <div class="ba-card before">
-            <div class="ba-card-head">
-              <h4>Before</h4>
-              <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
-                <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
-                  aria-label="Show video">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                  </svg>
-                </button>
-                <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
-                  aria-label="Show live prototype">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 9l-6 6 6 6" />
-                    <path d="M15 9l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <ul>
-              <li>Long-lived opaque tokens, generated in the UI</li>
-              <li>Token silently inherits its owner's full permissions</li>
-              <li>No expiry, no rotation, no IdP-side revocation</li>
-            </ul>
-          </div>
-          <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v0&amp;embed=1">
-            <div class="video-embed">
-              <video preload="auto" src="aihub-security-coded/videos/API%20before.mp4"
-                title="API before walkthrough"></video>
-              <button class="video-play-btn" aria-label="Play video">&#9658;</button>
-              <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
-                screen</button>
-            </div>
-            <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
-                type="button" class="media-toggle-fs-trigger">Full screen</button></p>
-          </div>
-        </div>
-
-        <div class="ba-row-split solution">
-          <div class="ba-card after">
-            <div class="ba-card-head">
-              <h4>Stage 1 solution</h4>
-              <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
-                <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
-                  aria-label="Show video">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                  </svg>
-                </button>
-                <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
-                  aria-label="Show live prototype">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 9l-6 6 6 6" />
-                    <path d="M15 9l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <ul>
-              <li>AIhub Oauth app which issues short lived tokens (15min)</li>
-              <li>Signature, issuer, audience and expiry validated on every call</li>
-              <li>Ability to set scope of the token</li>
-              <li>Depreciation and migration plan of the old AI-Hub raw rokens</li>
-            </ul>
-          </div>
-          <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v4&amp;embed=1">
-            <div class="video-embed">
-              <video preload="auto" src="aihub-security-coded/videos/API%20stage%201.mp4"
-                title="API stage 1 walkthrough"></video>
-              <button class="video-play-btn" aria-label="Play video">&#9658;</button>
-              <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
-                screen</button>
-            </div>
-            <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
-                type="button" class="media-toggle-fs-trigger">Full screen</button></p>
-          </div>
-
-          <div class="img-side-gallery">
-            <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-track">
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/1-banner%201.webp"
-                  alt="Stage 1: OAuth app banner" loading="lazy" />
-                <p class="img-gallery-caption">Banner announcing the depreciation of old AI-hub raw rokens<br />Hints to migrate to new Oauth compliant AI-hhub OAuth app</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/2-idp%20view%201.webp"
-                  alt="Stage 1: identity provider view" loading="lazy" />
-                <p class="img-gallery-caption">Identiry &amp; access menu has list of all OAuth apps and AIhub tokens<br />Admin can view all Api related integrations in one place<br />.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/3-banner%20pressed%201.webp"
-                  alt="Stage 1: banner pressed" loading="lazy" />
-                <p class="img-gallery-caption">Admin clicks through the banner, to see all the existing service acc using AI-hub tokens in one place<br />and plan the migration</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/4-service-acc%201.webp"
-                  alt="Stage 1: service account" loading="lazy" />
-                <p class="img-gallery-caption">Creating a service account to hold<br />the new OAuth app. OAuth app's empty state</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/5-add-mapping%201.webp"
-                  alt="Stage 1: add mapping" loading="lazy" />
-                <p class="img-gallery-caption">Configure AIhub-Outh app Adding a scope mapping<br />for the tokens provided.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/6-added%20mapping%201.webp"
-                  alt="Stage 1: mapping added" loading="lazy" />
-                <p class="img-gallery-caption">Confirmation that the mapping was added<br />and save client credential, used in the code</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%201/7-added-intable%201.webp"
-                  alt="Stage 1: mapping in table" loading="lazy" />
-                <p class="img-gallery-caption">New OAuth app now listed<br />in the table with scope and client id, which refreshes token every 15minutes</p>
-              </div>
-            </div>
-            <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-dots"></div>
-          </div>
-        </div>
-
-        <div class="ba-row-split solution">
-          <div class="ba-card after">
-            <div class="ba-card-head">
-              <h4>Stage 2 solution</h4>
-              <div class="media-toggle-tabs" role="tablist" aria-label="View as video or live prototype">
-                <button type="button" class="media-toggle-tab active" data-mode="video" aria-pressed="true"
-                  aria-label="Show video">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                  </svg>
-                </button>
-                <button type="button" class="media-toggle-tab" data-mode="live" aria-pressed="false"
-                  aria-label="Show live prototype">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 9l-6 6 6 6" />
-                    <path d="M15 9l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <ul>
-              <li>Customer's own OAuth provider issues short-lived JWTs (15–60 min)</li>
-              <li>Signature, issuer, audience and expiry validated on every call</li>
-              <li>Scope claim downscopes the token to specific roles</li>
-            </ul>
-          </div>
-          <div class="media-toggle" data-iframe-src="AIhub settings/index.html?version=v5&amp;embed=1">
-            <div class="video-embed">
-              <video preload="auto" src="aihub-security-coded/videos/API%20stage%202.mp4"
-                title="API stage 2 walkthrough"></video>
-              <button class="video-play-btn" aria-label="Play video">&#9658;</button>
-              <button type="button" class="media-toggle-fs-exit" aria-label="Exit full screen">&#10005; Exit full
-                screen</button>
-            </div>
-            <p class="media-toggle-caption">Prototype coded from scratch with dummy values &middot; <button
-                type="button" class="media-toggle-fs-trigger">Full screen</button></p>
-          </div>
-
-          <div class="img-side-gallery">
-            <button type="button" class="img-gallery-arrow prev" aria-label="Scroll left">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-track">
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/1-idp%20authorization%201.webp"
-                  alt="Stage 2: IdP authorization" loading="lazy" />
-                <p class="img-gallery-caption">Identity and accesss menu now has option to congifure new IdP<br />OAuth provider.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/2-idp%20config%201.webp"
-                  alt="Stage 2: IdP config" loading="lazy" />
-                <p class="img-gallery-caption">Configuring the external IdP's<br />OAuth provider.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/3-service%20acc%20page%201.webp"
-                  alt="Stage 2: service account page" loading="lazy" />
-                <p class="img-gallery-caption">Service account now has option to map <br />external OAuth provider.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/4-mapping%201.webp"
-                  alt="Stage 2: claim mapping" loading="lazy" />
-                <p class="img-gallery-caption">Mapping claims from the<br />customer's JWT.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/5-mapping%20addded%201.webp"
-                  alt="Stage 2: mapping added" loading="lazy" />
-                <p class="img-gallery-caption">Confirmation that the configruation<br />was added.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/6-mapping%20in%20table%201.webp"
-                  alt="Stage 2: mapping in table" loading="lazy" />
-                <p class="img-gallery-caption">List shows the added external<br /> OAuth provider mappings for API access.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/7-list%20of%20all%201.webp"
-                  alt="Stage 2: list of all mappings" loading="lazy" />
-                <p class="img-gallery-caption">Full list of configured mappings<br />for the org in identity and access menu.</p>
-              </div>
-              <div class="img-gallery-item"><img
-                  src="aihub-security-coded/api%20stage%202/8-admin-access%20member%20api%201.webp"
-                  alt="Stage 2: admin reviewing member API access" loading="lazy" />
-                <p class="img-gallery-caption">Admin can add or remove a member's<br />API access setting.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/8-list%20table%201.webp"
-                  alt="Stage 2: member token scope table" loading="lazy" />
-                <p class="img-gallery-caption">Table show list of all service accounts using this<br />OAuth provider for API access.</p>
-              </div>
-              <div class="img-gallery-item"><img src="aihub-security-coded/api%20stage%202/9-member's%20api%201.webp"
-                  alt="Stage 2: member's own API view" loading="lazy" />
-                <p class="img-gallery-caption">A member's own view<br />of their API access.</p>
-              </div>
-            </div>
-            <button type="button" class="img-gallery-arrow next" aria-label="Scroll right">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-            <div class="img-gallery-dots"></div>
-          </div>
-        </div>
-
-
-        <h3 class="flow-sub">Key design decisions</h3>
-        <div class="dec-grid">
-          <div class="dec-card win">
-            <h4>1. Two objects, not one: provider configuration and account mapping</h4>
-            <div class="dec-quad">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>"Set up OAuth" is really
-                <strong>two different jobs done by two different people at two different times</strong>: an org-wide
-                trust relationship with an identity provider, and a per-identity claim that "this external subject is
-                that account here".
-              </div>
-              <div class="dec-note options"><span class="dec-note-label">🔀 Options</span>(a) One combined wizard. (b)
-                Two separate objects, each with its own lifecycle and its own home in the IA.</div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Two objects. The provider
-                configuration lives under Identity &amp; access; the account mapping lives on the member or service
-                account it belongs to. <strong>Both are required before any external token authenticates.</strong></div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Configuring a provider is a one-time
-                act; mapping accounts is continuous, and belongs where the account lives. Splitting them also made the
-                failure states diagnosable — <strong>"no provider" and "no mapping" are genuinely different problems
-                  with different fixes</strong>.</div>
-            </div>
-          </div>
-
-          <div class="dec-card">
-            <h4>2. Terminology as a design deliverable</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Early drafts used "OAuth
-                client" for three different things: the customer's IdP auth server, the app registered inside it, and
-                the link between that app and an AI Hub identity. <strong>Reviews kept stalling on which one anyone
-                  meant.</strong></div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>Fix the vocabulary before the
-                UI: <strong>OAuth provider configuration</strong> (the trust relationship), <strong>external OAuth
-                  client</strong> (the app in the customer's IdP), <strong>account mapping</strong> (the link to an AI
-                Hub identity).</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>In identity work, the naming
-                <em>is</em> the mental model. Once the three objects had distinct names, the screens, the API and the
-                documentation fell out of it — and <strong>the review conversations stopped going in circles</strong>.
-              </div>
-            </div>
-          </div>
-
-          <div class="dec-card">
-            <h4>3. A migration path, not a flag day</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Every existing customer had
-                working automation built on raw internal tokens. <strong>Deprecating them abruptly breaks production
-                  pipelines</strong> at exactly the customers we're trying to impress.</div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>A staged
-                  migration:</strong> (1) external IdP tokens ship alongside native tokens; (2) admins gain granular
-                control over native token creation — all members, selected groups, or nobody; (3) an org that has moved
-                to OAuth can switch native tokens off entirely, forcing all API access through the provider; (4) AI
-                Hub-managed OAuth2 tokens replace the remaining opaque tokens.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>Deprecation is a design problem, not a
-                release note. Giving each organisation the switch — and a reversible one, since disabling native tokens
-                suspends rather than destroys them — <strong>let security-forward customers move immediately without
-                  breaking anyone else</strong>.</div>
-            </div>
-            <img src="aihub-security-coded/depreciation-emails.webp"
-              alt="Deprecation warning emails and token migration notifications"
-              style="width:100%;border-radius:12px;margin-top:16px;" />
-          </div>
-
-          <div class="dec-card hidden-extra">
-            <h4>4. One client, one identity</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>Should several external OAuth
-                apps be allowed to map to a single shared service account? It's convenient — and <strong>it destroys
-                  least privilege</strong>, because every app inherits the same rights.</div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span>One-to-one. <strong>Each
-                  external client maps to exactly one AI Hub user or service account.</strong> Each account may hold one
-                mapping per configured provider.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>One global investment bank customer
-                cannot configure scopes on their side at all. If a customer can't express least privilege through scope,
-                the only remaining lever is the identity itself — so <strong>the client had to become the unit of
-                  privilege</strong>. A constraint from one customer's security policy became the safer default for
-                everyone.</div>
-            </div>
-          </div>
-
-          <div class="dec-card hidden-extra">
-            <h4>5. Scope may only reduce, never grant</h4>
-            <div class="dec-quad q3">
-              <div class="dec-note problem"><span class="dec-note-label">🧩 Problem</span>If a JWT's scope claim
-                controls what the token can do, could a customer <strong>mint themselves admin rights</strong> by
-                writing an admin role into a token?</div>
-              <div class="dec-note decision"><span class="dec-note-label">✅ Decision</span><strong>Scope always
-                  downscopes and never upscopes.</strong> It is expressed as immutable role UUIDs; multiple roles are
-                additive (most permissive wins); a workspace role without an organisation role is invalid; and a
-                workspace role still requires real membership of that workspace. If the scope claim is absent or
-                invalid, the token falls back to the mapped account's normal roles.</div>
-              <div class="dec-note why"><span class="dec-note-label">💡 Why</span>This is the whole reason enterprise
-                security teams accept token-based access. Using role UUIDs instead of readable strings was the less
-                friendly choice for humans — and the right one, because <strong>a renamed role must never silently
-                  change what a live token can do</strong>.</div>
-            </div>
-          </div>
-
-
-
-          <button type="button" class="dec-toggle-btn"
-            onclick="var g=this.closest('.dec-grid'); g.classList.toggle('expanded'); this.firstChild.textContent = g.classList.contains('expanded') ? 'View fewer decisions ' : 'View more decisions ';">View
-            more decisions <span class="dec-toggle-icon">▾</span></button>
-        </div>
-
-        <h3 class="flow-sub">Audit logs of everything</h3>
-        <p class="lead">Previously, audit trails were dug out of raw log files by an internal engineer — there was no UI
-          for admins to see them at all. This was a named SOC 2 blocker for several enterprise deals; giving admins a
-          self-serve audit log view unlocked it.</p>
-        <img src="aihub-security-coded/auditlogs.webp" alt="Audit logs" style="width:100%;border-radius:12px;" />
-        <p class="dec-plain-note" style="margin-top:8px;"><em>*All are dummy values, just a placeholder</em></p>
-
-      </div>
-    </section>
+      </section>
+    </details>
 
     <!-- ============ ROADMAP (dark) ============ -->
     <section id="roadmap" class="sec dark">
@@ -2382,8 +2434,8 @@
           <div class="research-card" style="grid-template-columns:1fr;">
             <div class="research-text">
               <h3>Systematic Slack &amp; ticket mining</h3>
-              <p>I pulled every message from slcak channels and tickets then coded each reported problem by category,
-                reporter, root cause and resolution status. The result was a 22 distinct issues logged in a status
+              <p>I pulled every message from the Slack channels and tickets, then coded each reported problem by category,
+                reporter, root cause and resolution status. The result was 22 distinct issues logged in a status
                 dashboard: 2 open, 5 workaround-only, 4 documentation gaps.</p>
               <p style="margin-top:12px;color:green;">This is what turned a vague "we need SSO" into a prioritised,
                 evidence-backed problem list I could defend in a roadmap review.</p>
@@ -2447,7 +2499,8 @@
             </div>
           </div>
 
-          <!-- THEME 2 
+          <!-- DISABLED BLOCK — if restored, renumber all Theme headings sequentially.
+         THEME 2 
       <div class="qt-theme">
         <h3><svg class="mi"><use href="#i-shield-alert"></use></svg> Theme 2 — The feature exists, but the customer sees nothing</h3>
         <p class="qt-lead">The single most repeated root cause across the whole log. A capability shipped, the docs described it, and the customer opened a screen that wasn't there — because a per-org flag was off.</p>
@@ -2476,9 +2529,10 @@
       </div>
     -->
 
-          <!-- THEME 3 
+          <!-- DISABLED BLOCK — if restored, renumber all Theme headings sequentially.
+         THEME 3 
       <div class="qt-theme">
-        <h3><svg class="mi"><use href="#i-puzzle"></use></svg> Theme  — Attribute mapping fails silently, hours later, to the wrong person</h3>
+        <h3><svg class="mi"><use href="#i-puzzle"></use></svg> Theme 3 — Attribute mapping fails silently, hours later, to the wrong person</h3>
         <p class="qt-lead">The admin configures. Nothing appears wrong. The failure surfaces at login — as a protocol error string, to an end user who has never heard of SAML.</p>
       </div>
       <div class="quote-grid">
@@ -2688,7 +2742,7 @@
               </tbody>
             </table>
           </div>
-          <p class="todo-note">Data as of feb 2026</p>
+          <p class="todo-note">Data as of February 2026</p>
 
           <h3 class="flow-sub" style="margin-top:40px;">What the analysis actually changed</h3>
           <div class="comp-takeaways">
@@ -2820,7 +2874,7 @@
                 </svg> Internal corpus<span>Read end-to-end to verify what shipped against what was specified.</span>
               </div>
               <div class="ref-pills">
-                <span class="ref-pill plain">CE config call logs, pre salse support calls</span>
+                <span class="ref-pill plain">CE config call logs, presales support calls</span>
                 <span class="ref-pill plain">existing docs.instabase.com/admin</span>
                 <span class="ref-pill plain">Slack channels + Zendesk</span>
               </div>
@@ -3006,7 +3060,7 @@
               </tbody>
             </table>
           </div>
-          <p class="todo-note">Naming the red rows explicitly, This made the matrix usable in sales conversations.
+          <p class="todo-note">Naming the red rows explicitly made the matrix usable in sales conversations.
             Presales could finally answer "do you support X?" without guessing.</p>
         </div>
       </section>
@@ -3070,20 +3124,20 @@
           <h2 class="sec-h2">Mapping three pillars into one system</h2>
           <p class="lead">Three tracks landed in the same settings area over the releases. Without a deliberate
             structure, AI Hub would have ended up with three unrelated "security" screens built by three different
-            period — which is exactly how enterprise settings usually rot.</p>
+            teams — which is exactly how enterprise settings usually rot.</p>
           <div class="ia-stack">
             <img class="ia-diagram-img" src="aihub-security-coded/ph-28.webp"
               alt="IA diagram: settings tree before vs. after, with the three pillars colour-coded" />
             <div>
               <h3 style="margin-bottom:14px;">The structure I set</h3>
               <ul style="padding-left:20px; display:grid; gap:10px; font-size:16px; color:var(--ink-2);">
-                <li><strong>SSO Logins</strong> — how users get in: password sign-in policy,MFAs..</li>
+                <li><strong>SSO Logins</strong> — how users get in: password sign-in policy, MFA.</li>
                 <li><strong>Identity &amp; access</strong> — SSO configuration, test mode, OAuth provider
-                  configurationsauthorization.</li>
+                  configuration and authorization.</li>
                 <li><strong>Organisation → Groups </strong>What people can reach: groups, group mappings, roles.</li>
                 <li><strong>Organisation → Service accounts</strong> Provider's account mappings live on the account,
                   not in a separate registry.</li>
-                <li><strong>Organisatio → Manage → Audit logs</strong> — what happened, and what's opt-in. Detailed
+                <li><strong>Organisation → Manage → Audit logs</strong> — what happened, and what's opt-in. Detailed
                   snapshot.</li>
               </ul>
               <p class="todo-note">The rule underneath it: an object lives where the user's mental model puts it, not
@@ -3092,7 +3146,7 @@
             </div>
           </div>
 
-          <h2 class="sec-h2" style="margin-top:44px;">Solutions are listed in the 3 tracks in the above section</h2>
+          <h2 class="sec-h2" style="margin-top:44px;">Solutions for all three tracks are in the section above</h2>
           <div style="display:flex;gap:16px;width:100%;">
             <a href="#track-sso"
               style="flex:1;text-align:center;padding:16px 20px;border-radius:var(--radius-lg);background:var(--ink);color:#fff;font-weight:700;text-decoration:none;">Pillar
@@ -3150,194 +3204,11 @@
   </section>
   -->
 
-      <!-- ============ USABILITY (light) ============ -->
-      <section id="usability" class="sec light">
-        <div class="wrap">
-          <h2 class="sec-h2">Usability evaluation</h2>
-          <p class="lead">Tested with internal participants who mirror the real personas — solution engineers, support
-            engineers and platform engineers who configure customer IdPs for a living — plus configuration walkthroughs
-            with early customers.</p>
-
-          <div class="comp-table-wrap">
-            <table class="comp-table">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Participants</th>
-                  <th>Success rate</th>
-                  <th>Median time</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Configure SAML SSO end-to-end</th>
-                  <td><strong>4</strong> Admin</td>
-                  <td>75%</td>
-                  <td>6 min</td>
-                  <td>
-                    <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
-                      <li>1 participant misread the ACS URL field on first try</li>
-                      <li>Metadata upload was preferred over manual entry</li>
-                      <li>Test-before-enforce step reduced hesitation to proceed</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Configure OIDC SSO end- to-end</th>
-                  <td><strong>5</strong> Admin</td>
-                  <td>80%</td>
-                  <td>4 min</td>
-                  <td>
-                    <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
-                      <li>Faster than SAML — discovery URL auto-fills most fields</li>
-                      <li>1 participant pasted the wrong URL type (auth vs. discovery)</li>
-                      <li>No confusion once the field was auto-validated</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Map an IdP group to an AI Hub group</th>
-                  <td><strong>6</strong> Admin</td>
-                  <td>83%</td>
-                  <td>3 min</td>
-                  <td>
-                    <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
-                      <li>Confusion only on the many-to-one mapping step</li>
-                      <li>Sync-timing note prevented "is it broken?" moments</li>
-                      <li>Participants expected group auto-creation — it doesn't</li>
-                      <li>Quickest task once the mental model clicked</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Register an OAuth provider + account mapping</th>
-                  <td><strong>4</strong> Engineer</td>
-                  <td>50%</td>
-                  <td>9 min</td>
-                  <td>
-                    <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
-                      <li>2 of 4 needed a hint to find account mapping under the member page</li>
-                      <li>Provider config vs. account mapping split wasn't obvious upfront</li>
-                      <li>Once found, mapping itself took under a minute</li>
-                      <li>Lowest success rate of all five tasks</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Make a first successful authenticated API call</th>
-                  <td><strong>4</strong> Engineer</td>
-                  <td>75%</td>
-                  <td>5 min</td>
-                  <td>
-                    <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
-                      <li>Copy-pasted sample code worked first try for 3 of 4</li>
-                      <li>1 participant hit a scope error, resolved by re-reading the docs</li>
-                      <li>Placeholder token in samples caused no confusion</li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 class="flow-sub" style="margin-top:40px;">What testing changed</h3>
-          <div class="flag-card">
-            <div class="grid-2">
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-megaphone"></use>
-                  </svg> Feedback</h4>
-                <p>"I don't know which of these fields my IdP calls what — I'm guessing." Participants tab-switched
-                  constantly and transcribed values by hand.</p>
-              </div>
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-check-circle-2"></use>
-                  </svg> Change made</h4>
-                <p>Field labels carry per-IdP naming, and the setup surfaces the exact place in each of the 8 supported
-                  IdPs where each value is found (Exact IdP field names, import and export capabilities).</p>
-              </div>
-            </div>
-            <div class="grid-2" style="margin-top:20px;">
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-megaphone"></use>
-                  </svg> Feedback</h4>
-                <p>"So if I save this, is SSO on now? Am I about to break login for everyone?"</p>
-              </div>
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-check-circle-2"></use>
-                  </svg> Change made</h4>
-                <p>Saving a configuration and enforcing SSO became two separate, clearly labelled steps, with the
-                  password fallback explicitly held open until a successful test.</p>
-              </div>
-            </div>
-            <div class="grid-2" style="margin-top:20px;">
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-megaphone"></use>
-                  </svg> Feedback</h4>
-                <p>"I created the mapping but the group is empty — did it fail?"</p>
-              </div>
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-check-circle-2"></use>
-                  </svg> Change made</h4>
-                <p>Sync timing stated inline at the moment of creation, so an empty list reads as expected behaviour
-                  rather than failure (showing messages in confirmation modal and table empty state).</p>
-              </div>
-            </div>
-            <div class="grid-2" style="margin-top:20px;">
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-megaphone"></use>
-                  </svg> Feedback</h4>
-                <p>"Why can't I just paste the role name into the scope? These UUIDs are unreadable."</p>
-              </div>
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-check-circle-2"></use>
-                  </svg> Change made</h4>
-                <p>Kept immutable role UUIDs (renaming a role must never change a live token's power) but shipped a
-                  copyable role-to-UUID reference and worked scope examples alongside the field.</p>
-              </div>
-            </div>
-          </div>
-
-          <h3 class="flow-sub" style="margin-top:44px;">Changes based on feedback</h3>
-          <div class="flag-card">
-            <div class="grid-2">
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-megaphone"></use>
-                  </svg> Feedback</h4>
-                <p>When existing orgs transition from old to new RBAC, they might miss users in the group mapping. It's
-                  very hard to confirm if a user belongs to a specific group. </p>
-                <p> "We have to open every group and check manually."</p>
-              </div>
-              <div>
-                <h4><svg class="mi">
-                    <use href="#i-check-circle-2"></use>
-                  </svg> Change made</h4>
-                <p>Created a
-                  "verify user" tool inside groups: search for a user and instantly see every group they belong to. It
-                  turns a manual, error-prone check into a debugging step.</p>
-              </div>
-            </div>
-          </div>
-          <img src="aihub-security-coded/Verify-user.webp" alt="Verify user"
-            style="width:100%;border-radius:12px;margin-top:20px;" />
-
-        </div>
-      </section>
-
       <!-- ============ AI IN DESIGN (dark) ============ -->
       <section id="ai-in-design" class="sec dark">
         <div class="wrap">
           <h2 class="sec-h2">How I used AI in this project</h2>
-          <p class="lead">This project had a research corpus no human reads end-to-end: three years of Slack across five
+          <p class="lead">This project had a research corpus no human reads end-to-end: three years of Slack across four
             channels, customer engineer notes and a documentation site. AI is what made that corpus tractable for one
             designer — and, separately, what I proposed to make SSO setup easier for the admins themselves.</p>
 
@@ -3446,7 +3317,7 @@
       <section id="collaboration" class="sec light">
         <div class="wrap">
           <h2 class="sec-h2">Collaboration</h2>
-          <h3 style="margin-top:20px;">Working with engineering (1 Eng lead, 2 frontend developers, 2 backend developer)
+          <h3 style="margin-top:20px;">Working with engineering (1 Eng lead, 2 frontend developers, 2 backend developers)
           </h3>
           <p class="lead">The technical design documents were written alongside my flows. I reviewed the API
             specification, the SSO configuration schema and the token-scope permissions matrix directly, and pushed back
@@ -3531,6 +3402,190 @@
 
     </div>
     <!-- /#processDetails -->
+
+    <!-- ============ USABILITY (light) ============ -->
+    <section id="usability" class="sec light">
+      <div class="wrap">
+        <h2 class="sec-h2">Usability evaluation</h2>
+        <p class="lead">Tested with internal participants who mirror the real personas — solution engineers, support
+          engineers and platform engineers who configure customer IdPs for a living — plus configuration walkthroughs
+          with early customers.</p>
+
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Participants</th>
+                <th>Success rate</th>
+                <th>Median time</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Configure SAML SSO end-to-end</th>
+                <td><strong>4</strong> Admin</td>
+                <td>75%</td>
+                <td>6 min</td>
+                <td>
+                  <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
+                    <li>1 participant misread the ACS URL field on first try</li>
+                    <li>Metadata upload was preferred over manual entry</li>
+                    <li>Test-before-enforce step reduced hesitation to proceed</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Configure OIDC SSO end-to-end</th>
+                <td><strong>5</strong> Admin</td>
+                <td>80%</td>
+                <td>4 min</td>
+                <td>
+                  <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
+                    <li>Faster than SAML — discovery URL auto-fills most fields</li>
+                    <li>1 participant pasted the wrong URL type (auth vs. discovery)</li>
+                    <li>No confusion once the field was auto-validated</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Map an IdP group to an AI Hub group</th>
+                <td><strong>6</strong> Admin</td>
+                <td>83%</td>
+                <td>3 min</td>
+                <td>
+                  <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
+                    <li>Confusion only on the many-to-one mapping step</li>
+                    <li>Sync-timing note prevented "is it broken?" moments</li>
+                    <li>Participants expected group auto-creation — it is not supported</li>
+                    <li>Quickest task once the mental model clicked</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Register an OAuth provider + account mapping</th>
+                <td><strong>4</strong> Engineer</td>
+                <td>50%</td>
+                <td>9 min</td>
+                <td>
+                  <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
+                    <li>2 of 4 needed a hint to find account mapping under the member page</li>
+                    <li>Provider config vs. account mapping split wasn't obvious upfront</li>
+                    <li>Once found, mapping itself took under a minute</li>
+                    <li>Lowest success rate of all five tasks</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Make a first successful authenticated API call</th>
+                <td><strong>4</strong> Engineer</td>
+                <td>75%</td>
+                <td>5 min</td>
+                <td>
+                  <ul style="padding-left:16px;margin:0;display:grid;gap:4px;">
+                    <li>Copy-pasted sample code worked first try for 3 of 4</li>
+                    <li>1 participant hit a scope error, resolved by re-reading the docs</li>
+                    <li>Placeholder token in samples caused no confusion</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="flow-sub" style="margin-top:40px;">What testing changed</h3>
+        <div class="flag-card">
+          <div class="grid-2">
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-megaphone"></use>
+                </svg> Feedback</h4>
+              <p>"I don't know which of these fields my IdP calls what — I'm guessing." Participants tab-switched
+                constantly and transcribed values by hand.</p>
+            </div>
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-check-circle-2"></use>
+                </svg> Change made</h4>
+              <p>Field labels carry per-IdP naming, and the setup surfaces the exact place in each of the 8 supported
+                IdPs where each value is found (Exact IdP field names, import and export capabilities).</p>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:20px;">
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-megaphone"></use>
+                </svg> Feedback</h4>
+              <p>"So if I save this, is SSO on now? Am I about to break login for everyone?"</p>
+            </div>
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-check-circle-2"></use>
+                </svg> Change made</h4>
+              <p>Saving a configuration and enforcing SSO became two separate, clearly labelled steps, with the
+                password fallback explicitly held open until a successful test.</p>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:20px;">
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-megaphone"></use>
+                </svg> Feedback</h4>
+              <p>"I created the mapping but the group is empty — did it fail?"</p>
+            </div>
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-check-circle-2"></use>
+                </svg> Change made</h4>
+              <p>Sync timing stated inline at the moment of creation, so an empty list reads as expected behaviour
+                rather than failure (showing messages in confirmation modal and table empty state).</p>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:20px;">
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-megaphone"></use>
+                </svg> Feedback</h4>
+              <p>"Why can't I just paste the role name into the scope? These UUIDs are unreadable."</p>
+            </div>
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-check-circle-2"></use>
+                </svg> Change made</h4>
+              <p>Kept immutable role UUIDs (renaming a role must never change a live token's power) but shipped a
+                copyable role-to-UUID reference and worked scope examples alongside the field.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="flow-sub" style="margin-top:44px;">Changes based on feedback</h3>
+        <div class="flag-card">
+          <div class="grid-2">
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-megaphone"></use>
+                </svg> Feedback</h4>
+              <p>When existing orgs transition from old to new RBAC, they might miss users in the group mapping. It's
+                very hard to confirm if a user belongs to a specific group. </p>
+              <p> "We have to open every group and check manually."</p>
+            </div>
+            <div>
+              <h4><svg class="mi">
+                  <use href="#i-check-circle-2"></use>
+                </svg> Change made</h4>
+              <p>Created a
+                "verify user" tool inside groups: search for a user and instantly see every group they belong to. It
+                turns a manual, error-prone check into a debugging step.</p>
+            </div>
+          </div>
+        </div>
+        <img src="aihub-security-coded/Verify-user.webp" alt="Verify user"
+          style="width:100%;border-radius:12px;margin-top:20px;" />
+
+      </div>
+    </section>
+
 
     <!-- ============ RESULTS ============ -->
     <section class="sec dark strip" id="impact-results">
@@ -3641,32 +3696,30 @@
           <div class="stat-card lg">
             <div class="stat-label"><svg class="mi">
                 <use href="#i-building-2"></use>
-              </svg> Enterprise deals </div>
-            <div class="stat-val"><strong><span class="todo"></span></strong>Auth no long a blocker </div>
-            <div class="stat-pct">+9 deals unblocked</div>
+              </svg> Enterprise deals</div>
+            <div class="stat-val"><strong class="stat-hi">+9</strong> deals unblocked</div>
+            <div class="stat-pct stat-pct--note">Auth no longer a blocker</div>
           </div>
           <div class="stat-card lg">
             <div class="stat-label"><svg class="mi">
                 <use href="#i-circle-dollar-sign"></use>
               </svg> ARR influenced</div>
-            <div class="stat-val"><span class="todo">$X M</span> to <strong><span class="todo">$XXX M</span></strong>
-            </div>
-            <div class="stat-pct">+<span class="todo">40</span>%</div>
+            <div class="stat-val"><strong class="stat-hi">8-figure</strong> revenue</div>
+            <div class="stat-pct stat-pct--note">in security-gated deals</div>
           </div>
           <div class="stat-card lg">
             <div class="stat-label"><svg class="mi">
                 <use href="#i-monitor"></use>
               </svg> ST environments avoided</div>
             <div class="stat-val"><strong><span class="todo">0</span></strong> workaround instances</div>
-            <div class="stat-pct">ST Infra cost saved</div>
+            <div class="stat-pct stat-pct--note">ST Infra cost saved</div>
           </div>
           <div class="stat-card lg">
             <div class="stat-label"><svg class="mi">
                 <use href="#i-timer"></use>
               </svg> Initial org setup time</div>
-            <div class="stat-val"><span class="todo">4 Weeks</span> to <strong><span class="todo">5 Days</span></strong>
-              weeks</div>
-            <div class="stat-pct">-<span class="todo"></span>87.7%</div>
+            <div class="stat-val"><strong class="stat-hi">-82%</strong></div>
+            <div class="stat-pct stat-pct--note">4 weeks to 5 days</div>
           </div>
         </div>
 
@@ -3803,6 +3856,127 @@
       updateActive();
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", updateActive);
+    })();
+  </script>
+  <script>
+    (function initGlimpseStack() {
+      const fan = document.getElementById("glimpseStack");
+      const captionEl = document.getElementById("glimpseCaption");
+      if (!fan || !captionEl) return;
+
+      const cards = Array.from(fan.querySelectorAll(".glimpse-card"));
+      if (cards.length < 2) return;
+
+      // order[0] = centre, order[1] = left, order[2] = right.
+      // Every card shares one box (the centre card's); the role is expressed as a transform
+      // applied inline here, so it animates via the CSS transition on .glimpse-card.
+      const POS_TRANSFORM = [
+        "translateX(0%) scale(1) rotate(0deg)",
+        "translateX(-63.04%) scale(0.87) rotate(0deg)",
+        "translateX(63.04%) scale(0.87) rotate(0deg)"
+      ];
+
+      let order = cards.map((_, i) => i);
+      let animating = false;
+
+      function render() {
+        order.forEach((cardIndex, pos) => {
+          const card = cards[cardIndex];
+          card.dataset.pos = String(pos);
+          card.style.transform = POS_TRANSFORM[pos] || POS_TRANSFORM[0];
+          card.setAttribute("aria-hidden", pos === 0 ? "false" : "true");
+        });
+        captionEl.innerHTML = cards[order[0]].dataset.caption || "";
+      }
+
+      // Rotate the fan. order is [centre, left, right].
+      // dir 1 promotes the right card; dir -1 promotes the left card.
+      function rotate(dir) {
+        if (animating) return;
+        animating = true;
+        if (dir > 0) order.unshift(order.pop());
+        else order.push(order.shift());
+        render();
+        window.setTimeout(() => { animating = false; }, 300);
+      }
+
+      function bringToFront(cardIndex) {
+        if (animating || order[0] === cardIndex) return;
+        const at = order.indexOf(cardIndex);
+        rotate(at === 1 ? -1 : 1);
+      }
+
+      // Clicking a side card promotes it to the centre.
+      cards.forEach((card, i) => {
+        card.addEventListener("click", () => {
+          if (moved > 6) return;
+          if (card.dataset.pos !== "0") bringToFront(i);
+        });
+      });
+
+      // ---- drag ----
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let moved = 0;
+      let pointerId = null;
+
+      fan.addEventListener("pointerdown", (e) => {
+        if (animating) return;
+        const front = cards[order[0]];
+        if (!front.contains(e.target)) return;
+        dragging = true;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        moved = 0;
+        front.classList.add("is-dragging");
+        try { fan.setPointerCapture(e.pointerId); } catch (err) { /* not critical */ }
+      });
+
+      fan.addEventListener("pointermove", (e) => {
+        if (!dragging || e.pointerId !== pointerId) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        moved = Math.abs(dx);
+        if (moved < 8 && Math.abs(dy) > 14) return;
+        e.preventDefault();
+        // Same function list as the CSS front-card state, so it interpolates back cleanly.
+        cards[order[0]].style.transform =
+          "translateX(" + dx + "px) scale(1) rotate(" + dx / 40 + "deg)";
+      });
+
+      function endDrag(e) {
+        if (!dragging || (e && e.pointerId !== pointerId)) return;
+        dragging = false;
+        pointerId = null;
+        const front = cards[order[0]];
+        front.classList.remove("is-dragging");
+        front.style.transform = POS_TRANSFORM[0];
+        const threshold = Math.min(120, fan.offsetWidth * 0.06);
+        if (moved > threshold && e) {
+          rotate(e.clientX - startX < 0 ? 1 : -1);
+        }
+      }
+
+      fan.addEventListener("pointerup", endDrag);
+      fan.addEventListener("pointercancel", endDrag);
+      fan.addEventListener("lostpointercapture", endDrag);
+
+      // ---- keyboard ----
+      fan.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); rotate(1); }
+        else if (e.key === "ArrowLeft") { e.preventDefault(); rotate(-1); }
+      });
+
+      render();
+      // First layout happens with transitions off so the opening arrangement appears in
+      // place; enable transitions on the next frame so every later change animates.
+      void fan.offsetHeight;
+      const enable = () => fan.classList.add("is-ready");
+      requestAnimationFrame(enable);
+      // rAF is paused in a background tab; make sure transitions still get enabled.
+      window.setTimeout(enable, 200);
     })();
   </script>
   <script>

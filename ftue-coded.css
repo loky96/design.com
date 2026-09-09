@@ -211,13 +211,19 @@ img.brand-logo {
   max-width: none;
 }
 
-/* ---------- Animated emoji (Noto Animated Emoji) ---------- */
-.anim-emoji {
-  height: 1.15em;
-  width: 1.15em;
-  vertical-align: -0.22em;
-  object-fit: contain;
+/* ---------- Icon system (replaces emoji) ---------- */
+.mi {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+  stroke: currentColor;
 }
+h2 .mi, h3 .mi, h4 .mi { vertical-align: -0.1em; }
+
+/* Round avatar placeholder that used to hold an emoji */
+.ph .mi { width: 42%; height: 42%; vertical-align: 0; opacity: 0.55; }
 
 /* ---------- Quick context / Product ---------- */
 .product-row {
@@ -380,21 +386,26 @@ img.brand-logo {
   align-items: center;
   margin: 0;
 }
-.persona-card2-avatar,
-.persona-card2-head .ph {
-  width: 64px;
-  height: 64px;
+/* Persona avatars: the illustration stands on its own — no circle, border or plate. */
+.persona-card2-avatar {
+  width: 88px;
+  height: 88px;
   min-height: 0;
-  border-radius: 50%;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  border: 1px solid var(--light-border);
-  background: #fff;
-  color: var(--ink);
+  object-fit: contain;
   padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+}
+.users-card-avatar {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border: 0;
+  background: none;
+  border-radius: 0;
 }
 .persona-card2-name {
   font-family: "Arima", "DM Sans", sans-serif;

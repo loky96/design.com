@@ -17,20 +17,6 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
   vertical-align: -0.1em;
 }
 
-.ctx-card h3 {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.icon-tile--lg {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-}
-.icon-tile--lg .mi {
-  width: 28px;
-  height: 28px;
-}
 
 .cover-laptop-img {
   display: block;
@@ -164,6 +150,97 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
 
 @media (max-width: 900px) {
   #product-brief .brief-row { grid-template-columns: 1fr; }
+}
+
+/* ---------- Glimpse of the product: fanned deck ---------- */
+/* Geometry: centre card is 46.93% of the fan width, side cards 0.87x that and flush
+   to the edges, which leaves exactly 65% of each side card visible. */
+.glimpse-wrap { max-width: none; }
+.glimpse { margin: 68px auto 0; text-align: center; }
+.glimpse-title {
+  font-family: "Arima", sans-serif; font-weight: 700; font-size: var(--fs-h4);
+  color: #fff; margin: 0 0 34px;
+}
+
+.glimpse-fan {
+  /* Explicit height rather than aspect-ratio, so the fan is sized to the centre
+     card instead of stretching to its tallest child. */
+  --fan-w: min(1500px, calc(100vw - 48px));
+  position: relative;
+  width: var(--fan-w);
+  height: calc(var(--fan-w) * 0.2944); /* 46.93% centre width x 946/1508 */
+  margin: 0 auto;
+  outline: none;
+}
+.glimpse-fan:focus-visible { outline: 2px solid var(--blue); outline-offset: 14px; border-radius: 16px; }
+
+.glimpse-card {
+  /* Every card shares the same box (the centre card's) and its role is expressed purely
+     as a transform, so the motion composites on the GPU instead of triggering layout. */
+  position: absolute; margin: 0;
+  top: 0; left: 26.535%; width: 46.93%;
+  transform-origin: 50% 50%;
+  border-radius: 10px; overflow: hidden;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  will-change: transform;
+  /* Transitions are off until the deck has laid out once, so the opening arrangement
+     appears in place rather than animating in from a stack on page load. */
+  transition: none;
+}
+.glimpse-fan.is-ready .glimpse-card {
+  transition: transform 0.5s cubic-bezier(0.3, 0.7, 0.25, 1),
+              filter 0.5s ease, box-shadow 0.5s ease, opacity 0.4s ease;
+}
+.glimpse-card img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+
+/* Front / centre. The transform itself is applied inline by initGlimpseStack(); these
+   rules carry only the styling that goes with each role. */
+.glimpse-card[data-pos="0"] {
+  z-index: 3; filter: none;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+  cursor: grab;
+}
+.glimpse-fan.is-ready .glimpse-card.is-dragging { transition: none; }
+.glimpse-card[data-pos="0"].is-dragging { cursor: grabbing; }
+
+/* Left and right — scaled to 0.87 and shifted flush to the fan edges, which leaves
+   exactly 65% of each side card visible beside the centre one. */
+.glimpse-card[data-pos="1"],
+.glimpse-card[data-pos="2"] {
+  z-index: 2; filter: brightness(0.74);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  cursor: pointer;
+}
+.glimpse-card[data-pos="1"]:hover,
+.glimpse-card[data-pos="2"]:hover { filter: brightness(0.9); }
+
+.glimpse-card.is-leaving { z-index: 4; opacity: 0; }
+
+.glimpse-caption {
+  margin: 30px auto 0; max-width: 74ch; min-height: 3.4em;
+  font-size: var(--fs-caption); line-height: 1.6; color: var(--dark-text-dim);
+}
+.glimpse-caption strong { color: #fff; font-weight: 600; }
+
+/* On a phone the fan would leave the centre card ~170px wide, so show one screen at a
+   time instead, full width. Dragging still cycles through all three. */
+@media (max-width: 640px) {
+  .glimpse-fan { height: calc(var(--fan-w) * 0.6273); } /* 946/1508 */
+  .glimpse-card { left: 0; width: 100%; }
+  .glimpse-card[data-pos="1"],
+  .glimpse-card[data-pos="2"] { opacity: 0; pointer-events: none; }
+}
+
+@media (max-width: 900px) {
+  .glimpse { margin-top: 44px; }
+  .glimpse-title { margin-bottom: 24px; }
+  .glimpse-fan { --fan-w: calc(100vw - 32px); }
+  .glimpse-caption { margin-top: 22px; min-height: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glimpse-card { transition: opacity 0.2s ease; }
 }
 
 /* ---------- NDA disclaimer banner ---------- */
@@ -740,4 +817,41 @@ a.ref-pill::after { content: " \2197"; font-size: 11px; opacity: .55; }
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.65);
   text-align: center;
+}
+
+/* ---------- Pillars 2 & 3: content behind a "See Solution" toggle ----------
+   Shared button primitive lives in case-study.css; only the spacing is
+   page-specific. The toggle follows a full-bleed blue strip heading, so it
+   needs real breathing room above (unlike MES, where it hugs an avatar). */
+.solution-more {
+  padding: 0;
+}
+/* The summary carries .sec.blue.strip — it *is* the pillar heading band, with
+   the toggle sitting under the title inside the same .wrap. */
+.solution-more-summary {
+  display: block;
+  cursor: pointer;
+}
+.solution-more-summary .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.solution-more-summary .strip-title {
+  margin: 0;
+}
+/* Light-on-blue variant of the button, matching the strip it now sits on. */
+.solution-more-summary .solution-more-btn {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+.solution-more-summary .solution-more-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+.solution-more-summary:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
 }

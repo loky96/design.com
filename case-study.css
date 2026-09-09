@@ -1,5 +1,18 @@
 @import url("fonts.css");
 
+/* ---------- Focus ring ----------
+   Replaces the UA default (which is intact, but low-contrast on the dark sections)
+   with a branded ring. Shared by every case-study page that imports this file. */
+:where(a, button, [tabindex], summary, input, select, textarea):focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.sec.dark :where(a, button, [tabindex], summary):focus-visible,
+.sec.blue :where(a, button, [tabindex], summary):focus-visible {
+  outline-color: #fff;
+}
+
 /* ============ Manufacturing & Execution System — Case study ============ */
 
 :root {
@@ -689,6 +702,18 @@ img.brand-logo {
   margin-top: 6px;
 }
 
+/* When the value itself is the headline stat, it carries the green emphasis... */
+.stat-card .stat-val strong.stat-hi {
+  color: var(--green);
+}
+/* ...and the line beneath it is a label, so it must not read as a big green number. */
+.stat-card .stat-pct--note {
+  color: var(--ink-2);
+  font-weight: 500;
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+}
+
 .fine-row {
   display: flex;
   justify-content: space-between;
@@ -810,6 +835,9 @@ img.brand-logo {
 .ctx-card h3 {
   font-size: var(--fs-h3);
   margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .ctx-card ul {
@@ -1292,6 +1320,15 @@ a.explore-pill:hover {
   background: rgba(100, 116, 139, 0.12);
   color: #51606f;
 }
+.icon-tile--lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+.icon-tile--lg .mi {
+  width: 28px;
+  height: 28px;
+}
 
 .pnq-card ul {
   padding-left: 20px;
@@ -1767,6 +1804,14 @@ a.explore-pill:hover {
   grid-row: 1 / span 2;
   font-size: var(--fs-h3);
 }
+/* Keep label-style pct lines small in the large card layout too — the .lg rule above
+   is more specific than the base .stat-pct--note, so it needs restating here. */
+.stat-card.lg .stat-pct--note {
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  text-align: right;
+  max-width: 15ch;
+}
 
 /* ---------- 24. Reflections ---------- */
 .sec.dark .sec-h2 {
@@ -2016,4 +2061,63 @@ a.explore-pill:hover {
   .nav-resume {
     font-size: var(--fs-body-sm);
   }
+}
+
+/* ---------- "See Solution" disclosure ----------
+   A section-level <details> toggle: the summary mirrors .wrap's geometry so the
+   button lines up with the section's content edge, and pointer-events keep the
+   click target on the pill itself while the toggle still fires from the summary.
+   Because the <details> sits outside .wrap, sections nested inside it keep their
+   full-bleed backgrounds. Per-page spacing is set by the project stylesheet. */
+.solution-more {
+  display: block;
+}
+/* The summary's box is positioned per page — MES mirrors .wrap so the button
+   lines up under an avatar; AI Hub makes the summary the blue strip itself. */
+.solution-more-summary {
+  list-style: none;
+}
+.solution-more-summary::-webkit-details-marker { display: none; }
+.solution-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid var(--light-border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--ink-2);
+  font-family: "DM Sans", sans-serif;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+/* Real text for both states (rather than CSS `content`) so screen readers and
+   search read the label; only one is ever in the layout. */
+.solution-more[open] .solution-more-label--closed,
+.solution-more:not([open]) .solution-more-label--open {
+  display: none;
+}
+.solution-more-btn::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+.solution-more[open] .solution-more-btn::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+.solution-more-btn:hover {
+  background: var(--light-card);
+  border-color: var(--ink-2);
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .solution-more-btn,
+  .solution-more-btn::after { transition: none; }
 }

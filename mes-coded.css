@@ -4,20 +4,6 @@
 
 html { scroll-behavior: smooth; }
 
-.ctx-card h3 {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.icon-tile--lg {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-}
-.icon-tile--lg .mi {
-  width: 28px;
-  height: 28px;
-}
 
 /* ---------- Floating side navigation ---------- */
 .mes-side-nav {
@@ -219,6 +205,107 @@ img.ph {
   background: none;
   padding: 0;
 }
+/* Problem-brief GIF ships on an opaque near-white background (253,252,253) but
+   sits on the dark section (#1c1c1c). Inverting first turns that white into black
+   — which `screen` then drops entirely — and hue-rotate puts the artwork's hues
+   back after the invert, so the blues stay blue instead of going orange. */
+img.brief-illus {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}
+/* ---------- Solutions 2 & 3: persona card stays, the rest sits behind a
+   "See Solution" toggle (shared primitive lives in case-study.css). The
+   <details> is a section-level sibling, not inside .wrap, so the dark solution
+   section keeps its full-bleed background. Spacing here is MES-specific: the
+   button sits tight under the persona avatar. */
+.solution-more {
+  padding-top: 8px;
+}
+/* Closed, the details supplies the gap the hidden section would have given. */
+.solution-more:not([open]) {
+  padding-bottom: 64px;
+}
+/* Summary is a bare container mirroring .wrap, so the button lines up under the
+   persona avatar; pointer-events keep the click target on the pill itself while
+   the toggle still fires from the summary. */
+.solution-more-summary {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  pointer-events: none;
+}
+
+/* ---------- Flows B-D: collapsed behind a native <details> ---------- */
+.flow-more {
+  padding-top: 0;
+}
+.flow-more-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 18px;
+  border: 1px solid var(--light-border);
+  border-radius: 99px;
+  background: var(--light-card);
+  font-family: "DM Sans", sans-serif;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.flow-more-summary::-webkit-details-marker { display: none; }
+.flow-more-summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+.flow-more[open] .flow-more-summary::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+.flow-more-summary:hover {
+  background: #fff;
+  border-color: var(--ink-2);
+}
+.flow-more-body {
+  display: grid;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+/* Footnote under a stat number — balances a grid row against a taller sibling
+   card, e.g. "476% increase... From 42K to 240K" next to "0 to 20.33". */
+.adopt-footnote {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--fs-caption);
+  font-style: italic;
+  color: var(--ink-2);
+  opacity: 0.8;
+}
+
+/* ---------- Product glimpse video (below the product brief) ---------- */
+.glimpse-wrap {
+  margin-top: 56px;
+}
+.glimpse-wrap .sec-h2 {
+  font-size: var(--fs-h4);
+  margin-bottom: 22px;
+}
+.glimpse-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background: #000;
+}
+
 img.brand-logo {
   display: inline-flex;
   align-items: center;
@@ -404,6 +491,35 @@ img.brand-logo {
 .overall-flow-row .overall-flow-img {
   margin: 0;
 }
+/* Hovering a step card swaps the illustration to that step's variant (wf1–wf4).
+   The base image stays in flow and sets the height; the four variants stack on
+   top of it and cross-fade in. :has() is what lets a hover on .flow-step (in the
+   next grid column) drive an image that sits earlier in the DOM — without it the
+   variants simply never show and the base illustration stands, which is fine. */
+.overall-flow-figure {
+  position: relative;
+  line-height: 0;
+}
+.overall-flow-figure .overall-flow-swap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.overall-flow-row:has(.flow-step:nth-child(1):hover) .overall-flow-swap[data-wf="1"],
+.overall-flow-row:has(.flow-step:nth-child(2):hover) .overall-flow-swap[data-wf="2"],
+.overall-flow-row:has(.flow-step:nth-child(3):hover) .overall-flow-swap[data-wf="3"],
+.overall-flow-row:has(.flow-step:nth-child(4):hover) .overall-flow-swap[data-wf="4"] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .overall-flow-figure .overall-flow-swap { transition: none; }
+}
 .overall-flow-row .flow-steps {
   grid-template-columns: 1fr;
   margin-bottom: 0;
@@ -412,7 +528,16 @@ img.brand-logo {
   position: relative;
   text-align: left;
   padding: 18px 20px;
+  border: 2px solid var(--step-accent, transparent);
 }
+/* Accents sampled straight out of the ecosystem map (09.webp) so each card
+   carries the colour of the lane it belongs to: kitchen designer (grey),
+   production designer (red), production manager/owner (orange), factory
+   operator (teal). */
+.overall-flow-row .flow-step:nth-child(1) { --step-accent: rgba(130, 130, 130, 0.5); }
+.overall-flow-row .flow-step:nth-child(2) { --step-accent: rgba(230, 103, 103, 0.5); }
+.overall-flow-row .flow-step:nth-child(3) { --step-accent: rgba(242, 157, 81, 0.5); }
+.overall-flow-row .flow-step:nth-child(4) { --step-accent: rgba(18, 110, 133, 0.5); }
 .overall-flow-row .flow-step .fs-emoji {
   margin: 0 0 10px;
 }
@@ -642,14 +767,20 @@ img.brand-logo {
 
 /* ---------- NPS detail rows (extends .nps-block) ---------- */
 .nps-detail-row { display: flex; gap: 10px; font-size: var(--fs-body-sm); margin-bottom: 8px; }
-.nps-detail-row .k { color: #9a9a9a; min-width: 74px; flex-shrink: 0; }
-.nps-detail-row .v { color: #fff; }
-.nps-quote { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--dark-text-dim); font-size: var(--fs-body-sm); margin: 12px 0 16px; }
+/* These NPS styles were inherited from a dark-section design; the cards now sit
+   on a light section, so white/dim-light text rendered near-invisible. */
+.nps-detail-row .k { color: var(--ink-2); min-width: 74px; flex-shrink: 0; }
+/* Rows with two k/v pairs (respondent icon + count, then icon + "When:" + date)
+   start with an icon-only .k — the 74px label width above is sized for text
+   like "Method:" and left a wide gap before the number that follows it. */
+.nps-detail-row:has(.k:nth-child(3)) .k:first-child { min-width: auto; }
+.nps-detail-row .v { color: var(--ink); font-weight: 600; }
+.nps-quote { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--ink-2); font-size: var(--fs-body-sm); margin: 12px 0 16px; }
 .nps-breakdown { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
 .nps-breakdown span { padding: 6px 12px; border-radius: 8px; font-size: var(--fs-label); font-weight: 600; }
-.nps-breakdown .promoters { background: rgba(58,168,94,0.2); color: #6bcf8e; }
-.nps-breakdown .passives { background: rgba(232,185,60,0.2); color: #e8b93c; }
-.nps-breakdown .detractors { background: rgba(228,96,78,0.2); color: #e4604e; }
+.nps-breakdown .promoters { background: rgba(58,168,94,0.14); color: #1d6b39; }
+.nps-breakdown .passives { background: rgba(232,185,60,0.18); color: #8a6206; }
+.nps-breakdown .detractors { background: rgba(228,96,78,0.14); color: #a32e1e; }
 
 /* ---------- Challenge faced: flag cards ---------- */
 .flag-card { border-radius: var(--radius); padding: 26px 28px; }
