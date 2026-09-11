@@ -790,13 +790,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 6px;
   width: fit-content;
   margin: 28px auto 0;
-  font-size: var(--fs-body-sm);
+  font-size: var(--fs-body-lg);
   color: var(--muted);
   text-decoration: none;
 }
 .view-published-link svg {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   transition: transform 0.25s ease;
 }
