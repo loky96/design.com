@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MES Deck | Lokesh Kumar</title>
+  <meta name="description" content="Slide deck version of the Manufacturing Execution System case study: a 0→1 product for modular furniture factories at Infurnia." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+
+<body>
+
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+      <symbol id="i-hard-hat" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></symbol>
+      <symbol id="i-check-circle-2" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-x-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></symbol>
+      <symbol id="i-refresh-cw" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+      <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+      <symbol id="i-footprints" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol>
+      <symbol id="i-move-horizontal" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></symbol>
+      <symbol id="i-clipboard-list" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+      <symbol id="i-circle-dollar-sign" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+      <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol>
+      <symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/></symbol>
+      <symbol id="i-lightbulb" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol>
+      <symbol id="i-graduation-cap" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></symbol>
+      <symbol id="i-message-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></symbol>
+      <symbol id="i-circle-help" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+      <symbol id="i-triangle-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-frown" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10V9"/><path d="M9 10V9"/><path d="M9 16a5 5 0 016 0"/><circle cx="12" cy="12" r="10"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="deck-progress" aria-hidden="true"><span></span></div>
+
+  <main class="deck-stage" aria-label="Manufacturing Execution System case study, as slides">
+
+    <!-- ================= INTRO ================= -->
+    <div class="chapter" data-chapter="Intro">
+
+      <section class="slide dark cover" data-title="Cover">
+        <div class="cover-grid">
+          <div>
+            <span class="logo-pill"><img src="images/Logos/infurnia.webp" alt="Infurnia" style="height:32px;" /></span>
+            <h1>Manufacturing Execution System</h1>
+            <p class="lead">A 0&rarr;1 product for modular furniture factory workflows.</p>
+            <dl class="meta">
+              <dt>Role</dt><dd>Lead designer: research, design &amp; testing</dd>
+              <dt>Team</dt><dd>Lead Designer, PM, EM, CTO, 1 Dev</dd>
+              <dt>Timeline</dt><dd>3 months to first release</dd>
+              <dt>Product</dt><dd>New product, built from scratch</dd>
+            </dl>
+          </div>
+          <img class="cover-art" src="images/banners/mes-illustration-simple-black.webp"
+            alt="Simplified illustration of the cabinetry workflow" />
+        </div>
+        <p class="cover-foot"><strong>Lokesh Kumar V M</strong><span>Illustration: simplified cabinetry workflow
+            (AI-generated)</span></p>
+      </section>
+
+      <section class="slide dark" data-title="The outcome, up front">
+        <p class="eyebrow">Impact at a glance</p>
+        <h2>The outcome, up front</h2>
+        <p class="lead">Six months after release, compared with the first week.</p>
+        <div class="grid c3">
+          <div class="card stat"><b>$3.82M</b><span>revenue, up from $0.162M (+2258%)*</span></div>
+          <div class="card stat"><b>5,650</b><span>work orders created, up from 633 (+793%)</span></div>
+          <div class="card stat"><b>152K</b><span>SKUs processed, up from 5.9K (+2476%)</span></div>
+        </div>
+        <div class="grid c3 mt">
+          <div class="card stat" style="padding:24px 32px;"><b style="font-size:48px;">61</b><span style="font-size:19px;margin-top:8px;">NPS from 60 production designers</span></div>
+          <div class="card stat" style="padding:24px 32px;"><b style="font-size:48px;">58</b><span style="font-size:19px;margin-top:8px;">NPS from 57 operators &amp; managers</span></div>
+          <div class="card stat" style="padding:24px 32px;"><b style="font-size:48px;">75.25</b><span style="font-size:19px;margin-top:8px;">average SUS score across 10 users</span></div>
+        </div>
+        <p class="fine">Source: Infurnia Mixpanel. *Revenue shown only for the panel processing fee.</p>
+      </section>
+
+      <section class="slide" data-title="At a glance">
+        <h2>At a glance</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-circle-help" /></svg>Why</h3>
+            <ul class="list">
+              <li>Bring the <strong>exact kitchen design</strong> into the customer&rsquo;s home</li>
+              <li><strong>Faster, error-free</strong> manufacturing</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-search" /></svg>What</h3>
+            <ul class="list">
+              <li>A <strong>digital aid</strong> for the furniture factory workflow</li>
+              <li>Similar to <strong>PLM products</strong>, for cabinet units</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-users" /></svg>Who</h3>
+            <ul class="list">
+              <li>Cabinet production designers</li>
+              <li>Different types of machine operators</li>
+              <li>Production managers, supervisors &amp; owners</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-wrench" /></svg>How</h3>
+            <ul class="list">
+              <li>A whole <strong>new product</strong> for factories</li>
+              <li><strong>Many touchpoints</strong>: tracking, scheduling and more</li>
+              <li>A <strong>paperless process</strong>, on portable devices</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE OPPORTUNITY ================= -->
+    <div class="chapter" data-chapter="The opportunity">
+
+      <section class="slide dark" data-title="Product brief">
+        <div class="split" style="--cols: 1.35fr 1fr;">
+          <div>
+            <p class="eyebrow">Product brief</p>
+            <h2 class="statement" style="font-size:56px;">Factories ran production on spreadsheets, WhatsApp and paper.</h2>
+            <p class="lead">Nothing connected the interior CAD design to the factory floor, and the disconnected
+              workflow delayed deliveries. That gave Infurnia a big opening.</p>
+            <p style="color:#fff;">I designed a 0&rarr;1 <strong>Manufacturing Execution System</strong> that covers the
+              whole process, from interior CAD design to furniture ready for delivery: digitisation, communication and
+              tracking across the factory.</p>
+          </div>
+          <div class="media">
+            <img class="shot" style="--h:540px;border:0;box-shadow:none;background:transparent;"
+              src="Mes-coded/mes%20gif/mes-problembrief.gif"
+              alt="Animation: interior CAD design flowing through the factory to delivery" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="A first look at MES">
+        <p class="eyebrow">Product glimpse</p>
+        <h2>A first look at MES</h2>
+        <div class="media">
+          <video class="shot" style="--w:1000px;aspect-ratio:1440/900;" src="Mes-coded/mes%20videos/01%20-%20mes%20intro%20video%20fast.mp4"
+            data-autoplay muted loop playsinline controls preload="metadata" aria-label="MES product walkthrough"></video>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Why a design platform built a factory system">
+        <h2>Why a design platform built a factory system</h2>
+        <div class="grid c3 mt">
+          <div class="card">
+            <h3>1. Quick revenue</h3>
+            <p>Rapid revenue growth with minimal engineering overhead.</p>
+          </div>
+          <div class="card">
+            <h3>2. An easy user base to reach</h3>
+            <p>Modular furniture factories were already <strong>our clients&rsquo; customers</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>3. The outputs already existed</h3>
+            <p>Our design app already generated the <strong>3 main outputs</strong> manufacturing needs.</p>
+          </div>
+          <div class="card">
+            <h3>4. A persona nobody served</h3>
+            <p>Interior and production designers had <strong>different needs</strong> but shared one design portal.</p>
+          </div>
+          <div class="card">
+            <h3>5. The full interiors suite</h3>
+            <p>Businesses could buy one suite that covers <strong>design to manufacturing</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>6. Faster time to market</h3>
+            <p>Other architecture verticals <strong>take years to build</strong>. MES shipped in months.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Two designers, two different jobs">
+        <p class="eyebrow">The key insight</p>
+        <h2>Two designers, two different jobs</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <img class="shot" style="--h:250px;margin-bottom:20px;" src="Mes-coded/04b.webp" alt="Kitchen interior render" />
+            <h3>Interior designer: the look &amp; feel</h3>
+            <ul class="list">
+              <li>Appearance, size and uses of each cabinet</li>
+              <li>Sells the design to the people buying it</li>
+              <li>Unconcerned with factory details</li>
+            </ul>
+          </div>
+          <div class="card primary">
+            <img class="shot" style="--h:250px;margin-bottom:20px;" src="Mes-coded/04c.webp" alt="Technical cabinet construction drawing" />
+            <h3>Production designer: manufacturability</h3>
+            <ul class="list">
+              <li>Cabinet construction, hardware, drilling and CNC</li>
+              <li>Deals with carpenters and the shop floor</li>
+              <li>Materials procurement and hardware lists</li>
+            </ul>
+          </div>
+        </div>
+        <p class="tradeoff">Until MES, both of them worked in the same design portal.</p>
+      </section>
+    </div>
+
+    <!-- ================= INSIDE THE FACTORY ================= -->
+    <div class="chapter" data-chapter="Inside the factory">
+
+      <section class="slide" data-title="Who uses this system">
+        <p class="eyebrow">Inside the factory floor</p>
+        <h2>Who uses this system</h2>
+        <div class="stack mt" style="align-items:center;gap:28px;">
+          <img class="shot zoom" style="--h:290px;" src="Mes-coded/users.webp" alt="Different types of users in the factory" />
+          <img class="shot zoom" style="--h:270px;" src="Mes-coded/07.webp"
+            alt="Spectrum from architect and interior designers to production designers, production managers and operators, with the factory range in focus" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Current workflow in the factory">
+        <h2>How work moves through the factory today</h2>
+        <div class="split" style="--cols: 1.25fr 1fr;">
+          <div class="media">
+            <img class="shot zoom" style="--h:480px;border:0;box-shadow:none;" src="images/banners/mes-illustration-white.webp"
+              alt="Workflow illustration from design to factory floor" />
+          </div>
+          <div class="stack" style="gap:16px;">
+            <div class="step"><strong>1. Interior designer</strong> hands the design file to production designers</div>
+            <div class="step"><strong>2. Production designers</strong> verify and correct every unit, then give
+              production sign-off</div>
+            <div class="step"><strong>3. The supervisor</strong> receives the manufacturing files and oversees production
+            </div>
+            <div class="step"><strong>4. Machine operators</strong> get the files, do their part and track progress</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Ecosystem map">
+        <h2>The whole ecosystem, from design to assembly</h2>
+        <div class="media mt">
+          <img class="shot zoom" style="--h:600px;" src="Mes-coded/09.webp"
+            alt="Ecosystem flow: kitchen designer, design file, production designer, factory operators (board layout, cut list, cutting, edge banding, CNC, inspection, packaging, shipment), production manager, and assembly at the client's end" />
+          <p class="caption">Click to enlarge</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE SOLUTION ================= -->
+    <div class="chapter" data-chapter="The solution">
+
+      <section class="slide blue" data-title="Three solutions, one production floor">
+        <p class="eyebrow">The solution</p>
+        <h2 style="margin-bottom:48px;">Three solutions, one production floor</h2>
+        <div class="grid c3" style="gap:36px;">
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-laptop" /></svg>1 &middot; Production designer</h3>
+            <p style="color:#fff;">A flat, searchable list of units. Quick edit, detailed edit or bulk edit with templates;
+              verify, delete and restore in bulk; pull in design changes before sign-off.</p>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-briefcase" /></svg>2 &middot; Production manager</h3>
+            <p style="color:#fff;">Real-time status of every work order, down to the panel. Create stations, map operators,
+              schedule work and course-correct as issues come up.</p>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-hard-hat" /></svg>3 &middot; Board cutting operator</h3>
+            <p style="color:#fff;">A daily work order with sheet layouts, assisted sawing for faster guided cuts, custom
+              board settings, and auto-printed labels for every panel.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="1 · Production designer">
+
+      <section class="slide" data-title="Designing for the production designer">
+        <p class="eyebrow">Solution 1</p>
+        <div class="persona-head">
+          <img src="Mes-coded/designer.png" alt="" />
+          <div>
+            <h2>Designing for the production designer</h2>
+            <p>Sanjay &middot; 35 &middot; Diploma in product design &middot; Keen on details, tech savvy</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card pain">
+            <h3><svg class="ico" style="color:#d6675a;"><use href="#i-frown" /></svg>Pain points</h3>
+            <ul class="list x">
+              <li>Units are <strong>scattered across the design file</strong>, hard to check one by one</li>
+              <li><strong>Remembering</strong> which units are verified</li>
+              <li>Editing takes a lot of <strong>clicks &amp; juggling</strong> in the design app</li>
+              <li><strong>Frequent interior design changes</strong></li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h3><svg class="ico" style="color:#b07d00;"><use href="#i-key" /></svg>Needs</h3>
+            <ul class="list">
+              <li><strong>Create &amp; manage</strong> multiple work orders</li>
+              <li><strong>Verify, edit &amp; sign off</strong> to production</li>
+              <li><strong>Easy coordination</strong> with manufacturing and the interior designer</li>
+            </ul>
+          </div>
+        </div>
+        <p class="label mt">User flow</p>
+        <div class="flow">
+          <div>Creates a work order</div><i>&rarr;</i>
+          <div>Verifies cabinets</div><i>&harr;</i>
+          <div>Edits cabinet properties</div><i>&rarr;</i>
+          <div>Verifies output files</div><i>&rarr;</i>
+          <div>Gives production sign-off</div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Work order creation">
+        <p class="eyebrow">Solution 1 &middot; Production designer</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Work order creation</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>Turning a design into a factory work file (a &ldquo;work order&rdquo;)</li>
+              <li>Creating and managing active work orders</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/09%20-%20work%20order%20creation%20video.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Work order creation walkthrough"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Working inside a work order">
+        <p class="eyebrow">Solution 1 &middot; Production designer</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Working inside a work order</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>A flat list of units: far less navigating than the design app</li>
+              <li>Every essential unit detail visible upfront</li>
+              <li>Search, filter &amp; sort units</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/10%20-%20navigation%20in%20workorder.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Navigating inside a work order"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Three ways to edit units">
+        <p class="eyebrow">Solution 1 &middot; Production designer</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Three ways to edit units</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li><strong>Quick edit</strong> for small changes</li>
+              <li><strong>Detailed edit</strong> in the design interface</li>
+              <li><strong>Bulk edit</strong> using templates</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/08%20-%20Editing%20workorder.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Different ways of editing units"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Verifying and removing units">
+        <p class="eyebrow">Solution 1 &middot; Production designer</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Verifying and removing units</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>Verify units one by one or in bulk</li>
+              <li>Delete units that aren&rsquo;t needed</li>
+              <li>Restore deleted units</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/12%20-%20delete%20and%20verify.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Verifying and removing units"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Design changes and sign-off">
+        <p class="eyebrow">Solution 1 &middot; Production designer</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Design changes and production sign-off</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>Import new changes from interior designers</li>
+              <li>Reset changes made by mistake</li>
+              <li>Give production sign-off by publishing</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/06%20-%20Resync%20and%20publish.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Design changes and production sign-off"></video>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="2 · Production manager">
+
+      <section class="slide" data-title="Designing for the production manager">
+        <p class="eyebrow">Solution 2</p>
+        <div class="persona-head">
+          <img src="Mes-coded/supervisor.png" alt="" />
+          <div>
+            <h2>Designing for the production manager</h2>
+            <p>Ramesh &middot; 40 &middot; Business owner &middot; Business oriented, handles sheer volume</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card pain">
+            <h3><svg class="ico" style="color:#d6675a;"><use href="#i-frown" /></svg>Pain points</h3>
+            <ul class="list x">
+              <li><strong>No big picture</strong> or real-time feedback on factory operations</li>
+              <li>Giving <strong>frequent inputs</strong> to operators</li>
+              <li><strong>Errors going unnoticed</strong></li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h3><svg class="ico" style="color:#b07d00;"><use href="#i-key" /></svg>Needs</h3>
+            <ul class="list">
+              <li><strong>Track every order</strong> through to completion</li>
+              <li>Track each operator&rsquo;s <strong>efficiency</strong></li>
+              <li>Manage <strong>rejections &amp; breakdowns</strong></li>
+              <li>Plan and <strong>schedule work</strong> for operators</li>
+            </ul>
+          </div>
+        </div>
+        <p class="label mt">User flow</p>
+        <div class="flow">
+          <div>Published work orders</div><i>&rarr;</i>
+          <div>Creates stations, manages operators</div><i>&rarr;</i>
+          <div>Schedules work orders</div><i>&rarr;</i>
+          <div>Tracks execution</div><i>&rarr;</i>
+          <div>Course-corrects in the factory</div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Tracking work order execution">
+        <p class="eyebrow">Solution 2 &middot; Production manager</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Tracking work order execution</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>The overall status of every work order</li>
+              <li>Details down to each panel</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/05%20-%20Production%20manager%20.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Tracking work order execution"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Managing stations and operators">
+        <p class="eyebrow">Solution 2 &middot; Production manager</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Managing stations and operators</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>Create stations and map operators to them</li>
+              <li>Plan execution by scheduling work for operators</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/11%20-%20Mapping%20station%20and%20scheduling.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Mapping stations and scheduling"></video>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="3 · Board cutting operator">
+
+      <section class="slide" data-title="Designing for the board cutting operator">
+        <p class="eyebrow">Solution 3</p>
+        <div class="persona-head">
+          <img src="Mes-coded/worker.png" alt="" />
+          <div>
+            <h2>Designing for the board cutting operator</h2>
+            <p>Ajay &middot; 40 &middot; Skilled technician &middot; Years of muscle memory, not tech savvy</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card pain">
+            <h3><svg class="ico" style="color:#d6675a;"><use href="#i-frown" /></svg>Pain points</h3>
+            <ul class="list x">
+              <li>Hard to handle <strong>paper documents</strong> on the factory floor</li>
+              <li>Time and effort to <strong>calculate dimensions &amp; cutting order</strong></li>
+              <li><strong>Getting the right label</strong> onto each cut panel</li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h3><svg class="ico" style="color:#b07d00;"><use href="#i-key" /></svg>Needs</h3>
+            <ul class="list">
+              <li>Know <strong>which work order to run</strong> today</li>
+              <li><strong>Understand and cut panels faster</strong></li>
+              <li><strong>Customise board settings</strong> to their own way of working</li>
+            </ul>
+          </div>
+        </div>
+        <p class="label mt">User flow</p>
+        <div class="flow">
+          <div>Opens the day&rsquo;s work order</div><i>&rarr;</i>
+          <div>Gets sheet layouts &amp; plywood sheets</div><i>&rarr;</i>
+          <div>Follows the layout, or uses assisted sawing</div><i>&rarr;</i>
+          <div>Cuts the panels</div><i>&rarr;</i>
+          <div>Prints &amp; sticks panel labels</div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Board layouts for cutting">
+        <p class="eyebrow">Solution 3 &middot; Board cutting operator</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Board layouts for cutting</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>See every board in the work order</li>
+              <li>Change board settings when needed</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/07%20-%20Sawing%20operator.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Accessing board layouts for cutting"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Assisted sawing">
+        <p class="eyebrow">Solution 3 &middot; Board cutting operator</p>
+        <div class="split" style="--cols: 1fr 1.75fr;">
+          <div>
+            <h2>Assisted sawing</h2>
+            <p class="label">Needs solved</p>
+            <ul class="list">
+              <li>A guided mode that lets operators cut faster</li>
+              <li>Print labels and stick them on each panel</li>
+            </ul>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:850px;" src="Mes-coded/mes%20videos/04%20-%20Assisted%20sawing.mp4"
+              data-autoplay muted loop playsinline controls preload="metadata" aria-label="Assisted sawing walkthrough"></video>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="Accessibility">
+
+      <section class="slide" data-title="Designing for everyone">
+        <p class="eyebrow">WCAG 2.1 AA minimum</p>
+        <h2>Designing for everyone</h2>
+        <p class="lead">MES is a B2B tool for sighted professionals, so full screen-reader coverage wasn&rsquo;t the goal.
+          We designed for situational limits instead: glare, one-handed use and low vision.</p>
+        <div class="split" style="--cols: 1fr 1.25fr; align-items:start;">
+          <ul class="list" style="gap:14px;">
+            <li><strong>Works in greyscale:</strong> status uses icons and text, not colour alone</li>
+            <li><strong>Keyboard first:</strong> every option reachable, most important element first, clear focus state
+            </li>
+            <li><strong>Contrast:</strong> 10.31:1 for 95% of text; 5.07:1 at its lowest, still AA</li>
+            <li><strong>Alt text</strong> coded from SKU names, since every image comes from a SKU</li>
+            <li><strong>Large targets:</strong> the smallest button is 32px</li>
+          </ul>
+          <div class="grid c2" style="gap:18px;align-items:start;">
+            <figure class="media"><img class="shot zoom" style="--h:300px;" src="Mes-coded/18b.webp" alt="Greyscale and colour-blind simulation of MES screens" /><figcaption class="caption">Greyscale &amp; colour-blind check</figcaption></figure>
+            <figure class="media"><img class="shot zoom" style="--h:300px;" src="Mes-coded/18c.webp" alt="Work order list with numbered keyboard focus order" /><figcaption class="caption">Keyboard focus order</figcaption></figure>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PROCESS ================= -->
+    <div class="chapter" data-chapter="How I got there">
+
+      <section class="slide blue" data-title="How I got there">
+        <p class="eyebrow">Process</p>
+        <h2 style="margin-bottom:48px;">How I got there</h2>
+        <ol class="agenda">
+          <li><span><strong>Getting into the factory</strong>Factory visits, interviews and affinity mapping</span></li>
+          <li><span><strong>Learning from what exists</strong>A teardown of Naadi, Ardis and 3 other tools</span></li>
+          <li><span><strong>Meet the users</strong>Personas and a journey map</span></li>
+          <li><span><strong>Prioritising needs</strong>Deciding what to build first in a large product</span></li>
+          <li><span><strong>Shaping the solution</strong>Wireframes, wireflows and iteration with stakeholders</span></li>
+          <li><span><strong>Information architecture</strong>Card sorting with 8 users</span></li>
+          <li><span><strong>Bringing it to life</strong>Visual design and prototyping</span></li>
+          <li><span><strong>Working with the team</strong>Stakeholders and developer sign-off</span></li>
+          <li><span><strong>The hardest problem</strong>A trade-off with engineering, and how I resolved it</span></li>
+        </ol>
+      </section>
+
+      <section class="slide" data-title="Getting into the factory">
+        <h2>Getting into the factory</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-footprints" /></svg>Factory visits</h3>
+            <ul class="list" style="margin-bottom:20px;">
+              <li>A pilot interview online with 4 users, using a basic questionnaire</li>
+              <li>Visited the <strong>Wakefit factory in Hosur</strong> and 3 local factories in Bangalore</li>
+              <li>Watched workflows in person, touchpoint by touchpoint</li>
+            </ul>
+            <img class="shot zoom" style="--h:250px;" src="Mes-coded/20a.webp" alt="Photos from factory visits" />
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-users" /></svg>Interviews &amp; affinity</h3>
+            <ul class="list" style="margin-bottom:20px;">
+              <li>5 interviews with internal customer success reps, our user proxies</li>
+              <li>Two focus groups: <strong>8 and 7 participants</strong> from across the factory</li>
+              <li>I transcribed the sessions and did affinity mapping</li>
+            </ul>
+            <img class="shot zoom" style="--h:250px;" src="Mes-coded/20h.webp" alt="Affinity map of production designer insights" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Learning from what exists">
+        <h2>Learning from what exists</h2>
+        <p class="lead" style="margin-bottom:20px;">I studied every screen and feature of the two main competitors. Also
+          reviewed: 2020Insights, Homag and 3Tec.</p>
+        <table class="table" style="font-size:18px;">
+          <thead>
+            <tr><th></th><th>Naadi &middot; local competitor</th><th>Ardis &middot; global player</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>User interface</th><td>Cloud; simpler, but every option appears at once</td><td>Legacy Windows-style UI; crowded</td></tr>
+            <tr><th>Workflows covered</th><td>Board layout to shipment</td><td>Design to shipment</td></tr>
+            <tr><th>Design capabilities</th><td>None; starts from design files</td><td>Its own in-house cabinet design product</td></tr>
+            <tr class="low"><th>Quick edits in cabinets</th><td>Not possible</td><td>Needs another Ardis product</td></tr>
+            <tr><th>Portability</th><td>Mobile and tablet for quick factory tasks</td><td>None</td></tr>
+            <tr><th>Board layout</th><td>View a standard file and print labels</td><td>Drag-and-drop panel customisation</td></tr>
+            <tr class="low"><th>Assisted sawing</th><td>None; view the layout only</td><td>None; view the layout only</td></tr>
+            <tr><th>Machine files</th><td>Can&rsquo;t generate them</td><td>A wide range (.MPR, .TCN, .CIX)</td></tr>
+          </tbody>
+        </table>
+        <p class="fine">Highlighted: gaps in both products. MES covers them with quick edit and assisted sawing.</p>
+      </section>
+
+      <section class="slide" data-title="Meet the users">
+        <h2>Meet the users</h2>
+        <div class="grid c3 mt">
+          <div class="card quote">
+            <div class="persona-head" style="margin:0;gap:16px;">
+              <img src="Mes-coded/prodcut%20designer%20persona%20image.webp" alt="" style="width:72px;height:72px;" />
+              <div><h3 style="margin:0;">Sanjay</h3><p class="who">Production designer &middot; 35 &middot; Delhi</p></div>
+            </div>
+            <blockquote>&ldquo;I make sure any designed cabinet can be manufactured easily.&rdquo;</blockquote>
+            <p class="told"><strong>Tools:</strong> cut list optimiser, saw / CNC, Google Sheets, CAD</p>
+          </div>
+          <div class="card quote">
+            <div class="persona-head" style="margin:0;gap:16px;">
+              <img src="Mes-coded/production%20manager%20persona%20image.webp" alt="" style="width:72px;height:72px;" />
+              <div><h3 style="margin:0;">Ramesh</h3><p class="who">Production manager &middot; 40 &middot; Delhi</p></div>
+            </div>
+            <blockquote>&ldquo;I focus on quality and timely delivery of modular furniture to my clients.&rdquo;</blockquote>
+            <p class="told"><strong>Tools:</strong> Google Sheets, accounting software, project planners</p>
+          </div>
+          <div class="card quote">
+            <div class="persona-head" style="margin:0;gap:16px;">
+              <img src="Mes-coded/floor%20worker%20persona%20image.webp" alt="" style="width:72px;height:72px;" />
+              <div><h3 style="margin:0;">Ajay</h3><p class="who">Floor worker &middot; 40 &middot; Delhi</p></div>
+            </div>
+            <blockquote>&ldquo;I bring life to cabinets, from wooden sheets to furniture in your house.&rdquo;</blockquote>
+            <p class="told"><strong>Tools:</strong> factory machines, hand tools, drawings, walkie-talkie</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="The production designer's journey">
+        <h2>The production designer&rsquo;s journey</h2>
+        <div class="grid c4 mt" style="gap:18px;">
+          <div class="card">
+            <span class="tag">1 &middot; Excited 😊</span>
+            <h4>Gets the kitchen design, makes a work order</h4>
+            <span class="k">Pain</span><p class="sm">Done by hand in Excel in most factories; slow and error-prone</p>
+            <span class="k ok">Need</span><p class="sm">Easily find the design; keep the delivery date in view</p>
+          </div>
+          <div class="card">
+            <span class="tag">2 &middot; Curious 🤔</span>
+            <h4>Checks each unit&rsquo;s construction and panels</h4>
+            <span class="k">Pain</span><p class="sm">Constant back and forth between the design and Excel sheets</p>
+            <span class="k ok">Need</span><p class="sm">Understand a unit at a glance; mark validated units</p>
+          </div>
+          <div class="card">
+            <span class="tag">3 &middot; Focused 😐</span>
+            <h4>Edits units to make them manufacturable</h4>
+            <span class="k">Pain</span><p class="sm">Manual calculations that need skilled labour and focus</p>
+            <span class="k ok">Need</span><p class="sm">A full-screen detailed view; templates for frequent edits</p>
+          </div>
+          <div class="card">
+            <span class="tag">4 &middot; Accomplished 😌</span>
+            <h4>Confirms and generates every file</h4>
+            <span class="k">Pain</span><p class="sm">Juggling several tools; machine outputs need expensive licences</p>
+            <span class="k ok">Need</span><p class="sm">Reliable files, managed and shared from one place</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Prioritising user needs">
+        <h2>Prioritising user needs</h2>
+        <p class="lead" style="margin-bottom:20px;">The product was large, so I classified user needs to decide what to build
+          first.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:560px;" src="Mes-coded/need%20clasifications.webp" alt="User need classification framework" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Shaping the solution">
+        <h2>Shaping the solution with stakeholders</h2>
+        <div class="split" style="--cols: 1fr 1.1fr;">
+          <ul class="list" style="gap:14px;">
+            <li>Combined brainstorming, then ideation in my own focus time</li>
+            <li><strong>Tested wireframes often</strong> with the in-house customer success team</li>
+            <li>Frequent design discussions with the CTO and PM</li>
+            <li><strong>Card sorting</strong> to find the right information architecture</li>
+            <li>Released the first version to <strong>staging for beta testing</strong>, and fed the results into the next
+              releases</li>
+          </ul>
+          <div class="media">
+            <img class="shot zoom" style="--h:540px;" src="Mes-coded/25a.webp" alt="Whiteboard brainstorming sessions" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Wireframes and wireflows">
+        <h2>Wireframes and wireflows</h2>
+        <div class="stack mt" style="align-items:center;gap:16px;">
+          <img class="shot zoom" style="--h:190px;" src="Mes-coded/25c.webp" alt="Wireframe iterations, set 2" />
+          <img class="shot zoom" style="--h:190px;" src="Mes-coded/25d.webp" alt="Wireframe iterations, set 3" />
+          <img class="shot zoom" style="--h:170px;" src="Mes-coded/25f.webp" alt="Wireflow for modifying and enabling units" />
+          <p class="caption" style="margin:0;">Click any image to enlarge</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Information architecture">
+        <h2>Information architecture</h2>
+        <p class="lead" style="margin-bottom:20px;">Several rounds of closed card sorting with 8 users settled the
+          structure.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:540px;" src="Mes-coded/26.webp"
+            alt="IA tree: home, all work orders, tracking, modular units, cut list, board optimiser, CNC, packaging, shipment and work order progress" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Bringing it to life">
+        <h2>Bringing it to life</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-pencil" /></svg>Visual design</h3>
+            <p style="margin-bottom:18px;">MES users need a clean, simple UI, and our design system was built for the design
+              portal. I used the <strong>Material Tailwind</strong> design system with a few tweaks: minimal, free to
+              customise, and fast to ship.</p>
+            <img class="shot zoom" style="--h:330px;" src="Mes-coded/27a.webp" alt="Material Tailwind design system showcase" />
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-refresh-cw" /></svg>Prototyping</h3>
+            <p style="margin-bottom:18px;">Prototypes were tested with customer success reps and users. The first version
+              then went to staging for beta testing, and every round fed the next iteration.</p>
+            <img class="shot zoom" style="--h:330px;" src="Mes-coded/27b.webp" alt="Figma prototype flow map for desktop and mobile" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Working with the team">
+        <h2>Working with the team</h2>
+        <div class="split" style="--cols: 1.1fr 1fr;">
+          <div class="media" style="align-items:flex-start;">
+            <p class="label">Stakeholder collaboration</p>
+            <img class="shot zoom" style="--h:470px;" src="Mes-coded/32a.webp"
+              alt="Collaboration flow: presenting user needs, research, design, iterations and testing, developer sign-off, sprint planning, QA and pre-production" />
+          </div>
+          <div>
+            <p class="label">Developer sign-off</p>
+            <div class="grid c3" style="gap:14px;align-items:end;">
+              <figure class="media"><img class="shot zoom" style="--h:240px;" src="Mes-coded/32b.webp" alt="Detailed design annotations" /><figcaption class="caption">Annotations &amp; walkthroughs</figcaption></figure>
+              <figure class="media"><img class="shot zoom" style="--h:240px;" src="Mes-coded/32c.webp" alt="Spacing guides" /><figcaption class="caption">Spacing guides</figcaption></figure>
+              <figure class="media"><img class="shot zoom" style="--h:240px;" src="Mes-coded/32d.webp" alt="Design file management" /><figcaption class="caption">Managing files</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="The hardest problem">
+        <p class="eyebrow">Challenge</p>
+        <h2>The hardest problem: a conflict after design freeze</h2>
+        <div class="split" style="--cols: 0.85fr 1.3fr;">
+          <div class="note problem">
+            <span class="k">What happened</span>
+            <ul class="list x" style="gap:10px;">
+              <li>It came after the design walkthrough and <strong>design freeze</strong></li>
+              <li>A developer hit a problem implementing the design</li>
+              <li>He asked me to remove either the 2D or the 3D viewport</li>
+              <li>Showing both wouldn&rsquo;t be feasible for a few months</li>
+            </ul>
+          </div>
+          <div class="media">
+            <p class="label">Proposed design: the cabinet in detail, plus all panel info at once</p>
+            <img class="shot zoom" style="--h:470px;" src="Mes-coded/33a.webp"
+              alt="Proposed layout with the modular unit list, panel properties and 3D view" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="How I resolved it">
+        <p class="eyebrow">Challenge</p>
+        <h2>How I resolved it</h2>
+        <div class="split" style="--cols: 1fr 1.1fr;">
+          <div class="stack" style="gap:12px;">
+            <div class="step"><strong>1. Found the root problem:</strong> the canvas could only load one type of data</div>
+            <div class="step"><strong>2. Shared the rationale:</strong> research showed both 3D and the 2D panel drawing
+              matter</div>
+            <div class="step"><strong>3. Found another way:</strong> with the EM, one canvas that switches context based on
+              input</div>
+            <div class="step"><strong>4. Updated the guidelines:</strong> one canvas per page, everywhere</div>
+            <div class="step"><strong>5. Iterated fast:</strong> a few layouts and a detailed prototype, tested with users
+            </div>
+            <div class="step"><strong>6. Kept others in the loop:</strong> told PM and QA about changes and delays</div>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:420px;" src="Mes-coded/33b.webp" alt="Final redesign with one bigger 2D/3D canvas" />
+            <div class="chips" style="margin:22px 0 0;justify-content:center;">
+              <span class="tag" style="font-size:14px;">One canvas at a time</span>
+              <span class="tag" style="font-size:14px;">Remembers the last 2D / 3D view</span>
+              <span class="tag" style="font-size:14px;">30% more viewport space</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= TESTING & IMPACT ================= -->
+    <div class="chapter" data-chapter="Testing &amp; impact">
+
+      <section class="slide" data-title="Putting it to the test">
+        <h2>Putting it to the test</h2>
+        <div class="split" style="--cols: 1fr 1.15fr;">
+          <div class="stack" style="gap:24px;">
+            <div>
+              <h3><svg class="ico"><use href="#i-target" /></svg>Path analysis in Mixpanel</h3>
+              <p>Every event was logged, so I checked task flows and drop-offs for work order creation, publishing, bulk
+                editing SKU structure and downloading CNC &amp; board layouts.</p>
+            </div>
+            <div>
+              <h3><svg class="ico"><use href="#i-users" /></svg>Think-aloud &amp; retrospective testing</h3>
+              <p>With <strong>5 customer success executives</strong> and <strong>5 users in the factory</strong>, across
+                four jobs to be done:</p>
+              <ul class="list" style="margin-top:10px;gap:6px;">
+                <li class="sm">A. Create a work order from a design file</li>
+                <li class="sm">B. Make 5 units ready for production</li>
+                <li class="sm">C. Check work order progress in detail</li>
+                <li class="sm">D. Cut boards with assisted sawing</li>
+              </ul>
+            </div>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:420px;" src="Mes-coded/28a.webp" alt="Mixpanel user-flow diagram of work order events" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="What feedback changed">
+        <h2>What feedback changed</h2>
+        <table class="table mt">
+          <thead>
+            <tr><th>Flow</th><th>What users hit</th><th>What changed</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>A</th><td>Entering the design link meant back-and-forth with the interior designer</td><td>The interior designer publishes the design; it appears in the production designer&rsquo;s picker</td></tr>
+            <tr><th>B</th><td>Seeing only 3D or panel info, users couldn&rsquo;t relate units to panels</td><td>Everything needed is upfront; 3D is always there, with the 2D panel drawing a tab away</td></tr>
+            <tr><th>B</th><td>With no access control, everyone saw options they didn&rsquo;t need</td><td>Persona-specific flows through role restrictions</td></tr>
+            <tr><th>C</th><td>After spotting a rejected panel, the manager couldn&rsquo;t see its details</td><td>Full panel details open on the same progress page</td></tr>
+            <tr><th>D</th><td>Sheets were too small to read, with no progress or preview</td><td>More room for sheets, zoom and pan, plus progress and previews</td></tr>
+            <tr><th>D</th><td>Operators wanted to pick the panel to cut, not follow the system strictly</td><td>Semi-assisted sawing: pick any panel, or follow the suggested next one</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide" data-title="SUS and NPS">
+        <h2>How users rated it</h2>
+        <div class="grid c3 mt">
+          <div class="card stat">
+            <b>75.25</b><span><strong>Average SUS score</strong></span>
+            <p class="sm" style="margin-top:14px;">10 users, surveyed in person at their factory stations: 3 production
+              designers and 7 operators.</p>
+          </div>
+          <div class="card stat">
+            <b>61</b><span><strong>NPS &middot; production designers</strong></span>
+            <p class="sm" style="margin-top:14px;">60 responses: 42 promoters, 13 passives, 5 detractors. Survey form after
+              the org&rsquo;s first renewal.</p>
+          </div>
+          <div class="card stat">
+            <b>58</b><span><strong>NPS &middot; operators &amp; supervisors</strong></span>
+            <p class="sm" style="margin-top:14px;">57 responses: 39 promoters, 12 passives, 6 detractors. Collected on
+              renewal feedback calls.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="What success looks like">
+        <p class="eyebrow">Did it work?</p>
+        <h2>What success looks like</h2>
+        <div class="grid c4 mt">
+          <div class="card"><img src="Mes-coded/workorder%20create.webp" alt="" style="width:48px;margin-bottom:16px;" /><h4>Work orders created from designs</h4><p class="sm">Tracks adoption of MES</p></div>
+          <div class="card"><img src="Mes-coded/cabinet.webp" alt="" style="width:48px;margin-bottom:16px;" /><h4>Panels &amp; units added to production</h4><p class="sm">Tracks revenue, since we charge per panel</p></div>
+          <div class="card"><img src="Mes-coded/download%20output.webp" alt="" style="width:48px;margin-bottom:16px;" /><h4>Outputs downloaded</h4><p class="sm">Shows the system is in use</p></div>
+          <div class="card"><img src="Mes-coded/panel%20tracked.webp" alt="" style="width:48px;margin-bottom:16px;" /><h4>Panels tracked or scanned</h4><p class="sm">Shows operators are working on the panels</p></div>
+        </div>
+        <p class="fine">All events are logged in Mixpanel.</p>
+      </section>
+
+      <section class="slide" data-title="Growth over time">
+        <h2>Growth over the first 6 months</h2>
+        <div class="grid c4 mt" style="gap:18px;">
+          <div class="card"><h4>Panels added</h4><p class="sm"><strong>+2251%:</strong> 40.6K to 954.4K</p><img class="shot zoom" style="margin-top:14px;" src="Mes-coded/35a.webp" alt="Panels added over 6 months" /></div>
+          <div class="card"><h4>Panels added per user</h4><p class="sm"><strong>0 to 20.33</strong> (all design clients counted as users)</p><img class="shot zoom" style="margin-top:14px;" src="Mes-coded/35b.webp" alt="Ratio of panels added to users" /></div>
+          <div class="card"><h4>Outputs downloaded</h4><p class="sm">Board layouts and CNC files</p><img class="shot zoom" style="margin-top:14px;" src="Mes-coded/35c.webp" alt="Outputs downloaded over 6 months" /></div>
+          <div class="card"><h4>Tracking in use</h4><p class="sm">Panel cutting, CNC, edge banding, packaging</p><img class="shot zoom" style="margin-top:14px;" src="Mes-coded/35d.webp" alt="Tracking feature usage over 6 months" /></div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="The business case">
+        <h2>The business case</h2>
+        <p class="lead" style="margin-bottom:24px;">First week vs. 6 months after release.</p>
+        <div class="split" style="--cols: 1.25fr 1fr;">
+          <div class="media">
+            <img class="shot zoom" style="--h:440px;" src="Mes-coded/36a.webp"
+              alt="Revenue indicators from July to December: revenue, panels added, units enabled and work orders created" />
+          </div>
+          <div class="grid c2" style="gap:18px;">
+            <div class="card stat" style="padding:24px;"><b style="font-size:50px;">$3.82M</b><span style="font-size:18px;">revenue, from $0.162M (+2258%)*</span></div>
+            <div class="card stat" style="padding:24px;"><b style="font-size:50px;">954.4K</b><span style="font-size:18px;">panels added, from 40.6K (+2251%)</span></div>
+            <div class="card stat" style="padding:24px;"><b style="font-size:50px;">5,650</b><span style="font-size:18px;">work orders, from 633 (+793%)</span></div>
+            <div class="card stat" style="padding:24px;"><b style="font-size:50px;">152K</b><span style="font-size:18px;">SKUs processed, from 5.9K (+2476%)</span></div>
+          </div>
+        </div>
+        <p class="fine">Source: Infurnia Mixpanel. *Revenue shown only for the panel processing fee; the MES add-on fee
+          isn&rsquo;t included.</p>
+      </section>
+    </div>
+
+    <!-- ================= WRAP-UP ================= -->
+    <div class="chapter" data-chapter="Wrap-up">
+
+      <section class="slide dark" data-title="What I learned">
+        <h2>What I learned</h2>
+        <div class="grid c3 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-target" /></svg>A pilot study sharpened the research</h3>
+            <p>It tested my assumptions before the real interviews, so I asked the right questions.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-frown" /></svg>Early edge cases mean fewer redesigns</h3>
+            <p>Working through scenarios before wireframing cut later rounds of iteration.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-triangle-alert" /></svg>Ready-made design systems need work</h3>
+            <p>It sped things up, but I still fixed contrast in some components and adapted it to our users.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-rocket" /></svg>Knowing feasibility speeds execution</h3>
+            <p>Understanding what was technically possible made working with developers faster.</p>
+          </div>
+          <div class="card" style="grid-column: span 2;">
+            <h3><svg class="ico"><use href="#i-refresh-cw" /></svg>Versioned designs for a phased build</h3>
+            <p>The designs shipped in phases, so clear versions of the design files helped developers track changes and
+              stay aligned.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark thanks" data-title="Thank you">
+        <h2>Thank you</h2>
+        <p class="lead">Questions?</p>
+        <p class="who"><strong>Lokesh Kumar V M</strong> &middot; Senior Product Designer &middot; lokeshdesign.com</p>
+      </section>
+    </div>
+
+  </main>
+
+  <div class="deck-bar" role="toolbar" aria-label="Presentation controls">
+    <button type="button" class="deck-menu-btn" title="All slides (M)" aria-label="All slides (M)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg><span class="txt">Slides</span>
+    </button>
+    <span class="deck-chapter"></span>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-prev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+    </button>
+    <span class="deck-count" aria-live="polite"></span>
+    <button type="button" class="deck-next" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+    </button>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-fs" title="Full screen (F)" aria-label="Full screen (F)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" /></svg>
+    </button>
+    <a class="deck-exit" href="mes-coded.html" title="Back to the case study">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg><span class="txt">Exit</span>
+    </a>
+  </div>
+
+  <dialog class="deck-menu" aria-label="All slides">
+    <div class="deck-menu-inner">
+      <div class="deck-menu-head">
+        <div>All slides <span>&nbsp;M to toggle</span></div>
+        <button type="button" class="deck-menu-close" aria-label="Close slide menu">&#10005;</button>
+      </div>
+      <ol></ol>
+    </div>
+  </dialog>
+
+  <dialog class="deck-zoom" aria-label="Enlarged image"><img alt="" /></dialog>
+
+  <script type="module">
+    import { initDeck } from './deck.js';
+    initDeck();
+  </script>
+</body>
+
+</html>

@@ -1242,6 +1242,14 @@
     import { initBottomConfetti } from './confetti.js';
     initBottomConfetti();
   </script>
+  <a class="pm-start" href="mes-deck.html" title="Present this case study as slides (P)"><span aria-hidden="true">▶</span> Present</a>
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'p' && e.key !== 'P') return;
+      if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      location.href = 'mes-deck.html';
+    });
+  </script>
 
   <script type="module">
     import { initPixelCursor } from './pixel-cursor.js';

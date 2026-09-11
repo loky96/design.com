@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FTUE Deck | Lokesh Kumar</title>
+  <meta name="description" content="Slide deck version of the Flow Security Central first-time user experience case study." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+
+<body>
+
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <circle cx="9" cy="7" r="4" />
+            </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              <rect width="20" height="14" x="2" y="6" rx="2" />
+            </symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z" />
+              <path d="M20.054 15.987H3.946" />
+            </symbol>
+      <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+              <path d="m21 2-9.6 9.6" />
+              <circle cx="7.5" cy="15.5" r="5.5" />
+            </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+            </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </symbol>
+      <symbol id="i-trending-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M16 17h6v-6" />
+              <path d="m22 17-8.5-8.5-5 5L2 7" />
+            </symbol>
+      <symbol id="i-triangle-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="3" rx="2" />
+              <line x1="8" x2="16" y1="21" y2="21" />
+              <line x1="12" x2="12" y1="17" y2="21" />
+            </symbol>
+      <symbol id="i-circle-dollar-sign" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+              <path d="M12 18V6" />
+            </symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+            </symbol>
+      <symbol id="i-circle-help" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+              <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" />
+              <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" />
+              <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+            </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="10" x2="14" y1="2" y2="2" />
+        <line x1="12" x2="15" y1="14" y2="11" />
+        <circle cx="12" cy="14" r="8" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="deck-progress" aria-hidden="true"><span></span></div>
+
+  <main class="deck-stage" aria-label="Flow Security Central first-time user experience case study, as slides">
+
+    <!-- ================= INTRO ================= -->
+    <div class="chapter" data-chapter="Intro">
+
+      <section class="slide navy cover" data-title="Cover">
+        <div class="cover-grid">
+          <div>
+            <span class="logo-pill"><img src="images/Logos/nutanix.webp" alt="Nutanix" style="height:30px;" /></span>
+            <h1>FTUE in &ldquo;Flow Security Central&rdquo;</h1>
+            <p class="lead">Redesigning the first-time user experience of a B2B SaaS security product.</p>
+            <dl class="meta">
+              <dt>Role</dt><dd>Intern: research, design &amp; testing</dd>
+              <dt>Team</dt><dd>Me, UX designer, PM &amp; DM</dd>
+              <dt>Timeline</dt><dd>May &ndash; July 2021 (2.8 months)</dd>
+              <dt>Product</dt><dd>Cloud security management</dd>
+            </dl>
+          </div>
+          <img class="cover-art" src="ftue-coded/01a.webp"
+            alt="Laptop showing the Welcome to Security Central onboarding and cloud account selection" />
+        </div>
+        <p class="cover-foot"><strong>Lokesh Kumar V M</strong><span>Nutanix &middot; Flow Security Central</span></p>
+      </section>
+
+      <section class="slide navy" data-title="The outcome, up front">
+        <p class="eyebrow">Impact at a glance</p>
+        <div class="split" style="--cols: 1fr 1.2fr;">
+          <div class="stat">
+            <b style="font-size:180px;">&minus;30%</b>
+            <span style="font-size:30px;margin-top:20px;">initial client tickets</span>
+          </div>
+          <div>
+            <h2>Fixing the bottlenecks in onboarding cloud resources</h2>
+            <p class="lead" style="margin:0;">Initial client tickets dropped by 30%, and removing the onboarding bottlenecks
+              helped product adoption.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Quick context">
+        <h2>Quick context</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-circle-help" /></svg>Why</h3>
+            <ul class="list">
+              <li>Get new users to an <strong>&ldquo;aha&rdquo; moment</strong> quickly</li>
+              <li>Help users <strong>see value early</strong>, adopt the product and keep using it</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-search" /></svg>What</h3>
+            <ul class="list">
+              <li>A <strong>first-time user experience</strong> overhaul</li>
+              <li><strong>Day 0&ndash;2 &amp; Day N</strong> guided journeys</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-users" /></svg>Who</h3>
+            <ul class="list">
+              <li>IT security &amp; <strong>virtual infrastructure admins</strong></li>
+              <li>Trial and <strong>first-time users</strong></li>
+              <li>Users discovering <strong>advanced capabilities</strong></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-wrench" /></svg>How</h3>
+            <ul class="list">
+              <li>A <strong>scalable onboarding framework</strong></li>
+              <li><strong>Progressive disclosure</strong> and guided flows</li>
+              <li><strong>Modular UI components</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="The product">
+        <p class="eyebrow">The product</p>
+        <div class="split" style="--cols: 1fr 1.5fr;">
+          <div>
+            <h2>Flow Security Central</h2>
+            <p class="lead">Automates Cloud Security Posture Management (CSPM) across multi-cloud infrastructure.</p>
+            <ul class="list">
+              <li>Compliance status</li>
+              <li>Creating custom audits</li>
+              <li>Security planning</li>
+              <li>Inventory view</li>
+            </ul>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:560px;" src="ftue-coded/02a.webp"
+              alt="Security Central dashboard with security overview, compliance, network and findings panels" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE PROBLEM ================= -->
+    <div class="chapter" data-chapter="The problem">
+
+      <section class="slide navy" data-title="Design brief">
+        <div class="split" style="--cols: 1fr 1fr;">
+          <div>
+            <p class="eyebrow">Design brief</p>
+            <h2 class="statement" style="font-size:52px;">&ldquo;Reimagine the first-time user experience for Flow Security
+              Central so new users can quickly realise the product&rsquo;s value.&rdquo;</h2>
+          </div>
+          <div class="media">
+            <p class="label">Scope: importance &amp; involvement by area</p>
+            <img class="shot zoom" style="--h:470px;background:transparent;border:0;box-shadow:none;" src="ftue-coded/03a.webp"
+              alt="Bar chart of importance and involvement across the areas to address" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Why do this?">
+        <h2>Why do this?</h2>
+        <div class="grid c2 mt">
+          <div class="card"><h3><svg class="ico"><use href="#i-trending-down" /></svg>Reduce the initial drop-off rate</h3></div>
+          <div class="card"><h3><svg class="ico"><use href="#i-triangle-alert" /></svg>Overhaul a friction-heavy legacy onboarding</h3></div>
+          <div class="card"><h3><svg class="ico"><use href="#i-star" /></svg>Support a relatively new product line at Nutanix</h3></div>
+          <div class="card"><h3><svg class="ico"><use href="#i-circle-dollar-sign" /></svg>Show product value, with or without live data</h3></div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="The old first-time experience">
+        <p class="eyebrow">Before</p>
+        <h2>The old first-time experience</h2>
+        <div class="split" style="--cols: 1.6fr 1fr; align-items:start;">
+          <div class="media">
+            <video class="shot" style="--w:820px;aspect-ratio:16/9;" src="ftue-coded/ftue%20video/current-experience.mp4"
+              poster="ftue-coded/ftue%20video/posters/old-experience-poster.jpg" controls playsinline preload="metadata"
+              aria-label="Walkthrough of the old first-time experience"></video>
+          </div>
+          <div class="stack" style="gap:18px;">
+            <div>
+              <p class="label">First-time use</p>
+              <ul class="list x" style="gap:8px;">
+                <li class="sm">No value proposition on the welcome page</li>
+                <li class="sm">No clear flow: every path ends at resource onboarding</li>
+                <li class="sm">Blank pages, and a dashboard that&rsquo;s hard to find</li>
+              </ul>
+            </div>
+            <div>
+              <p class="label">Guided tours</p>
+              <ul class="list x" style="gap:8px;">
+                <li class="sm">A 13-step walkthrough with no progress indicator</li>
+                <li class="sm">The tour takes full control; skip and close are hard to find</li>
+                <li class="sm">An abrupt ending that leads nowhere</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Who it's for">
+        <h2>Who it&rsquo;s for</h2>
+        <div class="persona-head" style="margin:8px 0 26px;">
+          <img src="aihub-security-coded/admin.png" alt="" style="width:80px;height:80px;" />
+          <div>
+            <h3 style="margin:0;">IT security &amp; virtual infrastructure admins</h3>
+            <p>Alex &middot; 35 &middot; Security analyst &middot; Tech-savvy, compliance-focused, runs hybrid cloud</p>
+          </div>
+        </div>
+        <p class="label">Three types of user, three different needs</p>
+        <div class="grid c3">
+          <div class="card">
+            <h4>Exploring without any cloud resources</h4>
+            <ul class="list">
+              <li class="sm">Understand what onboarding a cloud resource needs</li>
+              <li class="sm">See the product&rsquo;s value with dummy data</li>
+              <li class="sm">Feel motivated to onboard a resource</li>
+            </ul>
+          </div>
+          <div class="card primary">
+            <h4>Cloud resources ready to upload</h4>
+            <ul class="list">
+              <li class="sm">Why and how to onboard a resource</li>
+              <li class="sm">Where to go next after linking it</li>
+              <li class="sm">Handling the wait while it onboards</li>
+              <li class="sm">Learning the product</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Exploring features on day N</h4>
+            <ul class="list">
+              <li class="sm">Discovering new additions</li>
+              <li class="sm">Coping with long tours</li>
+              <li class="sm">Jumping to a specific step in a tour</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE SOLUTION ================= -->
+    <div class="chapter" data-chapter="The solution">
+
+      <section class="slide navy" data-title="The solution in three parts">
+        <p class="eyebrow">The solution</p>
+        <h2 style="margin-bottom:48px;">The solution in three parts</h2>
+        <div class="grid c3" style="gap:36px;">
+          <div class="card"><h3>1 &middot; Order of unfolding</h3><p>The order in which features are shown to the user,
+              set by value analysis</p></div>
+          <div class="card"><h3>2 &middot; Supporting UI components</h3><p>Tooltips, milestones and guided tours built on
+              the Nutanix design system</p></div>
+          <div class="card"><h3>3 &middot; The onboarding flow</h3><p>The full journey for users with or without data, and
+              for advanced users</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Solution 1: order of unfolding">
+        <p class="eyebrow">Solution 1 &middot; Order of unfolding</p>
+        <h2>Which feature to show first? A value analysis</h2>
+        <div class="split" style="--cols: 1fr 1fr; align-items:start;">
+          <div class="stack" style="gap:22px;">
+            <p>I ranked every feature on three criteria with a weighted matrix, and did the same for supporting features.
+            </p>
+            <div class="grid c3" style="gap:12px;">
+              <div class="card" style="padding:16px;text-align:center;"><p class="sm"><strong>Ease of task execution</strong></p></div>
+              <div class="card" style="padding:16px;text-align:center;"><p class="sm"><strong>Effort reduction</strong></p></div>
+              <div class="card" style="padding:16px;text-align:center;"><p class="sm"><strong>Usage frequency</strong></p></div>
+            </div>
+            <div class="grid c2" style="gap:18px;">
+              <div>
+                <p class="label" style="color:var(--green);">Resulting order: primary features</p>
+                <ol style="padding-left:22px;display:grid;gap:4px;">
+                  <li class="sm">Onboard a cloud resource</li>
+                  <li class="sm">Dashboard</li>
+                  <li class="sm">Findings &amp; alerts</li>
+                  <li class="sm">Inventory</li>
+                  <li class="sm">Compliance</li>
+                  <li class="sm">Security planning</li>
+                </ol>
+              </div>
+              <div>
+                <p class="label">Then, optional</p>
+                <p class="sm" style="color:var(--ink-2);">Scope, custom audits, rules, audit policy, integrations, threat
+                  detection, reports, history</p>
+              </div>
+            </div>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:600px;" src="ftue-coded/08a.webp"
+              alt="Value analysis scoring table for primary and supporting features" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 2: tooltips and milestones">
+        <p class="eyebrow">Solution 2 &middot; Supporting UI components</p>
+        <h2>Information tooltips and milestone moments</h2>
+        <p class="lead">Basic information tooltips, with variants for milestone completion and visual guides on actions,
+          all within the existing Nutanix design system.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:440px;" src="ftue-coded/09a.webp?v=8r"
+            alt="Tooltip and milestone pop-ups: hover info, product tour complete and feature tour complete" />
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 2: guided tour with progress">
+        <p class="eyebrow">Solution 2 &middot; Supporting UI components</p>
+        <h2>A guided tour that shows progress</h2>
+        <p class="lead">Progress is clear both visually and as a number. The old tour had no progress indicator at all.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:470px;" src="ftue-coded/09b.webp?v=8r"
+            alt="Guided tour pop-ups with a progress bar, step count, and skip, back and next buttons" />
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 2: dynamic tours">
+        <p class="eyebrow">Solution 2 &middot; Supporting UI components</p>
+        <h2>A dynamic tour you can jump around in</h2>
+        <p class="lead">Users can skip ahead in long tours and go straight to what they need. It also surfaces new
+          features.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:470px;" src="ftue-coded/09c.webp?v=8r"
+            alt="Sequential tour pop-ups with a sidebar of tour steps" />
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 3: the welcome screen">
+        <p class="eyebrow">Solution 3 &middot; Onboarding flow</p>
+        <h2>The welcome screen, before and after</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <figure class="media">
+            <p class="label" style="color:#e07a3f;">Before</p>
+            <img class="shot zoom" src="ftue-coded/10a.webp"
+              alt="Old welcome screen with pain points: missing value proposition, unclear requirements, AWS selected by default" />
+          </figure>
+          <figure class="media">
+            <p class="label" style="color:#7ec27e;">After</p>
+            <img class="shot zoom" src="ftue-coded/10b.webp"
+              alt="Redesigned welcome screen that leads into onboarding a cloud account" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 3: the dashboard">
+        <p class="eyebrow">Solution 3 &middot; Onboarding flow</p>
+        <h2>The dashboard, before and after</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <figure class="media">
+            <p class="label" style="color:#e07a3f;">Before</p>
+            <img class="shot zoom" src="ftue-coded/10c.webp" alt="Old dashboard" />
+          </figure>
+          <figure class="media">
+            <p class="label" style="color:#7ec27e;">After</p>
+            <img class="shot zoom" src="ftue-coded/10d.webp" alt="New dashboard with a collapsible onboarding pane" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Solution 3: onboarding pane">
+        <p class="eyebrow">Solution 3 &middot; Onboarding flow</p>
+        <div class="split" style="--cols: 1fr 1.3fr;">
+          <div>
+            <h2>A collapsible pane for resources still onboarding</h2>
+            <p class="lead">When a user onboards a cloud resource, this pane appears on the dashboard, collapsed, so they can
+              track its progress while they explore.</p>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:620px;" src="ftue-coded/10e.webp?v=202608062302"
+              alt="Dashboard with an onboarding status banner and a table of AWS, Nutanix and Azure account states" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="The redesigned experience">
+        <p class="eyebrow">After</p>
+        <h2>The redesigned experience</h2>
+        <div class="media">
+          <video class="shot" style="--w:1060px;aspect-ratio:16/9;" src="ftue-coded/ftue%20video/final-solution.mp4"
+            poster="ftue-coded/ftue%20video/posters/solution-poster.jpg" controls playsinline preload="metadata"
+            aria-label="Walkthrough of the redesigned first-time experience"></video>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PROCESS ================= -->
+    <div class="chapter" data-chapter="How I got there">
+
+      <section class="slide navy" data-title="How I got there">
+        <p class="eyebrow">Process</p>
+        <h2 style="margin-bottom:48px;">How I got there</h2>
+        <ol class="agenda">
+          <li><span><strong>Research</strong>WalkMe videos, PM and SME conversations</span></li>
+          <li><span><strong>Pre-product experience</strong>What users meet before they sign in</span></li>
+          <li><span><strong>Studying the product</strong>Features, tasks and the current flows</span></li>
+          <li><span><strong>Competitor analysis</strong>15 products checked against FTUE frameworks</span></li>
+          <li><span><strong>Defining must-haves</strong>An ideal FTUE framework and a checklist</span></li>
+          <li><span><strong>Persona &amp; needs</strong>Who we designed for, and what mattered most</span></li>
+          <li><span><strong>Iterations</strong>Onboarding flows, top to bottom</span></li>
+          <li><span><strong>Wireframes &amp; prototypes</strong>Tested in several rounds</span></li>
+          <li><span><strong>Evaluation</strong>Co-creation sessions, manager reviews, checklist</span></li>
+        </ol>
+      </section>
+
+      <section class="slide" data-title="Research">
+        <h2>Research</h2>
+        <p class="lead" style="margin-bottom:18px;">I studied user flows from WalkMe videos and conversations with the PM and
+          subject-matter experts.</p>
+        <div class="chips" style="margin-bottom:22px;">
+          <span class="tag" style="font-size:15px;">2 SMEs</span>
+          <span class="tag" style="font-size:15px;">2 PM &amp; manager</span>
+          <span class="tag" style="font-size:15px;">6 one-hour WalkMe videos</span>
+        </div>
+        <div class="media">
+          <img class="shot zoom" style="--h:470px;" src="ftue-coded/13a.webp?v=12r2"
+            alt="Research mind map covering primary research, secondary research and product research" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Studying user flows">
+        <h2>Studying how users move through the product</h2>
+        <div class="media mt">
+          <img class="shot zoom" style="--h:620px;" src="ftue-coded/13b.webp"
+            alt="User flow map from login and onboarding to the dashboard, findings and inventory, with supporting features and help" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Before users enter the product">
+        <h2>Before users even enter the product</h2>
+        <div class="grid c2 mt" style="grid-template-columns: 1fr 1.25fr; align-items:start;">
+          <figure class="media">
+            <p class="label">What competitors show on their product pages</p>
+            <img class="shot zoom" style="--h:540px;" src="ftue-coded/13c.webp?v=12r3"
+              alt="Competitor comparison of product pages: product video, screen demos, trial, live demo, sign-up and supported clouds" />
+          </figure>
+          <figure class="media">
+            <p class="label">Pain points in the journey to the product</p>
+            <img class="shot zoom" style="--h:540px;" src="ftue-coded/14a.webp"
+              alt="Pre-product journey flowchart from website and ads to sign-up, waiting and trial" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Studying the product">
+        <h2>Studying the product</h2>
+        <div class="split" style="--cols: 0.7fr 1.5fr;">
+          <div class="stack" style="gap:20px;">
+            <div>
+              <p class="label">Most used, main features</p>
+              <p class="sm">Dashboard, findings &amp; alerts, compliance, inventory, security planning</p>
+            </div>
+            <div>
+              <p class="label">Less used features</p>
+              <p class="sm">Scope, custom audits, audit policy, user management, add accounts, integration rules,
+                suppression rules, threat detection</p>
+            </div>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:600px;" src="ftue-coded/15a.webp?v=noright"
+              alt="Feature and task mind map of Security Central" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Analysing the current experience">
+        <h2>Analysing the current experience</h2>
+        <p class="lead" style="margin-bottom:20px;">I evaluated every screen of the existing experience against a checklist I
+          prepared.</p>
+        <div class="stack" style="align-items:center;gap:18px;">
+          <img class="shot zoom" style="--h:250px;" src="ftue-coded/15b.webp" alt="Screens of the existing new-feature onboarding" />
+          <img class="shot zoom" style="--h:240px;" src="ftue-coded/15c.webp" alt="Annotated flow of the first-time experience in the trial product" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Competitor analysis">
+        <h2>Competitor analysis</h2>
+        <p class="lead" style="margin-bottom:22px;">Every FTUE framework I read covers three things. I checked 15 products
+          against them, most picked from articles on onboarding best practice.</p>
+        <div class="grid c3">
+          <div class="card">
+            <h4>1. Strategies</h4>
+            <p class="sm">Help, contextual onboarding, progressive disclosure, assistance-based onboarding, degree of user
+              control, documentation &amp; support</p>
+          </div>
+          <div class="card">
+            <h4>2. Order of unfolding</h4>
+            <p class="sm">A user-value-based flow, a function-based flow, or a feature-based flow</p>
+          </div>
+          <div class="card">
+            <h4>3. UI elements</h4>
+            <p class="sm">Sign-up, welcome message, product tours, progress bar, checklists, hotspots, action-driven
+              tooltips, milestone celebration, in-app &amp; out-of-app connection, ending message</p>
+          </div>
+        </div>
+        <div class="grid c3 mt">
+          <div><p class="label">Enterprise products (8)</p><p class="sm">Robin, Ninox, Mailchimp, IBM Cognos, Salesflare,
+              Productboard, Userpilot, FullStory</p></div>
+          <div><p class="label">Consumer products (4)</p><p class="sm">Grammarly, StoryChief, Evernote, Typeform</p></div>
+          <div><p class="label">Mixed products (3)</p><p class="sm">Conversion XL, Box Starter, Slack</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Comparing competitors">
+        <h2>Comparing the strategies side by side</h2>
+        <div class="media mt">
+          <img class="shot zoom" style="--h:600px;" src="ftue-coded/16b.webp"
+            alt="Bubble matrix comparing onboarding strategies across the competitor products" />
+          <p class="caption">Click to enlarge</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Insights from competitors">
+        <h2>What the competitors taught me</h2>
+        <div class="grid c4 mt" style="gap:18px;">
+          <div class="card"><h4>Tour initiation</h4><p class="sm">Skippable tours, a gist of the contents, mock images to
+              explain features</p></div>
+          <div class="card"><h4>Advanced use</h4><p class="sm">Access to help, jumping to a point in a tour, learnable new
+              features</p></div>
+          <div class="card"><h4>Attention grabbers</h4><p class="sm">Animated point and label hotspots, with the right
+              colour and contrast</p></div>
+          <div class="card"><h4>Information delivery</h4><p class="sm">Context-based tooltips; progress, back, skip and
+              next controls</p></div>
+          <div class="card" style="grid-column: span 2;"><h4>Encouragement</h4><p class="sm">Subtle celebrations using
+              image and text increase engagement</p></div>
+          <div class="card"><h4>Help initiation</h4><p class="sm">A visible floating icon, and tours you can start any
+              time</p></div>
+          <div class="card"><h4>Ending directions</h4><p class="sm">A short sum-up, a celebration, and where to go
+              next</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Defining must-haves">
+        <h2>Defining the must-haves</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <div class="card">
+            <h3>What the research showed</h3>
+            <ul class="list">
+              <li class="sm">Show users <strong>what they can do</strong> and <strong>what to expect</strong></li>
+              <li class="sm">Deliver <strong>value as soon as possible</strong>, with minimum effort</li>
+              <li class="sm">Make things <strong>clear, visible and easy to learn</strong></li>
+              <li class="sm">Encourage users to <strong>investigate</strong> the options</li>
+              <li class="sm">Give users a <strong>reason to come back</strong></li>
+            </ul>
+          </div>
+          <div class="card primary">
+            <h3>The checklist I held my design to</h3>
+            <div class="grid c2" style="gap:8px 18px;">
+              <p class="sm">&#10003; Where I landed</p><p class="sm">&#10003; Minimum effort</p>
+              <p class="sm">&#10003; What I can do</p><p class="sm">&#10003; Engagement</p>
+              <p class="sm">&#10003; Where I can go next</p><p class="sm">&#10003; Delightful</p>
+              <p class="sm">&#10003; What value it gives</p><p class="sm">&#10003; Progressive disclosure</p>
+              <p class="sm">&#10003; Clear navigation</p><p class="sm">&#10003; Control to the user</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="The ideal FTUE framework">
+        <h2>The ideal FTUE framework</h2>
+        <div class="grid c4 mt" style="gap:16px;">
+          <div class="card" style="padding:20px 22px;"><h4>Where am I</h4><p class="sm">No doubt this is the starting point</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>What I can do</h4><p class="sm">The things possible in the product</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Where I can go</h4><p class="sm">Make the next step apparent</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Navigation</h4><p class="sm">A clear, visible, logical structure</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Value first</h4><p class="sm">How it makes their lives better</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>No explanation</h4><p class="sm">Let users do, don&rsquo;t instruct</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Progressive disclosure</h4><p class="sm">A taste first; discover more naturally</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>No friction</h4><p class="sm">Common patterns and a flawless flow</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Engagement</h4><p class="sm">Keep users active, never bored</p></div>
+          <div class="card" style="padding:20px 22px;"><h4>Trust</h4><p class="sm">Care with permissions and sensitive data</p></div>
+          <div class="card" style="padding:20px 22px;grid-column: span 2;"><h4>Delightful moments</h4><p class="sm">Celebrations,
+              micro-interactions, animated loaders or smart copy</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Persona: Alex">
+        <p class="eyebrow">User persona</p>
+        <div class="persona-head">
+          <img src="aihub-security-coded/admin.png" alt="" />
+          <div>
+            <h2>Alex, VI &amp; IT security admin</h2>
+            <p>35 &middot; 10+ years in IT infrastructure and cybersecurity &middot; Bangalore &middot; Uses CloudHealth,
+              Prisma Cloud, CloudCheckr</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card">
+            <h4>Goals</h4>
+            <ul class="list">
+              <li class="sm">Ensure compliance across on-premises and cloud resources</li>
+              <li class="sm">Real-time visibility into the security posture</li>
+              <li class="sm">Keep cloud resources in good health</li>
+            </ul>
+          </div>
+          <div class="card pain">
+            <h4>Pain points</h4>
+            <ul class="list x">
+              <li class="sm">Scaling security across hybrid cloud environments</li>
+              <li class="sm">Finding and fixing vulnerabilities efficiently</li>
+              <li class="sm">Balancing efficiency with strict compliance</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Qualities</h4>
+            <ul class="list">
+              <li class="sm">Tech-savvy, often switching between dashboards</li>
+              <li class="sm">Prefers streamlined tools with actionable insights</li>
+              <li class="sm">Relies on reports for audits and stakeholders</li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h4>Wants</h4>
+            <ul class="list">
+              <li class="sm">One dashboard for multi-cloud security</li>
+              <li class="sm">Automated vulnerability detection and remediation</li>
+              <li class="sm">Real-time compliance tracking and easy reports</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Major user needs">
+        <h2>The major user needs</h2>
+        <div class="grid c4 mt" style="gap:16px;">
+          <div class="card accent"><b style="font:700 40px/1 var(--serif);color:var(--blue);">01</b><p style="margin-top:12px;">Show the product&rsquo;s value as soon as possible</p></div>
+          <div class="card accent"><b style="font:700 40px/1 var(--serif);color:var(--blue);">02</b><p style="margin-top:12px;">Handle the wait time and errors after linking a cloud</p></div>
+          <div class="card accent"><b style="font:700 40px/1 var(--serif);color:var(--blue);">03</b><p style="margin-top:12px;">Motivate users to onboard cloud resources</p></div>
+          <div class="card accent"><b style="font:700 40px/1 var(--serif);color:var(--blue);">04</b><p style="margin-top:12px;">Clear navigation, and access to help</p></div>
+        </div>
+        <div class="grid c2 mt">
+          <div>
+            <p class="label">For first-time use</p>
+            <ul class="list">
+              <li class="sm">Redesign the end-to-end user flow</li>
+              <li class="sm">Where to go next once a cloud resource is onboarded</li>
+              <li class="sm">Handle the waiting time of onboarded resources</li>
+              <li class="sm">Show value with dummy data, and introduce every feature</li>
+            </ul>
+          </div>
+          <div>
+            <p class="label">For advanced use</p>
+            <ul class="list">
+              <li class="sm">Access to help</li>
+              <li class="sm">Jump between tours to a specific point</li>
+              <li class="sm">Visibility and learnability of new features</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Iterations on onboarding flows">
+        <h2>Iterating on the onboarding flow</h2>
+        <div class="media mt">
+          <img class="shot zoom" style="--h:600px;" src="ftue-coded/18a.webp"
+            alt="Flow iterations: the existing flow, version 2, the initial iteration and iteration 3" />
+        </div>
+      </section>
+
+      <section class="slide" data-title="Top-level onboarding flow">
+        <h2>The top-level flow, and the needs behind each step</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <figure class="media">
+            <p class="label">Top-level onboarding flow</p>
+            <img class="shot zoom" src="ftue-coded/18b.webp"
+              alt="Top-level onboarding flow from welcome to onboarding a resource, external steps and completion" />
+          </figure>
+          <figure class="media">
+            <p class="label">User needs, challenges and possible solutions per step</p>
+            <img class="shot zoom" src="ftue-coded/18c.webp"
+              alt="Detailed iteration diagram with user needs, challenges and possible solutions for each step" />
+          </figure>
+        </div>
+        <p class="caption">Click either diagram to enlarge</p>
+      </section>
+
+      <section class="slide" data-title="Wireframes and prototypes">
+        <h2>Wireframes, then prototype testing</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <figure class="media">
+            <p class="label">Low-fidelity wireframes</p>
+            <img class="shot zoom" src="ftue-coded/19a.webp" alt="Low-fidelity wireframes of the onboarding screens" />
+          </figure>
+          <figure class="media">
+            <p class="label">Prototypes used in testing</p>
+            <img class="shot zoom" src="ftue-coded/19c.webp"
+              alt="Figma prototype map: feature tours, guided tour menu and dummy-data tours" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="slide" data-title="What testing surfaced">
+        <h2>What testing surfaced</h2>
+        <div class="grid c2 mt" style="align-items:start;">
+          <div class="card">
+            <span class="tag">6 people &middot; 2nd round of prototype testing</span>
+            <h3>Co-creation sessions</h3>
+            <ul class="list">
+              <li class="sm">Options flickered position during the product tour</li>
+              <li class="sm">The login and first screens looked almost the same</li>
+              <li class="sm">Tooltips overlapped the background screenshots</li>
+              <li class="sm">Dummy-data and real-data tour CTAs could be confused</li>
+              <li class="sm">The first screen lacked motivation</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="tag">4 people &middot; 3rd round of prototype testing</span>
+            <h3>Manager reviews</h3>
+            <ul class="list">
+              <li class="sm"><strong>Set expectations</strong> for how long a resource takes to onboard; users kept
+                raising requests about it</li>
+              <li class="sm">Show what to do next after onboarding, on the dashboard</li>
+              <li class="sm">Give advanced users access to help</li>
+              <li class="sm">Check how network traffic and inventory data each populate</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Evaluation with the checklist">
+        <h2>Evaluating the design against the checklist</h2>
+        <div class="grid c3 mt" style="align-items:start;">
+          <div class="card">
+            <img class="shot zoom" style="--h:250px;margin:0 auto 18px;" src="ftue-coded/20a.webp"
+              alt="Onboarding and AWS onboarding success screens" />
+            <h4>Onboarding a cloud resource</h4>
+            <p class="sm"><strong>8 of 10</strong> checks met. Still open: progressive disclosure, control to the user.</p>
+          </div>
+          <div class="card">
+            <img class="shot zoom" style="--h:250px;margin:0 auto 18px;" src="ftue-coded/20b.webp"
+              alt="Dashboard with onboarding progress banner" />
+            <h4>Dashboard</h4>
+            <p class="sm"><strong>9 of 10</strong> checks met. Still open: progressive disclosure.</p>
+          </div>
+          <div class="card accent">
+            <img class="shot zoom" style="--h:250px;margin:0 auto 18px;" src="ftue-coded/20c.webp"
+              alt="Findings and alerts screen with guided tour tooltips" />
+            <h4>During tours</h4>
+            <p class="sm"><strong>All 10</strong> checks met.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= WRAP-UP ================= -->
+    <div class="chapter" data-chapter="Wrap-up">
+      <section class="slide navy thanks" data-title="Thank you">
+        <h2>Thank you</h2>
+        <p class="lead">Questions?</p>
+        <p class="who" style="color:rgba(255,255,255,.8);"><strong style="color:#fff;">Lokesh Kumar V M</strong> &middot;
+          Senior Product Designer &middot; lokeshdesign.com</p>
+      </section>
+    </div>
+
+  </main>
+
+  <div class="deck-bar" role="toolbar" aria-label="Presentation controls">
+    <button type="button" class="deck-menu-btn" title="All slides (M)" aria-label="All slides (M)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg><span class="txt">Slides</span>
+    </button>
+    <span class="deck-chapter"></span>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-prev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+    </button>
+    <span class="deck-count" aria-live="polite"></span>
+    <button type="button" class="deck-next" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+    </button>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-fs" title="Full screen (F)" aria-label="Full screen (F)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" /></svg>
+    </button>
+    <a class="deck-exit" href="ftue-coded.html" title="Back to the case study">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg><span class="txt">Exit</span>
+    </a>
+  </div>
+
+  <dialog class="deck-menu" aria-label="All slides">
+    <div class="deck-menu-inner">
+      <div class="deck-menu-head">
+        <div>All slides <span>&nbsp;M to toggle</span></div>
+        <button type="button" class="deck-menu-close" aria-label="Close slide menu">&#10005;</button>
+      </div>
+      <ol></ol>
+    </div>
+  </dialog>
+
+  <dialog class="deck-zoom" aria-label="Enlarged image"><img alt="" /></dialog>
+
+  <script type="module">
+    import { initDeck } from './deck.js';
+    initDeck();
+  </script>
+</body>
+
+</html>

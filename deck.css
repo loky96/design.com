@@ -60,6 +60,7 @@ body {
 .slide.is-active { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .slide.dark { background: var(--dark); color: var(--dark-text); }
 .slide.blue { background: var(--blue); color: #fff; }
+.slide.navy { background: #17458a; color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   .slide, .slide.is-before { transform: none; transition: none; }
 }
@@ -80,10 +81,10 @@ p, li { font-size: 22px; line-height: 1.5; }
   margin-bottom: 20px;
 }
 .dark .eyebrow { color: var(--blue-on-dark); }
-.blue .eyebrow { color: rgba(255, 255, 255, .78); }
+.blue .eyebrow, .navy .eyebrow { color: rgba(255, 255, 255, .78); }
 .lead { font-size: 26px; line-height: 1.5; color: var(--ink-2); max-width: 1220px; margin-bottom: 34px; }
 .dark .lead { color: var(--dark-dim); }
-.blue .lead { color: rgba(255, 255, 255, .92); }
+.blue .lead, .navy .lead { color: rgba(255, 255, 255, .92); }
 .fine { font-size: 16px; color: var(--muted); margin-top: 24px; }
 .dark .fine { color: #8d8d8d; }
 .statement { font-size: 64px; line-height: 1.12; max-width: 1240px; margin-bottom: 26px; }
@@ -149,7 +150,7 @@ h3 .ico, h4 .ico { color: var(--blue); margin-right: 10px; }
   background: var(--blue);
 }
 .list.x li::before { background: #d6675a; }
-.blue .list li::before { background: #fff; }
+.blue .list li::before, .navy .list li::before { background: #fff; }
 .tag {
   display: inline-block;
   padding: 6px 12px;
@@ -196,6 +197,13 @@ img.zoom { cursor: zoom-in; }
 .stat.card { padding: 34px 32px; }
 .stat b { white-space: nowrap; }
 .c4 .stat b { font-size: 68px; }
+
+/* ---------- Navy slides (FTUE deck) ---------- */
+.navy .card { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .25); }
+.navy .card h3, .navy .card h4, .navy .stat b { color: #fff; }
+.navy .card p, .navy .card li, .navy .stat span { color: rgba(255, 255, 255, .88); }
+.navy h3 .ico, .navy h4 .ico { color: #fff; }
+.navy .meta dt, .navy .label, .navy .fine, .navy .cover-foot { color: rgba(255, 255, 255, .65); }
 
 /* ---------- Cover ---------- */
 .cover { justify-content: center; }
