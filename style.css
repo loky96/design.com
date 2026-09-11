@@ -965,7 +965,7 @@ h1, h2, h3, h4, h5, h6 {
 .hcard:hover .hcard-img > img { transform: scale(1.05); }
 .hcard.pub-large:hover .hcard-img > img { transform: scale(1.1); }
 
-.hcard-img > img.hcard-img-shrink { transform: scale(1.08); }
+.hcard-img > img.hcard-img-shrink { transform: scale(0.94); }
 .hcard:hover .hcard-img > img.hcard-img-shrink { transform: scale(1.2); }
 
 .hcard-img > video {
@@ -998,7 +998,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hcard-img-swap {
   opacity: 0;
-  transform: scale(0.94);
+  transform: scale(1.08);
   transition: opacity 0.8s ease, transform 0.4s ease;
 }
 .hcard:hover .hcard-img-swap {
@@ -1006,7 +1006,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.8s ease 0.2s, transform 0.4s ease;
 }
 .hcard:hover .hcard-img .hcard-img-swap.hcard-img-contain {
-  transform: scale(0.94);
+  transform: scale(1.08);
 }
 
 .hcard-img:has(.hcard-img-swap) > img:not(.hcard-img-swap) {
