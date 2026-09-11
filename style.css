@@ -586,7 +586,7 @@ h1, h2, h3, h4, h5, h6 {
 .hl-card--b { --peek-left: auto; }
 .hl-card--b .hl-peek-wrap { right: 40px; }
 @media (hover: hover) {
-  .hl-card:hover .hl-peek { opacity: 0.8; transform: translateY(0); }
+  .hl-card:hover .hl-peek { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hl-peek { transition: opacity 0.2s ease; transform: none; }
