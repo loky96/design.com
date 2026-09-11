@@ -136,8 +136,9 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 }
-/* The pinned job title is the one line that must read at full contrast. */
-.hero-role-title {
+/* The pinned job title and the highlight headings (which hold logos) read at full contrast. */
+.hero-role-title,
+.hl-head {
   -webkit-mask-image: none;
   mask-image: none;
 }
@@ -577,7 +578,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   object-position: left center;
   display: block;
-  opacity: 1;
+  opacity: 0.8;
   filter: none;
 }
 .hl-org--group .hl-logo { height: 27px; max-width: 80px; }
