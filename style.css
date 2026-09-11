@@ -531,7 +531,7 @@ h1, h2, h3, h4, h5, h6 {
 .highlights {
   max-width: calc(var(--cards-max) + 2 * var(--page-gutter));
   margin: 0 auto;
-  padding: 90px var(--page-gutter) 48px;
+  padding: 120px var(--page-gutter) 96px;
   position: relative;
   z-index: 1;
 }
@@ -540,16 +540,17 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
-  gap: 32px 28px;
+  gap: 32px 36px;
 }
 
 .hl-card {
   position: relative;
-  padding: 22px 22px 20px;
+  padding: 30px 28px 28px;
   container-type: inline-size;
-  background: #fff;
-  border: 1.5px dashed #D9A73B;
+  background: var(--bg);
+  border: 1px solid rgba(15,17,23,0.10);
   border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .hl-head {
@@ -567,7 +568,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 4px 0 16px;
+  margin: 10px 0 22px;
 }
 .hl-logo {
   height: 30px;
@@ -576,11 +577,9 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   object-position: left center;
   display: block;
-  opacity: 0.5;
+  opacity: 0.6;
   filter: none;
-  transition: opacity var(--transition);
 }
-.hl-logo:hover { opacity: 1; }
 .hl-org--group .hl-logo { height: 27px; max-width: 80px; }
 
 .hl-lines {
@@ -588,7 +587,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 .hl-lines li {
   display: flex;
@@ -615,7 +614,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  .highlights { padding: 64px var(--page-gutter) 28px; }
+  .highlights { padding: 84px var(--page-gutter) 56px; }
   .hl-grid { grid-template-columns: 1fr; gap: 22px; }
 
   /* Org logo row: fixed 600px track doesn't fit narrow viewports and was
