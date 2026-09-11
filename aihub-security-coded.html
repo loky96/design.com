@@ -442,10 +442,10 @@
         class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Project brief</span></a>
     <a href="#why-building" class="aih-side-nav-link" data-target="why-building"><span
         class="aih-side-nav-bar"></span><span class="aih-side-nav-label">Why we're building this</span></a>
-    <a href="#explore" class="aih-side-nav-link" data-target="explore"><span class="aih-side-nav-bar"></span><span
-        class="aih-side-nav-label">Three pillars, one identity story</span></a>
     <a href="#users" class="aih-side-nav-link" data-target="users"><span class="aih-side-nav-bar"></span><span
         class="aih-side-nav-label">Who I designed for</span></a>
+    <a href="#explore" class="aih-side-nav-link" data-target="explore"><span class="aih-side-nav-bar"></span><span
+        class="aih-side-nav-label">Three pillars, one identity story</span></a>
     <a href="#track-sso" class="aih-side-nav-link" data-target="track-sso"><span class="aih-side-nav-bar"></span><span
         class="aih-side-nav-label">Pillar 1 — Self-serve single sign-on for every tenant</span></a>
     <a href="#track-groups" class="aih-side-nav-link" data-target="track-groups"><span
@@ -802,49 +802,6 @@
       </div>
     </section>
 
-    <!-- ============ 5. EXPLORE (blue) ============ -->
-    <section id="explore" class="sec blue">
-      <div class="wrap">
-        <h2 class="sec-h2 white center">Three pillars, one identity story</h2>
-        <div class="explore-cols" style="grid-template-columns:1fr 1fr 1fr; gap:36px;">
-          <div>
-            <a href="#track-sso" class="explore-pill"><svg class="mi">
-                <use href="#i-lock"></use>
-              </svg> Pillar 1 — SSO</a>
-            <ul class="explore-list">
-              <li>SAML 2.0 + OIDC for multi-tenant</li>
-              <li>Self-serve configuration UI</li>
-              <li>Test before you enforce</li>
-              <li>Threat-modelled domain handling</li>
-            </ul>
-          </div>
-          <div>
-            <a href="#track-groups" class="explore-pill"><svg class="mi">
-                <use href="#i-users"></use>
-              </svg> Pillar 2 — Group mapping</a>
-            <ul class="explore-list">
-              <li>IdP groups → AI Hub groups</li>
-              <li>OIDC parity with SAML</li>
-              <li>Many-to-one mapping</li>
-              <li>Showing when sync happens</li>
-            </ul>
-          </div>
-          <div>
-            <a href="#track-tokens" class="explore-pill"><svg class="mi">
-                <use href="#i-ticket"></use>
-              </svg> Pillar 3 — OAuth tokens</a>
-            <ul class="explore-list">
-              <li>Customer-IdP-issued tokens</li>
-              <li>Account mappings per identity</li>
-              <li>Scopes that only downscope</li>
-              <li>Deprecating raw internal tokens</li>
-            </ul>
-          </div>
-        </div>
-        <p class="explore-footnote">Keep scrolling for the solution. My process is further down, under "How I got there".</p>
-      </div>
-    </section>
-
     <!-- ============ 6. WHO I DESIGNED FOR (light) ============ -->
     <section id="users" class="sec light">
       <div class="wrap">
@@ -1170,17 +1127,54 @@
       </div>
     </section>
 
-    <!-- strip -->
-    <section class="sec dark strip" id="before-state">
+    <!-- ============ 5. EXPLORE (blue) ============ -->
+    <section id="explore" class="sec blue">
       <div class="wrap">
-        <h2 class="strip-title">How it worked before</h2>
+        <h2 class="sec-h2 white center">Three pillars, one identity story</h2>
+        <div class="explore-cols" style="grid-template-columns:1fr 1fr 1fr; gap:36px;">
+          <div>
+            <a href="#track-sso" class="explore-pill"><svg class="mi">
+                <use href="#i-lock"></use>
+              </svg> Pillar 1 — SSO</a>
+            <ul class="explore-list">
+              <li>SAML 2.0 + OIDC for multi-tenant</li>
+              <li>Self-serve configuration UI</li>
+              <li>Test before you enforce</li>
+              <li>Threat-modelled domain handling</li>
+            </ul>
+          </div>
+          <div>
+            <a href="#track-groups" class="explore-pill"><svg class="mi">
+                <use href="#i-users"></use>
+              </svg> Pillar 2 — Group mapping</a>
+            <ul class="explore-list">
+              <li>IdP groups → AI Hub groups</li>
+              <li>OIDC parity with SAML</li>
+              <li>Many-to-one mapping</li>
+              <li>Showing when sync happens</li>
+            </ul>
+          </div>
+          <div>
+            <a href="#track-tokens" class="explore-pill"><svg class="mi">
+                <use href="#i-ticket"></use>
+              </svg> Pillar 3 — OAuth tokens</a>
+            <ul class="explore-list">
+              <li>Customer-IdP-issued tokens</li>
+              <li>Account mappings per identity</li>
+              <li>Scopes that only downscope</li>
+              <li>Deprecating raw internal tokens</li>
+            </ul>
+          </div>
+        </div>
+        <p class="explore-footnote">Keep scrolling for the solution. My process is further down, under "How I got there".</p>
       </div>
     </section>
 
     <!-- ============ 7. THE STATE BEFORE (light) ============ -->
-    <section class="sec light">
+    <section class="sec light" id="before-state">
       <div class="wrap">
-        <h2 class="sec-h2">Three broken paths</h2>
+        <h2 class="sec-h2" style="margin-bottom:12px;">How it worked before</h2>
+        <h3 style="font-size:var(--fs-h3);margin-bottom:20px;">Three broken paths</h3>
         <p class="lead">I mapped the three journeys the enterprise identity story runs through today (logging in,
           getting access, and calling the API) and marked every point where a customer had actually reported failure.
         </p>
@@ -3578,15 +3572,10 @@
 
 
     <!-- ============ RESULTS ============ -->
-    <section class="sec dark strip" id="impact-results">
-      <div class="wrap">
-        <h2 class="strip-title">Impact &amp; results</h2>
-      </div>
-    </section>
-
     <section id="success-metrics" class="sec light">
       <div class="wrap">
-        <h2 class="sec-h2">What I'd call success</h2>
+        <h2 class="sec-h2" id="impact-results" style="margin-bottom:12px;">Impact &amp; results</h2>
+        <h3 style="font-size:var(--fs-h3);margin-bottom:20px;">What I'd call success</h3>
         <p class="lead">Engagement is the wrong measure for identity features, since nobody wants to spend time in an
           SSO settings screen. I defined success as less friction and less risk.</p>
         <div class="grid-2" style="grid-template-columns:repeat(4,1fr);">
@@ -3717,7 +3706,7 @@
     </section>
 
     <!-- ============ REFLECTIONS (dark) ============ -->
-    <section id="reflections" class="sec dark">
+    <section id="reflections" class="sec light">
       <div class="wrap">
         <h2 class="sec-h2">Reflections &amp; learnings</h2>
         <div class="reflect-grid grid-2">
@@ -4091,7 +4080,7 @@
     initPixelCursor({
       trailColor: '#FFFFFF',
       pixelSize: 20,
-      pixelShape: 'square',
+      pixelShape: 'ring-dot',
       pixelCount: 2,
       trailSpacing: 20,
     });

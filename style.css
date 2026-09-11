@@ -577,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   object-position: left center;
   display: block;
-  opacity: 0.6;
+  opacity: 1;
   filter: none;
 }
 .hl-org--group .hl-logo { height: 27px; max-width: 80px; }
@@ -932,6 +932,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fs-caption);
   color: var(--muted);
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 .hcard-meta {

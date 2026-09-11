@@ -14,6 +14,7 @@ const DAMPING = 10;
 /**
  * initPixelCursor(options) → { destroy() }
  * options: { pixelCount, pixelSize, pixelShape, trailColor, trailStyle, trailSpacing }
+ * pixelShape: 'circle' | 'square' | 'arrow' | 'ring-dot' (outline ring leading, filled dots trailing)
  */
 export function initPixelCursor(options = {}) {
   const opts = {
@@ -43,8 +44,12 @@ export function initPixelCursor(options = {}) {
     if (isArrow) {
       node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;display:none;`;
       node.innerHTML = arrowSvg(opts.pixelSize);
+    } else if (opts.pixelShape === 'ring-dot' && i > 0) {
+      const d = opts.pixelSize * 0.5;
+      node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${d}px;height:${d}px;border-radius:50%;background-color:${opts.trailColor};display:none;`;
     } else {
-      node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize}px;height:${opts.pixelSize}px;box-sizing:border-box;border-radius:${opts.pixelShape === 'circle' ? '50%' : '30%'};border:2px solid ${opts.trailColor};background-color:transparent;display:none;`;
+      const round = opts.pixelShape === 'circle' || opts.pixelShape === 'ring-dot';
+      node.style.cssText = `position:absolute;left:0;top:0;will-change:transform,opacity;width:${opts.pixelSize}px;height:${opts.pixelSize}px;box-sizing:border-box;border-radius:${round ? '50%' : '30%'};border:2px solid ${opts.trailColor};background-color:transparent;display:none;`;
     }
     host.appendChild(node);
     pool.push({ node, x: -1000, y: -1000, vx: 0, vy: 0, hidden: true });
