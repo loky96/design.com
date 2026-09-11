@@ -136,7 +136,7 @@ h1 .mi, h2 .mi, h3 .mi, h4 .mi {
 #product-brief .brief-text .sec-h2 { text-align: left; }
 #product-brief .tech-groups { justify-content: flex-start; }
 #product-brief .brief-text p,
-#product-brief .brief-problem li { text-align: justify; text-justify: inter-word; }
+#product-brief .brief-problem li { text-align: left; }
 
 .brief-problem { margin-top: 0; padding-top: 2px; }
 .brief-problem .bp-label {

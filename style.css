@@ -525,25 +525,15 @@ h1, h2, h3, h4, h5, h6 {
 @media (prefers-reduced-motion: reduce) {
   .hero-wave-emoji { animation: none; }
 }
-/* ---------- Highlights: floating stat cards ----------
-   Same three facts as before, restyled as loosely-scattered index cards: dashed
-   gold border, slight rotation per card, drifting up/down like the timeline shots
-   (see .tl-drift), straightens and lifts on hover. */
+/* ---------- Highlights: sticky notes ----------
+   Same three facts, as white notes taped to the page: slight rotation per card,
+   clear tape strip over the top edge, tight contact shadow. */
 .highlights {
   max-width: calc(var(--cards-max) + 2 * var(--page-gutter));
   margin: 0 auto;
   padding: 90px var(--page-gutter) 48px;
   position: relative;
   z-index: 1;
-}
-/* Hero stays a full 100vh (dither pattern runs edge-to-edge to the fold) —
-   desktop/tablet only, pull this section up over it so the first card's dashed
-   top peeks over the dither instead of shrinking the hero to make room.
-   .highlights itself has no background, so the dither still shows everywhere
-   except where the opaque cards actually sit. Skipped on mobile: hero content
-   there is already tight against the fold, no safe room to pull into. */
-@media (min-width: 769px) {
-  .highlights { margin-top: -118px; }
 }
 
 .hl-grid {
@@ -554,45 +544,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hl-card {
-  --hl-rotate: -3deg;
-  --hl-offset: 0px;
-  --hl-accent: #3B6BF5;
-  --hl-accent-soft: #EAF0FE;
   position: relative;
   padding: 22px 22px 20px;
+  container-type: inline-size;
   background: #fff;
   border: 1.5px dashed #D9A73B;
   border-radius: var(--radius);
-  transform: rotate(var(--hl-rotate)) translateY(var(--hl-offset));
-  animation: hl-drift 5.4s ease-in-out infinite;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-/* Vertical scatter lives in --hl-offset (a transform), not margin, so every card
-   still stretches to the same grid-row height — only its paint position shifts. */
-.hl-card--a { --hl-rotate: -2.5deg; --hl-offset: 0px;  --hl-accent: #3B6BF5; --hl-accent-soft: #EAF0FE; animation-duration: 5.2s; animation-delay: 0s; }
-.hl-card--b { --hl-rotate: 2deg;    --hl-offset: 14px; --hl-accent: #C8871A; --hl-accent-soft: #FBF1DE; animation-duration: 6s; animation-delay: -1.4s; }
-.hl-card--c { --hl-rotate: -3.5deg; --hl-offset: 4px;  --hl-accent: #1E8E4E; --hl-accent-soft: #E4F5EB; animation-duration: 4.8s; animation-delay: -2.6s; }
-
-@keyframes hl-drift {
-  0%, 100% { transform: rotate(var(--hl-rotate)) translateY(calc(var(--hl-offset) - 5px)); }
-  50%      { transform: rotate(var(--hl-rotate)) translateY(calc(var(--hl-offset) + 5px)); }
-}
-
-.hl-card:hover {
-  animation: none;
-  transform: rotate(0deg) translateY(-8px);
-  border-style: solid;
-  border-color: var(--hl-accent);
-  box-shadow: var(--shadow-lg);
 }
 
 .hl-head {
   margin: 0 0 10px;
-  font-family: 'Arima', 'Fraunces', serif;
-  font-size: var(--fs-body-lg);
+  font-family: 'DM Sans', sans-serif;
+  /* Shrinks with the note so the longest heading stays on one line. */
+  font-size: min(var(--fs-body), 6.4cqi);
   font-weight: 700;
   line-height: 1.35;
   color: var(--dark);
+  text-align: left;
+  white-space: nowrap;
 }
 .hl-org {
   display: flex;
@@ -607,9 +576,11 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
   object-position: left center;
   display: block;
-  opacity: 1;
+  opacity: 0.5;
   filter: none;
+  transition: opacity var(--transition);
 }
+.hl-logo:hover { opacity: 1; }
 .hl-org--group .hl-logo { height: 27px; max-width: 80px; }
 
 .hl-lines {
@@ -622,7 +593,7 @@ h1, h2, h3, h4, h5, h6 {
 .hl-lines li {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: var(--fs-body-sm);
   line-height: 1.4;
   color: var(--mid);
@@ -633,20 +604,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hl-icon {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  color: var(--hl-accent);
+  width: 17px;
+  height: 17px;
+  color: var(--mid);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hl-card { animation: none; transition: none; }
-  .hl-card:hover { transform: rotate(var(--hl-rotate)); }
+  .hl-card { transition: none; }
+  .hl-card:hover { transform: none; }
 }
 
 @media (max-width: 768px) {
   .highlights { padding: 64px var(--page-gutter) 28px; }
   .hl-grid { grid-template-columns: 1fr; gap: 22px; }
-  .hl-card--a, .hl-card--b, .hl-card--c { --hl-offset: 0px; }
 
   /* Org logo row: fixed 600px track doesn't fit narrow viewports and was
      getting clipped by .org-marquee's overflow:hidden. Let it size to the
@@ -677,8 +647,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   padding: 28px var(--page-gutter) 8px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 .org-marquee-hero {
   max-width: 600px;
@@ -868,7 +836,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg);
   border-radius: var(--radius);
   overflow: hidden;
-  border: 2px solid var(--dark);
+  border: 1px solid rgba(15,17,23,0.10);
   box-shadow: var(--shadow);
   min-height: 320px;
   transition: transform var(--transition), box-shadow var(--transition);
@@ -949,6 +917,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fs-label);
   font-weight: 600;
 }
+.hcard-trend {
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 4px;
+  vertical-align: -0.08em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .hcard-metric-label {
   display: block;
   font-size: var(--fs-caption);
@@ -1019,7 +998,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hcard-img-swap {
   opacity: 0;
-  transform: scale(1.08);
+  transform: scale(0.94);
   transition: opacity 0.8s ease, transform 0.4s ease;
 }
 .hcard:hover .hcard-img-swap {
@@ -1027,7 +1006,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.8s ease 0.2s, transform 0.4s ease;
 }
 .hcard:hover .hcard-img .hcard-img-swap.hcard-img-contain {
-  transform: scale(1.08);
+  transform: scale(0.94);
 }
 
 .hcard-img:has(.hcard-img-swap) > img:not(.hcard-img-swap) {
@@ -1370,7 +1349,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 14px;
 }
 .about-text-col strong { color: var(--dark); }
-.about-last { color: var(--muted) !important; font-style: italic; }
 
 /* ─── JOURNEY ────────────────────────────────────────────────── */
 .journey {
