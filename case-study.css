@@ -2226,3 +2226,26 @@ a.explore-pill:hover {
   .solution-more-btn,
   .solution-more-btn::after { transition: none; }
 }
+
+/* ---------- "Present" link to the case study's slide deck ---------- */
+.pm-start {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #17181c;
+  color: #fff;
+  font: 600 14px/1 "DM Sans", sans-serif;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.pm-start:hover { opacity: 1; transform: translateY(-2px); }
+.pm-start span { font-size: 11px; }
+@media (hover: none), (max-width: 900px) { .pm-start { display: none; } }

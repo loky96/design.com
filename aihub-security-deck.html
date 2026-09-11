@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Hub Security Deck | Lokesh Kumar</title>
+  <meta name="description" content="Slide deck version of the AI Hub enterprise security case study: SSO, IdP group mapping for RBAC, and OAuth-compliant API tokens." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+
+<body>
+
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <circle cx="9" cy="7" r="4" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        <rect width="20" height="14" x="2" y="6" rx="2" />
+      </symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z" />
+        <path d="M20.054 15.987H3.946" />
+      </symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 8V4H8" />
+        <rect width="16" height="12" x="4" y="8" rx="2" />
+        <path d="M2 14h2" />
+        <path d="M20 14h2" />
+        <path d="M15 13v2" />
+        <path d="M9 13v2" />
+      </symbol>
+      <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+        <path d="m21 2-9.6 9.6" />
+        <circle cx="7.5" cy="15.5" r="5.5" />
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+      </symbol>
+      <symbol id="i-shield-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        <path d="M12 8v4" />
+        <path d="M12 16h.01" />
+      </symbol>
+      <symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+        <path d="M13 5v2" />
+        <path d="M13 17v2" />
+        <path d="M13 11v2" />
+      </symbol>
+      <symbol id="i-door-open" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M11 20H2" />
+        <path d="M11 4.562v16.157a1 1 0 0 0 1.242.97L19 20V5.562a2 2 0 0 0-1.515-1.94l-4-1A2 2 0 0 0 11 4.561z" />
+        <path d="M11 4H8a2 2 0 0 0-2 2v14" />
+        <path d="M14 12h.01" />
+        <path d="M22 20h-3" />
+      </symbol>
+      <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+        <circle cx="9" cy="9" r="2" />
+        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+      </symbol>
+      <symbol id="i-puzzle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" />
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </symbol>
+      <symbol id="i-refresh-cw" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+        <path d="M21 3v5h-5" />
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+        <path d="M8 16H3v5" />
+      </symbol>
+      <symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m18 14 4 4-4 4" />
+        <path d="m18 2 4 4-4 4" />
+        <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22" />
+        <path d="M2 6h1.972a4 4 0 0 1 3.6 2.2" />
+        <path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45" />
+      </symbol>
+      <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m17 2 4 4-4 4" />
+        <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+        <path d="m7 22-4-4 4-4" />
+        <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m21 21-4.34-4.34" />
+        <circle cx="11" cy="11" r="8" />
+      </symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+      </symbol>
+      <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 3v18" />
+        <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+        <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+        <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+        <path d="M7 21h10" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 17v5" />
+        <path
+          d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z" />
+      </symbol>
+      <symbol id="i-hammer" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9" />
+        <path d="m18 15 4-4" />
+        <path
+          d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+        <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+        <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+      </symbol>
+      <symbol id="i-construction" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="2" y="6" width="20" height="8" rx="1" />
+        <path d="M17 14v7" />
+        <path d="M7 14v7" />
+        <path d="M17 3v3" />
+        <path d="M7 3v3" />
+        <path d="M10 14 2.3 6.3" />
+        <path d="m14 6 7.7 7.7" />
+        <path d="m8 6 8 8" />
+      </symbol>
+      <symbol id="i-trending-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M16 17h6v-6" />
+        <path d="m22 17-8.5-8.5-5 5L2 7" />
+      </symbol>
+      <symbol id="i-triangle-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </symbol>
+      <symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+        <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+        <path d="M8 6v8" />
+      </symbol>
+      <symbol id="i-scroll-text" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M15 12h-5" />
+        <path d="M15 8h-5" />
+        <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+        <path
+          d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+      </symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+        <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+        <path d="M10 9H8" />
+        <path d="M16 13H8" />
+        <path d="M16 17H8" />
+      </symbol>
+      <symbol id="i-folder-open" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+      </symbol>
+      <symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 5v16" />
+        <path
+          d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+      </symbol>
+      <symbol id="i-pen-line" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M13 21h8" />
+        <path
+          d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+      </symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 17V7" />
+        <path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8" />
+        <path
+          d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-inbox" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+        <path
+          d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+      </symbol>
+      <symbol id="i-radio" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M16.247 7.761a6 6 0 0 1 0 8.478" />
+        <path d="M19.075 4.933a10 10 0 0 1 0 14.134" />
+        <path d="M4.925 19.067a10 10 0 0 1 0-14.134" />
+        <path d="M7.753 16.239a6 6 0 0 1 0-8.478" />
+        <circle cx="12" cy="12" r="2" />
+      </symbol>
+      <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" />
+        <rect x="2" y="6" width="14" height="12" rx="2" />
+      </symbol>
+      <symbol id="i-headphones" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+      </symbol>
+      <symbol id="i-message-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+      </symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect width="20" height="14" x="2" y="3" rx="2" />
+        <line x1="8" x2="16" y1="21" y2="21" />
+        <line x1="12" x2="12" y1="17" y2="21" />
+      </symbol>
+      <symbol id="i-building-2" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M10 12h4" />
+        <path d="M10 8h4" />
+        <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+        <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+        <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+      </symbol>
+      <symbol id="i-circle-dollar-sign" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+        <path d="M12 18V6" />
+      </symbol>
+      <symbol id="i-chart-column" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+        <path d="M18 17V9" />
+        <path d="M13 17V5" />
+        <path d="M8 17v-3" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </symbol>
+      <symbol id="i-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+      </symbol>
+      <symbol id="i-x-circle" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="m15 9-6 6" />
+        <path d="m9 9 6 6" />
+      </symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+      </symbol>
+      <symbol id="i-flask-conical" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+        <path d="M6.453 15h11.094" />
+        <path d="M8.5 2h7" />
+      </symbol>
+      <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 18V5" />
+        <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" />
+        <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" />
+        <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" />
+        <path d="M18 18a4 4 0 0 0 2-7.464" />
+        <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" />
+        <path d="M6 18a4 4 0 0 1-2-7.464" />
+        <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" />
+      </symbol>
+      <symbol id="i-lightbulb" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+      </symbol>
+      <symbol id="i-stethoscope" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M11 2v2" />
+        <path d="M5 2v2" />
+        <path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1" />
+        <path d="M8 15a6 6 0 0 0 12 0v-3" />
+        <circle cx="20" cy="10" r="2" />
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+      </symbol>
+      <symbol id="i-trash-2" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M10 11v6" />
+        <path d="M14 11v6" />
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+        <path d="M3 6h18" />
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      </symbol>
+      <symbol id="i-circle-help" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <path d="M12 17h.01" />
+      </symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+        <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" />
+        <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" />
+        <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+      </symbol>
+      <symbol id="i-frown" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M15 10V9" />
+        <path d="M9 10V9" />
+        <path d="M9 16a5 5 0 016 0" />
+        <circle cx="12" cy="12" r="10" />
+      </symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="10" x2="14" y1="2" y2="2" />
+        <line x1="12" x2="15" y1="14" y2="11" />
+        <circle cx="12" cy="14" r="8" />
+      </symbol>
+      <symbol id="i-check-circle-2" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="deck-progress" aria-hidden="true"><span></span></div>
+
+  <main class="deck-stage" aria-label="AI Hub enterprise security case study, as slides">
+
+    <!-- ================= INTRO ================= -->
+    <div class="chapter" data-chapter="Intro">
+
+      <section class="slide dark cover" data-title="Cover">
+        <div class="cover-grid">
+          <div>
+            <span class="logo-pill"><img src="images/Logos/Instabase.webp" alt="Instabase" /></span>
+            <h1>Building an enterprise security suite for AI Hub</h1>
+            <p class="lead">Enterprise authentication &amp; authorization: SSO, RBAC and API access.</p>
+            <dl class="meta">
+              <dt>Role</dt><dd>Senior Product Designer (design lead)</dd>
+              <dt>Team</dt><dd>1 PM, 1 eng lead, 2 devs, Docs &amp; pre-sales</dd>
+              <dt>Timeline</dt><dd>Multiple releases across ~4 months</dd>
+              <dt>Product</dt><dd>Instabase AI Hub (multi &amp; single-tenant)</dd>
+            </dl>
+          </div>
+          <img class="cover-art" src="images/banners/sso-illustration-black.webp"
+            alt="Single sign-on and identity access illustration" />
+        </div>
+        <p class="cover-foot"><strong>Lokesh Kumar V M</strong><span>NDA: customer names and numbers are generalised or
+            removed.</span></p>
+      </section>
+
+      <section class="slide dark" data-title="The outcome, up front">
+        <p class="eyebrow">Impact at a glance</p>
+        <h2>The outcome, up front</h2>
+        <p class="lead">Enterprise buyers could finally get through security review, and new orgs got set up in days
+          instead of weeks.</p>
+        <div class="grid c3 mt">
+          <div class="card stat"><b>8-figure</b><span>ARR influenced in security-gated deals</span></div>
+          <div class="card stat"><b>&minus;82%</b><span>initial org setup time,<br />from 4 weeks to 5 days</span></div>
+          <div class="card stat"><b>+9</b><span>enterprise orgs won, with security no longer a blocker</span></div>
+        </div>
+        <p class="fine">Source: internal pipeline + org settings telemetry.</p>
+      </section>
+
+      <section class="slide" data-title="The 30-second version">
+        <h2>The 30-second version</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-circle-help" /></svg>Why</h3>
+            <ul class="list">
+              <li>Enterprise buyers <strong>could not pass security review</strong> without SSO, IdP-driven access
+                control and short-lived API tokens</li>
+              <li>Deals only moved forward <strong>through workarounds</strong></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-search" /></svg>What</h3>
+            <ul class="list">
+              <li><strong>Self-serve SSO</strong> (SAML 2.0 + OIDC) for multi- &amp; single-tenant</li>
+              <li><strong>IdP group mapping</strong> driving RBAC</li>
+              <li><strong>OAuth2-compliant tokens</strong> for API access, with scopes</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-users" /></svg>Who</h3>
+            <ul class="list">
+              <li>Org / IT admins configuring identity</li>
+              <li>Platform engineers calling APIs</li>
+              <li>Security architects signing off</li>
+              <li>Instabase presales &amp; support</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-wrench" /></svg>How</h3>
+            <ul class="list">
+              <li>Three connected tracks, shipped across releases</li>
+              <li>Design decisions checked against a <strong>threat model</strong> as well as user flows</li>
+              <li>AI used end-to-end for research synthesis &amp; spec drafting</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE PROBLEM ================= -->
+    <div class="chapter" data-chapter="The problem">
+
+      <section class="slide dark" data-title="Problem statement">
+        <p class="eyebrow">Problem statement</p>
+        <h2 class="statement">Enterprise IT admins evaluating AI Hub couldn&rsquo;t pass security reviews.</h2>
+        <p class="lead">The platform handled sign-in like a consumer product: passwords, manual group assignment, and API
+          tokens with no scope and no expiry.</p>
+        <p class="label">What I designed</p>
+        <div class="chips">
+          <span class="chip"><svg class="ico"><use href="#i-lock" /></svg>SSO: SAML 2.0 + OIDC</span>
+          <span class="chip"><svg class="ico"><use href="#i-ticket" /></svg>OAuth 2.0 / JWT</span>
+          <span class="chip"><svg class="ico"><use href="#i-key" /></svg>RBAC</span>
+          <span class="chip"><svg class="ico"><use href="#i-scroll-text" /></svg>Audit logs</span>
+        </div>
+        <p class="label">Working with the customer&rsquo;s own identity provider</p>
+        <div class="idps">
+          <span title="Okta"><img src="SSO-coded/identity-provider-logos/Okta.png" alt="Okta" /></span>
+          <span title="Microsoft Entra ID"><img src="SSO-coded/identity-provider-logos/Microsoft%20Entra.png" alt="Microsoft Entra ID" /></span>
+          <span title="PingFederate"><img src="SSO-coded/identity-provider-logos/PingFederate.png" alt="PingFederate" /></span>
+          <span title="Auth0"><img src="SSO-coded/identity-provider-logos/Auth0.png" alt="Auth0" /></span>
+          <span title="JumpCloud"><img src="SSO-coded/identity-provider-logos/JumpCloud.png" alt="JumpCloud" /></span>
+          <span title="OneLogin"><img src="SSO-coded/identity-provider-logos/One%20login.png" alt="OneLogin" /></span>
+          <span title="AD FS"><img src="SSO-coded/identity-provider-logos/Active%20directory%20federation%20services.png" alt="AD FS" /></span>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Why we built it">
+        <h2>Why we built it</h2>
+        <p class="lead">It started as a pattern in the support and presales channels: the same five objections, from the
+          largest accounts in the pipeline, over and over.</p>
+        <div class="grid c3">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-construction" /></svg>SSO was a tenancy accident</h3>
+            <p>Multi-tenant customers couldn&rsquo;t connect their IdP, so some were given a whole single-tenant
+              environment just to get SSO.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-file-text" /></svg>The docs promised what we didn&rsquo;t have</h3>
+            <p>Docs said OIDC group mapping was supported. It wasn&rsquo;t, and a top-tier customer found the gap
+              themselves.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-key" /></svg>Long-lived opaque tokens</h3>
+            <p>Banks&rsquo; security policies forbid them. They need short-lived JWTs issued and revoked by their own
+              IdP.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-bot" /></svg>No identity for machines</h3>
+            <p>In an SSO-only org, automation had nowhere to live. A shared &ldquo;faceless&rdquo; account can&rsquo;t
+              complete an SSO login.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-shield-alert" /></svg>Everything needed a human</h3>
+            <p>An internal engineer had to flip a per-org flag before SSO worked. Customers following the docs hit an
+              error and filed a ticket.</p>
+          </div>
+          <div class="card accent stack" style="gap:22px;justify-content:center;">
+            <div class="stat"><b style="font-size:56px;">22</b><span style="font-size:18px;margin-top:6px;">distinct
+                enterprise-reported problems, catalogued across 4 Slack channels</span></div>
+            <div class="stat"><b style="font-size:56px;">9</b><span style="font-size:18px;margin-top:6px;">named
+                enterprise accounts blocked or working around it</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="How it worked before">
+        <h2>How it worked before: three broken paths</h2>
+        <p class="lead">I mapped each journey and marked every point where a customer had actually reported failure.</p>
+        <div class="grid c4" style="align-items:start;">
+          <div class="path">
+            <div><span class="tag">Path A</span>
+              <h3>A user signs in</h3>
+            </div>
+            <div class="step">Email + password created inside AI Hub</div>
+            <div class="step">The company&rsquo;s IdP, MFA and offboarding rules are bypassed</div>
+            <div class="step">Admin invites and removes every member by hand</div>
+            <div class="step bad">Leavers keep a working password until someone deletes them</div>
+          </div>
+          <div class="path">
+            <div><span class="tag">Path B</span>
+              <h3>A user gets access</h3>
+            </div>
+            <div class="step">Admin creates AI Hub groups by hand</div>
+            <div class="step">Adds each member to each group, manually</div>
+            <div class="step">Repeats forever as people join, move and leave</div>
+            <div class="step bad">Access drifts from the org chart: an audit finding waiting to happen</div>
+          </div>
+          <div class="path">
+            <div><span class="tag">Path C</span>
+              <h3>A system calls the API</h3>
+            </div>
+            <div class="step">Engineer generates a long-lived opaque token in the UI</div>
+            <div class="step">Pastes it into a pipeline, a notebook, a shared vault</div>
+            <div class="step">The token carries its owner&rsquo;s full permissions, forever</div>
+            <div class="step bad">No expiry, no rotation, no IdP revocation, no scope</div>
+          </div>
+          <div class="path">
+            <div><span class="tag muted">Also</span>
+              <h3>No audit logs</h3>
+            </div>
+            <div class="step">Only an internal engineer could pull audit logs</div>
+            <div class="step bad">A named SOC 2 blocker in security reviews</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Who I designed for">
+        <h2>Who I designed for</h2>
+        <p class="lead">The person who configures identity is rarely the person who uses the product, and the person who
+          approves it never logs in at all.</p>
+        <div class="grid c2">
+          <div class="card primary">
+            <span class="tag">Primary focus</span>
+            <h3><svg class="ico"><use href="#i-briefcase" /></svg>Org / IT admin</h3>
+            <p><strong>Sets identity up, and can break it for everyone.</strong> Configures SSO in AI Hub and mirrors it
+              in Okta / Entra / Ping, owns group-to-role mapping, and decides when to enforce SSO org-wide.</p>
+          </div>
+          <div class="card primary">
+            <span class="tag">Primary focus</span>
+            <h3><svg class="ico"><use href="#i-laptop" /></svg>Platform engineer</h3>
+            <p><strong>Runs everything that talks to AI Hub without a human.</strong> Automates through the API, needs a
+              non-human identity, and judges us on the first successful API call.</p>
+          </div>
+        </div>
+        <div class="grid c4 mt">
+          <div class="card">
+            <span class="tag muted">Influences</span>
+            <h4><svg class="ico"><use href="#i-shield" /></svg>Security architect</h4>
+            <p>Approves the purchase. Never opens the product. Can veto the deal.</p>
+          </div>
+          <div class="card">
+            <span class="tag muted">Affected</span>
+            <h4><svg class="ico"><use href="#i-hand" /></svg>End member</h4>
+            <p>Feels every configuration mistake, fixes none of them.</p>
+          </div>
+          <div class="card">
+            <span class="tag muted">Internal</span>
+            <h4><svg class="ico"><use href="#i-headphones" /></svg>Instabase support</h4>
+            <p>Absorbs every gap the product leaves open.</p>
+          </div>
+          <div class="card">
+            <span class="tag muted">Internal</span>
+            <h4><svg class="ico"><use href="#i-megaphone" /></svg>Presales &amp; Docs</h4>
+            <p>Has to state our security posture, live, on a call.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="No single person owns identity">
+        <h2>No single person owns identity</h2>
+        <div class="split" style="--cols: 1.9fr 1fr; gap:44px;">
+          <div class="media">
+            <svg class="eco-svg" style="width:100%;height:auto;" viewBox="0 0 1100 575" role="img"
+                aria-label="Ecosystem map of the six user types around AI Hub and the customer identity provider"
+                font-family="DM Sans, sans-serif">
+                <defs>
+                  <marker id="ar-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                    orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#4a97ee" />
+                  </marker>
+                  <marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                    orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#8b93a0" />
+                  </marker>
+                  <marker id="ar-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                    orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#d99400" />
+                  </marker>
+                </defs>
+
+                <!-- group boxes -->
+                <rect x="14" y="10" width="470" height="520" rx="16" fill="none" stroke="#cfd6de" stroke-width="1.5"
+                  stroke-dasharray="6 5" />
+                <text x="30" y="30" font-size="11" font-weight="700" letter-spacing="1.6" fill="#98a2ae">CUSTOMER
+                  ORGANISATION</text>
+                <rect x="540" y="10" width="535" height="520" rx="16" fill="none" stroke="#cfd6de" stroke-width="1.5"
+                  stroke-dasharray="6 5" />
+                <text x="556" y="30" font-size="11" font-weight="700" letter-spacing="1.6"
+                  fill="#98a2ae">INSTABASE</text>
+
+                <!-- customer people -->
+                <rect x="30" y="44" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-shield" x="46" y="57" width="16" height="16" stroke="#3d3f45" fill="none" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <text x="72" y="73" font-size="14.5" font-weight="600" fill="#17181c">Security architect</text>
+                <text x="46" y="94" font-size="11.5" fill="#6b7280">Approves. Never logs in.</text>
+
+                <rect x="30" y="170" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-briefcase" x="46" y="183" width="16" height="16" stroke="#3d3f45" fill="none"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="72" y="199" font-size="14.5" font-weight="600" fill="#17181c">Org / IT admin</text>
+                <text x="46" y="220" font-size="11.5" fill="#6b7280">Configures both sides.</text>
+
+                <rect x="30" y="296" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-laptop" x="46" y="309" width="16" height="16" stroke="#3d3f45" fill="none"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="72" y="325" font-size="14.5" font-weight="600" fill="#17181c">Platform engineer</text>
+                <text x="46" y="346" font-size="11.5" fill="#6b7280">Automates via the API.</text>
+
+                <rect x="30" y="422" width="200" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-hand" x="46" y="435" width="16" height="16" stroke="#3d3f45" fill="none" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <text x="72" y="451" font-size="14.5" font-weight="600" fill="#17181c">End member</text>
+                <text x="46" y="472" font-size="11.5" fill="#6b7280">Just wants to sign in.</text>
+
+                <!-- customer IdP -->
+                <rect x="310" y="190" width="150" height="240" rx="14" fill="#f4f6f8" stroke="#98a2ae"
+                  stroke-width="2" />
+                <text x="385" y="222" font-size="15" font-weight="700" fill="#17181c" text-anchor="middle">Customer
+                  IdP</text>
+                <text x="385" y="241" font-size="11" fill="#6b7280" text-anchor="middle">Okta · Entra · Ping</text>
+                <line x1="330" y1="256" x2="440" y2="256" stroke="#d6dae0" stroke-width="1" />
+                <text x="385" y="282" font-size="12" fill="#3d3f45" text-anchor="middle">User directory</text>
+                <text x="385" y="310" font-size="12" fill="#3d3f45" text-anchor="middle">Groups</text>
+                <text x="385" y="338" font-size="12" fill="#3d3f45" text-anchor="middle">MFA policy</text>
+                <text x="385" y="366" font-size="12" fill="#3d3f45" text-anchor="middle">Token issuance</text>
+                <text x="385" y="400" font-size="10.5" fill="#98a2ae" text-anchor="middle">the system we</text>
+                <text x="385" y="414" font-size="10.5" fill="#98a2ae" text-anchor="middle">do not control</text>
+
+                <!-- AI Hub -->
+                <rect x="560" y="130" width="215" height="370" rx="14" fill="#eef6ff" stroke="#4a97ee"
+                  stroke-width="2.5" />
+                <text x="667" y="168" font-size="19" font-weight="700" fill="#17181c" text-anchor="middle">AI Hub</text>
+                <text x="667" y="188" font-size="11" fill="#6b7280" text-anchor="middle">what I designed</text>
+                <line x1="585" y1="204" x2="750" y2="204" stroke="#b7d6f7" stroke-width="1" />
+                <text x="667" y="232" font-size="12.5" fill="#3d3f45" text-anchor="middle">SSO configurations</text>
+                <text x="667" y="262" font-size="12.5" fill="#3d3f45" text-anchor="middle">Group mappings → RBAC</text>
+                <text x="667" y="292" font-size="12.5" fill="#3d3f45" text-anchor="middle">OAuth providers</text>
+                <text x="667" y="322" font-size="12.5" fill="#3d3f45" text-anchor="middle">Account mappings</text>
+                <text x="667" y="352" font-size="12.5" fill="#3d3f45" text-anchor="middle">Token validation</text>
+                <text x="667" y="382" font-size="12.5" fill="#3d3f45" text-anchor="middle">Audit logs</text>
+                <line x1="585" y1="404" x2="750" y2="404" stroke="#b7d6f7" stroke-width="1" />
+                <text x="667" y="430" font-size="11" fill="#6b7280" text-anchor="middle">Entitlement gate:</text>
+                <text x="667" y="448" font-size="11" fill="#6b7280" text-anchor="middle">Enterprise tier + per-org
+                  flag</text>
+                <text x="667" y="466" font-size="11" fill="#6b7280" text-anchor="middle">+ org-admin role</text>
+
+                <!-- instabase people -->
+                <rect x="860" y="70" width="205" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-megaphone" x="876" y="83" width="16" height="16" stroke="#3d3f45" fill="none"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="902" y="99" font-size="14.5" font-weight="600" fill="#17181c">Presales / SE</text>
+                <text x="876" y="120" font-size="11.5" fill="#6b7280">Answers "do you support X?"</text>
+
+                <rect x="860" y="300" width="205" height="68" rx="12" fill="#fff" stroke="#dfe3e8" stroke-width="1.5" />
+                <use href="#i-headphones" x="876" y="313" width="16" height="16" stroke="#3d3f45" fill="none"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <text x="902" y="329" font-size="14.5" font-weight="600" fill="#17181c">Instabase support</text>
+                <text x="876" y="350" font-size="11.5" fill="#6b7280">Only one who can see truth.</text>
+
+                <!-- connections -->
+                <path d="M230,78 C400,54 690,72 852,100" fill="none" stroke="#8b93a0" stroke-width="1.6"
+                  stroke-dasharray="5 4" marker-end="url(#ar-grey)" />
+                <path d="M130,112 L130,163" fill="none" stroke="#8b93a0" stroke-width="1.6"
+                  marker-end="url(#ar-grey)" />
+                <path d="M230,206 L302,229" fill="none" stroke="#4a97ee" stroke-width="1.8"
+                  marker-end="url(#ar-blue)" />
+                <path d="M230,184 C350,146 450,146 552,192" fill="none" stroke="#4a97ee" stroke-width="1.8"
+                  marker-end="url(#ar-blue)" />
+                <path d="M462,310 L551,310" fill="none" stroke="#4a97ee" stroke-width="3.2"
+                  marker-end="url(#ar-blue)" />
+                <path d="M230,330 L302,330" fill="none" stroke="#4a97ee" stroke-width="1.8"
+                  marker-end="url(#ar-blue)" />
+                <path d="M230,344 C300,452 430,458 552,412" fill="none" stroke="#4a97ee" stroke-width="1.8"
+                  marker-end="url(#ar-blue)" />
+                <path d="M230,466 C380,500 470,502 552,486" fill="none" stroke="#4a97ee" stroke-width="1.8"
+                  marker-end="url(#ar-blue)" />
+                <path d="M856,334 L782,334" fill="none" stroke="#d99400" stroke-width="1.8" stroke-dasharray="5 4"
+                  marker-end="url(#ar-amber)" />
+                <path d="M130,494 L130,548 L962,548 L962,376" fill="none" stroke="#d99400" stroke-width="1.8"
+                  stroke-dasharray="5 4" marker-end="url(#ar-amber)" />
+                <path d="M962,138 L962,294" fill="none" stroke="#8b93a0" stroke-width="1.6" stroke-dasharray="5 4"
+                  marker-end="url(#ar-grey)" />
+              </svg>
+          </div>
+          <div class="stack" style="gap:26px;">
+            <div>
+              <h4><svg class="ico"><use href="#i-shuffle" /></svg>Setup is split across two products</h4>
+              <p>The admin enters the same values in their IdP and in AI Hub, in two vocabularies. Neither side can
+                check the other, which is where most setup failures came from.</p>
+            </div>
+            <div>
+              <h4><svg class="ico"><use href="#i-user" /></svg>The approver never logs in</h4>
+              <p>The security architect is a design audience with no interface. The capability matrix and the honest
+                gap list were built for them.</p>
+            </div>
+            <div>
+              <h4><svg class="ico"><use href="#i-repeat" /></svg>Every gap ends at support</h4>
+              <p>Invisible entitlement, silent errors and no self-serve activation all escalated back to us. That
+                friction loop is what this project attacked.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= THE SOLUTION ================= -->
+    <div class="chapter" data-chapter="The solution">
+
+      <section class="slide blue" data-title="Three pillars, one identity story">
+        <p class="eyebrow">The solution</p>
+        <h2 style="margin-bottom:48px;">Three pillars, one identity story</h2>
+        <div class="grid c3" style="gap:36px;">
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-lock" /></svg>Pillar 1 &middot; SSO</h3>
+            <ul class="list" style="color:#fff;">
+              <li>SAML 2.0 + OIDC for multi-tenant</li>
+              <li>Self-serve configuration UI</li>
+              <li>Test before you enforce</li>
+              <li>Threat-modelled domain handling</li>
+            </ul>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-users" /></svg>Pillar 2 &middot; Group mapping</h3>
+            <ul class="list" style="color:#fff;">
+              <li>IdP groups &rarr; AI Hub groups</li>
+              <li>OIDC parity with SAML</li>
+              <li>Many-to-one mapping</li>
+              <li>Showing when sync happens</li>
+            </ul>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);">
+            <h3 style="color:#fff;"><svg class="ico" style="color:#fff;"><use href="#i-ticket" /></svg>Pillar 3 &middot; OAuth tokens</h3>
+            <ul class="list" style="color:#fff;">
+              <li>Customer-IdP-issued tokens</li>
+              <li>Account mappings per identity</li>
+              <li>Scopes that only downscope</li>
+              <li>Deprecating raw internal tokens</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="Pillar 1 · SSO">
+
+      <section class="slide" data-title="Designing for the org / IT admin">
+        <p class="eyebrow">Pillar 1 &middot; Self-serve single sign-on</p>
+        <div class="persona-head">
+          <img src="aihub-security-coded/admin.png" alt="" />
+          <div>
+            <h2>Designing for the org / IT admin</h2>
+            <p>38 &middot; IT admin at a 400-person mid-market SaaS org &middot; Bengaluru &middot; Configures SSO a few
+              times a year, not daily</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card pain">
+            <h3><svg class="ico" style="color:#d6675a;"><use href="#i-frown" /></svg>Pain points</h3>
+            <ul class="list x">
+              <li>Configures SSO maybe <strong>twice in a career</strong>, so no muscle memory for SAML</li>
+              <li>Field names in AI Hub <strong>don&rsquo;t match</strong> the ones in their IdP</li>
+              <li>Errors appear <strong>at login time</strong>, not at configuration time</li>
+              <li><strong>Terrified of locking</strong> the whole organisation out</li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h3><svg class="ico" style="color:#b07d00;"><use href="#i-key" /></svg>Needs</h3>
+            <ul class="list">
+              <li>Setup in the <strong>language of Okta / Entra</strong>, not of SAML</li>
+              <li>A <strong>safe way to test</strong> before enforcing</li>
+              <li>Clear <strong>required vs optional</strong> attributes</li>
+              <li>Group membership that <strong>follows the IdP automatically</strong></li>
+            </ul>
+          </div>
+        </div>
+        <p class="label mt">Target flow</p>
+        <div class="flow">
+          <div>Open Settings &rarr; Security</div><i>&rarr;</i>
+          <div>Add configuration (SAML or OIDC)</div><i>&rarr;</i>
+          <div>Paste IdP metadata / discovery URL</div><i>&rarr;</i>
+          <div>Map attributes</div><i>&rarr;</i>
+          <div>Test sign-in</div><i>&rarr;</i>
+          <div>Enforce SSO org-wide</div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Bringing SSO to multi-tenant AI Hub">
+        <p class="eyebrow">Pillar 1 &middot; Shipped in Release 1</p>
+        <h2>Bringing SSO to multi-tenant AI Hub</h2>
+        <div class="split" style="--cols: 1fr 1.55fr;">
+          <div class="stack">
+            <div>
+              <p class="label">Before</p>
+              <p>SSO existed only for single-tenant customers, configured by Instabase engineers through environment
+                variables.</p>
+            </div>
+            <div>
+              <p class="label" style="color:var(--green);">What shipped</p>
+              <ul class="list">
+                <li>Self-serve SAML + OIDC setup for multi-tenant org admins</li>
+                <li>Multiple configurations per org, protocols mixed</li>
+                <li>Guided setup in the admin&rsquo;s own IdP vocabulary</li>
+                <li>Test sign-in first; enforce SSO only once it works</li>
+              </ul>
+            </div>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:820px;" src="aihub-security-coded/videos/SSO%20config.mp4" data-autoplay
+              muted loop playsinline controls preload="metadata" aria-label="Walkthrough of configuring SSO in AI Hub"></video>
+            <p class="caption">Prototype coded from scratch with dummy values</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Test before you enforce">
+        <p class="eyebrow">Pillar 1 &middot; Designing for the scariest moment</p>
+        <h2>Test before you enforce</h2>
+        <div class="split" style="--cols: 0.8fr 1.25fr 0.7fr; gap:40px; align-items:start;">
+          <div class="stack" style="gap:24px;">
+            <p class="lead" style="font-size:22px;margin:0;">A wrong SSO config can lock a whole organisation out, and the
+              admin only finds out when a real person tries to log in.</p>
+            <p>So password sign-in stays on until a test sign-in succeeds. Enforcing SSO is a separate, deliberate step.
+            </p>
+          </div>
+          <div class="media">
+            <p class="label">Without a test step: users get locked out</p>
+            <img class="shot zoom" style="--h:560px;" src="aihub-security-coded/No-test-mode.webp"
+              alt="Flow without a test option: users get locked out when the config is wrong" />
+          </div>
+          <div class="media">
+            <p class="label">With it: the admin can fix and retry</p>
+            <img class="shot zoom" style="--h:560px;" src="aihub-security-coded/Test-mode-on.webp"
+              alt="Flow with the test option: the admin has a safe way to correct the configuration" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Speaking every IdP's own vocabulary">
+        <p class="eyebrow">Pillar 1 &middot; Content design</p>
+        <h2>Speaking every IdP&rsquo;s own vocabulary</h2>
+        <div class="split" style="--cols: 1fr 1.1fr;">
+          <div class="stack" style="gap:24px;">
+            <p class="lead" style="margin:0;">Every IdP names the same field differently.</p>
+            <ul class="list">
+              <li>Entra calls the ACS URL a <strong>&ldquo;Reply URL&rdquo;</strong></li>
+              <li>Okta calls it <strong>&ldquo;Single Sign On URL&rdquo;</strong></li>
+              <li>AD FS calls it the <strong>&ldquo;Relying Party SAML 2.0 SSO service URL&rdquo;</strong></li>
+            </ul>
+            <p>Admins were transcribing values between two tabs and guessing. I built the cross-reference for all 8
+              supported IdPs, and the setup UI now names each field <strong>the way the admin&rsquo;s own IdP names
+                it</strong>.</p>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:570px;" src="aihub-security-coded/idp%20naming%20matrix.png"
+              alt="IdP field naming matrix across 8 providers" />
+            <p class="caption">Click to enlarge</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Decision: removing domain verification">
+        <p class="eyebrow">Pillar 1 &middot; Key decision</p>
+        <h2>Removing &ldquo;domain verification&rdquo; from SSO entirely</h2>
+        <div class="grid c2 mt">
+          <div class="note problem"><span class="k">Problem</span>The first design routed users to an IdP by claimed
+            email domain. Nothing stopped an admin from claiming a domain they don&rsquo;t own (even
+            <code>gmail.com</code>) and <strong>silently intercepting other people&rsquo;s logins</strong>.</div>
+          <div class="note options"><span class="k">Options</span>(a) Keep domains, add a manual security approval gate.
+            (b) Keep domains, add DNS verification. (c) Remove the domain concept and bind SSO configs directly to the
+            org.</div>
+          <div class="note decision"><span class="k">Decision</span>Option (c). SSO configurations belong to an org;
+            membership is still gated by invitation, so <strong>there is nothing to hijack</strong>.</div>
+          <div class="note why"><span class="k">Why</span>An approval gate puts a human reviewer in front of a self-serve
+            feature. Removing the concept <strong>removed the attack surface</strong>, along with a field, a validation
+            state, an error state and a support process.</div>
+        </div>
+        <p class="tradeoff"><svg class="ico"><use href="#i-scale" /></svg><strong>Trade-off:</strong> multi-domain orgs
+          (separate dev / test / prod domains) aren&rsquo;t served at launch. I logged it as a tracked gap.</p>
+      </section>
+
+      <section class="slide" data-title="More SSO decisions">
+        <p class="eyebrow">Pillar 1 &middot; More decisions</p>
+        <h2>Designing around how SSO fails</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3>&ldquo;Test connection&rdquo; instead of a separate mode</h3>
+            <p>An inline test against the saved config gives the same confidence as a &ldquo;test mode&rdquo; without a
+              third &ldquo;configured but not live&rdquo; state to explain everywhere.</p>
+          </div>
+          <div class="card">
+            <h3>Making the destructive step feel destructive</h3>
+            <p>Turning off password sign-in can lock an org out. It&rsquo;s a separate, deliberate step after a
+              successful test, <strong>never bundled into saving</strong>, with a documented way back.</p>
+          </div>
+          <div class="card">
+            <h3>Attribute mapping designed around its failure mode</h3>
+            <p>Raw errors like <code>SAML response is missing uid attribute</code> reached end users hours later. Now
+              <strong>required vs optional attributes are separated</strong> at configuration time.</p>
+          </div>
+          <div class="card">
+            <h3>Naming the danger in <code>is_admin</code></h3>
+            <p>If the IdP sends it, it silently overrides role changes on every login. The UI now says so plainly,
+              wherever the attribute appears.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Audit logs of everything">
+        <p class="eyebrow">Pillar 1 &middot; Compliance</p>
+        <h2>Audit logs of everything</h2>
+        <div class="split" style="--cols: 1fr 1.45fr;">
+          <div class="stack" style="gap:22px;">
+            <p class="lead" style="margin:0;">Audit trails used to be dug out of raw log files by an internal engineer.
+              Admins had no way to see them.</p>
+            <p>That was a named SOC 2 blocker for several enterprise deals. A self-serve audit log view for admins
+              unlocked it.</p>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:570px;" src="aihub-security-coded/auditlogs.webp" alt="Audit logs screen in AI Hub" />
+            <p class="caption">All values shown are dummy placeholders</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="Pillar 2 · RBAC">
+
+      <section class="slide" data-title="IdP group mapping for RBAC">
+        <p class="eyebrow">Pillar 2 &middot; Access that follows the org chart</p>
+        <h2>IdP group mapping for RBAC</h2>
+        <p class="lead">SSO answers &ldquo;can this person log in?&rdquo;. Group mapping answers &ldquo;and what should
+          they be able to see?&rdquo;</p>
+        <div class="split" style="--cols: 1fr 1.5fr; align-items:start;">
+          <div class="stack" style="gap:24px;">
+            <div>
+              <p class="label">Before</p>
+              <ul class="list x">
+                <li>OIDC customers managed every membership by hand</li>
+                <li>Docs claimed OIDC group mapping worked; it didn&rsquo;t</li>
+                <li>SAML allowed one IdP group per AI Hub group</li>
+              </ul>
+            </div>
+            <div>
+              <p class="label" style="color:var(--green);">After</p>
+              <ul class="list">
+                <li>OIDC at parity with SAML, same mental model</li>
+                <li>Many IdP groups can map to one AI Hub group</li>
+                <li>Sync timing stated wherever mapping is set up</li>
+              </ul>
+            </div>
+          </div>
+          <div class="media">
+            <video class="shot" style="--w:780px;" src="aihub-security-coded/videos/RBAC%20after.mp4" data-autoplay muted
+              loop playsinline controls preload="metadata" aria-label="Walkthrough of IdP group mapping in AI Hub"></video>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="RBAC decisions">
+        <p class="eyebrow">Pillar 2 &middot; Key decisions</p>
+        <h2>Modelling groups the way customers think</h2>
+        <div class="grid c3 mt">
+          <div class="card">
+            <h3>1. Many-to-one, not one-to-one</h3>
+            <span class="k">Problem</span>
+            <p><code>eu-analysts</code>, <code>us-analysts</code> and <code>contractor-analysts</code> all need the same
+              workspace access.</p>
+            <span class="k ok">Decision</span>
+            <p>Map several IdP groups to one AI Hub group. The 1-to-1 rule was an implementation detail that had leaked
+              into the mental model.</p>
+          </div>
+          <div class="card">
+            <h3>2. Stating sync timing up front</h3>
+            <span class="k">Problem</span>
+            <p>Membership syncs at each member&rsquo;s <em>next login</em>. A new mapping looks empty, and removals
+              aren&rsquo;t instant.</p>
+            <span class="k ok">Decision</span>
+            <p>Say it inline and in empty states. Launched with JIT provisioning, laying the groundwork for SCIM.</p>
+          </div>
+          <div class="card">
+            <h3>3. Keeping existing groups during the switch</h3>
+            <span class="k">Problem</span>
+            <p>What happens to current AI Hub members when a SAML or OIDC mapping is introduced?</p>
+            <span class="k ok">Decision</span>
+            <p>Preserve existing groups and show each membership&rsquo;s source, so admins can clean up when
+              they&rsquo;re ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Iterations: adding many groups at once">
+        <p class="eyebrow">Pillar 2 &middot; Iterations</p>
+        <h2>Adding many groups at once</h2>
+        <p class="lead">Admins map a long list of groups when they first configure an org, and adding them one at a time
+          is slow. The final design combines the best of each iteration.</p>
+        <div class="media fill">
+          <img class="shot zoom" style="--h:500px;" src="aihub-security-coded/bul-add-options.webp"
+            alt="Design iterations for bulk-adding IdP groups" />
+        </div>
+      </section>
+    </div>
+
+    <div class="chapter" data-chapter="Pillar 3 · OAuth">
+
+      <section class="slide" data-title="Designing for the platform engineer">
+        <p class="eyebrow">Pillar 3 &middot; From raw tokens to OAuth compliance</p>
+        <div class="persona-head">
+          <img src="aihub-security-coded/dev.png" alt="" />
+          <div>
+            <h2>Designing for the platform engineer</h2>
+            <p>29 &middot; Backend engineer integrating AI Hub&rsquo;s API into an internal platform &middot; Remote (US)
+              &middot; Ships against the API weekly</p>
+          </div>
+        </div>
+        <div class="grid c2">
+          <div class="card pain">
+            <h3><svg class="ico" style="color:#d6675a;"><use href="#i-frown" /></svg>Pain points</h3>
+            <ul class="list x">
+              <li>Automation has <strong>no identity of its own</strong> in an SSO-only org</li>
+              <li><strong>Long-lived tokens</strong> break enterprise security policies</li>
+              <li>A token <strong>silently carries</strong> its creator&rsquo;s full admin rights</li>
+              <li><strong>No API</strong> to create, rotate or delete tokens</li>
+            </ul>
+          </div>
+          <div class="card needs">
+            <h3><svg class="ico" style="color:#b07d00;"><use href="#i-key" /></svg>Needs</h3>
+            <ul class="list">
+              <li>Tokens <strong>issued and revoked</strong> by their own IdP</li>
+              <li>A <strong>non-human account</strong> to map a client to</li>
+              <li><strong>Explicit, inspectable scope</strong> on every token</li>
+              <li>A copy-paste path that <strong>works first try</strong></li>
+            </ul>
+          </div>
+        </div>
+        <p class="label mt">Target flow</p>
+        <div class="flow">
+          <div>Register app in own IdP</div><i>&rarr;</i>
+          <div>Add OAuth provider in AI Hub</div><i>&rarr;</i>
+          <div>Map <code>sub</code> to a service account</div><i>&rarr;</i>
+          <div>Request JWT from IdP</div><i>&rarr;</i>
+          <div>Call AI Hub API as Bearer</div><i>&rarr;</i>
+          <div>Disable native tokens org-wide</div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="OAuth-compliant API authentication">
+        <p class="eyebrow">Pillar 3 &middot; Delivered in two stages</p>
+        <h2>OAuth-compliant API authentication</h2>
+        <div class="grid c3 mt fill" style="grid-template-columns: 0.8fr 1fr 1fr;">
+          <div class="card" style="background:#fff;">
+            <span class="tag muted">Before</span>
+            <ul class="list x">
+              <li>Long-lived opaque tokens, generated in the UI</li>
+              <li>Each token silently inherits its owner&rsquo;s full permissions</li>
+              <li>No expiry, no rotation, no IdP-side revocation</li>
+            </ul>
+          </div>
+          <div class="card stack" style="gap:16px;">
+            <div><span class="tag">Stage 1 &middot; Release 2</span>
+              <ul class="list">
+                <li>AI Hub&rsquo;s own OAuth app issues short-lived tokens (15 min)</li>
+                <li>Scopes on every token</li>
+                <li>A deprecation plan for raw tokens</li>
+              </ul>
+            </div>
+            <img class="shot zoom" style="margin-top:auto;" src="aihub-security-coded/api%20stage%201/7-added-intable%201.webp"
+              alt="The new AI Hub OAuth app listed with its scope and client ID" />
+          </div>
+          <div class="card stack" style="gap:16px;">
+            <div><span class="tag">Stage 2 &middot; Release 3</span>
+              <ul class="list">
+                <li>The customer&rsquo;s own IdP issues short-lived JWTs (15&ndash;60 min)</li>
+                <li>Signature, issuer, audience and expiry checked on every call</li>
+                <li>Scope claim downscopes to specific roles</li>
+              </ul>
+            </div>
+            <img class="shot zoom" style="margin-top:auto;" src="aihub-security-coded/api%20stage%202/6-mapping%20in%20table%201.webp"
+              alt="A service account mapped to the customer's Okta OIDC provider" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="OAuth decisions">
+        <p class="eyebrow">Pillar 3 &middot; Key decisions</p>
+        <h2>Least privilege, by construction</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3>Two objects: provider configuration and account mapping</h3>
+            <p>Trusting an IdP is a one-time, org-wide job. Saying &ldquo;this external subject is that account&rdquo;
+              is continuous, so it lives on the account. &ldquo;No provider&rdquo; and &ldquo;no mapping&rdquo; became
+              different problems with different fixes.</p>
+          </div>
+          <div class="card">
+            <h3>Terminology as a design deliverable</h3>
+            <p>&ldquo;OAuth client&rdquo; meant three things and reviews kept stalling. I fixed the vocabulary before the
+              UI: <strong>OAuth provider configuration</strong>, <strong>external OAuth client</strong>,
+              <strong>account mapping</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>One client, one identity</h3>
+            <p>Each external client maps to exactly one AI Hub user or service account. One bank couldn&rsquo;t scope
+              tokens on their side, so <strong>the client had to become the unit of privilege</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>Scope may only reduce, never grant</h3>
+            <p>Scope uses immutable role UUIDs and can only downscope, so nobody can mint admin rights into a token. A
+              <strong>renamed role never changes what a live token can do</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="A staged migration, not a cutover">
+        <p class="eyebrow">Pillar 3 &middot; Key decision</p>
+        <h2>A staged migration, not a cutover</h2>
+        <div class="split" style="--cols: 1fr 1.1fr; align-items:start;">
+          <div class="stack" style="gap:16px;">
+            <p style="font-size:21px;color:var(--ink-2);margin-bottom:6px;">Every customer had working automation on raw
+              tokens. Cutting them off would break production pipelines at exactly the customers we wanted to impress.
+            </p>
+            <div class="step"><strong>1.</strong> External IdP tokens ship alongside native tokens</div>
+            <div class="step"><strong>2.</strong> Admins choose who can create native tokens: everyone, some groups, or
+              nobody</div>
+            <div class="step"><strong>3.</strong> Orgs on OAuth can switch native tokens off; they&rsquo;re suspended,
+              not deleted</div>
+            <div class="step" style="background:var(--blue-soft);border-color:#b9d7f7;"><strong>4.</strong> AI
+              Hub-managed OAuth2 tokens replace the remaining opaque tokens</div>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:580px;" src="aihub-security-coded/deprecation-emails.webp"
+              alt="Deprecation warning emails and token migration notifications" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="What shipped when">
+        <p class="eyebrow">Roadmap</p>
+        <h2>What shipped when</h2>
+        <p class="lead">The release plan I proposed, in the order it shipped: biggest blockers first.</p>
+        <div class="timeline">
+          <div class="rel"><span class="rt">Release 1</span>
+            <h4>SSO for multi- and single-tenant</h4>
+            <p>Self-serve SAML 2.0 and OIDC for enterprise-tier orgs</p>
+          </div>
+          <div class="rel"><span class="rt">Post-Release 1</span>
+            <h4>OIDC group mapping</h4>
+            <p>Parity with SAML, with many-to-one group support</p>
+          </div>
+          <div class="rel"><span class="rt">Post-Release 1</span>
+            <h4>Just-in-time provisioning</h4>
+            <p>Accounts created on first SSO login, multi-tenant included</p>
+          </div>
+          <div class="rel"><span class="rt">Release 2</span>
+            <h4>AI Hub-managed OAuth2 tokens</h4>
+            <p>Short-lived JWTs for customers without their own IdP</p>
+          </div>
+          <div class="rel"><span class="rt">Post-Release 2</span>
+            <h4>Raw tokens deprecated</h4>
+            <p>Long-lived opaque tokens retired</p>
+          </div>
+          <div class="rel"><span class="rt">Release 3</span>
+            <h4>Customer-IdP-managed API tokens</h4>
+            <p>Provider config, account mappings and JWT validation</p>
+          </div>
+          <div class="rel"><span class="rt">Post-Release 3</span>
+            <h4>Token scopes</h4>
+            <p>Downscoping via immutable role UUIDs</p>
+          </div>
+          <div class="rel gap"><span class="rt">Named gap</span>
+            <h4>SCIM provisioning &amp; offboarding</h4>
+            <p>Makes removal real-time instead of at next login</p>
+          </div>
+          <div class="rel gap"><span class="rt">Named gap</span>
+            <h4>Multi-domain SSO</h4>
+            <p>Separate IdP configs per domain or environment</p>
+          </div>
+          <div class="rel next"><span class="rt">Next</span>
+            <h4>AI-assisted configuration</h4>
+            <p>Metadata parsing, plain-English validation, login debugging</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PROCESS ================= -->
+    <div class="chapter" data-chapter="How I got there">
+
+      <section class="slide blue" data-title="How I got there">
+        <p class="eyebrow">Process</p>
+        <h2 style="margin-bottom:48px;">How I got there</h2>
+        <ol class="agenda">
+          <li><span><strong>Research</strong>3 years of Slack, Zendesk and support logs, mined into a problem list</span></li>
+          <li><span><strong>Primary research</strong>Customer quotes and validation-call constraints</span></li>
+          <li><span><strong>Competitive audit</strong>How other document-AI and cloud vendors handle identity</span></li>
+          <li><span><strong>Benchmark</strong>What &ldquo;enterprise-ready&rdquo; means to a security review</span></li>
+          <li><span><strong>Principles</strong>What I set before drawing a single screen</span></li>
+          <li><span><strong>One system</strong>Mapping three pillars into one information architecture</span></li>
+          <li><span><strong>AI in my process</strong>Where AI sped up the work, and what I kept</span></li>
+          <li><span><strong>Collaboration</strong>Engineering, PM, presales and docs</span></li>
+          <li><span><strong>Usability testing</strong>How the design was validated, and what changed</span></li>
+        </ol>
+      </section>
+
+      <section class="slide" data-title="Research: mining existing evidence">
+        <h2>Research: mining the evidence that already existed</h2>
+        <p class="lead">Without direct access to enterprise IT teams, I treated 3 years of Slack presales logs, Zendesk
+          tickets, call notes and support threads as the research corpus.</p>
+        <div class="grid c2">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-search" /></svg>Systematic Slack &amp; ticket mining</h3>
+            <p>I coded every reported problem by category, reporter, root cause and status, into a status dashboard.</p>
+            <div class="grid c4 mt" style="gap:14px;">
+              <div class="stat"><b style="font-size:52px;">22</b><span style="font-size:16px;margin-top:6px;">distinct issues</span></div>
+              <div class="stat"><b style="font-size:52px;">2</b><span style="font-size:16px;margin-top:6px;">still open</span></div>
+              <div class="stat"><b style="font-size:52px;">5</b><span style="font-size:16px;margin-top:6px;">workaround only</span></div>
+              <div class="stat"><b style="font-size:52px;">4</b><span style="font-size:16px;margin-top:6px;">docs gaps</span></div>
+            </div>
+            <p class="mt" style="color:var(--green);">It turned a vague &ldquo;we need SSO&rdquo; into a prioritised
+              problem list I could defend in a roadmap review.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-headphones" /></svg>Customer validation calls</h3>
+            <p>One global investment bank&rsquo;s constraints reshaped the design more than any internal opinion:</p>
+            <ul class="list mt" style="gap:8px;">
+              <li>They use the <em>client credentials</em> flow</li>
+              <li>Their <code>sub</code> claim is a random string, not an email</li>
+              <li>Their security team can&rsquo;t configure per-token scopes</li>
+            </ul>
+            <p class="mt" style="color:var(--green);">That&rsquo;s why the final model maps <strong>one external OAuth
+                client to exactly one identity</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="In the users' own words">
+        <h2>In the users&rsquo; own words</h2>
+        <p class="lead">I sat in on presales and support calls and interviewed internal solution engineers. These quotes
+          shaped the design most.</p>
+        <div class="grid c3">
+          <div class="card quote">
+            <blockquote>&ldquo;It has been agreed internally that we will provide them ST instance despite them being a MT
+              customer as a temporary measure to bypass SSO requirement.&rdquo;</blockquote>
+            <p class="who">Account team &middot; European luxury retail group</p>
+            <p class="told"><strong>What it told me:</strong> we were provisioning an entire environment as a substitute
+              for one settings screen.</p>
+          </div>
+          <div class="card quote">
+            <blockquote>&ldquo;[The customer] cannot use long-lived opaque tokens due to internal security policy. Their
+              IdP issues the token, or they don&rsquo;t integrate.&rdquo;</blockquote>
+            <p class="who">Call notes &middot; global investment bank</p>
+            <p class="told"><strong>What it told me:</strong> no amount of UX makes a forbidden credential acceptable.
+              AI Hub had to stop being the issuer.</p>
+          </div>
+          <div class="card quote">
+            <blockquote>&ldquo;[They] would not go live without a service account feature. The workaround &hellip; was
+              rejected, since their login is via SSO only.&rdquo;</blockquote>
+            <p class="who">Presales &middot; global security vendor</p>
+            <p class="told"><strong>What it told me:</strong> we kept conflating <em>login</em> with <em>API access</em>.
+              Machines needed an identity that never logs in.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="How other vendors solved this">
+        <h2>How other vendors solved this</h2>
+        <p class="lead">I audited 9 products: 6 document-AI vendors (UiPath, Automation Anywhere, ABBYY, Hyperscience,
+          Rossum, Tungsten) and the 3 hyperscalers our buyers already compare us to.</p>
+        <div class="grid c2">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-target" /></svg>SSO is table stakes</h3>
+            <p>Having it doesn&rsquo;t win deals, but not having it <em>loses</em> them at security review. A stronger
+              case than &ldquo;customers want SSO&rdquo;.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-cloud" /></svg>The real benchmark was the hyperscalers</h3>
+            <p>AWS, Azure and GCP make machine identity native: service accounts and short-lived credentials, no
+              long-lived keys.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-key" /></svg>Machine identity was the bigger gap</h3>
+            <p>What set competitors apart was non-human access, so the OAuth track deserved the same weight as SSO.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-compass" /></svg>Self-serve setup was our opening</h3>
+            <p>Several competitors still route identity setup through support. Fully self-serve, with a safe test path,
+              was where we could be visibly better.</p>
+          </div>
+        </div>
+        <p class="tradeoff"><svg class="ico"><use href="#i-door-open" /></svg>Nobody picks a document-AI platform for its
+          SSO form. The goal was to be finished, correct and forgettable.</p>
+      </section>
+
+      <section class="slide" data-title="Benchmark: what enterprise-ready means">
+        <h2>Benchmark: what &ldquo;enterprise-ready&rdquo; means</h2>
+        <p class="lead" style="margin-bottom:22px;">The scoring sheet the team used to decide what was in scope, what was
+          deferred, and which gaps we accepted.</p>
+        <table class="table">
+          <thead>
+            <tr><th>Capability</th><th>AI Hub before</th><th>After this project</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>SAML 2.0 SSO</th><td>Single-tenant only</td><td>Multi- and single-tenant, self-serve UI</td><td><span class="pill ok">Shipped R1</span></td></tr>
+            <tr><th>OIDC SSO</th><td>Single-tenant only</td><td>Multi- and single-tenant, discovery-URL based</td><td><span class="pill ok">Shipped R1</span></td></tr>
+            <tr><th>RBAC via IdP groups</th><td>SAML only; manual otherwise</td><td>SAML + OIDC group mapping, many-to-one</td><td><span class="pill ok">Shipped</span></td></tr>
+            <tr><th>JIT provisioning</th><td>Single-tenant only</td><td>Account auto-created on first SSO login, MT included</td><td><span class="pill ok">Shipped</span></td></tr>
+            <tr><th>API auth</th><td>Long-lived opaque tokens</td><td>External IdP JWT validation + native token controls</td><td><span class="pill ok">Shipped R2</span></td></tr>
+            <tr><th>Least privilege</th><td>Token inherits owner&rsquo;s full rights</td><td>Scope claim with role UUIDs; scope can only reduce</td><td><span class="pill ok">Shipped R3</span></td></tr>
+            <tr><th>Audit logs</th><td>Partial</td><td>14 categories, CSV/JSON export, 2-year retention</td><td><span class="pill part">Preview, ST only</span></td></tr>
+            <tr><th>MFA</th><td>Per-account, password logins only</td><td>Delegated to the customer&rsquo;s IdP under SSO</td><td><span class="pill part">IdP managed</span></td></tr>
+            <tr><th>SCIM offboarding</th><td>None</td><td>Not built: sync happens at next login</td><td><span class="pill gap">Named gap</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide dark" data-title="Principles I set before drawing">
+        <h2>The principles I set before drawing anything</h2>
+        <p class="lead">Security UX is usable right up until the moment it silently isn&rsquo;t. These were my filter for
+          every decision, at the top of every review deck.</p>
+        <div class="grid c3">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-compass" /></svg>Speak the admin&rsquo;s IdP, not the spec</h3>
+            <p>Every label, helper text and error uses the name the admin sees in Okta, Entra or PingFederate.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-flask-conical" /></svg>No config change is a leap of faith</h3>
+            <p>Test before enforce, always. The destructive step is guarded, explained and reversible.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-lightbulb" /></svg>Show hidden state</h3>
+            <p>Sync timing, gating flags and token permissions are invisible. Unseen state becomes a ticket.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-trending-down" /></svg>Permissions only ever go down</h3>
+            <p>Nothing may grant more access than the identity behind it. Scope downscopes, never upscopes.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-layers" /></svg>Design for the threat, not just the flow</h3>
+            <p>Every surface got a &ldquo;how would a bad actor abuse this?&rdquo; pass. One pass removed a feature.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-megaphone" /></svg>The docs are part of the product</h3>
+            <p>4 of the 22 problems were pure docs failures, so docs shipped with the feature, verified by its
+              engineer.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="One system, not three screens">
+        <h2>Mapping three pillars into one system</h2>
+        <p class="lead" style="margin-bottom:22px;">Without a deliberate structure, AI Hub would have ended up with three
+          unrelated &ldquo;security&rdquo; screens built by three teams.</p>
+        <div class="media">
+          <img class="shot zoom" style="--h:380px;" src="aihub-security-coded/ph-28.webp"
+            alt="IA diagram: settings tree before vs. after, with the three pillars colour-coded" />
+        </div>
+        <div class="grid c5 mt" style="gap:16px;">
+          <div><h4>SSO Logins</h4><p class="sm">How users get in: password sign-in policy, MFA</p></div>
+          <div><h4>Identity &amp; access</h4><p class="sm">SSO config, test mode, OAuth providers</p></div>
+          <div><h4>Groups</h4><p class="sm">Groups, group mappings and roles</p></div>
+          <div><h4>Service accounts</h4><p class="sm">Account mappings live on the account</p></div>
+          <div><h4>Audit logs</h4><p class="sm">What happened, with a detailed snapshot</p></div>
+        </div>
+        <p class="fine" style="font-size:17px;color:var(--ink-2);">The rule underneath: an object lives where the
+          user&rsquo;s mental model puts it, not where the API happens to expose it.</p>
+      </section>
+
+      <section class="slide dark" data-title="How I used AI">
+        <h2>How I used AI in this project</h2>
+        <p class="lead">Three years of Slack, call notes and docs is a corpus no human reads end-to-end. AI made it
+          manageable for one designer.</p>
+        <div class="grid c4" style="gap:18px;">
+          <div class="card"><h4><svg class="ico"><use href="#i-search" /></svg>Corpus mining</h4><p class="sm">22 issues extracted, deduplicated and coded in a day, not a fortnight</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-puzzle" /></svg>Root-cause clustering</h4><p class="sm">AI proposed clusters by cause; I decided what was a design problem</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-book-open" /></svg>Protocol literacy</h4><p class="sm">A tutor on SAML, OIDC, JWKS and JIT vs SCIM, until I could hold my own in eng reviews</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-folder-open" /></svg>Cross-IdP matrix</h4><p class="sm">Drafted from provider docs; I verified every row in real IdP consoles</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-triangle-alert" /></svg>Adversarial review</h4><p class="sm">AI as the bad actor. This pass caught the domain-claiming attack</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-pen-line" /></svg>Error &amp; helper copy</h4><p class="sm">Variants drafted with AI, cut hard, checked against the tech design docs</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-receipt" /></svg>Specs &amp; handoff</h4><p class="sm">Field specs and state tables drafted from my flows, reviewed against the API spec</p></div>
+          <div class="card accent"><h4><svg class="ico"><use href="#i-scale" /></svg>What I did not delegate</h4><p class="sm">Every architectural call was mine, argued in review. AI got me informed faster</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Collaboration">
+        <h2>Collaboration</h2>
+        <div class="grid c2 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-wrench" /></svg>Engineering &middot; 1 eng lead, 2 devs</h3>
+            <p>I reviewed the API spec, SSO schema and scope matrix directly. Removing the domain field or using role
+              UUIDs are design decisions wearing engineering clothes. Frontend built on a mocked API, so I reviewed real
+              builds weeks earlier.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-megaphone" /></svg>Product &amp; presales</h3>
+            <p>Presales and support held the objection list, so they were my highest-signal research channel. In return,
+              my benchmark and entitlement tables went straight to them, so &ldquo;do you support X?&rdquo; stopped being
+              answered from memory.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-file-text" /></svg>Documentation</h3>
+            <p>I wrote the required/optional attribute tables and per-IdP setup guides, and set up a workflow where
+              engineering verifies doc accuracy before publishing.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-check-circle-2" /></svg>Design sign-off</h3>
+            <p>Every screen was walked through with its engineer against the states list: empty, gated, loading, error,
+              partial, destructive-confirm. For identity, those states <em>are</em> the product.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Usability evaluation">
+        <h2>Usability evaluation</h2>
+        <p class="lead" style="margin-bottom:22px;">Tested with internal participants who mirror the personas (solution,
+          support and platform engineers who configure customer IdPs), plus walkthroughs with early customers.</p>
+        <table class="table">
+          <thead>
+            <tr><th>Task</th><th>Participants</th><th>Success</th><th>Median time</th><th>What we saw</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Configure SAML SSO end-to-end</th><td>4 admins</td><td class="num">75%</td><td class="num">6 min</td><td>Test-before-enforce reduced hesitation</td></tr>
+            <tr><th>Configure OIDC SSO end-to-end</th><td>5 admins</td><td class="num">80%</td><td class="num">4 min</td><td>Discovery URL auto-fills most fields</td></tr>
+            <tr><th>Map an IdP group to an AI Hub group</th><td>6 admins</td><td class="num">83%</td><td class="num">3 min</td><td>The sync-timing note prevented &ldquo;is it broken?&rdquo;</td></tr>
+            <tr class="low"><th>Register an OAuth provider + account mapping</th><td>4 engineers</td><td class="num">50%</td><td class="num">9 min</td><td>2 of 4 needed a hint to find account mapping</td></tr>
+            <tr><th>First successful authenticated API call</th><td>4 engineers</td><td class="num">75%</td><td class="num">5 min</td><td>Sample code worked first try for 3 of 4</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="slide" data-title="What testing changed">
+        <h2>What testing changed</h2>
+        <div class="mt">
+          <div class="fb">
+            <q>I don&rsquo;t know which of these fields my IdP calls what. I&rsquo;m guessing.</q><i>&rarr;</i>
+            <p>Field labels carry per-IdP naming, and setup shows where in each of the 8 IdPs every value lives.</p>
+          </div>
+          <div class="fb">
+            <q>So if I save this, is SSO on now? Am I about to break login for everyone?</q><i>&rarr;</i>
+            <p>Saving and enforcing became two separate, clearly labelled steps, with password sign-in held open until a
+              test succeeds.</p>
+          </div>
+          <div class="fb">
+            <q>I created the mapping but the group is empty. Did it fail?</q><i>&rarr;</i>
+            <p>Sync timing is stated at the moment of creation, in the confirmation and the empty state.</p>
+          </div>
+          <div class="fb">
+            <q>Why can&rsquo;t I just paste the role name into the scope? These UUIDs are unreadable.</q><i>&rarr;</i>
+            <p>Kept immutable UUIDs, but shipped a copyable role-to-UUID reference and worked scope examples.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Verify user: a tool from feedback">
+        <p class="eyebrow">Change based on feedback</p>
+        <h2>A &ldquo;verify user&rdquo; tool for the RBAC switch</h2>
+        <div class="split" style="--cols: 1fr 1.5fr;">
+          <div class="stack" style="gap:22px;">
+            <div class="fb" style="grid-template-columns:1fr;border:0;padding:0;">
+              <q>We have to open every group and check manually.</q>
+            </div>
+            <p>When orgs moved from old to new RBAC, it was hard to confirm which groups a user belonged to, so people
+              could be missed.</p>
+            <p><strong>Change:</strong> search for a user inside groups and instantly see every group they&rsquo;re in.
+              A manual, error-prone check became a debugging step.</p>
+          </div>
+          <div class="media">
+            <img class="shot zoom" style="--h:560px;" src="aihub-security-coded/Verify-user.webp" alt="Verify user tool" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= IMPACT ================= -->
+    <div class="chapter" data-chapter="Impact">
+
+      <section class="slide" data-title="How I defined success">
+        <h2>How I defined success</h2>
+        <p class="lead">Nobody wants to spend time in an SSO settings screen, so engagement is the wrong measure. I
+          defined success as less friction and less risk.</p>
+        <div class="grid c4" style="gap:18px;">
+          <div class="card"><h4><svg class="ico"><use href="#i-lock" /></svg>SSO adoption</h4><p class="sm">Eligible orgs with a working SSO config</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-timer" /></svg>Time to first SSO login</h4><p class="sm">Setup measured end to end, including inside the IdP</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-headphones" /></svg>Auth tickets per org</h4><p class="sm">Should fall even as more orgs onboard</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-ticket" /></svg>API calls on OAuth</h4><p class="sm">How much traffic left long-lived tokens</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-briefcase" /></svg>Manual group edits</h4><p class="sm">Falling edits mean access follows the org chart</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-door-open" /></svg>Orgs enforcing SSO-only</h4><p class="sm">The strongest signal of trust in the config</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-building-2" /></svg>Deals unblocked</h4><p class="sm">The reason the work existed</p></div>
+          <div class="card"><h4><svg class="ico"><use href="#i-shield-alert" /></svg>Environments avoided</h4><p class="sm">No single-tenant instance just to get SSO</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Adoption and retention">
+        <h2>Adoption and retention</h2>
+        <p class="lead">In the first months after each release.</p>
+        <div class="grid c4 mt">
+          <div class="card stat"><b>9</b><span>orgs configured SAML or OIDC SSO <strong>without a support ticket</strong></span></div>
+          <div class="card stat"><b>37%</b><span>of enterprise API traffic now uses <strong>IdP-issued JWTs</strong></span></div>
+          <div class="card stat"><b>&minus;60%</b><span>auth tickets per onboarded org, against the 22-issue baseline</span></div>
+          <div class="card stat"><b>&minus;33%</b><span>manual membership edits in orgs using group mapping</span></div>
+        </div>
+      </section>
+
+      <section class="slide dark" data-title="Impact on business">
+        <h2>Impact on business</h2>
+        <p class="lead">Enterprise pipeline and cost.</p>
+        <div class="grid c4 mt">
+          <div class="card stat"><b>+9</b><span>enterprise deals unblocked; auth no longer a blocker</span></div>
+          <div class="card stat"><b>8-figure</b><span>ARR influenced in security-gated deals</span></div>
+          <div class="card stat"><b>0</b><span>workaround single-tenant environments, saving infra cost</span></div>
+          <div class="card stat"><b>&minus;82%</b><span>initial org setup time, from 4 weeks to 5 days</span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= WRAP-UP ================= -->
+    <div class="chapter" data-chapter="Wrap-up">
+
+      <section class="slide" data-title="Reflections & learnings">
+        <h2>Reflections &amp; learnings</h2>
+        <div class="grid c3 mt">
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-search" /></svg>The research already existed</h3>
+            <p>Three years of support threads held a fully evidenced problem list. I needed to treat it as research.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-trash-2" /></svg>The best security fix removed a field</h3>
+            <p>Deleting domain claiming solved it completely. Security UX rewards subtraction.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-brain" /></svg>I had to understand JWT validation</h3>
+            <p>Designers on infrastructure have to earn technical credibility. AI helped me learn faster, but I still had
+              to learn it.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-megaphone" /></svg>Listing gaps made the rest believable</h3>
+            <p>Writing &ldquo;we do not support SCIM&rdquo; made the matrix credible. Presales stopped hedging.</p>
+          </div>
+          <div class="card">
+            <h3><svg class="ico"><use href="#i-clock" /></svg>Most failures came from state nobody could see</h3>
+            <p>Hidden flags, sync delays, silent attribute errors. Most of my work made that state legible.</p>
+          </div>
+          <div class="card accent">
+            <h3><svg class="ico"><use href="#i-target" /></svg>What I&rsquo;d do differently</h3>
+            <p>Design the entitlement and gating experience <em>before</em> the feature, and push for the docs-accuracy
+              gate from day one.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark thanks" data-title="Thank you">
+        <h2>Thank you</h2>
+        <p class="lead">Questions?</p>
+        <p class="who"><strong>Lokesh Kumar V M</strong> &middot; Senior Product Designer &middot; lokeshdesign.com</p>
+      </section>
+    </div>
+
+  </main>
+
+  <div class="deck-bar" role="toolbar" aria-label="Presentation controls">
+    <button type="button" class="deck-menu-btn" title="All slides (M)" aria-label="All slides (M)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg><span class="txt">Slides</span>
+    </button>
+    <span class="deck-chapter"></span>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-prev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+    </button>
+    <span class="deck-count" aria-live="polite"></span>
+    <button type="button" class="deck-next" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+    </button>
+    <span class="deck-sep" aria-hidden="true"></span>
+    <button type="button" class="deck-fs" title="Full screen (F)" aria-label="Full screen (F)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" /></svg>
+    </button>
+    <a class="deck-exit" href="aihub-security-coded.html" title="Back to the case study">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg><span class="txt">Exit</span>
+    </a>
+  </div>
+
+  <dialog class="deck-menu" aria-label="All slides">
+    <div class="deck-menu-inner">
+      <div class="deck-menu-head">
+        <div>All slides <span>&nbsp;M to toggle</span></div>
+        <button type="button" class="deck-menu-close" aria-label="Close slide menu">&#10005;</button>
+      </div>
+      <ol></ol>
+    </div>
+  </dialog>
+
+  <dialog class="deck-zoom" aria-label="Enlarged image"><img alt="" /></dialog>
+
+  <script type="module">
+    import { initDeck } from './deck.js';
+    initDeck();
+  </script>
+</body>
+
+</html>
